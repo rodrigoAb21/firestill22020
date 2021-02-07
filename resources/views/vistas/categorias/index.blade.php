@@ -26,7 +26,7 @@
                                 <tr class="text-center">
                                     <td>{{$categoria->id}}</td>
                                     <td>{{$categoria->nombre}}</td>
-                                    <td class="text-right ">
+                                    <td>
                                         <a href="{{url('categorias/'.$categoria->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>

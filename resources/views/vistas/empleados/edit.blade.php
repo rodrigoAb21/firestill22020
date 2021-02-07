@@ -6,10 +6,11 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nuevo empleado
+                        Editar empleado
                     </h3>
-                    <form method="POST" action="{{url('empleados')}}" autocomplete="off">
+                    <form method="POST" action="{{url('empleados/'.$empleado -> id)}}" autocomplete="off">
                         {{csrf_field()}}
+                        {{method_field('PATCH')}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -17,6 +18,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
+                                           value="{{$empleado->nombre}}"
                                            name="nombre">
                                 </div>
                             </div>
@@ -26,6 +28,7 @@
                                     <input
                                             type="text"
                                            class="form-control"
+                                            value="{{$empleado->apellido}}"
                                            name="apellido">
                                 </div>
                             </div>
@@ -35,6 +38,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$empleado->direccion}}"
                                             name="direccion">
                                 </div>
                             </div>
@@ -44,6 +48,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
+                                           value="{{$empleado->carnet}}"
                                            name="carnet">
                                 </div>
                             </div>
@@ -53,6 +58,7 @@
                                     <input
                                            type="text"
                                            class="form-control"
+                                           value="{{$empleado->telefono}}"
                                            name="telefono">
                                 </div>
                             </div>
@@ -63,6 +69,7 @@
                                     <input
                                            type="text"
                                            class="form-control"
+                                           value="{{$empleado->email}}"
                                            name="email">
                                 </div>
                             </div>

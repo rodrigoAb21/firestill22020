@@ -24,7 +24,11 @@ class Empleado extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = [
         'nombre',
-        'superficie',
+        'apellido',
+        'carnet',
+        'telefono',
+        'direccion',
+        'email',
     ];
 
 }

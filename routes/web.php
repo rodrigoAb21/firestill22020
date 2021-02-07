@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
 
     Route::resource('proveedores','ProveedorController');
-    Route::resource('empleados','PersonalController');
+    Route::resource('empleados','EmpleadoController');
     Route::resource('clientes','ClienteController');
     Route::resource('categorias','CategoriaController');
     Route::resource('notificaciones','NotificacionController');
