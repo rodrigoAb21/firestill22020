@@ -11,9 +11,11 @@
                 <p id="modalEliminarEnunciado">Enunciado</p>
             </div>
             <div class="modal-footer">
-
-                    <button type="button" data-dismiss="modal" class="btn btn-danger">Eliminar</button>
-
+                <form  id="modalEliminarForm" method="POST">
+                    <input id="metodo" value="delete" type="hidden" name="_method">
+                    {{csrf_field()}}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
             </div>
         </div>
     </div>

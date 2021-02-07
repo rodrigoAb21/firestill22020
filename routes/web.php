@@ -16,3 +16,15 @@ Route::post('logout', [
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+
+    Route::resource('proveedores','ProveedorController');
+    Route::resource('empleados','PersonalController');
+    Route::resource('clientes','ClienteController');
+    Route::resource('categorias','CategoriaController');
+    Route::resource('notificaciones','NotificacionController');
+    Route::resource('alertas','AlertaController');
+    Route::resource('ventas','VentaController');
+
+});

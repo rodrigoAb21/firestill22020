@@ -194,7 +194,7 @@
 
                         <li class="{{ Request::is('categorias*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('categorias')}}" >
-
+                                <i class="fa fa-boxes"></i>
                                 <span class="hide-menu"> Categorias</span>
                             </a>
                         </li>
