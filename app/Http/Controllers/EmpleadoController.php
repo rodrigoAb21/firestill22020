@@ -11,8 +11,8 @@ class EmpleadoController extends Controller
      *************************************************************************
      * Clase.........: EmpleadoController
      * Tipo..........: Controlador (MVC)
-     * Descripción...: Clase que contiene funciones y metodos para gestionar las
-     * categorías.
+     * Descripción...: Clase que contiene funciones y metodos para gestionar los
+     * empleados.
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
@@ -46,14 +46,14 @@ class EmpleadoController extends Controller
 
     public function store(Request $request)
     {
-        $categoria = new Empleado();
-        $categoria->nombre = $request['nombre'];
-        $categoria->apellido = $request['apellido'];
-        $categoria->carnet = $request['carnet'];
-        $categoria->telefono = $request['telefono'];
-        $categoria->direccion = $request['direccion'];
-        $categoria->email = $request['email'];
-        $categoria->save();
+        $empleado = new Empleado();
+        $empleado->nombre = $request['nombre'];
+        $empleado->apellido = $request['apellido'];
+        $empleado->carnet = $request['carnet'];
+        $empleado->telefono = $request['telefono'];
+        $empleado->direccion = $request['direccion'];
+        $empleado->email = $request['email'];
+        $empleado->save();
 
         return redirect('empleados');
     }
@@ -77,14 +77,14 @@ class EmpleadoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $categoria = Empleado::findOrFail($id);
-        $categoria->nombre = $request['nombre'];
-        $categoria->apellido = $request['apellido'];
-        $categoria->carnet = $request['carnet'];
-        $categoria->telefono = $request['telefono'];
-        $categoria->direccion = $request['direccion'];
-        $categoria->email = $request['email'];
-        $categoria->update();
+        $empleado = Empleado::findOrFail($id);
+        $empleado->nombre = $request['nombre'];
+        $empleado->apellido = $request['apellido'];
+        $empleado->carnet = $request['carnet'];
+        $empleado->telefono = $request['telefono'];
+        $empleado->direccion = $request['direccion'];
+        $empleado->email = $request['email'];
+        $empleado->update();
 
         return redirect('empleados');
     }
@@ -92,8 +92,8 @@ class EmpleadoController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Empleado::findOrFail($id);
-        $categoria->delete();
+        $empleado = Empleado::findOrFail($id);
+        $empleado->delete();
 
         return redirect('empleados');
     }

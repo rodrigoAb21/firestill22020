@@ -67,7 +67,7 @@
                                 <div class="form-group">
                                     <label>E-mail</label>
                                     <input
-                                           type="text"
+                                           type="email"
                                            class="form-control"
                                            value="{{$empleado->email}}"
                                            name="email">

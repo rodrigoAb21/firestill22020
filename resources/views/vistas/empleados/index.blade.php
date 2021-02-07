@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        <i class="fa fa-users"></i> Empleados
+                        <i class="fa fa-id-card"></i> Empleados
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('empleados/create')}}">
                                 <i class="fa fa-plus"></i>  Nuevo

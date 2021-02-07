@@ -6,16 +6,18 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nuevo proveedor
+                        Editar proveedor
                     </h3>
-                    <form method="POST" action="{{url('proveedores')}}" autocomplete="off">
+                    <form method="POST" action="{{url('proveedores/'.$proveedor -> id)}}" autocomplete="off">
                         {{csrf_field()}}
+                        {{method_field('PATCH')}}
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Nombre</label>
                                     <input required
                                            type="text"
+                                           value="{{$proveedor->nombre}}"
                                            class="form-control"
                                            name="nombre">
                                 </div>
@@ -27,6 +29,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$proveedor->nit}}"
                                             name="nit">
                                 </div>
                             </div>
@@ -36,6 +39,7 @@
                                     <input required
                                            type="email"
                                            class="form-control"
+                                           value="{{$proveedor->email}}"
                                            name="email">
                                 </div>
                             </div>
@@ -45,6 +49,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$proveedor->direccion}}"
                                             name="direccion">
                                 </div>
                             </div>
@@ -55,6 +60,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$proveedor->telefono}}"
                                             name="telefono">
                                 </div>
                             </div>
@@ -65,6 +71,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$proveedor->informacion}}"
                                             name="informacion">
                                 </div>
                             </div>
@@ -80,6 +87,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
+                                           value="{{$proveedor->titular}}"
                                            name="titular">
                                 </div>
                             </div>
@@ -90,6 +98,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$proveedor->banco}}"
                                             name="banco">
                                 </div>
                             </div>
@@ -99,7 +108,11 @@
                                     <label>Sucursal</label>
                                     <select class="form-control" name="sucursal" id="">
                                         @foreach($sucursales as $sucursal)
-                                            <option value="{{$sucursal}}">{{$sucursal}}</option>
+                                            @if($sucursal == $proveedor->sucursal)
+                                                <option selected value="{{$sucursal}}">{{$sucursal}}</option>
+                                            @else
+                                                <option value="{{$sucursal}}">{{$sucursal}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -111,6 +124,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$proveedor->nro_cuenta}}"
                                             name="nro_cuenta">
                                 </div>
                             </div>
@@ -120,9 +134,13 @@
                                 <div class="form-group">
                                     <label>Moneda</label>
                                     <select class="form-control" name="moneda">
-                                      @foreach($monedas as $moneda)
-                                            <option value="{{$moneda}}">{{$moneda}}</option>
-                                      @endforeach
+                                        @foreach($monedas as $moneda)
+                                            @if($moneda == $proveedor->moneda)
+                                                <option selected value="{{$moneda}}">{{$moneda}}</option>
+                                            @else
+                                                <option value="{{$moneda}}">{{$moneda}}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -132,6 +150,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            + value="{{$proveedor->tipo_identificacion}}"
                                             name="tipo_identificacion">
                                 </div>
                             </div>
@@ -143,6 +162,7 @@
                                     <input
                                             type="text"
                                             class="form-control"
+                                            value="{{$proveedor->nro_identificacion}}"
                                             name="nro_identificacion">
                                 </div>
                             </div>

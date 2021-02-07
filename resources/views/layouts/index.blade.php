@@ -137,7 +137,7 @@
 
                         <li class="{{ Request::is('empleados*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('empleados')}}" >
-                                <i class="fa fa-users"></i>
+                                <i class="fa fa-id-card"></i>
                                 <span class="hide-menu"> Empleados</span>
                             </a>
                         </li>
@@ -145,7 +145,7 @@
 
                         <li class="{{ Request::is('proveedores*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('proveedores')}}" >
-
+                                <i class="fa fa-truck"></i>
                                 <span class="hide-menu"> Proveedores</span>
                             </a>
                         </li>

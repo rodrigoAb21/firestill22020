@@ -5,92 +5,54 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Proveedores
+                        <i class="fa fa-truck"></i> Proveedores
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('proveedores/create')}}">
                                 <i class="fa fa-plus"></i>  Nuevo
                             </a>
                         </div>
                     </h2>
-
-                    <div class="mb-3">
-                        <input class="form-control" placeholder="Buscar..." type="text">
-                    </div>
-
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th>COD</th>
-                                <th>NOMBRE</th>
-                                <th>TELEFONO</th>
-                                <th>EMAIL</th>
-                                <th class="text-center w-25">OPC</th>
+                                <th class="text-center">COD</th>
+                                <th class="text-center">NOMBRE</th>
+                                <th class="text-center">TELEFONO</th>
+                                <th class="text-center">EMAIL</th>
+                                <th class="text-center">OPC</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr>
-                                <td>1</td>
-                                <td>Proveedor 1</td>
-                                <td>79896598</td>
-                                <td>proveedor1@mail.com</td>
-                                <td class="text-center">
-                                    <a href="{{url('proveedores/1')}}">
-                                        <button class="btn btn-secondary">
-                                            <i class="fa fa-eye"></i>
+                            @foreach($proveedores as $proveedor)
+                                <tr class="text-center">
+                                    <td >{{$proveedor->id}}</td>
+                                    <td >{{$proveedor->nombre}}</td>
+                                    <td >{{$proveedor->telefono}}</td>
+                                    <td >{{$proveedor->email}}</td>
+
+                                    <td>
+                                        <a href="{{url('proveedores/'.$proveedor->id)}}">
+                                            <button class="btn btn-secondary">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{{url('proveedores/'.$proveedor->id.'/edit')}}">
+                                            <button class="btn btn-warning">
+                                                <i class="fa fa-pen"></i>
+                                            </button>
+                                        </a>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$proveedor -> nombre}}', '{{url('proveedores/'.$proveedor -> id)}}')">
+                                            <i class="fa fa-times"></i>
                                         </button>
-                                    </a>
-                                    <button class="btn btn-warning">
-                                        <i class="fa fa-pen"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Proveedor 2</td>
-                                <td>79896598</td>
-                                <td>proveedor2@mail.com</td>
-                                <td class="text-center">
-                                    <a href="{{url('proveedores/1')}}">
-                                        <button class="btn btn-secondary">
-                                            <i class="fa fa-eye"></i>
-                                        </button>
-                                    </a>
-                                    <button class="btn btn-warning">
-                                        <i class="fa fa-pen"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Proveedor 3</td>
-                                <td>79896598</td>
-                                <td>proveedor3@mail.com</td>
-                                <td class="text-center">
-                                    <a href="{{url('proveedores/1')}}">
-                                        <button class="btn btn-secondary">
-                                            <i class="fa fa-eye"></i>
-                                        </button>
-                                    </a>
-                                    <button class="btn btn-warning">
-                                        <i class="fa fa-pen"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                             </tbody>
                         </table>
-
+                        {{$proveedores->links('pagination.default')}}
                     </div>
                 </div>
             </div>
