@@ -8,7 +8,8 @@
                     <h3 class="pb-2">
                         Nueva herramienta
                     </h3>
-
+                    <form method="POST" action="{{url('herramientas')}}" autocomplete="off">
+                        {{csrf_field()}}
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -16,14 +17,14 @@
                                     <input required
                                            type="text"
                                            class="form-control"
-                                           name="contacto">
+                                           name="nombre">
                                 </div>
                             </div>
+
                         </div>
-                        <a href="{{url('herramientas/listaPrincipal')}}" class="btn btn-warning">Atras</a>
-                        <a href="{{url('herramientas/listaPrincipal')}}" class="btn btn-success">Guardar</a>
-
-
+                        <a href="{{url('herramientas')}}" class="btn btn-warning">Atras</a>
+                        <button type="submit" class="btn btn-info">Guardar</button>
+                    </form>
                 </div>
             </div>
         </div>

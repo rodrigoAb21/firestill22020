@@ -27,7 +27,6 @@ class CreateHerramientaTable extends Migration
         Schema::create('herramienta', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('estado');
             $table->unsignedInteger('cantidad_taller');
             $table->unsignedInteger('cantidad_asignada');
             $table->unsignedInteger('cantidad_total');

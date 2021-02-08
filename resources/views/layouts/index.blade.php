@@ -160,12 +160,12 @@
 
                         <li class="{{ Request::is('herramientas*') ? 'nav-item active' : 'nav-item' }}">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-
+                                <i class="fa fa-tools"></i>
                                 <span class="hide-menu"> Herramientas</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li class="{{ Request::is('herramientas/listaPrincipal*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('herramientas/listaPrincipal')}}" >
+                                <li class="{{ Request::is('herramientas*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('herramientas')}}" >
 
                                         <span>  Lista</span>
                                     </a>

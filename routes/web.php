@@ -26,5 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('notificaciones','NotificacionController');
     Route::resource('alertas','AlertaController');
     Route::resource('ventas','VentaController');
+    Route::resource('herramientas','HerramientaController');
 
 });
