@@ -8,8 +8,9 @@
                     <h3 class="pb-2">
                         Nuevo cliente
                     </h3>
-                    <form method="POST" action="{{url('clientes')}}" autocomplete="off">
+                    <form method="POST" action="{{url('clientes/'.$cliente -> id)}}" autocomplete="off">
                         {{csrf_field()}}
+                        {{method_field('PATCH')}}
                     <h4>Datos Empresa</h4>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -18,6 +19,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
+                                           value="{{$cliente -> nombre_empresa}}"
                                            name="nombre_empresa">
                                 </div>
                             </div>
@@ -29,6 +31,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
+                                           value="{{$cliente -> nit}}"
                                            name="nit">
                                 </div>
                             </div>
@@ -37,6 +40,7 @@
                                     <label>Telefono</label>
                                     <input
                                            type="text"
+                                           value="{{$cliente -> telefono_empresa}}"
                                            class="form-control"
                                            name="telefono_empresa">
                                 </div>
@@ -47,6 +51,7 @@
                                     <input required
                                            type="email"
                                            class="form-control"
+                                           value="{{$cliente -> email}}"
                                            name="email">
                                 </div>
                             </div>
@@ -57,6 +62,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
+                                           value="{{$cliente -> direccion}}"
                                            name="direccion">
                                 </div>
                             </div>
@@ -72,6 +78,7 @@
                                 <input required
                                        type="text"
                                        class="form-control"
+                                       value="{{$cliente -> nombre_encargado}}"
                                        name="nombre_encargado">
                             </div>
                         </div>
@@ -84,6 +91,7 @@
                                 <input
                                         type="text"
                                         class="form-control"
+                                        value="{{$cliente -> cargo_encargado}}"
                                         name="cargo_encargado">
                             </div>
                         </div>
@@ -94,6 +102,7 @@
                                 <input
                                         type="text"
                                         class="form-control"
+                                        value="{{$cliente -> telefono_encargado}}"
                                         name="telefono_encargado">
                             </div>
                         </div>

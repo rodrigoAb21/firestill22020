@@ -152,7 +152,7 @@
 
                         <li class="{{ Request::is('clientes*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('clientes')}}" >
-
+                                <i class="fa fa-user-tie"></i>
                                 <span class="hide-menu"> Clientes</span>
                             </a>
                         </li>
