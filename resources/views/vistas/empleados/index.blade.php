@@ -18,8 +18,8 @@
                             <tr>
                                 <th class="text-center">COD</th>
                                 <th class="text-center">NOMBRE</th>
-                                <th class="text-center">APELLIDO</th>
-                                <th class="text-center">CI</th>
+                                <th class="text-center">APELLIDOS</th>
+                                <th class="text-center">TIPO</th>
                                 <th class="text-center">TELEFONO</th>
                                 <th class="text-center">OPC</th>
                             </tr>
@@ -30,7 +30,7 @@
                                     <td >{{$empleado->id}}</td>
                                     <td >{{$empleado->nombre}}</td>
                                     <td >{{$empleado->apellido}}</td>
-                                    <td >{{$empleado->carnet}}</td>
+                                    <td >{{$empleado->tipo}}</td>
                                     <td >{{$empleado->telefono}}</td>
 
                                     <td>

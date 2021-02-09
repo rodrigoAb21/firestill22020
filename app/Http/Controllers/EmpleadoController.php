@@ -40,7 +40,9 @@ class EmpleadoController extends Controller
 
 
     public function create(){
-        return view('vistas.empleados.create');
+        return view('vistas.empleados.create', [
+            'tipos' => Empleado::$TIPOS_DE_USUARIO,
+        ]);
     }
 
 
@@ -53,6 +55,8 @@ class EmpleadoController extends Controller
         $empleado->telefono = $request['telefono'];
         $empleado->direccion = $request['direccion'];
         $empleado->email = $request['email'];
+        $empleado->password = bcrypt($request['password']);
+        $empleado->tipo = $request['tipo'];
         $empleado->save();
 
         return redirect('empleados');
@@ -63,6 +67,7 @@ class EmpleadoController extends Controller
         return view('vistas.empleados.edit',
             [
                 'empleado' => Empleado::findOrFail($id),
+                'tipos' => Empleado::$TIPOS_DE_USUARIO,
             ]);
     }
 
@@ -84,6 +89,10 @@ class EmpleadoController extends Controller
         $empleado->telefono = $request['telefono'];
         $empleado->direccion = $request['direccion'];
         $empleado->email = $request['email'];
+        if (trim($request['password']) != ''){
+            $empleado->password = bcrypt($request['password']);
+        }
+        $empleado->tipo = $request['tipo'];
         $empleado->update();
 
         return redirect('empleados');

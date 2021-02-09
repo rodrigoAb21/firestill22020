@@ -31,9 +31,23 @@ class CreateEmpleadoTable extends Migration
             $table->string('carnet')->nullable();
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
-            $table->string('email')->nullable();
+            $table->string('tipo')->nullable();
+            $table->string('email')->nullable()->unique();
+            $table->string('password')->nullable();
             $table->softDeletes();
+            $table->rememberToken();
         });
+
+        DB::table('empleado')->insert([
+            'nombre' => 'nombre',
+            'apellido' => 'apellido',
+            'carnet' => 'carnet',
+            'telefono' => '3532021',
+            'direccion' => 'direccion',
+            'tipo' => 'Administrador',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('rodrigo'),
+        ]);
     }
 
     /**

@@ -42,6 +42,22 @@
                                             name="direccion">
                                 </div>
                             </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo</label>
+                                    <select name="tipo" class="form-control">
+                                        @foreach($tipos as $tipo)
+                                            @if($tipo == $empleado->tipo)
+                                                <option selected value="{{$tipo}}">{{$tipo}}</option>
+                                            @else
+                                                <option value="{{$tipo}}">{{$tipo}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Carnet</label>
@@ -63,7 +79,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
                                     <input
@@ -71,6 +87,16 @@
                                            class="form-control"
                                            value="{{$empleado->email}}"
                                            name="email">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input
+                                           type="password"
+                                           class="form-control"
+                                           value="{{$empleado->email}}"
+                                           name="password">
                                 </div>
                             </div>
                         </div>

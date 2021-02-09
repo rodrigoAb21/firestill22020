@@ -38,7 +38,17 @@
                                             name="direccion">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo</label>
+                                    <select name="tipo" class="form-control">
+                                        @foreach($tipos as $tipo)
+                                            <option value="{{$tipo}}">{{$tipo}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Carnet</label>
                                     <input required
@@ -47,7 +57,7 @@
                                            name="carnet">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Telefono</label>
                                     <input
@@ -56,8 +66,7 @@
                                            name="telefono">
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
                                     <input
