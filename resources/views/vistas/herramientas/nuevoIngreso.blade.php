@@ -8,8 +8,8 @@
                     <h3 class="pb-2">
                         Nuevo Ingreso
                     </h3>
-
-
+                    <form method="POST" action="{{url('herramientas/guardarIngreso')}}" autocomplete="off" enctype="multipart/form-data">
+                        {{csrf_field()}}
                     {{csrf_field()}}
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -27,6 +27,8 @@
                                 <label>Factura</label>
                                 <input required
                                        type="file"
+                                       accept="image/*"
+                                       name="foto_factura"
                                        class="form-control">
                             </div>
                         </div>
@@ -34,6 +36,7 @@
                             <div class="form-group">
                                 <label>Nro Factura</label>
                                 <input required
+                                       name="nro_factura"
                                        type="text"
                                        class="form-control">
                             </div>
@@ -43,6 +46,7 @@
                                 <label>Tienda</label>
                                 <input required
                                        type="text"
+                                       name="tienda"
                                        class="form-control">
                             </div>
                         </div>
@@ -51,10 +55,10 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <select class="form-control selectpicker" data-live-search="true" id="selectorInsumo">
-                                    <option>Herramienta 1</option>
-                                    <option>Herramienta 2</option>
-                                    <option>Herramienta 3</option>
+                                <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
+                                   @foreach($herramientas as $herramienta)
+                                        <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -66,7 +70,7 @@
 
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <button id="btn_agregar" type="button" onclick="agregar()"  class="btn btn-success btn-sm btn-block">
+                                <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-sm btn-block">
                                     <span class="fa fa-plus fa-2x"></span>
                                 </button>
                             </div>
@@ -88,9 +92,9 @@
 
                     </div>
 
-                    <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atras</a>
-                    <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-info">Guardar</a>
-
+                    <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atras</a>
+                    <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -100,12 +104,19 @@
     @endpush
     @push('scripts')
         <script>
+            $(document).ready(
+                function () {
+                    evaluar();
+                }
+            );
+
             var cont = 0;
 
             function agregar() {
                 cantidad = $('#cantidad').val();
                 if(cont>=0 && cantidad != null && cantidad > 0) {
-                    nombreInsumo = $('#selectorInsumo option:selected').text();
+                    idHerramienta = $('#selectorHerramienta').val();
+                    nombreHerramienta = $('#selectorHerramienta option:selected').text();
                     var fila =
                         '<tr id="fila' + cont + '">' +
                         '<td>' +
@@ -114,10 +125,12 @@
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input class="form-control" name="ewtew" readonly value="'+nombreInsumo+'">'+
+                        '   <input name="idHerramientaT[]" hidden value="'+idHerramienta+'">'+
+                        nombreHerramienta +
                         '</td>' +
                         '<td>' +
-                        '   <input class="form-control" type="number" value="'+cantidad+'">'+
+                        '   <input hidden name="cantidadT[]" value="'+cantidad+'">'+
+                        cantidad +
                         '</td>' +
                         '</tr>';
                     cont++;
@@ -125,11 +138,21 @@
 
                 }
                 $('#cantidad').val("");
+                evaluar();
             }
 
             function quitar(index){
                 cont--;
                 $("#fila" + index).remove();
+                evaluar()
+            }
+
+            function evaluar(){
+                if (cont > 0) {
+                    $("#guardar").show();
+                }else{
+                    $("#guardar").hide();
+                }
             }
 
 

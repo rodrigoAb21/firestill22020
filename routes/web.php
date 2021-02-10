@@ -26,6 +26,22 @@ Route::middleware('auth')->group(function () {
     Route::resource('notificaciones','NotificacionController');
     Route::resource('alertas','AlertaController');
     Route::resource('ventas','VentaController');
+
+
+    Route::get('herramientas/listaIngresos','HerramientaController@listaIngresos');
+    Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
+    Route::post('herramientas/guardarIngreso','HerramientaController@guardarIngreso');
+    Route::get('herramientas/verIngreso/{id}','HerramientaController@verIngreso');
+    Route::delete('herramientas/eliminarIngreso/{id}','HerramientaController@eliminarIngreso');
+
+    Route::get('herramientas/verAsignacion','HerramientaController@verAsignacion');
+    Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
+    Route::get('herramientas/listaBajas','HerramientaController@listaBajas');
+    Route::get('herramientas/listaAsignaciones','HerramientaController@listaAsignaciones');
+    Route::get('herramientas/nuevaAsignacion','HerramientaController@nuevaAsignacion');
+    Route::get('herramientas/reingreso','HerramientaController@reingreso');
+    Route::get('herramientas/verIngreso','HerramientaController@verIngreso');
+
     Route::resource('herramientas','HerramientaController');
 
 });
