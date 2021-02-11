@@ -44,4 +44,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('herramientas','HerramientaController');
 
+    Route::get('imonitoreo/listaContratos','MonitoreoController@listaContratos');
+    Route::get('imonitoreo/nuevoContrato','MonitoreoController@nuevoContrato');
+
+    Route::get('imonitoreo/agenda','MonitoreoController@agenda');
+
 });

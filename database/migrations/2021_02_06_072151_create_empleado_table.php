@@ -39,8 +39,8 @@ class CreateEmpleadoTable extends Migration
         });
 
         DB::table('empleado')->insert([
-            'nombre' => 'nombre',
-            'apellido' => 'apellido',
+            'nombre' => 'Rodrigo',
+            'apellido' => 'Abasto',
             'carnet' => 'carnet',
             'telefono' => '3532021',
             'direccion' => 'direccion',

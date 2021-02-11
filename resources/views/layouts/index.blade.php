@@ -47,7 +47,7 @@
                     <a class="navbar-brand ligh" href="{{url('/')}}">
                         <!-- Logo icon -->
                         <b class="light-logo">
-                            <i class="fa fa-fire-extinguisher"></i>
+                            <i class="fa fa-fire"></i>
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -96,7 +96,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->nombre}}</a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->nombre }} {{Auth::user()->apellido }}</a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
@@ -194,14 +194,14 @@
 
                         <li class="{{ Request::is('categorias*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('categorias')}}" >
-                                <i class="fa fa-boxes"></i>
+                                <i class="fa fa-cube"></i>
                                 <span class="hide-menu"> Categorias</span>
                             </a>
                         </li>
 
                         <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-
+                                <i class="fa fa-boxes"></i>
                                 <span class="hide-menu"> Inventario</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -227,21 +227,20 @@
                             </ul>
                         </li>
 
-                        <li class="{{ Request::is('mantenimientos*') ? 'nav-item active' : 'nav-item' }}">
+                        <li class="{{ Request::is('imonitoreo*') ? 'nav-item active' : 'nav-item' }}">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-
-                                <span class="hide-menu"> Mantenimientos</span>
+                                <i class="fas fa-fire-extinguisher"></i>
+                                <span class="hide-menu"> Insp. & Monitoreo </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li class="{{ Request::is('mantenimientos/contratos*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('mantenimientos/contratos')}}" >
+                                <li class="{{ Request::is('imonitoreo/listaContratos*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('imonitoreo/listaContratos')}}" >
 
                                         <span>  Contratos</span>
                                     </a>
                                 </li>
-                                <li class="{{ Request::is('mantenimientos/agenda*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('mantenimientos/agenda')}}" >
-
+                                <li class="{{ Request::is('imonitoreo/agenda*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('imonitoreo/agenda')}}" >
                                         <span>  Agenda</span>
                                     </a>
                                 </li>
@@ -252,7 +251,8 @@
 
                         <li class="{{ Request::is('ventas*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('ventas')}}" >
-                                <span class="hide-menu"> Ventas</span>
+                                <i class="fas fa-dollar-sign"></i>
+                                <span class="hide-menu"> Ventas y Servicios</span>
                             </a>
                         </li>
 

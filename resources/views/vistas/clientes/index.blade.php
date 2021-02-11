@@ -16,12 +16,12 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th>COD</th>
-                                <th>NOMBRE</th>
-                                <th>CI/NIT</th>
-                                <th>TELEFONO</th>
+                                <th class="text-center">COD</th>
+                                <th class="text-center">NOMBRE</th>
+                                <th class="text-center">CI/NIT</th>
+                                <th class="text-center">TELEFONO</th>
 
-                                <th class="text-center w-25">OPC</th>
+                                <th class="text-center">OPC</th>
                             </tr>
                             </thead>
                             <tbody>

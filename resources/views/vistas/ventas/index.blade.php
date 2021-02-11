@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Ventas de productos
+                        <i class="fas fa-dollar-sign"></i> Ventas de productos
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('ventas/create')}}">
                                 <i class="fa fa-plus"></i>  Nuevo
