@@ -27,4 +27,8 @@ class Sucursal extends Model
         'direccion',
         'contrato_id',
     ];
+
+    public function equipos(){
+        return $this->hasMany(Equipo::class);
+    }
 }

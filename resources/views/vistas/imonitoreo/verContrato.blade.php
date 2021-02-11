@@ -126,7 +126,7 @@
                                         <td>{{$sucursal->nombre}}</td>
                                         <td>{{$sucursal->direccion}}</td>
                                         <td>
-                                            <a href="{{url('imonitoreo/sucursal/'.$sucursal->id)}}">
+                                            <a href="{{url('imonitoreo/verSucursal/'.$sucursal->id)}}">
                                                 <button class="btn btn-secondary">
                                                     <i class="fa fa-eye"></i>
                                                 </button>

@@ -33,4 +33,13 @@ class Equipo extends Model
         'tipo_clasificacion_id',
         'marca_clasificacion_id',
     ];
+
+    public function tipo(){
+        return $this->belongsTo('App\Modelos\TipoClasificacion', 'tipo_clasificacion_id', 'id');
+    }
+
+    public function marca(){
+        return $this->belongsTo('App\Modelos\MarcaClasificacion', 'marca_clasificacion_id', 'id');
+    }
+
 }

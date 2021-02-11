@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Modelos\Cliente;
 use App\Modelos\Contrato;
 use App\Modelos\Empleado;
+use App\Modelos\Equipo;
 use App\Modelos\Sucursal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -85,13 +86,73 @@ class MonitoreoController extends Controller
         return redirect('imonitoreo/verContrato/'.$request['contrato_id']);
     }
 
-    public function verSucursal(Request $request){
+    public function verSucursal($id){
+        return view('vistas.imonitoreo.verSucursal',[
+            'sucursal' => Sucursal::findOrFail($id),
+        ]);
+    }
+
+    public function actualizarSucursal(Request $request, $id){
+        $sucursal = Sucursal::findOrFail($id);
+        $sucursal->nombre = $request['nombre'];
+        $sucursal->direccion = $request['direccion'];
+        $sucursal->update();
+
+        return redirect('imonitoreo/verSucursal/'.$id);
+    }
+
+    //-----------------------------------------------------------------------
+    //-----------------------------EQUIPO------------------------------------
+    //-----------------------------------------------------------------------
+
+    public function nuevoEquipo($sucursal_id){
+        return view('vistas.imonitoreo.nuevoEquipo',[
+            'sucursal_id' => $sucursal_id,
+        ]);
+    }
+    public function guardarEquipo(Request $request){
+        $equipo = new Equipo();
+        $equipo->descripcion = $request['descripcion'];
+        $equipo->ano_fabricacion = $request['ano_fabricacion'];
+        $equipo->capacidad = $request['capacidad'];
+        $equipo->presion_min = $request['presion_min'];
+        $equipo->presion_max = $request['presion_max'];
+        $equipo->longitud = $request['longitud'];
+        $equipo->latitud = $request['latitud'];
+        $equipo->sucursal_id = $request['sucursal_id'];
+        $equipo->tipo_clasificacion_id = $request['tipo_clasificacion_id'];
+        $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];
+        $equipo->save();
+
+        return redirect('imonitoreo/verSucursal/'.$request['sucursal_id']);
+    }
+    public function editarEquipo($id){
+        return view('vistas.imonitoreo.editarEquipo',[
+            'equipo' => Equipo::findOrFail($id),
+        ]);
+    }
+    public function actualizarEquipo(Request $request, $id){
+        $equipo = Equipo::findOrFail($id);
+        $equipo->descripcion = $request['descripcion'];
+        $equipo->ano_fabricacion = $request['ano_fabricacion'];
+        $equipo->capacidad = $request['capacidad'];
+        $equipo->presion_min = $request['presion_min'];
+        $equipo->presion_max = $request['presion_max'];
+        $equipo->longitud = $request['longitud'];
+        $equipo->latitud = $request['latitud'];
+        $equipo->sucursal_id = $request['sucursal_id'];
+        $equipo->tipo_clasificacion_id = $request['tipo_clasificacion_id'];
+        $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];
+        $equipo->save();
+
+        return redirect('imonitoreo/verSucursal/'.$request['sucursal_id']);
+    }
+
+    public function eliminarEquipo($id){
 
     }
 
-    public function actualizarSucursal(Request $request){
 
-    }
 
     //-----------------------------------------------------------------------
     //-----------------------------AGENDA------------------------------------
