@@ -17,7 +17,7 @@ class CreateEquipoTable extends Migration
             $table->increments('id');
             $table->string('descripcion');
             $table->integer('ano_fabricacion');
-            $table->float('capacodad');
+            $table->float('capacidad');
             $table->float('presion_min');
             $table->float('presion_max');
             $table->double('longitud');

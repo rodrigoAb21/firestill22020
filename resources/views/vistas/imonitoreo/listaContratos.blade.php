@@ -26,23 +26,28 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>YPFB</td>
-                                <td>Vigente</td>
-                                <td>Vigente</td>
-                                <td>Vigente</td>
-                                <td class="text-center">
-                                    <button class="btn btn-info">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @foreach($contratos as $contrato)
+                                <tr class="text-center">
+                                    <td>{{$contrato->id}}</td>
+                                    <td>{{$contrato->cliente->nombre_empresa}}</td>
+                                    <td>{{$contrato->estado}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $contrato->fecha_inicio)->format('d - m - Y')}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $contrato->fecha_fin)->format('d - m - Y')}}</td>
+                                    <td>
+                                        <a href="{{url('imonitoreo/verContrato/'.$contrato->id)}}">
+                                            <button class="btn btn-secondary">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$contrato -> id}}', '{{url('imonitoreo/eliminarContrato/'.$contrato -> id)}}')">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
+                        {{$contratos->links('pagination.default')}}
 
                     </div>
                 </div>

@@ -46,6 +46,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('imonitoreo/listaContratos','MonitoreoController@listaContratos');
     Route::get('imonitoreo/nuevoContrato','MonitoreoController@nuevoContrato');
+    Route::post('imonitoreo/guardarContrato','MonitoreoController@guardarContrato');
+    Route::get('imonitoreo/editarContrato/{id}','MonitoreoController@editarContrato');
+    Route::get('imonitoreo/verContrato/{id}','MonitoreoController@verContrato');
+    Route::patch('imonitoreo/actualizarContrato/{id}','MonitoreoController@actualizarContrato');
+
 
     Route::get('imonitoreo/agenda','MonitoreoController@agenda');
 

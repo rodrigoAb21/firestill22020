@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
     public $timestamps = false;
     protected $fillable = [
+        'nombre',
         'apellido',
         'carnet',
         'telefono',
