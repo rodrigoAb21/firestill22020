@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Modelos\Cliente;
 use App\Modelos\Contrato;
 use App\Modelos\Empleado;
+use App\Modelos\Sucursal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class MonitoreoController extends Controller
 {
+    //-----------------------------------------------------------------------
+    //-----------------------------CONTRATOS---------------------------------
+    //-----------------------------------------------------------------------
+
     public function listaContratos(){
         return view('vistas.imonitoreo.listaContratos', [
             'contratos' => Contrato::paginate(5),
@@ -43,12 +48,6 @@ class MonitoreoController extends Controller
     public function verContrato($id){
         return view('vistas.imonitoreo.verContrato',[
             'contrato' => Contrato::findOrFail($id),
-        ]);
-    }
-
-    public function editarContrato($id){
-        return view('vistas.imonitoreo.editarContrato',[
-            'contrato' => Contrato::findOrFail($id),
             'clientes' => Cliente::all(),
             'empleados' => Empleado::all(),
         ]);
@@ -70,14 +69,32 @@ class MonitoreoController extends Controller
 
         return redirect('imonitoreo/verContrato/'.$id);
     }
+    //-----------------------------------------------------------------------
+    //---------------------------SUCURSALES----------------------------------
+    //-----------------------------------------------------------------------
 
 
 
+    public function guardarSucursal(Request $request){
+        $sucursal = new Sucursal();
+        $sucursal->nombre = $request['nombre'];
+        $sucursal->direccion = $request['direccion'];
+        $sucursal->contrato_id = $request['contrato_id'];
+        $sucursal->save();
 
+        return redirect('imonitoreo/verContrato/'.$request['contrato_id']);
+    }
 
+    public function verSucursal(Request $request){
 
+    }
+
+    public function actualizarSucursal(Request $request){
+
+    }
 
     //-----------------------------------------------------------------------
+    //-----------------------------AGENDA------------------------------------
     //-----------------------------------------------------------------------
 
     public function agenda(){

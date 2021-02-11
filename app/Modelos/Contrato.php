@@ -38,4 +38,8 @@ class Contrato extends Model
     public function empleado(){
         return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id');
     }
+
+    public function sucursales(){
+        return $this->hasMany(Sucursal::class);
+    }
 }

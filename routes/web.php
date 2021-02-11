@@ -51,6 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::get('imonitoreo/verContrato/{id}','MonitoreoController@verContrato');
     Route::patch('imonitoreo/actualizarContrato/{id}','MonitoreoController@actualizarContrato');
 
+    Route::post('imonitoreo/guardarSucursal','MonitoreoController@guardarSucursal');
+
+
 
     Route::get('imonitoreo/agenda','MonitoreoController@agenda');
 
