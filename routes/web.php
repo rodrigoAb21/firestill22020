@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('imonitoreo/actualizarSucursal/{id}','MonitoreoController@actualizarSucursal');
 
     Route::get('imonitoreo/nuevoEquipo/{sucursal_id}','MonitoreoController@nuevoEquipo');
+    Route::get('imonitoreo/verEquipo/{id}','MonitoreoController@verEquipo');
     Route::post('imonitoreo/guardarEquipo','MonitoreoController@guardarEquipo');
     Route::get('imonitoreo/editarEquipo/{id}','MonitoreoController@editarEquipo');
     Route::patch('imonitoreo/actualizarEquipo/{id}','MonitoreoController@actualizarEquipo');

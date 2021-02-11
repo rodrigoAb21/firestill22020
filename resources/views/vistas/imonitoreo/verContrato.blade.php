@@ -88,7 +88,7 @@
                             </div>
 
                         </div>
-                        <a href="{{url('imonitoreo/verContrato/'.$contrato->id)}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('imonitoreo/listaContratos/')}}" class="btn btn-warning">Atras</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
 

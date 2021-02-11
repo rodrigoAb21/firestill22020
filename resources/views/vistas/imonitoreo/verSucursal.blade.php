@@ -49,7 +49,7 @@
                     <h3 class="pb-2">
                         Equipos
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('imonitoreo/nuevoEquipo')}}">
+                            <a class="btn btn-success" href="{{url('imonitoreo/nuevoEquipo/'.$sucursal->id)}}">
                                 <i class="fa fa-plus"></i>  Nuevo
                             </a>
                         </div>
@@ -60,6 +60,8 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">COD</th>
+                                    <th class="text-center">NRO SERIE</th>
+                                    <th class="text-center">CAPACIDAD</th>
                                     <th class="text-center">TIPO</th>
                                     <th class="text-center">MARCA</th>
                                     <th class="text-center">OPC</th>
@@ -69,10 +71,12 @@
                                 @foreach($sucursal->equipos as $equipo)
                                     <tr class="text-center">
                                         <td>{{$equipo->id}}</td>
+                                        <td>{{$equipo->nro_serie}}</td>
+                                        <td>{{$equipo->capacidad}} {{$equipo->unidad_medida}}</td>
                                         <td>{{$equipo->tipo->nombre}}</td>
                                         <td>{{$equipo->marca->nombre}}</td>
                                         <td>
-                                            <a href="{{url('imonitoreo/equipo/'.$equipo->id)}}">
+                                            <a href="{{url('imonitoreo/verEquipo/'.$equipo->id)}}">
                                                 <button class="btn btn-secondary">
                                                     <i class="fa fa-eye"></i>
                                                 </button>

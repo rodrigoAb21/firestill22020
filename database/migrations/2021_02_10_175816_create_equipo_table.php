@@ -15,13 +15,15 @@ class CreateEquipoTable extends Migration
     {
         Schema::create('equipo', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nro_serie');
             $table->string('descripcion');
+            $table->string('unidad_medida');
             $table->integer('ano_fabricacion');
             $table->float('capacidad');
             $table->float('presion_min');
             $table->float('presion_max');
-            $table->double('longitud');
-            $table->double('latitud');
+            $table->double('longitud')->nullable();
+            $table->double('latitud')->nullable();
             $table->softDeletes();
 
 

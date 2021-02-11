@@ -6,7 +6,9 @@ use App\Modelos\Cliente;
 use App\Modelos\Contrato;
 use App\Modelos\Empleado;
 use App\Modelos\Equipo;
+use App\Modelos\MarcaClasificacion;
 use App\Modelos\Sucursal;
+use App\Modelos\TipoClasificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -108,11 +110,16 @@ class MonitoreoController extends Controller
     public function nuevoEquipo($sucursal_id){
         return view('vistas.imonitoreo.nuevoEquipo',[
             'sucursal_id' => $sucursal_id,
+            'marcas' => MarcaClasificacion::all(),
+            'tipos' => TipoClasificacion::all(),
+            'unidades' => Equipo::$UNIDAD_MEDIDA,
         ]);
     }
     public function guardarEquipo(Request $request){
         $equipo = new Equipo();
+        $equipo->nro_serie = $request['nro_serie'];
         $equipo->descripcion = $request['descripcion'];
+        $equipo->unidad_medida = $request['unidad_medida'];
         $equipo->ano_fabricacion = $request['ano_fabricacion'];
         $equipo->capacidad = $request['capacidad'];
         $equipo->presion_min = $request['presion_min'];
@@ -129,11 +136,16 @@ class MonitoreoController extends Controller
     public function editarEquipo($id){
         return view('vistas.imonitoreo.editarEquipo',[
             'equipo' => Equipo::findOrFail($id),
+            'marcas' => MarcaClasificacion::all(),
+            'tipos' => TipoClasificacion::all(),
+            'unidades' => Equipo::$UNIDAD_MEDIDA,
         ]);
     }
     public function actualizarEquipo(Request $request, $id){
         $equipo = Equipo::findOrFail($id);
+        $equipo->nro_serie = $request['nro_serie'];
         $equipo->descripcion = $request['descripcion'];
+        $equipo->unidad_medida = $request['unidad_medida'];
         $equipo->ano_fabricacion = $request['ano_fabricacion'];
         $equipo->capacidad = $request['capacidad'];
         $equipo->presion_min = $request['presion_min'];

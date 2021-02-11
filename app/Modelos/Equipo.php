@@ -23,7 +23,9 @@ class Equipo extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
+        'nro_serie',
         'descripcion',
+        'unidad_medida',
         'ano_fabricacion',
         'presion_min',
         'presion_max',
@@ -41,5 +43,10 @@ class Equipo extends Model
     public function marca(){
         return $this->belongsTo('App\Modelos\MarcaClasificacion', 'marca_clasificacion_id', 'id');
     }
+
+    static public $UNIDAD_MEDIDA = [
+        'Kg',
+        'Lt',
+        ];
 
 }
