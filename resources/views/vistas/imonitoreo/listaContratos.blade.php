@@ -57,15 +57,14 @@
     @include('vistas.modal')
     @push('scripts')
         <script>
-
             function modalEliminar(nombre, url) {
+                console.log(url);
                 $('#modalEliminarForm').attr("action", url);
                 $('#metodo').val("delete");
                 $('#modalEliminarTitulo').html("Eliminar");
                 $('#modalEliminarEnunciado').html("Realmente lo desea eliminar?");
                 $('#modalEliminar').modal('show');
             }
-
         </script>
 
     @endpush()

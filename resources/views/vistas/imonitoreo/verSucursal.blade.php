@@ -81,7 +81,7 @@
                                                     <i class="fa fa-eye"></i>
                                                 </button>
                                             </a>
-                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$equipo -> id}}', '{{url('imonitoreo/eliminarEquipo/'.$sucursal -> id)}}')">
+                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$equipo -> id}}', '{{url('imonitoreo/eliminarEquipo/'.$equipo -> id)}}')">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </td>
@@ -96,5 +96,20 @@
             </div>
         </div>
     </div>
+        @include('vistas.modal')
+        @push('scripts')
+            <script>
+                function modalEliminar(nombre, url) {
+                    console.log(url);
+                    $('#modalEliminarForm').attr("action", url);
+                    $('#metodo').val("delete");
+                    $('#modalEliminarTitulo').html("Eliminar Equipo");
+                    $('#modalEliminarEnunciado').html("Realmente desea eliminar el equipo?");
+                    $('#modalEliminar').modal('show');
+                }
+
+            </script>
+
+    @endpush()
 @endsection
 

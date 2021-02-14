@@ -72,6 +72,13 @@ class MonitoreoController extends Controller
 
         return redirect('imonitoreo/verContrato/'.$id);
     }
+
+    public function eliminarContrato($id){
+        $contrato = Contrato::findOrFail($id);
+        $contrato->delete();
+
+        return redirect(('imonitoreo/listaContratos'));
+    }
     //-----------------------------------------------------------------------
     //---------------------------SUCURSALES----------------------------------
     //-----------------------------------------------------------------------
@@ -103,6 +110,13 @@ class MonitoreoController extends Controller
         return redirect('imonitoreo/verSucursal/'.$id);
     }
 
+    public function eliminarSucursal($id){
+        $sucursal = Sucursal::findOrFail($id);
+        $contrato_id = $sucursal->contrato_id;
+        $sucursal->delete();
+
+        return redirect(('imonitoreo/verContrato/'.$contrato_id));
+    }
     //-----------------------------------------------------------------------
     //-----------------------------EQUIPO------------------------------------
     //-----------------------------------------------------------------------
@@ -161,6 +175,12 @@ class MonitoreoController extends Controller
     }
 
     public function eliminarEquipo($id){
+
+        $equipo = Equipo::findOrFail($id);
+        $sucursal_id = $equipo->sucursal_id;
+        $equipo->delete();
+
+        return redirect(('imonitoreo/verSucursal/'.$sucursal_id));
 
     }
 

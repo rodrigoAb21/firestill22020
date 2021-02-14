@@ -50,17 +50,19 @@ Route::middleware('auth')->group(function () {
     Route::get('imonitoreo/editarContrato/{id}','MonitoreoController@editarContrato');
     Route::get('imonitoreo/verContrato/{id}','MonitoreoController@verContrato');
     Route::patch('imonitoreo/actualizarContrato/{id}','MonitoreoController@actualizarContrato');
+    Route::delete('imonitoreo/eliminarContrato/{id}','MonitoreoController@eliminarContrato');
 
     Route::post('imonitoreo/guardarSucursal','MonitoreoController@guardarSucursal');
     Route::get('imonitoreo/verSucursal/{id}','MonitoreoController@verSucursal');
     Route::patch('imonitoreo/actualizarSucursal/{id}','MonitoreoController@actualizarSucursal');
+    Route::delete('imonitoreo/eliminarSucursal/{id}','MonitoreoController@eliminarSucursal');
 
     Route::get('imonitoreo/nuevoEquipo/{sucursal_id}','MonitoreoController@nuevoEquipo');
     Route::get('imonitoreo/verEquipo/{id}','MonitoreoController@verEquipo');
     Route::post('imonitoreo/guardarEquipo','MonitoreoController@guardarEquipo');
     Route::get('imonitoreo/editarEquipo/{id}','MonitoreoController@editarEquipo');
     Route::patch('imonitoreo/actualizarEquipo/{id}','MonitoreoController@actualizarEquipo');
-    Route::delete('imonitoreo/eliminarEquipo','MonitoreoController@eliminarEquipo');
+    Route::delete('imonitoreo/eliminarEquipo/{id}','MonitoreoController@eliminarEquipo');
 
 
     Route::get('imonitoreo/agenda','MonitoreoController@agenda');

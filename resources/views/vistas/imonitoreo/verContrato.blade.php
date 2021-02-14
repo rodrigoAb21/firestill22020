@@ -131,7 +131,7 @@
                                                     <i class="fa fa-eye"></i>
                                                 </button>
                                             </a>
-                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$sucursal -> id}}', '{{url('imonitoreo/eliminarSucursal/'.$sucursal -> id)}}')">
+                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$sucursal->id}}', '{{url('imonitoreo/eliminarSucursal/'.$sucursal->id)}}')">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </td>
@@ -143,9 +143,22 @@
                         </div>
 
                     </div>
+                </div>
             </div>
         </div>
-    </div>
-    @include('vistas.imonitoreo.modalSucursal')
+        @include('vistas.modal')
+        @include('vistas.imonitoreo.modalSucursal')
+        @push('scripts')
+            <script>
+                function modalEliminar(nombre, url) {
+                    $('#modalEliminarForm').attr("action", url);
+                    $('#modalEliminarTitulo').html("Eliminar Sucursal");
+                    $('#modalEliminarEnunciado').html("Realmente desea eliminar la sucursal?");
+                    $('#modalEliminar').modal('show');
+                }
+
+            </script>
+
+        @endpush()
 @endsection
 
