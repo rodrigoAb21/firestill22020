@@ -14,7 +14,7 @@
                 <form  id="modalEliminarForm" method="POST">
                     <input id="metodo" value="delete" type="hidden" name="_method">
                     {{csrf_field()}}
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <button id="btn_eliminar" type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
             </div>
         </div>

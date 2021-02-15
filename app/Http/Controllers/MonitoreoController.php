@@ -19,9 +19,22 @@ class MonitoreoController extends Controller
     //-----------------------------------------------------------------------
 
     public function listaContratos(){
+        $this->actualizarEstados();
         return view('vistas.imonitoreo.listaContratos', [
             'contratos' => Contrato::paginate(5),
         ]);
+    }
+
+    public function actualizarEstados(){
+        $hoy = date('Y-m-d');
+        $contratos = Contrato::
+            where('estado','=', 'Vigente')
+            ->where('fecha_fin', '<', $hoy)
+            ->get();
+        foreach ($contratos as $contrato){
+            $contrato->estado = 'Finalizado';
+            $contrato->update();
+        }
     }
 
     public function nuevoContrato(){
@@ -35,6 +48,8 @@ class MonitoreoController extends Controller
         $contrato = new Contrato();
         $contrato->fecha_inicio = $request['fecha_inicio'];
         $contrato->fecha_fin = $request['fecha_fin'];
+        $contrato->estado = "Vigente";
+        $contrato->edicion = true;
         $contrato->periodo = $request['periodo'];
         if (Input::hasFile('documento')) {
             $file = Input::file('documento');
@@ -56,6 +71,14 @@ class MonitoreoController extends Controller
         ]);
     }
 
+    public function editarContrato($id){
+        return view('vistas.imonitoreo.editarContrato',[
+            'contrato' => Contrato::findOrFail($id),
+            'clientes' => Cliente::all(),
+            'empleados' => Empleado::all(),
+        ]);
+    }
+
     public function actualizarContrato(Request $request, $id){
         $contrato = Contrato::findOrFail($id);
         $contrato->fecha_inicio = $request['fecha_inicio'];
@@ -70,19 +93,26 @@ class MonitoreoController extends Controller
         $contrato->empleado_id = $request['empleado_id'];
         $contrato->update();
 
-        return redirect('imonitoreo/verContrato/'.$id);
+        return redirect('imonitoreo/editarContrato/'.$id);
     }
 
     public function eliminarContrato($id){
         $contrato = Contrato::findOrFail($id);
         $contrato->delete();
 
-        return redirect(('imonitoreo/listaContratos'));
+        return redirect('imonitoreo/listaContratos');
+    }
+
+    public function finalizarEdicion($id){
+        $contrato = Contrato::findOrFail($id);
+        $contrato->edicion = false;
+        $contrato->update();
+
+        return redirect('imonitoreo/listaContratos');
     }
     //-----------------------------------------------------------------------
     //---------------------------SUCURSALES----------------------------------
     //-----------------------------------------------------------------------
-
 
 
     public function guardarSucursal(Request $request){
@@ -92,11 +122,17 @@ class MonitoreoController extends Controller
         $sucursal->contrato_id = $request['contrato_id'];
         $sucursal->save();
 
-        return redirect('imonitoreo/verContrato/'.$request['contrato_id']);
+        return redirect('imonitoreo/editarContrato/'.$request['contrato_id']);
     }
 
     public function verSucursal($id){
         return view('vistas.imonitoreo.verSucursal',[
+            'sucursal' => Sucursal::findOrFail($id),
+        ]);
+    }
+
+    public function editarSucursal($id){
+        return view('vistas.imonitoreo.editarSucursal',[
             'sucursal' => Sucursal::findOrFail($id),
         ]);
     }
@@ -107,7 +143,7 @@ class MonitoreoController extends Controller
         $sucursal->direccion = $request['direccion'];
         $sucursal->update();
 
-        return redirect('imonitoreo/verSucursal/'.$id);
+        return redirect('imonitoreo/editarSucursal/'.$id);
     }
 
     public function eliminarSucursal($id){
@@ -115,7 +151,7 @@ class MonitoreoController extends Controller
         $contrato_id = $sucursal->contrato_id;
         $sucursal->delete();
 
-        return redirect(('imonitoreo/verContrato/'.$contrato_id));
+        return redirect(('imonitoreo/editarContrato/'.$contrato_id));
     }
     //-----------------------------------------------------------------------
     //-----------------------------EQUIPO------------------------------------
@@ -145,7 +181,15 @@ class MonitoreoController extends Controller
         $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];
         $equipo->save();
 
-        return redirect('imonitoreo/verSucursal/'.$request['sucursal_id']);
+        return redirect('imonitoreo/editarSucursal/'.$request['sucursal_id']);
+    }
+    public function verEquipo($id){
+        return view('vistas.imonitoreo.verEquipo',[
+            'equipo' => Equipo::findOrFail($id),
+            'marcas' => MarcaClasificacion::all(),
+            'tipos' => TipoClasificacion::all(),
+            'unidades' => Equipo::$UNIDAD_MEDIDA,
+        ]);
     }
     public function editarEquipo($id){
         return view('vistas.imonitoreo.editarEquipo',[
@@ -164,14 +208,11 @@ class MonitoreoController extends Controller
         $equipo->capacidad = $request['capacidad'];
         $equipo->presion_min = $request['presion_min'];
         $equipo->presion_max = $request['presion_max'];
-        $equipo->longitud = $request['longitud'];
-        $equipo->latitud = $request['latitud'];
-        $equipo->sucursal_id = $request['sucursal_id'];
         $equipo->tipo_clasificacion_id = $request['tipo_clasificacion_id'];
         $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];
         $equipo->save();
 
-        return redirect('imonitoreo/verSucursal/'.$request['sucursal_id']);
+        return redirect('imonitoreo/editarSucursal/'.$equipo->sucursal_id);
     }
 
     public function eliminarEquipo($id){
@@ -180,7 +221,7 @@ class MonitoreoController extends Controller
         $sucursal_id = $equipo->sucursal_id;
         $equipo->delete();
 
-        return redirect(('imonitoreo/verSucursal/'.$sucursal_id));
+        return redirect(('imonitoreo/editarSucursal/'.$sucursal_id));
 
     }
 

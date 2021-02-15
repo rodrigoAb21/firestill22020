@@ -27,6 +27,8 @@ class Contrato extends Model
         'fecha_fin',
         'periodo',
         'documento',
+        'edicion',
+        'estado',
         'cliente_id',
         'empleado_id',
         ];

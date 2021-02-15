@@ -34,12 +34,32 @@
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $contrato->fecha_inicio)->format('d - m - Y')}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $contrato->fecha_fin)->format('d - m - Y')}}</td>
                                     <td>
-                                        <a href="{{url('imonitoreo/verContrato/'.$contrato->id)}}">
-                                            <button class="btn btn-secondary">
-                                                <i class="fa fa-eye"></i>
+                                        @if($contrato->edicion)
+
+                                            <a href="{{url('imonitoreo/editarContrato/'.$contrato->id)}}">
+                                                <button class="btn btn-warning"  title="Editar">
+                                                    <i class="fa fa-pen"></i>
+                                                </button>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-danger"
+                                                    title="Finalizar Edicion"
+                                                    onclick="modalFinalizar('{{$contrato -> id}}', '{{url('imonitoreo/finalizarEdicion/'.$contrato -> id)}}')">
+                                                <i class="fas fa-file-contract"></i>
                                             </button>
-                                        </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$contrato -> id}}', '{{url('imonitoreo/eliminarContrato/'.$contrato -> id)}}')">
+                                        @else
+                                            <a href="{{url('imonitoreo/verContrato/'.$contrato->id)}}">
+                                                <button class="btn btn-secondary"
+                                                        title="Ver">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </a>
+
+                                        @endif
+
+                                        <button type="button"
+                                                title="Eliminar"
+                                                class="btn btn-danger"
+                                                onclick="modalEliminar('{{$contrato -> id}}', '{{url('imonitoreo/eliminarContrato/'.$contrato -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
@@ -60,11 +80,22 @@
             function modalEliminar(nombre, url) {
                 console.log(url);
                 $('#modalEliminarForm').attr("action", url);
-                $('#metodo').val("delete");
+                $('#metodo').prop("delete");
                 $('#modalEliminarTitulo').html("Eliminar");
                 $('#modalEliminarEnunciado').html("Realmente lo desea eliminar?");
                 $('#modalEliminar').modal('show');
             }
+
+             function modalFinalizar(nombre, url) {
+                $('#modalEliminarForm').attr("action", url);
+                $('#metodo').prop("disabled", true);
+                $('#modalEliminarTitulo').html("Finalizar edición");
+                $('#modalEliminarEnunciado').html("Realmente desea finalizar la edición?");
+                $('#btn_eliminar').html('Finalizar');
+                $('#modalEliminar').modal('show');
+            }
+
+
         </script>
 
     @endpush()

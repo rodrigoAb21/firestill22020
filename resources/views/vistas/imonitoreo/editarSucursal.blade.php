@@ -6,13 +6,17 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Ver Sucursal: {{$sucursal->id}}
+                        Editar Sucursal: {{$sucursal->id}}
                     </h3>
+                    <form method="POST" action="{{url('imonitoreo/actualizarSucursal/'.$sucursal -> id)}}" autocomplete="off">
+                        {{csrf_field()}}
+                        {{method_field('PATCH')}}
+
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <input readonly
+                                    <input required
                                            type="text"
                                            value="{{$sucursal->nombre}}"
                                            class="form-control"
@@ -22,7 +26,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Direccion</label>
-                                    <input readonly
+                                    <input required
                                            type="text"
                                            value="{{$sucursal->direccion}}"
                                            class="form-control"
@@ -30,8 +34,9 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('imonitoreo/verContrato/'.$sucursal->contrato_id)}}" class="btn btn-warning">Atras</a>
-
+                        <a href="{{url('imonitoreo/editarContrato/'.$sucursal->contrato_id)}}" class="btn btn-warning">Atras</a>
+                        <button type="submit" class="btn btn-info">Guardar</button>
+                    </form>
 
                 </div>
             </div>
@@ -43,6 +48,11 @@
                 <div class="card-body">
                     <h3 class="pb-2">
                         Equipos
+                        <div class="float-right">
+                            <a class="btn btn-success" href="{{url('imonitoreo/nuevoEquipo/'.$sucursal->id)}}">
+                                <i class="fa fa-plus"></i>  Nuevo
+                            </a>
+                        </div>
                     </h3>
                     <div class="row">
                         <div class="table-responsive">
@@ -66,11 +76,14 @@
                                         <td>{{$equipo->tipo->nombre}}</td>
                                         <td>{{$equipo->marca->nombre}}</td>
                                         <td>
-                                            <a href="{{url('imonitoreo/verEquipo/'.$equipo->id)}}">
-                                                <button class="btn btn-secondary">
-                                                    <i class="fa fa-eye"></i>
+                                            <a href="{{url('imonitoreo/editarEquipo/'.$equipo->id)}}">
+                                                <button class="btn btn-warning">
+                                                    <i class="fa fa-pen"></i>
                                                 </button>
                                             </a>
+                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$equipo -> id}}', '{{url('imonitoreo/eliminarEquipo/'.$equipo -> id)}}')">
+                                                <i class="fa fa-times"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -83,5 +96,20 @@
             </div>
         </div>
     </div>
+        @include('vistas.modal')
+        @push('scripts')
+            <script>
+                function modalEliminar(nombre, url) {
+                    console.log(url);
+                    $('#modalEliminarForm').attr("action", url);
+                    $('#metodo').val("delete");
+                    $('#modalEliminarTitulo').html("Eliminar Equipo");
+                    $('#modalEliminarEnunciado').html("Realmente desea eliminar el equipo?");
+                    $('#modalEliminar').modal('show');
+                }
+
+            </script>
+
+    @endpush()
 @endsection
 

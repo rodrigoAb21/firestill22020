@@ -44,19 +44,27 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('herramientas','HerramientaController');
 
+    // ------------------------------ CONTRATO -------------------------------------------
+
     Route::get('imonitoreo/listaContratos','MonitoreoController@listaContratos');
     Route::get('imonitoreo/nuevoContrato','MonitoreoController@nuevoContrato');
     Route::post('imonitoreo/guardarContrato','MonitoreoController@guardarContrato');
+    Route::post('imonitoreo/finalizarEdicion/{id}','MonitoreoController@finalizarEdicion');
     Route::get('imonitoreo/editarContrato/{id}','MonitoreoController@editarContrato');
     Route::get('imonitoreo/verContrato/{id}','MonitoreoController@verContrato');
     Route::patch('imonitoreo/actualizarContrato/{id}','MonitoreoController@actualizarContrato');
     Route::delete('imonitoreo/eliminarContrato/{id}','MonitoreoController@eliminarContrato');
 
+
+    // ------------------------------ SUCURSAL -------------------------------------------
     Route::post('imonitoreo/guardarSucursal','MonitoreoController@guardarSucursal');
     Route::get('imonitoreo/verSucursal/{id}','MonitoreoController@verSucursal');
+    Route::get('imonitoreo/editarSucursal/{id}','MonitoreoController@editarSucursal');
     Route::patch('imonitoreo/actualizarSucursal/{id}','MonitoreoController@actualizarSucursal');
     Route::delete('imonitoreo/eliminarSucursal/{id}','MonitoreoController@eliminarSucursal');
 
+
+    // ------------------------------ EQUIPO -------------------------------------------
     Route::get('imonitoreo/nuevoEquipo/{sucursal_id}','MonitoreoController@nuevoEquipo');
     Route::get('imonitoreo/verEquipo/{id}','MonitoreoController@verEquipo');
     Route::post('imonitoreo/guardarEquipo','MonitoreoController@guardarEquipo');
