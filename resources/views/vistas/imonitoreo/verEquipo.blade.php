@@ -155,7 +155,7 @@
                     redFrom: 260, redTo: 400,
                     yellowColor: '#dc3912',
                     min:0, max:400, majorTicks: ['0','400'],
-                    minorTicks: 0, animation: {duration: 3000},
+                    minorTicks: 0, animation: {duration: 2500},
                 };
 
                 var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
@@ -172,11 +172,11 @@
     @push('scripts')
         <script>
             L.mapbox.accessToken = 'pk.eyJ1Ijoicm9kcmlnb2FiMjEiLCJhIjoiY2psenZmcDZpMDN5bTNrcGN4Z2s2NWtqNSJ9.bSdjQfv-28z1j4zx7ljvcg';
-            var inicial = L.latLng('{{$equipo -> latitud_ideal}}', '{{$equipo -> longitud_ideal}}');
+            var actual = L.latLng('{{$equipo -> latitud_actual}}', '{{$equipo -> longitud_actual}}');
             var map = L.mapbox.map('map')
-                .setView(inicial, 15)
+                .setView(actual, 15)
                 .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-            var marcador = L.marker(inicial).addTo(map);
+            var marcador = L.marker(actual).addTo(map);
         </script>
     @endpush
 @endsection

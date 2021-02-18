@@ -4,6 +4,7 @@ namespace App\Modelos;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Alerta extends Model
 {
@@ -28,4 +29,9 @@ class Alerta extends Model
         'estado',
         'equipo_id',
         ];
+
+    public static function cantidad(){
+        $cantidad = DB::table('alerta')->where('estado','=',true)->count();
+        return $cantidad;
+    }
 }

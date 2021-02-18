@@ -85,10 +85,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('alertas')}}">
                                 <i class="fas fa-exclamation-triangle"></i>
-                                <div class="notify">
-                                    <span class="heartbit"></span>
-                                    <span class="point"></span>
-                                </div>
+                                @if(\App\Modelos\Alerta::cantidad()>0)
+                                    <div class="notify">
+                                        <span class="heartbit"></span>
+                                        <span class="point"></span>
+                                    </div>
+                                @endif
                             </a>
                         </li>
                         <li class="nav-item dropdown">
