@@ -22,6 +22,10 @@ class Equipo extends Model
     public $timestamps = false;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+    public function tipo(){
+        return $this->belongsTo('App\Modelos\TipoClasificacion', 'tipo_clasificacion_id', 'id');
+    }
+
     protected $fillable = [
         'nro_serie',
         'descripcion',
@@ -29,16 +33,15 @@ class Equipo extends Model
         'ano_fabricacion',
         'presion_min',
         'presion_max',
-        'longitud',
-        'latitud',
+        'longitud_ideal',
+        'latitud_ideal',
+        'presion_actual',
+        'longitud_actual',
+        'latitud_actual',
         'sucursal_id',
         'tipo_clasificacion_id',
         'marca_clasificacion_id',
     ];
-
-    public function tipo(){
-        return $this->belongsTo('App\Modelos\TipoClasificacion', 'tipo_clasificacion_id', 'id');
-    }
 
     public function marca(){
         return $this->belongsTo('App\Modelos\MarcaClasificacion', 'marca_clasificacion_id', 'id');

@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Presion Min (Bar)</label>
+                                    <label>Presion Min (PSI)</label>
                                     <input required
                                            type="number"
                                            step="0.01"
@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Presion Max (Bar)</label>
+                                    <label>Presion Max (PSI)</label>
                                     <input required
                                            type="number"
                                            step="0.01"

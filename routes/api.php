@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 */
 Route::post('login', 'Api\Auth\LoginController@login');
 Route::post('refresh', 'Api\Auth\LoginController@refresh');
+Route::post('actualizarEquipo/{id}', 'Api\ApiController@actualizarEquipo');
+
 
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'Api\Auth\LoginController@logout');

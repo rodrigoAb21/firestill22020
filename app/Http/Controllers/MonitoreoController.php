@@ -174,8 +174,6 @@ class MonitoreoController extends Controller
         $equipo->capacidad = $request['capacidad'];
         $equipo->presion_min = $request['presion_min'];
         $equipo->presion_max = $request['presion_max'];
-        $equipo->longitud = $request['longitud'];
-        $equipo->latitud = $request['latitud'];
         $equipo->sucursal_id = $request['sucursal_id'];
         $equipo->tipo_clasificacion_id = $request['tipo_clasificacion_id'];
         $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];

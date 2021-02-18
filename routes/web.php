@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('home');
 })->middleware('auth');
 
+
 Route::middleware('auth')->group(function () {
 
     Route::resource('proveedores','ProveedorController');
@@ -24,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('clientes','ClienteController');
     Route::resource('categorias','CategoriaController');
     Route::resource('notificaciones','NotificacionController');
-    Route::resource('alertas','AlertaController');
+
     Route::resource('ventas','VentaController');
 
 
@@ -74,5 +75,10 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('imonitoreo/agenda','MonitoreoController@agenda');
+
+    Route::get('alertas','AlertaController@index');
+    Route::get('alertas/verEquipo/{alerta_id}/{equipo_id}','AlertaController@verEquipo');
+    Route::get('alertas/marcarVista/{id}','AlertaController@marcarVista');
+    Route::delete('alertas/{id}','AlertaController@destroy');
 
 });

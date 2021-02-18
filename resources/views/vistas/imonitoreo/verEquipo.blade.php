@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Presion Min (Bar)</label>
+                                            <label>Presion Min (PSI)</label>
                                             <input readonly
                                                    type="number"
                                                    step="0.01"
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Presion Max (Bar)</label>
+                                            <label>Presion Max (PSI)</label>
                                             <input readonly
                                                    type="number"
                                                    step="0.01"
@@ -107,9 +107,6 @@
                             </div>
                             <div class="col-4">
                                 <div class="row">
-                                    <input type="hidden" value="-17.793644" id="latitud" name="latitud">
-                                    <input type="hidden" value="-63.205986" id="longitud" name="longitud">
-
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                         <div id="map" style="width: 100%; height: 200px; background: #b4c1cd; margin-bottom: 1rem"></div>
 
@@ -119,15 +116,15 @@
                                     <div class="pt-2 col-lg-12 col-md-12 col-sm-12">
                                         <div id="chart_div" style="width: 150px; height: 150px; display: block; margin: 0 auto;"></div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-
+                                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 text-center">
+                                        @if($equipo -> presion_actual<$equipo -> presion_min || $equipo -> presion_actual > $equipo -> presion_max)
+                                            <input readonly type="text" class="form-control text-center border-danger" value="{{$equipo -> presion_actual}} PSI">
+                                        @else
+                                            <input readonly type="text" class="form-control text-center border-success" value="{{$equipo -> presion_actual}} PSI">
+                                        @endif
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 text-center">
-                                        <input readonly type="text" class="form-control text-center" value="17 PSI">
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-
-                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
 
                                 </div>
                             </div>
@@ -140,30 +137,31 @@
     @push('arriba')
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
+
             google.charts.load('current', {'packages':['gauge']});
             google.charts.setOnLoadCallback(drawChart);
-
             function drawChart() {
-
                 var data = google.visualization.arrayToDataTable([
                     ['Label', 'Value'],
                     ['PSI', 0],
                 ]);
 
+                var presion = parseFloat('{{$equipo -> presion_actual}}')
+
                 var options = {
                     width: 150, height: 150,
-                    redFrom: 19, redTo: 30,
-                    greenFrom:11, greenTo: 19,
+                    yellowFrom:0, yellowTo: 160,
+                    greenFrom:160, greenTo: 260,
+                    redFrom: 260, redTo: 400,
                     yellowColor: '#dc3912',
-                    yellowFrom:0, yellowTo: 11,
-                    min:0, max:30, majorTicks: ['0','5','10','15','20','25','30'],
-                    minorTicks: 5, animation: {duration: 3000},
+                    min:0, max:400, majorTicks: ['0','400'],
+                    minorTicks: 0, animation: {duration: 3000},
                 };
 
                 var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
                 chart.draw(data, options);
-                data.setValue(0, 1, 17);
+                data.setValue(0, 1, presion);
                 chart.draw(data, options);
 
             }
@@ -174,7 +172,7 @@
     @push('scripts')
         <script>
             L.mapbox.accessToken = 'pk.eyJ1Ijoicm9kcmlnb2FiMjEiLCJhIjoiY2psenZmcDZpMDN5bTNrcGN4Z2s2NWtqNSJ9.bSdjQfv-28z1j4zx7ljvcg';
-            var inicial = L.latLng($('#latitud').val(), $('#longitud').val());
+            var inicial = L.latLng('{{$equipo -> latitud_ideal}}', '{{$equipo -> longitud_ideal}}');
             var map = L.mapbox.map('map')
                 .setView(inicial, 15)
                 .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));

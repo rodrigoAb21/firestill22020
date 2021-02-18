@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstadoEquipoTable extends Migration
+class CreateAlertaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateEstadoEquipoTable extends Migration
      */
     public function up()
     {
-        Schema::create('estado_equipo', function (Blueprint $table) {
+        Schema::create('alerta', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('fecha');
-            $table->float('presion');
-            $table->double('longitud');
-            $table->double('latitud');
-            $table->softDeletes();
-
+            $table->timestamp('fecha');
+            $table->string('descripcion');
+            $table->boolean('estado')->default(true);  //true->NO VISTA false->VISTA
             $table->unsignedInteger('equipo_id');
-            $table->foreign('equipo_id')->references('id')->on('equipo');
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +30,6 @@ class CreateEstadoEquipoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estado_equipo');
+        Schema::dropIfExists('alerta');
     }
 }

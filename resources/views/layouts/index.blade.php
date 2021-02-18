@@ -80,10 +80,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('notificaciones')}}">
                                 <i class="fas fa-bell"></i>
-                                <div class="notify">
-                                    <span class="heartbit"></span>
-                                    <span class="point"></span>
-                                </div>
                             </a>
                         </li>
                         <li class="nav-item">
