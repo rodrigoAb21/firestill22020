@@ -23,11 +23,11 @@ class ApiController extends Controller
         return $clientes;
     }
 
-    public function actualizarEquipo(Request $request, $id){
+    public function actualizarEquipo(array $data, $id){
         $equipo = Equipo::findOrFail($id);
-        $equipo->latitud_actual = $request->latitud;
-        $equipo->longitud_actual = $request->longitud;
-        $equipo->presion_actual = $request->presion;
+        $equipo->latitud_actual = $data['latitud'];
+        $equipo->longitud_actual = $data['longitud'];
+        $equipo->presion_actual = $data['presion'];
         $equipo->update();
 
         if($equipo->presion_actual > $equipo->presion_max){
