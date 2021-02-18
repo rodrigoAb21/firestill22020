@@ -24,6 +24,7 @@ class ApiController extends Controller
     }
 
     public function actualizarEquipo(Request $request, $id){
+        dd($request);
         $equipo = Equipo::findOrFail($id);
         $equipo->latitud_actual = $request['latitud'];
         $equipo->longitud_actual = $request['longitud'];
