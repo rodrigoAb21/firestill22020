@@ -24,23 +24,27 @@ class ApiController extends Controller
     }
 
     public function actualizarEquipo(Request $request, $id){
-        dd($request);
-        $equipo = Equipo::findOrFail($id);
-        $equipo->latitud_actual = $request['latitud'];
-        $equipo->longitud_actual = $request['longitud'];
-        $equipo->presion_actual = $request['presion'];
-        $equipo->update();
+        if ($request['latitud']!=null){
+            $equipo = Equipo::findOrFail($id);
+            $equipo->latitud_actual = $request['latitud'];
+            $equipo->longitud_actual = $request['longitud'];
+            $equipo->presion_actual = $request['presion'];
+            $equipo->update();
 
-        if($equipo->presion_actual > $equipo->presion_max){
-            $this->generarAlerta($id, "¡Presión muy alta! Extintor: ");
-        }elseif($equipo->presion_actual < $equipo->presion_min){
-            $this->generarAlerta($id,"¡Presión muy baja! Extintor: ");
+            if($equipo->presion_actual > $equipo->presion_max){
+                $this->generarAlerta($id, "¡Presión muy alta! Extintor: ");
+            }elseif($equipo->presion_actual < $equipo->presion_min){
+                $this->generarAlerta($id,"¡Presión muy baja! Extintor: ");
+            }
+            if ($this->verificarGPS($equipo->latitud_ideal,$equipo->longitud_ideal,
+                $equipo->latitud_actual, $equipo->longitud_actual)){
+                $this->generarAlerta($id,"¡Extintor fuera de rango! Extintor: ");
+            }
+            return response()->json(['mensaje' => 'POST---->OK'], 200);
+        }else{
+            return response()->json(['mensaje' => 'NUUULO'], 401);
         }
-        if ($this->verificarGPS($equipo->latitud_ideal,$equipo->longitud_ideal,
-            $equipo->latitud_actual, $equipo->longitud_actual)){
-            $this->generarAlerta($id,"¡Extintor fuera de rango! Extintor: ");
-        }
-        return response()->json(['mensaje' => 'POST---->OK'], 200);
+
     }
 
     public function verificarGPS($lat_ideal, $lng_ideal, $lat_actual, $lng_actual){
