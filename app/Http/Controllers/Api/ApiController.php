@@ -39,7 +39,7 @@ class ApiController extends Controller
             $equipo->latitud_actual, $equipo->longitud_actual)){
             $this->generarAlerta($id,"¡Extintor fuera de rango! Extintor: ");
         }
-        return response()->json(['mensaje' => 'Equipo actualizado'], 200);
+        return response()->json(['mensaje' => 'POST---->OK'], 200);
     }
 
     public function verificarGPS($lat_ideal, $lng_ideal, $lat_actual, $lng_actual){
