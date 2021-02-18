@@ -25,9 +25,9 @@ class ApiController extends Controller
 
     public function actualizarEquipo(Request $request, $id){
         $equipo = Equipo::findOrFail($id);
-        $equipo->latitud_actual = $request['latitud'];
-        $equipo->longitud_actual = $request['longitud'];
-        $equipo->presion_actual = $request['presion'];
+        $equipo->latitud_actual = $request->latitud;
+        $equipo->longitud_actual = $request->longitud;
+        $equipo->presion_actual = $request->presion;
         $equipo->update();
 
         if($equipo->presion_actual > $equipo->presion_max){
