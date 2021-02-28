@@ -9,9 +9,9 @@ class Herramienta extends Model
 {
     /**
      *************************************************************************
-     * Clase.........: Categoria
+     * Clase.........: Herramienta
      * Tipo..........: Modelo (MVC)
-     * Descripción...: Clase que representa a la tabla "categoria" en la BD.
+     * Descripción...: Clase que representa a la tabla "herramienta" en la BD.
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************

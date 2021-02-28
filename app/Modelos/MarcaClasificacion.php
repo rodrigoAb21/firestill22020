@@ -11,7 +11,8 @@ class MarcaClasificacion extends Model
      *************************************************************************
      * Clase.........: MarcaClasificacion
      * Tipo..........: Modelo (MVC)
-     * Descripción...: Clase que representa a la tabla "marca_clasificacion" en la BD.
+     * Descripción...: Clase que representa a la tabla "marca_clasificacion"
+     * en la BD.
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************

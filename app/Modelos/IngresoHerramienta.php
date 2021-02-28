@@ -9,9 +9,10 @@ class IngresoHerramienta extends Model
 {
     /**
      *************************************************************************
-     * Clase.........: Categoria
+     * Clase.........: IngresoHerramienta
      * Tipo..........: Modelo (MVC)
-     * Descripción...: Clase que representa a la tabla "categoria" en la BD.
+     * Descripción...: Clase que representa a la tabla "ingreso_herramienta"
+     * en la BD.
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************

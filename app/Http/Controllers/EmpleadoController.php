@@ -17,15 +17,14 @@ class EmpleadoController extends Controller
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
-
-
+    
     /**
      *************************************************************************
-     * Metodo........: index
+     * Nombre........: index
      * Tipo..........: Funcion
-     * Entrada.......:
-     * Salida........:
-     * Descripcion...:
+     * Entrada.......: Ninguna
+     * Salida........: Vista y una lista paginada de empleados
+     * Descripcion...: Una lista de empleados que será mostrado en una vista
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
@@ -38,14 +37,36 @@ class EmpleadoController extends Controller
     }
 
 
-
+    /**
+     *************************************************************************
+     * Nombre........: create
+     * Tipo..........: Funcion
+     * Entrada.......: Ninguna
+     * Salida........: Vista con dos listas, una de monedas y otra sucursales
+     * Descripcion...: Muestra la vista con el formulario para la creacion de
+     * un nuevo empleado
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function create(){
         return view('vistas.empleados.create', [
             'tipos' => Empleado::$TIPOS_DE_USUARIO,
         ]);
     }
 
-
+    /**
+     *************************************************************************
+     * Nombre........: store
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP
+     * Salida........: Ninguna, solo redirecciona a la url de 'empleados'
+     * Descripcion...: Crea un nuevo empleado con los datos obtenidos de la
+     * solicitud HTTP.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function store(Request $request)
     {
         $empleado = new Empleado();
@@ -62,6 +83,18 @@ class EmpleadoController extends Controller
         return redirect('empleados');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........: edit
+     * Tipo..........: Funcion
+     * Entrada.......: int: id del empleado que se quiere editar
+     * Salida........: Una vista con el empleado que se quiere editar
+     * Descripcion...: Obtiene el empleado buscandolo por su id, y lo muestra
+     * en un formulario con sus datos para poder ser editado.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function edit($id)
     {
         return view('vistas.empleados.edit',
@@ -71,6 +104,18 @@ class EmpleadoController extends Controller
             ]);
     }
 
+    /**
+     *************************************************************************
+     * Nombre........: show
+     * Tipo..........: Funcion
+     * Entrada.......: int: id del empleado que se quiere ver
+     * Salida........: Una vista con el empleado.
+     * Descripcion...: Obtiene el empleado y muestra todos sus datos en
+     * una vista.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function show($id)
     {
         return view('vistas.empleados.show',
@@ -79,7 +124,18 @@ class EmpleadoController extends Controller
             ]);
     }
 
-
+    /**
+     *************************************************************************
+     * Nombre........: update
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP y un int:id
+     * Salida........: Ninguna, solo redirecciona a la url de 'empleados'
+     * Descripcion...: Obtiene el empleado a través de su id, y reemplaza todos
+     * sus datos con los que se encuentra en la solicitud HTTP
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function update(Request $request, $id)
     {
         $empleado = Empleado::findOrFail($id);
@@ -98,7 +154,18 @@ class EmpleadoController extends Controller
         return redirect('empleados');
     }
 
-
+    /**
+     *************************************************************************
+     * Nombre........: destroy
+     * Tipo..........: Funcion
+     * Entrada.......: int: id del empleado
+     * Salida........: Ninguna, solo redirecciona a la url 'empleados'
+     * Descripcion...: Obtiene el empleado, lo elimina (softDelete) y
+     * redirecciona a la url 'empleados'.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function destroy($id)
     {
         $empleado = Empleado::findOrFail($id);

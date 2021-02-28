@@ -21,11 +21,11 @@ class ProveedorController extends Controller
 
     /**
      *************************************************************************
-     * Metodo........: index
+     * Nombre........: index
      * Tipo..........: Funcion
-     * Entrada.......:
-     * Salida........:
-     * Descripcion...:
+     * Entrada.......: Ninguna
+     * Salida........: Vista y una lista de proveedores
+     * Descripcion...: Una lista de proveedores que será mostrado en una vista
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
@@ -38,7 +38,18 @@ class ProveedorController extends Controller
     }
 
 
-
+    /**
+     *************************************************************************
+     * Nombre........: create
+     * Tipo..........: Funcion
+     * Entrada.......: Ninguna
+     * Salida........: Vista con dos listas, una de monedas y otra sucursales
+     * Descripcion...: Muestra la vista con el formulario para la creacion de
+     * un nuevo proveedor, con las monedas y sucursales disponibles
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function create(){
         return view('vistas.proveedores.create', [
             'monedas' => Proveedor::$MONEDAS,
@@ -47,6 +58,19 @@ class ProveedorController extends Controller
     }
 
 
+
+    /**
+     *************************************************************************
+     * Nombre........: store
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP
+     * Salida........: Ninguna, solo redirecciona a la url de proveedores
+     * Descripcion...: Crea un nuevo proveedor con los datos obtenidos de la
+     * solicitud HTTP.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function store(Request $request)
     {
         $proveedor = new Proveedor();
@@ -68,6 +92,19 @@ class ProveedorController extends Controller
         return redirect('proveedores');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........: edit
+     * Tipo..........: Funcion
+     * Entrada.......: int: id del proveedor que se quiere editar
+     * Salida........: Una vista con el proveedor que se quiere editar, y dos
+     * listas de objetos.
+     * Descripcion...: Obtiene el proveedor buscandolo por su id, y lo muestra
+     * en un formulario con sus datos para poder ser editado.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function edit($id)
     {
         return view('vistas.proveedores.edit', [
@@ -77,6 +114,19 @@ class ProveedorController extends Controller
         ]);
     }
 
+
+    /**
+     *************************************************************************
+     * Nombre........: show
+     * Tipo..........: Funcion
+     * Entrada.......: int: id del proveedor que se quiere ver
+     * Salida........: Una vista con el proveedor.
+     * Descripcion...: Obtiene el proveedor y muestra todos sus datos en
+     * una vista.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function show($id)
     {
         return view('vistas.proveedores.show',
@@ -86,6 +136,19 @@ class ProveedorController extends Controller
     }
 
 
+
+    /**
+     *************************************************************************
+     * Nombre........: update
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP y un int:id
+     * Salida........: Ninguna, solo redirecciona a la url de proveedores
+     * Descripcion...: Obtiene el proveedor a través de su id, y reemplaza todos
+     * sus datos con los que se encuentra en la solicitud HTTP
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function update(Request $request, $id)
     {
         $proveedor = Proveedor::findOrFail($id);
@@ -108,6 +171,19 @@ class ProveedorController extends Controller
     }
 
 
+
+    /**
+     *************************************************************************
+     * Nombre........: destroy
+     * Tipo..........: Funcion
+     * Entrada.......: int: id del proveedor
+     * Salida........: Ninguna, solo redirecciona a la url 'proveedores'
+     * Descripcion...: Obtiene el proveedor, lo elimina (softDelete) y
+     * redirecciona a la url 'proveedores'.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function destroy($id)
     {
         $proveedor = Proveedor::findOrFail($id);

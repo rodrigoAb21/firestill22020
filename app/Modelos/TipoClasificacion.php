@@ -11,7 +11,8 @@ class TipoClasificacion extends Model
      *************************************************************************
      * Clase.........: TipoClasificacion
      * Tipo..........: Modelo (MVC)
-     * Descripción...: Clase que representa a la tabla "tipo_clasificacion" en la BD.
+     * Descripción...: Clase que representa a la tabla "tipo_clasificacion"
+     * en la BD.
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************

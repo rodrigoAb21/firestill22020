@@ -21,11 +21,11 @@ class CategoriaController extends Controller
 
     /**
      *************************************************************************
-     * Metodo........: index
+     * Nombre........: index
      * Tipo..........: Funcion
-     * Entrada.......:
-     * Salida........:
-     * Descripcion...:
+     * Entrada.......: Ninguna
+     * Salida........: Vista y una lista paginada de categorias
+     * Descripcion...: Una lista de categorias que será mostrado en una vista
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
@@ -38,12 +38,36 @@ class CategoriaController extends Controller
     }
 
 
-
+    /**
+     *************************************************************************
+     * Nombre........: create
+     * Tipo..........: Funcion
+     * Entrada.......: Ninguna
+     * Salida........: Vista con dos listas, una de monedas y otra sucursales
+     * Descripcion...: Muestra la vista con el formulario para la creacion de
+     * un nuevo categoria
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function create(){
         return view('vistas.categorias.create');
     }
 
 
+
+    /**
+     *************************************************************************
+     * Nombre........: store
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP
+     * Salida........: Ninguna, solo redirecciona a la url de 'categorias'
+     * Descripcion...: Crea un nuevo categoria con los datos obtenidos de la
+     * solicitud HTTP.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function store(Request $request)
     {
         $categoria = new Categoria();
@@ -53,6 +77,19 @@ class CategoriaController extends Controller
         return redirect('categorias');
     }
 
+
+    /**
+     *************************************************************************
+     * Nombre........: edit
+     * Tipo..........: Funcion
+     * Entrada.......: int: id del categoria que se quiere editar
+     * Salida........: Una vista con el categoria que se quiere editar
+     * Descripcion...: Obtiene el categoria buscandolo por su id, y lo muestra
+     * en un formulario con sus datos para poder ser editado.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function edit($id)
     {
         return view('vistas.categorias.edit',
@@ -61,7 +98,18 @@ class CategoriaController extends Controller
             ]);
     }
 
-
+    /**
+     *************************************************************************
+     * Nombre........: update
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP y un int:id
+     * Salida........: Ninguna, solo redirecciona a la url de 'categorias'
+     * Descripcion...: Obtiene el categoria a través de su id, y reemplaza
+     * todos sus datos con los que se encuentra en la solicitud HTTP
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function update(Request $request, $id)
     {
         $categoria = Categoria::findOrFail($id);
@@ -71,7 +119,18 @@ class CategoriaController extends Controller
         return redirect('categorias');
     }
 
-
+    /**
+     *************************************************************************
+     * Nombre........: destroy
+     * Tipo..........: Funcion
+     * Entrada.......: int:id del categoria
+     * Salida........: Ninguna, solo redirecciona a la url 'categorias'
+     * Descripcion...: Obtiene el categoria, lo elimina (softDelete) y
+     * redirecciona a la url 'categorias'.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function destroy($id)
     {
         $categoria = Categoria::findOrFail($id);

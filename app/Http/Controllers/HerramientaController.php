@@ -11,30 +11,32 @@ use Illuminate\Support\Facades\Input;
 
 class HerramientaController extends Controller
 {
+
     /**
      *************************************************************************
      * Clase.........: HerramientaController
      * Tipo..........: Controlador (MVC)
-     * Descripción...: Clase que contiene funciones y metodos para gestionar las
-     * herramientas.
-     * Fecha.........: 07-FEB-2021
+     * Descripción...: Clase que contiene funciones y metodos para gestionar
+     * las herramientas.
+     * Fecha.........: 15-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
-
 
     /**
      *************************************************************************
      * Metodo........: index
      * Tipo..........: Funcion
-     * Entrada.......:
-     * Salida........:
-     * Descripcion...:
-     * Fecha.........: 07-FEB-2021
+     * Entrada.......: Ninguna
+     * Salida........: Vista y una lista de herramientas
+     * Descripcion...: Obtiene una lista de herramientas paginada, y la
+     * muestra en una vista.
+     * Fecha.........: 15-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
-    public function index(){
+    public function index()
+    {
         return view('vistas.herramientas.index',
             [
                 'herramientas' => Herramienta::paginate(5),
@@ -42,24 +44,59 @@ class HerramientaController extends Controller
     }
 
 
-
-    public function create(){
+    /**
+     *************************************************************************
+     * Nombre........: create
+     * Tipo..........: Funcion
+     * Entrada.......: Ninguna
+     * Salida........: Vista
+     * Descripcion...: Muestra la vista con el formulario para la creacion de
+     * una nueva herramienta
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function create()
+    {
         return view('vistas.herramientas.create');
     }
 
-
+    /**
+     *************************************************************************
+     * Nombre........: store
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP
+     * Salida........: Ninguna, solo redirecciona a la url de 'herramientas'
+     * Descripcion...: Crea una nueva herramienta con los datos obtenidos de
+     * la solicitud HTTP y redirecciona a la url 'herramientas'.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function store(Request $request)
     {
         $herramienta = new Herramienta();
         $herramienta->nombre = $request['nombre'];
         $herramienta->cantidad_taller = 0;
         $herramienta->cantidad_asignada = 0;
-        $herramienta->cantidad_total =0 ;
+        $herramienta->cantidad_total = 0;
         $herramienta->save();
 
         return redirect('herramientas');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........: edit
+     * Tipo..........: Funcion
+     * Entrada.......: int: id de la herramienta que se quiere editar
+     * Salida........: Una vista con la herramienta que se quiere editar
+     * Descripcion...: Obtiene la herramienta buscandola por su id, y la
+     * muestra en un formulario con sus datos para poder ser editada.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function edit($id)
     {
         return view('vistas.herramientas.edit',
@@ -68,6 +105,18 @@ class HerramientaController extends Controller
             ]);
     }
 
+    /**
+     *************************************************************************
+     * Nombre........: show
+     * Tipo..........: Funcion
+     * Entrada.......: int: id de la herramienta que se quiere ver
+     * Salida........: Una vista con la herramienta.
+     * Descripcion...: Obtiene la herramienta y muestra todos sus datos en
+     * una vista.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function show($id)
     {
         return view('vistas.herramientas.show',
@@ -77,6 +126,18 @@ class HerramientaController extends Controller
     }
 
 
+    /**
+     *************************************************************************
+     * Nombre........: update
+     * Tipo..........: Funcion
+     * Entrada.......: Solicitud HTTP y un int:id
+     * Salida........: Ninguna, solo redirecciona a la url de 'herramientas'
+     * Descripcion...: Obtiene la herramienta a través de su id, y reemplaza
+     * todos sus datos con los que se encuentra en la solicitud HTTP
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function update(Request $request, $id)
     {
         $herramienta = Herramienta::findOrFail($id);
@@ -88,6 +149,18 @@ class HerramientaController extends Controller
     }
 
 
+    /**
+     *************************************************************************
+     * Nombre........: destroy
+     * Tipo..........: Funcion
+     * Entrada.......: int: id de la herramienta
+     * Salida........: Ninguna, solo redirecciona a la url 'herramientas'
+     * Descripcion...: Obtiene la herramienta, la elimina (softDelete) y
+     * redirecciona a la url 'herramientas'.
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function destroy($id)
     {
         $herramienta = Herramienta::findOrFail($id);
@@ -100,13 +173,36 @@ class HerramientaController extends Controller
     // --------------------------INGRESOS--------------------------------------
     // ------------------------------------------------------------------------
 
-    public function listaIngresos(){
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function listaIngresos()
+    {
         return view('vistas.herramientas.listaIngresos',
             [
                 'ingresos' => IngresoHerramienta::paginate(5),
             ]);
     }
 
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function nuevoIngreso()
     {
         return view('vistas.herramientas.nuevoIngreso', [
@@ -114,7 +210,19 @@ class HerramientaController extends Controller
         ]);
     }
 
-    public function guardarIngreso(Request $request){
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function guardarIngreso(Request $request)
+    {
         try {
             DB::beginTransaction();
             $ingreso = new IngresoHerramienta();
@@ -122,7 +230,7 @@ class HerramientaController extends Controller
             $ingreso->foto_factura = $request['foto_factura'];
             if (Input::hasFile('foto_factura')) {
                 $file = Input::file('foto_factura');
-                $file->move(public_path().'/img/ingresoHerramienta/', $file->getClientOriginalName());
+                $file->move(public_path() . '/img/ingresoHerramienta/', $file->getClientOriginalName());
                 $ingreso->foto_factura = $file->getClientOriginalName();
             }
             $ingreso->nro_factura = $request['nro_factura'];
@@ -155,10 +263,21 @@ class HerramientaController extends Controller
             DB::rollback();
 
         }
-        
+
         return redirect('herramientas/listaIngresos');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function verIngreso($id)
     {
         return view('vistas.herramientas.verIngreso', [
@@ -166,10 +285,21 @@ class HerramientaController extends Controller
         ]);
     }
 
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function eliminarIngreso($id)
     {
         $ingreso = IngresoHerramienta::findOrFail($id);
-        foreach ($ingreso->detalles as $detalle){
+        foreach ($ingreso->detalles as $detalle) {
             $herramienta = Herramienta::findOrFail($detalle->herramienta_id);
             $herramienta->cantidad_taller = $herramienta->cantidad_taller - $detalle->cantidad;
             $herramienta->cantidad_total = $herramienta->cantidad_total - $detalle->cantidad;
@@ -183,10 +313,34 @@ class HerramientaController extends Controller
     // ------------------------------------------------------------------------
     // --------------------------BAJAS--------------------------------------
     // ------------------------------------------------------------------------
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function listaBajas()
     {
         return view('vistas.herramientas.listaBajas');
     }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function anularBaja()
     {
         return view('vistas.herramientas.listaBajas');
@@ -194,26 +348,70 @@ class HerramientaController extends Controller
     // ------------------------------------------------------------------------
     // --------------------------ASIGNACIONES----------------------------------
     // ------------------------------------------------------------------------
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function listaAsignaciones()
     {
         return view('vistas.herramientas.listaAsignaciones');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function nuevaAsignacion()
     {
         return view('vistas.herramientas.nuevaAsignacion');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function reingreso()
     {
         return view('vistas.herramientas.reingreso');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
     public function verAsignacion()
     {
         return view('vistas.herramientas.verAsignacion');
     }
-
 
 
 }
