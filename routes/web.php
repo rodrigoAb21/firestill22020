@@ -11,8 +11,8 @@ Route::get('sender', function () {
 });
 
 Route::post('sender', function () {
-    $text = request()->text;
-    event(new ArduinoEvent($text));
+    $datos = request()->text;
+    event(new ArduinoEvent($datos));
 });
 
 Route::get('login', [
