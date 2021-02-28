@@ -15,6 +15,12 @@ Route::post('sender', function () {
     event(new ArduinoEvent($datos));
 });
 
+Route::get('xxx', function () {
+
+    event(new ArduinoEvent('XXXXXXXXXXXXXXXX'));
+    return 'XXXXXXXXXXX';
+});
+
 Route::get('login', [
     'as' => 'login',
     'uses' => 'Auth\LoginController@showLoginForm'
