@@ -1,5 +1,20 @@
 <?php
 
+use App\Events\ArduinoEvent;
+
+Route::get('noti', function () {
+    return view('vistas.noti');
+});
+
+Route::get('sender', function () {
+    return view('vistas.sender');
+});
+
+Route::post('sender', function () {
+    $text = request()->text;
+    event(new ArduinoEvent($text));
+});
+
 Route::get('login', [
     'as' => 'login',
     'uses' => 'Auth\LoginController@showLoginForm'
