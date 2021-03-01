@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 
+use App\Events\AlertaEvent;
+use App\Events\ArduinoEvent;
 use App\Modelos\Alerta;
 use App\Modelos\Cliente;
 use App\Http\Controllers\Controller;
@@ -24,12 +26,13 @@ class ApiController extends Controller
     }
 
     public function actualizarEquipo(Request $request, $id){
-        if ($request['latitud']!=null){
+        if ($request['presion']!=null && $request['latitud']!=null && $request['longitud']!=null){
             $equipo = Equipo::findOrFail($id);
             $equipo->latitud_actual = $request['latitud'];
             $equipo->longitud_actual = $request['longitud'];
             $equipo->presion_actual = $request['presion'];
             $equipo->update();
+            event(new ArduinoEvent($equipo));
 
             if($equipo->presion_actual > $equipo->presion_max){
                 $this->generarAlerta($id, "¡Presión muy alta! Extintor: ");
@@ -62,5 +65,6 @@ class ApiController extends Controller
         $alerta->descripcion = $mensaje.$equipo_id;
         $alerta->equipo_id = $equipo_id;
         $alerta->save();
+        event(new AlertaEvent("XXX"));
     }
 }

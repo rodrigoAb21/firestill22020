@@ -11,8 +11,9 @@ Route::get('sender', function () {
 });
 
 Route::post('sender', function () {
-    $datos = request()->text;
+    $datos = request()->datos;
     event(new ArduinoEvent($datos));
+    redirect('sender');
 });
 
 Route::get('xxx', function () {

@@ -20,6 +20,24 @@
             white-space: nowrap;
         }
     </style>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('b7e5f831a0dbf97652df', {
+            cluster: 'us2'
+        });
+
+        var channel = pusher.subscribe('alertaCanal');
+        channel.bind('alertaEvent', function(data) {
+            var x = document.getElementById("alerta");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+        });
+    </script>
     @stack('arriba')
 </head>
 
@@ -85,12 +103,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('alertas')}}">
                                 <i class="fas fa-exclamation-triangle"></i>
-                                @if(\App\Modelos\Alerta::cantidad()>0)
-                                    <div class="notify">
+
+                                    <div class="notify" id="alerta"
+                                    @if(\App\Modelos\Alerta::cantidad()>0)
+                                        style="display: block"
+                                            @else
+                                         style="display: none"
+                                            @endif
+                                    >
                                         <span class="heartbit"></span>
                                         <span class="point"></span>
                                     </div>
-                                @endif
+
                             </a>
                         </li>
                         <li class="nav-item dropdown">

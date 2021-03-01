@@ -135,18 +135,24 @@
         </div>
     </div>
     @push('arriba')
+
+    @endpush
+    @push('scripts')
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+        <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
         <script type="text/javascript">
 
+            var presion;
             google.charts.load('current', {'packages':['gauge']});
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
-                var data = google.visualization.arrayToDataTable([
+                data = google.visualization.arrayToDataTable([
                     ['Label', 'Value'],
                     ['PSI', 0],
                 ]);
 
-                var presion = parseFloat('{{$equipo -> presion_actual}}')
+                presion = parseFloat('{{$equipo -> presion_actual}}')
 
                 var options = {
                     width: 150, height: 150,
@@ -157,6 +163,15 @@
                     min:0, max:400, majorTicks: ['0','400'],
                     minorTicks: 0, animation: {duration: 2500},
                 };
+                var options2 = {
+                    width: 150, height: 150,
+                    yellowFrom:0, yellowTo: 160,
+                    greenFrom:160, greenTo: 260,
+                    redFrom: 260, redTo: 400,
+                    yellowColor: '#dc3912',
+                    min:0, max:400, majorTicks: ['0','400'],
+                    minorTicks: 0, animation: {duration: 1500},
+                };
 
                 var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
@@ -164,19 +179,36 @@
                 data.setValue(0, 1, presion);
                 chart.draw(data, options);
 
+                setInterval(function() {
+                    data.setValue(0, 1, presion);
+                    chart.draw(data, options2);
+                }, 2000);
+
             }
-        </script>
-        <script src='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js'></script>
-        <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
-    @endpush
-    @push('scripts')
-        <script>
+            var equipo;
+            var marcador;
+            var pusher = new Pusher('b7e5f831a0dbf97652df', {
+                cluster: 'us2'
+            });
+
+            var marcador;
             L.mapbox.accessToken = 'pk.eyJ1Ijoicm9kcmlnb2FiMjEiLCJhIjoiY2psenZmcDZpMDN5bTNrcGN4Z2s2NWtqNSJ9.bSdjQfv-28z1j4zx7ljvcg';
             var actual = L.latLng('{{$equipo -> latitud_actual}}', '{{$equipo -> longitud_actual}}');
             var map = L.mapbox.map('map')
                 .setView(actual, 15)
                 .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-            var marcador = L.marker(actual).addTo(map);
+            marcador = L.marker(actual).addTo(map);
+
+            var channel = pusher.subscribe('arduinoCanal');
+            channel.bind('arduinoEvent', (x) => {
+                this.equipo = x["datos"];
+                presion = equipo["presion_actual"];
+                actual.lat = equipo["latitud_actual"];
+                actual.lng = equipo["longitud_actual"];
+                marcador.setLatLng(actual);
+            });
+
+
         </script>
     @endpush
 @endsection

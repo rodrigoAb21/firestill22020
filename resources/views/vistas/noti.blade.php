@@ -13,7 +13,7 @@
 
         var channel = pusher.subscribe('arduinoCanal');
         channel.bind('arduinoEvent', function(data) {
-            alert(JSON.stringify(data));
+            alert(data['datos'])    ;
         });
     </script>
 </head>
