@@ -5,31 +5,30 @@ namespace App\Modelos;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DetalleAsignacion extends Model
+class AsignacionHerramienta extends Model
 {
     /**
      *************************************************************************
-     * Clase.........: DetalleAsignacion
+     * Clase.........: AsignacionHerramienta
      * Tipo..........: Modelo (MVC)
      * Descripción...: Clase que representa a la tabla
-     * "detalle_asignacion" en la BD.
+     * "asignacion_herramienta" en la BD.
      * Fecha.........: 07-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
 
-    protected $table = 'detalle_asignacion';
+    protected $table = 'asignacion_herramienta';
     protected $primaryKey = 'id';
     public $timestamps = false;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'cantidad',
-        'herramienta_id',
-        'asignacion_herramienta_id',
+        'fecha',
+        'empleado_id',
     ];
 
-    public function herramienta(){
-        return $this->belongsTo('App\Modelos\Herramienta', 'herramienta_id', 'id');
+    public function detalles(){
+        return $this->hasMany(DetalleAsignacion::class);
     }
 }

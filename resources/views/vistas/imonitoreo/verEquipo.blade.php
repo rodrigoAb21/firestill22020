@@ -9,7 +9,7 @@
                         Ver Equipo
                     </h3>
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
@@ -105,12 +105,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                        <div id="map" style="width: 100%; height: 200px; background: #b4c1cd; margin-bottom: 1rem"></div>
-
-
+                                        <div id="map" style="width: 100%; height: 250px; background: #b4c1cd; margin-bottom: 1rem"></div>
                                     </div>
 
                                     <div class="pt-2 col-lg-12 col-md-12 col-sm-12">
@@ -187,17 +185,31 @@
             }
             var equipo;
             var marcador;
-            var pusher = new Pusher('b7e5f831a0dbf97652df', {
-                cluster: 'us2'
-            });
+
 
             var marcador;
             L.mapbox.accessToken = 'pk.eyJ1Ijoicm9kcmlnb2FiMjEiLCJhIjoiY2psenZmcDZpMDN5bTNrcGN4Z2s2NWtqNSJ9.bSdjQfv-28z1j4zx7ljvcg';
             var actual = L.latLng('{{$equipo -> latitud_actual}}', '{{$equipo -> longitud_actual}}');
+            var ideal = L.latLng('{{$equipo -> latitud_ideal}}', '{{$equipo -> longitud_ideal}}');
             var map = L.mapbox.map('map')
-                .setView(actual, 15)
+                .setView(ideal, 10)
                 .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-            marcador = L.marker(actual).addTo(map);
+            marcador = L.marker(actual, {
+                icon: L.mapbox.marker.icon({
+                    'marker-size': 'large',
+                    'marker-color': '#f53c40'
+                }), title: 'Actual'}).addTo(map);
+            L.marker(ideal, {
+                icon: L.mapbox.marker.icon({
+                    'marker-size': 'large',
+                    'marker-color': '#49ba35'
+                }), title: 'Ideal'
+            }).addTo(map);
+
+            /*
+            var pusher = new Pusher('b7e5f831a0dbf97652df', {
+                cluster: 'us2'
+            });
 
             var channel = pusher.subscribe('arduinoCanal');
             channel.bind('arduinoEvent', (x) => {
@@ -207,7 +219,7 @@
                 actual.lng = equipo["longitud_actual"];
                 marcador.setLatLng(actual);
             });
-
+            */
 
         </script>
     @endpush

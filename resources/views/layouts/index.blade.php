@@ -23,7 +23,7 @@
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
 
-        // Enable pusher logging - don't include this in production
+        /*
         Pusher.logToConsole = true;
 
         var pusher = new Pusher('b7e5f831a0dbf97652df', {
@@ -37,6 +37,7 @@
                 x.style.display = "block";
             }
         });
+        */
     </script>
     @stack('arriba')
 </head>
@@ -96,11 +97,6 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('notificaciones')}}">
-                                <i class="fas fa-bell"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{url('alertas')}}">
                                 <i class="fas fa-exclamation-triangle"></i>
 
@@ -154,17 +150,12 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
-
-
-
                         <li class="{{ Request::is('empleados*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('empleados')}}" >
                                 <i class="fa fa-id-card"></i>
                                 <span class="hide-menu"> Empleados</span>
                             </a>
                         </li>
-
-
                         <li class="{{ Request::is('proveedores*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('proveedores')}}" >
                                 <i class="fa fa-truck"></i>
@@ -248,28 +239,12 @@
 
                             </ul>
                         </li>
-
                         <li class="{{ Request::is('imonitoreo*') ? 'nav-item active' : 'nav-item' }}">
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                            <a href="{{url('imonitoreo/listaContratos')}}" >
                                 <i class="fas fa-fire-extinguisher"></i>
                                 <span class="hide-menu"> Insp. & Monitoreo </span>
                             </a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li class="{{ Request::is('imonitoreo/listaContratos*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('imonitoreo/listaContratos')}}" >
-
-                                        <span>  Contratos</span>
-                                    </a>
-                                </li>
-                                <li class="{{ Request::is('imonitoreo/agenda*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('imonitoreo/agenda')}}" >
-                                        <span>  Agenda</span>
-                                    </a>
-                                </li>
-
-                            </ul>
                         </li>
-
 
                         <li class="{{ Request::is('ventas*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('ventas')}}" >

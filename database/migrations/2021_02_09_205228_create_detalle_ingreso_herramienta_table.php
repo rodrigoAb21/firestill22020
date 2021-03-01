@@ -17,11 +17,12 @@ class CreateDetalleIngresoHerramientaTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('cantidad');
             $table->softDeletes();
-
             $table->unsignedInteger('herramienta_id');
-            $table->foreign('herramienta_id')->references('id')->on('herramienta');
+            $table->foreign('herramienta_id')->references('id')
+                ->on('herramienta')->onDelete('cascade');
             $table->unsignedInteger('ingreso_herramienta_id');
-            $table->foreign('ingreso_herramienta_id')->references('id')->on('ingreso_herramienta');
+            $table->foreign('ingreso_herramienta_id')->references('id')
+                ->on('ingreso_herramienta')->onDelete('cascade');
         });
     }
 

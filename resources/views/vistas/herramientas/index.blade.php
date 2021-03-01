@@ -38,11 +38,13 @@
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <a href="">
-                                            <button class="btn btn-dark">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </a>
+                                        @if($herramienta->cantidad_taller>0)
+                                            <a href="{{url('herramientas/darBaja/'.$herramienta->id)}}">
+                                                <button class="btn btn-secondary">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </a>
+                                        @endif
                                         <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$herramienta -> nombre}}', '{{url('herramientas/'.$herramienta -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
@@ -59,14 +61,8 @@
     </div>
 
     @include('vistas.modal')
-    @include('vistas.baja')
     @push('scripts')
         <script>
-
-            function modalBaja() {
-                $('#modalBaja').modal('show');
-            }
-
             function modalEliminar(nombre, url) {
                 $('#modalEliminarForm').attr("action", url);
                 $('#metodo').val("delete");

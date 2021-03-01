@@ -5,18 +5,13 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Asignaciones de herramientas
+                        Asignaciones de asignaciones
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('herramientas/nuevaAsignacion')}}">
+                            <a class="btn btn-success" href="{{url('asignaciones/nuevaAsignacion')}}">
                                 <i class="fa fa-plus"></i>  Nueva
                             </a>
                         </div>
                     </h2>
-
-                    <div class="mb-3">
-                        <input class="form-control" placeholder="Buscar..." type="text">
-                    </div>
-
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
@@ -29,62 +24,32 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>04-ENE-2020</td>
-                                <td>Empleado 1</td>
-                                <td>Activo</td>
-                                <td class="text-center">
-                                    <a class="btn btn-secondary" href="{{url('herramientas/verAsignacion')}}" title="Reingreso">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="{{url('herramientas/reingreso')}}" title="Reingreso">
-                                        <i class="fa fa-sign-in-alt"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h',
-                                    'herramientas')" title="Eliminar">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>10-ENE-2020</td>
-                                <td>Empleado 3</td>
-                                <td>Activo</td>
-                                <td class="text-center">
-                                    <a class="btn btn-secondary" href="{{url('herramientas/verAsignacion')}}" title="Reingreso">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="{{url('herramientas/reingreso')}}" title="Reingreso">
-                                        <i class="fa fa-sign-in-alt"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h',
-                                    'herramientas')" title="Eliminar">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>17-ENE-2020</td>
-                                <td>Empleado 4</td>
-                                <td>Finalizado</td>
-                                <td class="text-center">
-                                    <a class="btn btn-secondary" href="{{url('herramientas/verAsignacion')}}" title="Reingreso">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="{{url('herramientas/reingreso')}}" title="Reingreso">
-                                        <i class="fa fa-sign-in-alt"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h',
-                                    'herramientas')" title="Eliminar">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @foreach($asignaciones as $asignacion)
+                                <tr class="text-center">
+                                    <td>{{$asignacion->id}}</td>
+                                    <td>{{$asignacion->nombre}}</td>
+                                    <td>{{$asignacion->cantidad_taller}}</td>
+                                    <td>{{$asignacion->cantidad_asignada}}</td>
+                                    <td>
+                                        <a href="{{url('asignaciones/'.$asignacion->id.'/edit')}}">
+                                            <button class="btn btn-warning">
+                                                <i class="fa fa-pen"></i>
+                                            </button>
+                                        </a>
+                                        <a href="">
+                                            <button class="btn btn-dark">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </a>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$asignacion -> nombre}}', '{{url('asignaciones/'.$asignacion -> id)}}')">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
+                        {{$asignaciones->links('pagination.default')}}
                     </div>
                 </div>
             </div>

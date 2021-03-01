@@ -32,7 +32,12 @@ class CreateBajaHerramientaTable extends Migration
             $table->softDeletes();
 
             $table->unsignedInteger('herramienta_id');
-            $table->foreign('herramienta_id')->references('id')->on('herramienta');
+            $table->foreign('herramienta_id')->references('id')
+                ->on('herramienta')->onDelete('cascade');
+
+            $table->unsignedInteger('empleado_id');
+            $table->foreign('empleado_id')->references('id')
+                ->on('empleado')->onDelete('cascade');
         });
     }
 

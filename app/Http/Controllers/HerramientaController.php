@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\BajaHerramienta;
 use App\Modelos\DetalleIngresoHerramienta;
+use App\Modelos\Empleado;
 use App\Modelos\Herramienta;
 use App\Modelos\IngresoHerramienta;
 use Illuminate\Http\Request;
@@ -188,7 +190,8 @@ class HerramientaController extends Controller
     {
         return view('vistas.herramientas.listaIngresos',
             [
-                'ingresos' => IngresoHerramienta::paginate(5),
+                'ingresos' => IngresoHerramienta::
+                orderBy('id', 'desc')->paginate(5),
             ]);
     }
 
@@ -230,7 +233,8 @@ class HerramientaController extends Controller
             $ingreso->foto_factura = $request['foto_factura'];
             if (Input::hasFile('foto_factura')) {
                 $file = Input::file('foto_factura');
-                $file->move(public_path() . '/img/ingresoHerramienta/', $file->getClientOriginalName());
+                $file->move(public_path() . '/img/ingresoHerramienta/',
+                    $file->getClientOriginalName());
                 $ingreso->foto_factura = $file->getClientOriginalName();
             }
             $ingreso->nro_factura = $request['nro_factura'];
@@ -248,9 +252,12 @@ class HerramientaController extends Controller
                 $detalle->ingreso_herramienta_id = $ingreso->id;
                 $detalle->save();
 
-                $herramientaAct = Herramienta::findOrfail($detalle->herramienta_id);
-                $herramientaAct->cantidad_total = $herramientaAct->cantidad_total + $detalle->cantidad;
-                $herramientaAct->cantidad_taller = $herramientaAct->cantidad_taller + $detalle->cantidad;
+                $herramientaAct =
+                    Herramienta::findOrfail($detalle->herramienta_id);
+                $herramientaAct->cantidad_total =
+                    $herramientaAct->cantidad_total + $detalle->cantidad;
+                $herramientaAct->cantidad_taller =
+                    $herramientaAct->cantidad_taller + $detalle->cantidad;
                 $herramientaAct->update();
 
                 $cont = $cont + 1;
@@ -300,9 +307,12 @@ class HerramientaController extends Controller
     {
         $ingreso = IngresoHerramienta::findOrFail($id);
         foreach ($ingreso->detalles as $detalle) {
-            $herramienta = Herramienta::findOrFail($detalle->herramienta_id);
-            $herramienta->cantidad_taller = $herramienta->cantidad_taller - $detalle->cantidad;
-            $herramienta->cantidad_total = $herramienta->cantidad_total - $detalle->cantidad;
+            $herramienta =
+                Herramienta::findOrFail($detalle->herramienta_id);
+            $herramienta->cantidad_taller =
+                $herramienta->cantidad_taller - $detalle->cantidad;
+            $herramienta->cantidad_total =
+                $herramienta->cantidad_total - $detalle->cantidad;
             $herramienta->update();
         }
         $ingreso->delete();
@@ -327,7 +337,26 @@ class HerramientaController extends Controller
      */
     public function listaBajas()
     {
-        return view('vistas.herramientas.listaBajas');
+        return view('vistas.herramientas.listaBajas',
+            ['bajas' => BajaHerramienta::paginate(5)]);
+    }
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function nuevaBaja($id)
+    {
+        return view('vistas.herramientas.nuevaBaja', [
+            'herramienta' => Herramienta::findOrFail($id),
+            'empleados' => Empleado::all(),
+        ]);
     }
 
     /**
@@ -341,9 +370,51 @@ class HerramientaController extends Controller
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
-    public function anularBaja()
+    public function darBaja(Request $request)
     {
-        return view('vistas.herramientas.listaBajas');
+        $baja  = new BajaHerramienta();
+        $baja->fecha = $request->fecha;
+        $baja->motivo = $request->motivo;
+        $baja->cantidad = $request->cantidad;
+        $baja->herramienta_id = $request->herramienta_id;
+        $baja->empleado_id = $request->empleado_id;
+        $baja->save();
+
+        $herramienta = Herramienta::findOrFail($request->herramienta_id);
+        $herramienta->cantidad_taller =
+            $herramienta->cantidad_taller - $baja->cantidad;
+        $herramienta->cantidad_total =
+            $herramienta->cantidad_total - $baja->cantidad;
+        $herramienta->update();
+        //restar a totaly taller
+
+
+        return redirect('herramientas/listaBajas');
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function anularBaja($id)
+    {
+        $baja  = BajaHerramienta::findOrFail($id);
+            $herramienta = Herramienta::findOrFail($baja->herramienta_id);
+            $herramienta->cantidad_taller =
+                $herramienta->cantidad_taller + $baja->cantidad;
+            $herramienta->cantidad_total =
+                $herramienta->cantidad_total + $baja->cantidad;
+            $herramienta->update();
+        $baja->delete();
+
+        return redirect('herramientas/listaBajas');
     }
     // ------------------------------------------------------------------------
     // --------------------------ASIGNACIONES----------------------------------

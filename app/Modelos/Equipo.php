@@ -22,10 +22,6 @@ class Equipo extends Model
     public $timestamps = false;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    public function tipo(){
-        return $this->belongsTo('App\Modelos\TipoClasificacion', 'tipo_clasificacion_id', 'id');
-    }
-
     protected $fillable = [
         'nro_serie',
         'descripcion',
@@ -43,8 +39,11 @@ class Equipo extends Model
         'marca_clasificacion_id',
     ];
 
+    public function tipo(){
+        return $this->belongsTo('App\Modelos\TipoClasificacion', 'tipo_clasificacion_id', 'id')->withTrashed();
+    }
     public function marca(){
-        return $this->belongsTo('App\Modelos\MarcaClasificacion', 'marca_clasificacion_id', 'id');
+        return $this->belongsTo('App\Modelos\MarcaClasificacion', 'marca_clasificacion_id', 'id')->withTrashed();
     }
 
     static public $UNIDAD_MEDIDA = [

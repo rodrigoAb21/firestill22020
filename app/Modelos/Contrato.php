@@ -34,11 +34,11 @@ class Contrato extends Model
         ];
 
     public function cliente(){
-        return $this->belongsTo('App\Modelos\Cliente', 'cliente_id', 'id');
+        return $this->belongsTo('App\Modelos\Cliente', 'cliente_id', 'id')->withTrashed();
     }
 
     public function empleado(){
-        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id');
+        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id')->withTrashed();
     }
 
     public function sucursales(){

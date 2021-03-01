@@ -2,26 +2,6 @@
 
 use App\Events\ArduinoEvent;
 
-Route::get('noti', function () {
-    return view('vistas.noti');
-});
-
-Route::get('sender', function () {
-    return view('vistas.sender');
-});
-
-Route::post('sender', function () {
-    $datos = request()->datos;
-    event(new ArduinoEvent($datos));
-    redirect('sender');
-});
-
-Route::get('xxx', function () {
-
-    event(new ArduinoEvent('XXXXXXXXXXXXXXXX'));
-    return 'XXXXXXXXXXX';
-});
-
 Route::get('login', [
     'as' => 'login',
     'uses' => 'Auth\LoginController@showLoginForm'
@@ -50,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('ventas','VentaController');
 
+    // ------------------------------ HERRAMIENTA -------------------------------------------
 
     Route::get('herramientas/listaIngresos','HerramientaController@listaIngresos');
     Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
@@ -60,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('herramientas/verAsignacion','HerramientaController@verAsignacion');
     Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
     Route::get('herramientas/listaBajas','HerramientaController@listaBajas');
+    Route::get('herramientas/darBaja/{id}','HerramientaController@nuevaBaja');
+    Route::post('herramientas/darBaja','HerramientaController@darBaja');
+    Route::delete('herramientas/anularBaja/{id}','HerramientaController@anularBaja');
     Route::get('herramientas/listaAsignaciones','HerramientaController@listaAsignaciones');
     Route::get('herramientas/nuevaAsignacion','HerramientaController@nuevaAsignacion');
     Route::get('herramientas/reingreso','HerramientaController@reingreso');

@@ -11,16 +11,12 @@
                         </div>
                     </h2>
 
-                    <div class="mb-3">
-                        <input class="form-control" placeholder="Buscar..." type="text">
-                    </div>
-
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
                                 <th class="text-center">COD</th>
-                                <th class="text-center">NOMBRE</th>
+                                <th class="text-center">HERRAMIENTA</th>
                                 <th class="text-center">RESPONSABLE</th>
                                 <th class="text-center">CANT</th>
                                 <th class="text-center">FECHA</th>
@@ -29,49 +25,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>Herramienta 5</td>
-                                <td>Empleado 4</td>
-                                <td>1</td>
-                                <td>10-DIC-2020</td>
-                                <td>Extraviada</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="text-center">
-                                <td>2</td>
-                                <td>Herramienta 7</td>
-                                <td>Empleado 2</td>
-                                <td>1</td>
-                                <td>13-NOV-2020</td>
-                                <td>Dañada</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="text-center">
-                                <td>3</td>
-                                <td>Herramienta 15</td>
-                                <td>Empleado 3</td>
-                                <td>2</td>
-                                <td>30-OCT-2020</td>
-                                <td>Extraviado</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
+                            @foreach($bajas as $baja)
+                                <tr class="text-center">
+                                    <td>{{$baja->id}}</td>
+                                    <td>{{$baja->herramienta->nombre}}</td>
+                                    <td>{{$baja->empleado->nombre}}</td>
+                                    <td>{{$baja->cantidad}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $baja->fecha)->format('d - m - Y')}}</td>
+                                    <td>{{$baja->motivo}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$baja -> nombre}}', '{{url('herramientas/anularBaja/'.$baja -> id)}}')">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
-
+                        {{$bajas->links('pagination.default')}}
                     </div>
                 </div>
             </div>

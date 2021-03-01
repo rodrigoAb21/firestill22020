@@ -29,6 +29,6 @@ class DetalleIngresoHerramienta extends Model
     ];
 
     public function herramienta(){
-        return $this->belongsTo('App\Modelos\Herramienta', 'herramienta_id', 'id');
+        return $this->belongsTo('App\Modelos\Herramienta', 'herramienta_id', 'id')->withTrashed();
     }
 }
