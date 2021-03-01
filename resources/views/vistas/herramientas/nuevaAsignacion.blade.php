@@ -8,80 +8,76 @@
                     <h3 class="pb-2">
                         Nueva asignacion
                     </h3>
+                    <form method="POST" action="{{url('herramientas/guardarAsignacion')}}" autocomplete="off">
+                        {{csrf_field()}}
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input required
+                                           type="date"
+                                           class="form-control"
+                                           value="{{\Carbon\Carbon::now('America/La_Paz')->toDateString()}}"
+                                           name="fecha">
+                                </div>
+                            </div>
 
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Responsable</label>
+                                    <select name="empleado_id" class="form-control">
+                                        @foreach($empleados as $empleado)
+                                            <option value="{{$empleado->id}}">{{$empleado->nombre}} {{$empleado->apellido}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
 
-                    {{csrf_field()}}
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label>Fecha</label>
-                                <input required
-                                       type="date"
-                                       class="form-control"
-                                       value="{{\Carbon\Carbon::now('America/La_Paz')->toDateString()}}"
-                                       name="fecha">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
+                                        @foreach($herramientas as $herramienta)
+                                            <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Cantidad" type="number" id="cantidad">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <button id="btn_agregar" type="button" onclick="agregar()"  class="btn btn-success btn-sm btn-block">
+                                        <span class="fa fa-plus fa-2x"></span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered color-table info-table">
+                                <thead>
+                                <tr>
+                                    <th class="text-right">OPC</th>
+                                    <th class="text-center w-50">HERRAMIENTA</th>
+                                    <th class="text-center">CANTIDAD</th>
+                                </tr>
+                                </thead>
+                                <tbody id="detalle">
+                                </tbody>
+                            </table>
 
-
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label>Responsable</label>
-                                <select class="form-control">
-                                    <option>Empleado 1</option>
-                                    <option>Empleado 2</option>
-                                    <option>Empleado 3</option>
-
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <select class="form-control selectpicker" data-live-search="true" id="selectorInsumo">
-                                    <option>Herramienta 1</option>
-                                    <option>Herramienta 2</option>
-                                    <option>Herramienta 3</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Cantidad" type="number" id="cantidad">
-                            </div>
                         </div>
 
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <button id="btn_agregar" type="button" onclick="agregar()"  class="btn btn-success btn-sm btn-block">
-                                    <span class="fa fa-plus fa-2x"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table table-hover table-bordered color-table info-table">
-                            <thead>
-                            <tr>
-                                <th class="text-right">OPC</th>
-                                <th class="text-center w-50">HERRAMIENTA</th>
-                                <th class="text-center">CANTIDAD</th>
-                            </tr>
-                            </thead>
-                            <tbody id="detalle">
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                    <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atras</a>
-                    <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-info">Guardar</a>
-
+                        <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atras</a>
+                        <button type="submit" class="btn btn-info">Guardar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -97,7 +93,8 @@
                 cantidad = $('#cantidad').val();
                 console.log(cantidad);
                 if(cont>=0 && cantidad != null && cantidad > 0) {
-                    nombreInsumo = $('#selectorInsumo option:selected').text();
+                    nombreInsumo = $('#selectorHerramienta option:selected').text();
+                    idHerramientaT = $('#selectorHerramienta').val();
                     var fila =
                         '<tr id="fila' + cont + '">' +
                         '<td>' +
@@ -106,10 +103,10 @@
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input class="form-control" name="ewtew" value="'+nombreInsumo+'">'+
+                        '   <input type="hidden" name="idHerramientaT[]" value="'+idHerramientaT+'">'+nombreInsumo+
                         '</td>' +
                         '<td>' +
-                        '   <input class="form-control" type="number" value="'+cantidad+'">'+
+                        '   <input name="cantidadT[]" type="hidden" value="'+cantidad+'">'+cantidad+
                         '</td>' +
                         '</tr>';
                     cont++;

@@ -28,6 +28,9 @@ class AsignacionHerramienta extends Model
         'empleado_id',
     ];
 
+    public function empleado(){
+        return $this->belongsTo('App\Modelos\Empleado', 'empleado_id', 'id')->withTrashed();
+    }
     public function detalles(){
         return $this->hasMany(DetalleAsignacion::class);
     }

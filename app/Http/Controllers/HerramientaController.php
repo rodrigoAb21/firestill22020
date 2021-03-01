@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\AsignacionHerramienta;
 use App\Modelos\BajaHerramienta;
+use App\Modelos\DetalleAsignacion;
 use App\Modelos\DetalleIngresoHerramienta;
 use App\Modelos\Empleado;
 use App\Modelos\Herramienta;
@@ -373,21 +375,19 @@ class HerramientaController extends Controller
     public function darBaja(Request $request)
     {
         $baja  = new BajaHerramienta();
-        $baja->fecha = $request->fecha;
-        $baja->motivo = $request->motivo;
-        $baja->cantidad = $request->cantidad;
-        $baja->herramienta_id = $request->herramienta_id;
-        $baja->empleado_id = $request->empleado_id;
+        $baja->fecha = $request['fecha'];
+        $baja->motivo = $request['motivo'];
+        $baja->cantidad = $request['cantidad'];
+        $baja->herramienta_id = $request['herramienta_id'];
+        $baja->empleado_id = $request['empleado_id'];
         $baja->save();
 
-        $herramienta = Herramienta::findOrFail($request->herramienta_id);
+        $herramienta = Herramienta::findOrFail($request['herramienta_id']);
         $herramienta->cantidad_taller =
             $herramienta->cantidad_taller - $baja->cantidad;
         $herramienta->cantidad_total =
             $herramienta->cantidad_total - $baja->cantidad;
         $herramienta->update();
-        //restar a totaly taller
-
 
         return redirect('herramientas/listaBajas');
     }
@@ -433,7 +433,9 @@ class HerramientaController extends Controller
      */
     public function listaAsignaciones()
     {
-        return view('vistas.herramientas.listaAsignaciones');
+        return view('vistas.herramientas.listaAsignaciones', [
+            'asignaciones' => AsignacionHerramienta::paginate(5),
+        ]);
     }
 
     /**
@@ -449,7 +451,62 @@ class HerramientaController extends Controller
      */
     public function nuevaAsignacion()
     {
-        return view('vistas.herramientas.nuevaAsignacion');
+        return view('vistas.herramientas.nuevaAsignacion',
+        [
+            'empleados' => Empleado::all(),
+            'herramientas' => Herramienta::all(),
+        ]);
+    }
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function guardarAsignacion(Request $request)
+    {
+        try {
+            $asignacion = new AsignacionHerramienta();
+            $asignacion->fecha = $request['fecha'];
+            $asignacion->empleado_id = $request['empleado_id'];
+            $asignacion->save();
+
+            $idHerramientas = $request->get('idHerramientaT');
+            $cant = $request->get('cantidadT');
+            $cont = 0;
+
+            while ($cont < count($idHerramientas)) {
+                $detalle = new DetalleAsignacion();
+                $detalle->cantidad = $cant[$cont];
+                $detalle->herramienta_id = $idHerramientas[$cont];
+                $detalle->asignacion_herramienta_id = $asignacion->id;
+                $detalle->save();
+
+                $herramientaAct =
+                    Herramienta::findOrfail($detalle->herramienta_id);
+                $herramientaAct->cantidad_asignada =
+                    $herramientaAct->cantidad_asignada + $detalle->cantidad;
+                $herramientaAct->cantidad_taller =
+                    $herramientaAct->cantidad_taller - $detalle->cantidad;
+                $herramientaAct->update();
+
+                $cont = $cont + 1;
+            }
+
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollback();
+
+        }
+
+        return redirect('herramientas/listaAsignaciones');
     }
 
     /**
@@ -479,10 +536,27 @@ class HerramientaController extends Controller
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
-    public function verAsignacion()
+    public function guardarReingreso(Request $request)
     {
-        return view('vistas.herramientas.verAsignacion');
+        return view('vistas.herramientas.reingreso');
     }
 
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function verAsignacion($id)
+    {
+        return view('vistas.herramientas.verAsignacion', [
+            'asignacion' => AsignacionHerramienta::findOrFail($id)
+        ]);
+    }
 
 }

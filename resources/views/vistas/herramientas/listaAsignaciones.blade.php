@@ -7,7 +7,7 @@
                     <h2 class="pb-2">
                         Asignaciones de asignaciones
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('asignaciones/nuevaAsignacion')}}">
+                            <a class="btn btn-success" href="{{url('herramientas/nuevaAsignacion')}}">
                                 <i class="fa fa-plus"></i>  Nueva
                             </a>
                         </div>
@@ -16,20 +16,20 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th>COD</th>
-                                <th>FECHA</th>
-                                <th>RESPONSABLE</th>
-                                <th>ESTADO</th>
-                                <th class="text-center w-25">OPC</th>
+                                <th class="text-center">COD</th>
+                                <th class="text-center">FECHA</th>
+                                <th class="text-center">RESPONSABLE</th>
+                                <th class="text-center">ESTADO</th>
+                                <th class="text-center">OPC</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($asignaciones as $asignacion)
                                 <tr class="text-center">
                                     <td>{{$asignacion->id}}</td>
-                                    <td>{{$asignacion->nombre}}</td>
-                                    <td>{{$asignacion->cantidad_taller}}</td>
-                                    <td>{{$asignacion->cantidad_asignada}}</td>
+                                    <td>{{$asignacion->fecha}}</td>
+                                    <td>{{$asignacion->empleado->nombre}}</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{url('asignaciones/'.$asignacion->id.'/edit')}}">
                                             <button class="btn btn-warning">

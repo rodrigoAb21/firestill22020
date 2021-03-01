@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('herramientas/anularBaja/{id}','HerramientaController@anularBaja');
     Route::get('herramientas/listaAsignaciones','HerramientaController@listaAsignaciones');
     Route::get('herramientas/nuevaAsignacion','HerramientaController@nuevaAsignacion');
+    Route::post('herramientas/guardarAsignacion','HerramientaController@guardarAsignacion');
     Route::get('herramientas/reingreso','HerramientaController@reingreso');
     Route::get('herramientas/verIngreso','HerramientaController@verIngreso');
 
