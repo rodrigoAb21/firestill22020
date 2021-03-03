@@ -9,6 +9,7 @@ use App\Modelos\DetalleIngresoHerramienta;
 use App\Modelos\Empleado;
 use App\Modelos\Herramienta;
 use App\Modelos\IngresoHerramienta;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -307,19 +308,27 @@ class HerramientaController extends Controller
      */
     public function eliminarIngreso($id)
     {
-        $ingreso = IngresoHerramienta::findOrFail($id);
-        foreach ($ingreso->detalles as $detalle) {
-            $herramienta =
-                Herramienta::findOrFail($detalle->herramienta_id);
-            $herramienta->cantidad_taller =
-                $herramienta->cantidad_taller - $detalle->cantidad;
-            $herramienta->cantidad_total =
-                $herramienta->cantidad_total - $detalle->cantidad;
-            $herramienta->update();
-        }
-        $ingreso->delete();
+        try {
+            DB::beginTransaction();
+            $ingreso = IngresoHerramienta::findOrFail($id);
+            foreach ($ingreso->detalles as $detalle) {
+                $herramienta =
+                    Herramienta::withTrashed()->findOrFail($detalle->herramienta_id);
+                $herramienta->cantidad_taller =
+                    $herramienta->cantidad_taller - $detalle->cantidad;
+                $herramienta->cantidad_total =
+                    $herramienta->cantidad_total - $detalle->cantidad;
+                $herramienta->update();
+            }
+            $ingreso->delete();
 
-        return redirect('herramientas/listaIngresos');
+            return redirect('herramientas/listaIngresos');
+            DB::commit();
+        }catch (QueryException $e) {
+            DB::rollback();
+            return redirect('herramientas/listaIngresos')->with(['message' => 'No es posible eliminar el ingreso']);
+        }
+
     }
 
     // ------------------------------------------------------------------------
@@ -505,6 +514,34 @@ class HerramientaController extends Controller
             DB::rollback();
 
         }
+
+        return redirect('herramientas/listaAsignaciones');
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function eliminarAsignacion($id)
+    {
+        $asignacion = AsignacionHerramienta::findOrFail($id);
+        foreach ($asignacion->detalles as $detalle) {
+            $herramienta =
+                Herramienta::findOrFail($detalle->herramienta_id);
+            $herramienta->cantidad_asignacion =
+                $herramienta->cantidad_asignacion - $detalle->cantidad;
+            $herramienta->cantidad_total =
+                $herramienta->cantidad_total - $detalle->cantidad;
+            $herramienta->update();
+        }
+        $asignacion->delete();
 
         return redirect('herramientas/listaAsignaciones');
     }

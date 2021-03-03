@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('empleados','EmpleadoController');
     Route::resource('clientes','ClienteController');
     Route::resource('categorias','CategoriaController');
+    Route::resource('tipos','TipoClasificacionController');
+    Route::resource('marcas','MarcaClasificacionController');
     Route::resource('notificaciones','NotificacionController');
 
     Route::resource('ventas','VentaController');
@@ -38,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('herramientas/verIngreso/{id}','HerramientaController@verIngreso');
     Route::delete('herramientas/eliminarIngreso/{id}','HerramientaController@eliminarIngreso');
 
-    Route::get('herramientas/verAsignacion','HerramientaController@verAsignacion');
+
     Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
     Route::get('herramientas/listaBajas','HerramientaController@listaBajas');
     Route::get('herramientas/darBaja/{id}','HerramientaController@nuevaBaja');
@@ -48,7 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('herramientas/nuevaAsignacion','HerramientaController@nuevaAsignacion');
     Route::post('herramientas/guardarAsignacion','HerramientaController@guardarAsignacion');
     Route::get('herramientas/reingreso','HerramientaController@reingreso');
-    Route::get('herramientas/verIngreso','HerramientaController@verIngreso');
+    Route::get('herramientas/verAsignacion/{id}','HerramientaController@verAsignacion');
 
     Route::resource('herramientas','HerramientaController');
 

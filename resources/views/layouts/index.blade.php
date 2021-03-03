@@ -212,6 +212,20 @@
                             </a>
                         </li>
 
+                        <li class="{{ Request::is('tipos*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('tipos')}}" >
+                                <i class="fas fa-sitemap"></i>
+                                <span class="hide-menu"> Tipo Clasificacion</span>
+                            </a>
+                        </li>
+
+                        <li class="{{ Request::is('marcas*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('marcas')}}" >
+                                <i class="far fa-copyright"></i>
+                                <span class="hide-menu"> Marca Clasificacion</span>
+                            </a>
+                        </li>
+
                         <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                                 <i class="fa fa-boxes"></i>

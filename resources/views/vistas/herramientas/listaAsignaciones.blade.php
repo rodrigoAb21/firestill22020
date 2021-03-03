@@ -27,21 +27,16 @@
                             @foreach($asignaciones as $asignacion)
                                 <tr class="text-center">
                                     <td>{{$asignacion->id}}</td>
-                                    <td>{{$asignacion->fecha}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $asignacion->fecha)->format('d - m - Y')}}</td>
                                     <td>{{$asignacion->empleado->nombre}}</td>
                                     <td></td>
                                     <td>
-                                        <a href="{{url('asignaciones/'.$asignacion->id.'/edit')}}">
-                                            <button class="btn btn-warning">
-                                                <i class="fa fa-pen"></i>
+                                        <a href="{{url('herramientas/verAsignacion/'.$asignacion->id)}}">
+                                            <button class="btn btn-secondary">
+                                                <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
-                                        <a href="">
-                                            <button class="btn btn-dark">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$asignacion -> nombre}}', '{{url('asignaciones/'.$asignacion -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$asignacion -> id}}', '{{url('asignaciones/'.$asignacion -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
