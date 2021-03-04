@@ -443,7 +443,7 @@ class HerramientaController extends Controller
     public function listaAsignaciones()
     {
         return view('vistas.herramientas.listaAsignaciones', [
-            'asignaciones' => AsignacionHerramienta::paginate(5),
+            'asignaciones' => AsignacionHerramienta::orderBy('id', 'desc')->paginate(5),
         ]);
     }
 
@@ -482,6 +482,7 @@ class HerramientaController extends Controller
         try {
             $asignacion = new AsignacionHerramienta();
             $asignacion->fecha = $request['fecha'];
+            $asignacion->estado = 'Activa';
             $asignacion->empleado_id = $request['empleado_id'];
             $asignacion->save();
 
@@ -532,14 +533,16 @@ class HerramientaController extends Controller
     public function eliminarAsignacion($id)
     {
         $asignacion = AsignacionHerramienta::findOrFail($id);
-        foreach ($asignacion->detalles as $detalle) {
-            $herramienta =
-                Herramienta::findOrFail($detalle->herramienta_id);
-            $herramienta->cantidad_asignacion =
-                $herramienta->cantidad_asignacion - $detalle->cantidad;
-            $herramienta->cantidad_total =
-                $herramienta->cantidad_total - $detalle->cantidad;
-            $herramienta->update();
+        if ($asignacion->estado == 'Activa'){
+            foreach ($asignacion->detalles as $detalle) {
+                $herramienta =
+                    Herramienta::withTrashed()->findOrFail($detalle->herramienta_id);
+                $herramienta->cantidad_asignada =
+                    $herramienta->cantidad_asignada - $detalle->cantidad;
+                $herramienta->cantidad_taller =
+                    $herramienta->cantidad_taller + $detalle->cantidad;
+                $herramienta->update();
+            }
         }
         $asignacion->delete();
 
@@ -557,9 +560,12 @@ class HerramientaController extends Controller
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
-    public function reingreso()
+    public function reingreso($id)
     {
-        return view('vistas.herramientas.reingreso');
+        return view('vistas.herramientas.reingreso',
+        [
+            'asignacion' => AsignacionHerramienta::findOrFail($id),
+        ]);
     }
 
     /**
@@ -573,9 +579,52 @@ class HerramientaController extends Controller
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
-    public function guardarReingreso(Request $request)
+    public function guardarReingreso(Request $request, $id)
     {
-        return view('vistas.herramientas.reingreso');
+        try {
+            $asignacion = AsignacionHerramienta::findOrFail($id);
+            $asignacion->estado = 'Finalizada';
+            $asignacion->update();
+
+            $idHerramientas = $request->get('idHerramientaT');
+            $cantA = $request->get('cantidadAT');
+            $cantR = $request->get('cantidadRT');
+            $motivo = $request->get('motivoT');
+            $cont = 0;
+
+            while ($cont < count($idHerramientas)) {
+                $herramienta = Herramienta::withTrashed()->findOrFail($idHerramientas[$cont]);
+                $herramienta->cantidad_asignada = $herramienta->cantidad_asignada -  $cantA[$cont];
+                $herramienta->cantidad_taller = $herramienta->cantidad_taller + $cantR[$cont];
+                $cantidad =  $cantA[$cont] - $cantR[$cont];
+
+                if ($cantidad > 0){
+                    $baja  = new BajaHerramienta();
+                    $baja->fecha = date('Y-m-d');
+                    $baja->motivo = $motivo[$cont];
+                    $baja->cantidad = $cantidad;
+                    $baja->herramienta_id = $idHerramientas[$cont];
+                    $baja->empleado_id = $asignacion->empleado_id;
+                    $baja->save();
+
+                    $herramienta->cantidad_total = $herramienta->cantidad_total - $baja->cantidad;
+                }
+
+                $herramienta->update();
+
+                $cont = $cont + 1;
+            }
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollback();
+
+        }
+
+
+
+        return redirect('herramientas/listaAsignaciones');
     }
 
     /**

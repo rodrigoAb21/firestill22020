@@ -28,6 +28,7 @@ class CreateAsignacionHerramientaTable extends Migration
         Schema::create('asignacion_herramienta', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
+            $table->string('estado');
             $table->softDeletes();
 
             $table->unsignedInteger('empleado_id');

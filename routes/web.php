@@ -39,18 +39,23 @@ Route::middleware('auth')->group(function () {
     Route::post('herramientas/guardarIngreso','HerramientaController@guardarIngreso');
     Route::get('herramientas/verIngreso/{id}','HerramientaController@verIngreso');
     Route::delete('herramientas/eliminarIngreso/{id}','HerramientaController@eliminarIngreso');
-
-
     Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
+
+
+    // --------------------------------- BAJAS -------------------------------------------
     Route::get('herramientas/listaBajas','HerramientaController@listaBajas');
     Route::get('herramientas/darBaja/{id}','HerramientaController@nuevaBaja');
     Route::post('herramientas/darBaja','HerramientaController@darBaja');
     Route::delete('herramientas/anularBaja/{id}','HerramientaController@anularBaja');
+
+    // ------------------------------ ASIGNACIONES -------------------------------------------
     Route::get('herramientas/listaAsignaciones','HerramientaController@listaAsignaciones');
     Route::get('herramientas/nuevaAsignacion','HerramientaController@nuevaAsignacion');
     Route::post('herramientas/guardarAsignacion','HerramientaController@guardarAsignacion');
-    Route::get('herramientas/reingreso','HerramientaController@reingreso');
+    Route::get('herramientas/reingreso/{id}','HerramientaController@reingreso');
+    Route::post('herramientas/guardarReingreso/{id}','HerramientaController@guardarReingreso');
     Route::get('herramientas/verAsignacion/{id}','HerramientaController@verAsignacion');
+    Route::delete('herramientas/eliminarAsignacion/{id}','HerramientaController@eliminarAsignacion');
 
     Route::resource('herramientas','HerramientaController');
 

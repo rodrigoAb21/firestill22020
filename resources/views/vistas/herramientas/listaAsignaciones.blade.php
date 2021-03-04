@@ -29,16 +29,25 @@
                                     <td>{{$asignacion->id}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $asignacion->fecha)->format('d - m - Y')}}</td>
                                     <td>{{$asignacion->empleado->nombre}}</td>
-                                    <td></td>
+                                    <td>{{$asignacion->estado}}</td>
                                     <td>
                                         <a href="{{url('herramientas/verAsignacion/'.$asignacion->id)}}">
                                             <button class="btn btn-secondary">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$asignacion -> id}}', '{{url('asignaciones/'.$asignacion -> id)}}')">
-                                            <i class="fa fa-times"></i>
-                                        </button>
+                                        @if($asignacion->estado == 'Activa')
+                                            <a href="{{url('herramientas/reingreso/'.$asignacion->id)}}" title="Reingreso">
+                                                <button class="btn btn-success">
+                                                    <i class="fa fa-sign-in-alt"></i>
+                                                </button>
+                                            </a>
+
+                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$asignacion -> id}}', '{{url('herramientas/eliminarAsignacion/'.$asignacion -> id)}}')">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach
