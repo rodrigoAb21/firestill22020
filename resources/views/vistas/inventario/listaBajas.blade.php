@@ -5,75 +5,42 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Productos dados de Baja
+                        Herramientas dadas de Baja
                         <div class="float-right">
 
                         </div>
                     </h2>
 
-                    <div class="mb-3">
-                        <input class="form-control" placeholder="Buscar..." type="text">
-                    </div>
-
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th>COD</th>
-                                <th>NOMBRE</th>
-                                <th>CATEGORIA</th>
-                                <th>COSTO</th>
-                                <th>FECHA</th>
-                                <th>MOTIVO</th>
-                                <th>OPC</th>
+                                <th class="text-center">COD</th>
+                                <th class="text-center">PRODUCTO</th>
+                                <th class="text-center">CANT</th>
+                                <th class="text-center">FECHA</th>
+                                <th class="text-center">MOTIVO</th>
+                                <th class="text-center">OPC</th>
                             </tr>
                             </thead>
                             <tbody>
-
-
-                            <tr>
-                                <td>1</td>
-                                <td>Producto X</td>
-                                <td>Categoria X</td>
-                                <td>20 Bs</td>
-                                <td>10-DIC-2020</td>
-                                <td>Extraviada</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Producto X</td>
-                                <td>Categoria X</td>
-                                <td>20 Bs</td>
-                                <td>21-DIC-2020</td>
-                                <td>Dañado</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Producto X</td>
-                                <td>Categoria X</td>
-                                <td>20 Bs</td>
-                                <td>05-ENE-2021</td>
-                                <td>Dañado</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'h')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
+                            @foreach($bajas as $baja)
+                                <tr class="text-center">
+                                    <td>{{$baja->id}}</td>
+                                    <td>{{$baja->producto->nombre}}</td>
+                                    <td>{{$baja->cantidad}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $baja->fecha)->format('d - m - Y')}}</td>
+                                    <td>{{$baja->motivo}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$baja -> nombre}}', '{{url('inventario/anularBaja/'.$baja -> id)}}')">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
-
+                        {{$bajas->links('pagination.default')}}
                     </div>
                 </div>
             </div>
@@ -92,6 +59,5 @@
             }
 
         </script>
-
     @endpush()
 @endsection

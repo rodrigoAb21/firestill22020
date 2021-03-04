@@ -16,6 +16,7 @@ class CreateBajaProductoTable extends Migration
         Schema::create('baja_producto', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
+            $table->integer('cantidad');
             $table->string('motivo');
             $table->softDeletes();
 

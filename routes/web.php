@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
 
 
-    // --------------------------------- BAJAS -------------------------------------------
+    // --------------------------------- BAJAS H -------------------------------------------
     Route::get('herramientas/listaBajas','HerramientaController@listaBajas');
     Route::get('herramientas/darBaja/{id}','HerramientaController@nuevaBaja');
     Route::post('herramientas/darBaja','HerramientaController@darBaja');
@@ -98,6 +98,16 @@ Route::middleware('auth')->group(function () {
 
     // ------------------------------- INVENTARIO ------------------------------------------
 
+
+
+    // --------------------------------- BAJAS P -------------------------------------------
+    Route::get('inventario/listaBajas','InventarioController@listaBajas');
+    Route::get('inventario/darBaja/{id}','InventarioController@nuevaBaja');
+    Route::post('inventario/darBaja','InventarioController@darBaja');
+    Route::delete('inventario/anularBaja/{id}','InventarioController@anularBaja');
+
     Route::resource('inventario', 'InventarioController');
+
+
 
 });

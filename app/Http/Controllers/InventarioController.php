@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\BajaProducto;
 use App\Modelos\Categoria;
 use App\Modelos\Producto;
 use App\Modelos\Proveedor;
@@ -195,4 +196,90 @@ class InventarioController extends Controller
     // ------------------------------------------------------------------------
     // --------------------------BAJAS--------------------------------------
     // ------------------------------------------------------------------------
+
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function listaBajas()
+    {
+        return view('vistas.inventario.listaBajas',
+            ['bajas' => BajaProducto::paginate(5)]);
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function nuevaBaja($id)
+    {
+        return view('vistas.inventario.nuevaBaja', [
+            'producto' => Producto::findOrFail($id),
+        ]);
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function darBaja(Request $request)
+    {
+        $baja = new BajaProducto();
+        $baja->fecha = $request['fecha'];
+        $baja->motivo = $request['motivo'];
+        $baja->cantidad = $request['cantidad'];
+        $baja->producto_id = $request['producto_id'];
+        $baja->save();
+
+        $producto = Producto::findOrFail($request['producto_id']);
+        $producto->cantidad = $producto->cantidad - $baja->cantidad;
+        $producto->update();
+
+        return redirect('inventario/listaBajas');
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function anularBaja($id)
+    {
+
+        $baja = BajaProducto::findOrFail($id);
+            $producto = Producto::withTrashed()->findOrFail($baja->producto_id);
+            $producto->cantidad = $producto->cantidad + $baja->cantidad;
+            $producto->update();
+        $baja->delete();
+
+        return redirect('inventario/listaBajas');
+    }
 }
