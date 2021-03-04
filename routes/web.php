@@ -83,11 +83,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('imonitoreo/eliminarEquipo/{id}','MonitoreoController@eliminarEquipo');
 
 
-    Route::get('imonitoreo/agenda','MonitoreoController@agenda');
 
+    // ------------------------------- ALERTAS ------------------------------------------
     Route::get('alertas','AlertaController@index');
     Route::get('alertas/verEquipo/{alerta_id}/{equipo_id}','AlertaController@verEquipo');
     Route::get('alertas/marcarVista/{id}','AlertaController@marcarVista');
     Route::delete('alertas/{id}','AlertaController@destroy');
+
+
+    // ------------------------------- INVENTARIO ------------------------------------------
+
+    Route::resource('inventario', 'InventarioController');
 
 });

@@ -232,8 +232,8 @@
                                 <span class="hide-menu"> Inventario</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li class="{{ Request::is('inventario/listaPrincipal*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('inventario/listaPrincipal')}}" >
+                                <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('inventario/')}}" >
 
                                         <span>  Lista</span>
                                     </a>
