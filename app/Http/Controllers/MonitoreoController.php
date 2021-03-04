@@ -55,6 +55,8 @@ class MonitoreoController extends Controller
             $file = Input::file('documento');
             $file->move(public_path().'/contrato/', $file->getClientOriginalName());
             $contrato->documento = $file->getClientOriginalName();
+        }else{
+            $contrato->documento = 'default.png';
         }
         $contrato->cliente_id = $request['cliente_id'];
         $contrato->empleado_id = $request['empleado_id'];

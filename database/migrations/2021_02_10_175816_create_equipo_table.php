@@ -16,7 +16,7 @@ class CreateEquipoTable extends Migration
         Schema::create('equipo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nro_serie');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->string('unidad_medida');
             $table->integer('ano_fabricacion');
             $table->float('capacidad');

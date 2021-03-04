@@ -17,7 +17,7 @@ class CreateProductoTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('foto');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->float('precio');
             $table->unsignedInteger('cantidad');
             $table->softDeletes();

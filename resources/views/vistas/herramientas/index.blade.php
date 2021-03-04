@@ -40,7 +40,7 @@
                                         </a>
                                         @if($herramienta->cantidad_taller>0)
                                             <a href="{{url('herramientas/darBaja/'.$herramienta->id)}}">
-                                                <button class="btn btn-secondary">
+                                                <button class="btn btn-outline-danger">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </a>

@@ -31,7 +31,7 @@ class CreateProveedorTable extends Migration
             $table->string('email')->nullable();
             $table->string('direccion')->nullable();
             $table->string('telefono');
-            $table->string('informacion')->nullable();
+            $table->text('informacion')->nullable();
             $table->string('titular')->nullable();
             $table->string('banco')->nullable();
             $table->string('sucursal')->nullable();

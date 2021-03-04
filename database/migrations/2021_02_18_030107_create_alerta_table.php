@@ -16,7 +16,7 @@ class CreateAlertaTable extends Migration
         Schema::create('alerta', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('fecha');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->boolean('estado')->default(true);  //true->NO VISTA false->VISTA
             $table->unsignedInteger('equipo_id');
             $table->softDeletes();

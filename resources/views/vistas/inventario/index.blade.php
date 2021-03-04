@@ -20,7 +20,7 @@
                                 <th class="text-center">IMG</th>
                                 <th class="text-center">NOMBRE</th>
                                 <th class="text-center">CATEGORIA</th>
-                                <th class="text-center">PROVEEDOR</th>
+                                <th class="text-center">CANTIDAD</th>
                                 <th class="text-center">OPC</th>
                             </tr>
                             </thead>
@@ -28,10 +28,10 @@
                             @foreach($productos as $producto)
                                 <tr class="text-center">
                                     <td class="align-middle">{{$producto->id}}</td>
-                                    <td class="align-middle"><img src="{{asset('img/producto/'.$producto->foto)}}" class="img-thumbnail" width="100px"></td>
+                                    <td class="align-middle"><img src="{{asset('img/productos/'.$producto->foto)}}" class="img-thumbnail" width="100px"></td>
                                     <td class="align-middle">{{$producto->nombre}}</td>
                                     <td class="align-middle">{{$producto->categoria->nombre}}</td>
-                                    <td class="align-middle">{{$producto->proveedor->nombre}}</td>
+                                    <td class="align-middle">{{$producto->cantidad}}</td>
                                     <td class="align-middle">
                                         <a href="{{url('inventario/'.$producto->id)}}">
                                             <button class="btn btn-secondary">
@@ -45,6 +45,13 @@
                                             </button>
                                         </a>
 
+                                        @if($producto->cantidad>0)
+                                            <a href="{{url('inventario/darBaja/'.$producto->id)}}">
+                                                <button class="btn btn-outline-danger">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </a>
+                                        @endif
                                         <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$producto -> nombre}}', '{{url('inventario/'.$producto -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>

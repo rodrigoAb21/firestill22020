@@ -239,6 +239,8 @@ class HerramientaController extends Controller
                 $file->move(public_path() . '/img/ingresoHerramienta/',
                     $file->getClientOriginalName());
                 $ingreso->foto_factura = $file->getClientOriginalName();
+            }else{
+                $ingreso->foto_factura = 'default.png';
             }
             $ingreso->nro_factura = $request['nro_factura'];
             $ingreso->tienda = $request['tienda'];

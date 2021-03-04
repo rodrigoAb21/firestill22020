@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Categoria</label>
+                                    <label>Descripcion</label>
                                     <textarea name="descripcion" rows="3" class="form-control">{{$producto->nombre}}</textarea>
                                 </div>
                             </div>

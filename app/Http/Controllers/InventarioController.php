@@ -82,9 +82,11 @@ class InventarioController extends Controller
         $producto->foto = $request['foto'];
         if (Input::hasFile('foto')) {
             $file = Input::file('foto');
-            $file->move(public_path() . '/img/producto/',
+            $file->move(public_path() . '/img/productos/',
                 $file->getClientOriginalName());
             $producto->foto = $file->getClientOriginalName();
+        }else{
+            $producto->foto = 'default.png';
         }
         $producto->descripcion = $request['descripcion'];
         $producto->cantidad = 0;
@@ -137,7 +139,7 @@ class InventarioController extends Controller
         $producto->nombre = $request['nombre'];
         if (Input::hasFile('foto')) {
             $file = Input::file('foto');
-            $file->move(public_path() . '/img/producto/',
+            $file->move(public_path() . '/img/productos/',
                 $file->getClientOriginalName());
             $producto->foto = $file->getClientOriginalName();
         }
@@ -188,4 +190,9 @@ class InventarioController extends Controller
 
         return redirect('inventario');
     }
+
+
+    // ------------------------------------------------------------------------
+    // --------------------------BAJAS--------------------------------------
+    // ------------------------------------------------------------------------
 }

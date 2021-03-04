@@ -57,7 +57,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Foto</label> <br>
-                                            <img src="{{asset('img/producto/'.$producto -> foto)}}" height="150px" width="150px" class="img-thumbnail"  >
+                                            <img src="{{asset('img/productos/'.$producto -> foto)}}" height="150px" width="150px" class="img-thumbnail"  >
                                         </div>
                                     </div>
                                 </div>
