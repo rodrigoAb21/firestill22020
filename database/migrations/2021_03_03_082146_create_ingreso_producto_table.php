@@ -18,6 +18,7 @@ class CreateIngresoProductoTable extends Migration
             $table->date('fecha');
             $table->string('nro_factura')->nullable();
             $table->string('foto_factura')->nullable();
+            $table->float('total')->nullable();
             $table->softDeletes();
         });
     }

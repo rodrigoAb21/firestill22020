@@ -323,9 +323,9 @@ class HerramientaController extends Controller
                 $herramienta->update();
             }
             $ingreso->delete();
+            DB::commit();
 
             return redirect('herramientas/listaIngresos');
-            DB::commit();
         }catch (QueryException $e) {
             DB::rollback();
             return redirect('herramientas/listaIngresos')->with(['message' => 'No es posible eliminar el ingreso']);

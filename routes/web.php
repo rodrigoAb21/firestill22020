@@ -32,14 +32,14 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('ventas','VentaController');
 
-    // ------------------------------ HERRAMIENTA -------------------------------------------
+    // ------------------------------ INGRESO H -------------------------------------------
 
     Route::get('herramientas/listaIngresos','HerramientaController@listaIngresos');
     Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
     Route::post('herramientas/guardarIngreso','HerramientaController@guardarIngreso');
     Route::get('herramientas/verIngreso/{id}','HerramientaController@verIngreso');
     Route::delete('herramientas/eliminarIngreso/{id}','HerramientaController@eliminarIngreso');
-    Route::get('herramientas/nuevoIngreso','HerramientaController@nuevoIngreso');
+
 
 
     // --------------------------------- BAJAS H -------------------------------------------
@@ -96,7 +96,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('alertas/{id}','AlertaController@destroy');
 
 
-    // ------------------------------- INVENTARIO ------------------------------------------
+    // ------------------------------- INGRESO P ------------------------------------------
+    Route::get('inventario/listaIngresos','InventarioController@listaIngresos');
+    Route::get('inventario/nuevoIngreso','InventarioController@nuevoIngreso');
+    Route::post('inventario/guardarIngreso','InventarioController@guardarIngreso');
+    Route::get('inventario/verIngreso/{id}','InventarioController@verIngreso');
+    Route::delete('inventario/eliminarIngreso/{id}','InventarioController@eliminarIngreso');
 
 
 

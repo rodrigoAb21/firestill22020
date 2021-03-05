@@ -13,75 +13,48 @@
                         </div>
                     </h2>
 
-                    <div class="mb-3">
-                        <input class="form-control" placeholder="Buscar..." type="text">
-                    </div>
-
+                    @if(session()->has('message'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('message') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
-                                <th class="text-center">PROVEEDOR</th>
+                                <th class="text-center">NRO FACTURA</th>
                                 <th class="text-center">TOTAL BS</th>
-
                                 <th class="text-center">OPC</th>
                             </tr>
                             </thead>
                             <tbody>
 
-
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>04-ENE-2020</td>
-                                <td>Proveedor X</td>
-                                <td>956</td>
-
-                                <td class="text-center">
-                                    <a href="{{url('inventario/verIngreso')}}" class="btn btn-secondary">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'herramientas')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="text-center">
-                                <td>2</td>
-                                <td>14-ENE-2020</td>
-                                <td>Proveedor X</td>
-                                <td>784</td>
-
-                                <td class="text-center">
-                                    <a href="{{url('inventario/verIngreso')}}" class="btn btn-secondary">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'herramientas')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="text-center">
-                                <td>3</td>
-                                <td>04-FEB-2020</td>
-                                <td>Proveedor X</td>
-                                <td>250</td>
-
-                                <td class="text-center">
-                                    <a href="{{url('inventario/verIngreso')}}" class="btn btn-secondary">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger" onclick="modalEliminar('h', 'herramientas')">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-
+                            @foreach($ingresos as $ingreso)
+                                <tr class="text-center">
+                                    <td>{{$ingreso->id}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d - m - Y')}}</td>
+                                    <td>{{$ingreso->nro_factura}}</td>
+                                    <td>{{$ingreso->total}}</td>
+                                    <td>
+                                        <a href="{{url('inventario/verIngreso/'.$ingreso->id)}}">
+                                            <button class="btn btn-secondary">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$ingreso -> nombre}}', '{{url('inventario/eliminarIngreso/'.$ingreso -> id)}}')">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
-
+                        {{$ingresos->links('pagination.default')}}
                     </div>
                 </div>
             </div>

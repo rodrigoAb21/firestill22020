@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Modelos\BajaProducto;
 use App\Modelos\Categoria;
+use App\Modelos\DetalleIngresoProducto;
+use App\Modelos\IngresoProducto;
 use App\Modelos\Producto;
 use App\Modelos\Proveedor;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class InventarioController extends Controller
@@ -282,4 +286,164 @@ class InventarioController extends Controller
 
         return redirect('inventario/listaBajas');
     }
+
+
+
+
+    // ------------------------------------------------------------------------
+    // --------------------------INGRESOS--------------------------------------
+    // ------------------------------------------------------------------------
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function listaIngresos()
+    {
+        return view('vistas.inventario.listaIngresos',
+            [
+                'ingresos' => IngresoProducto::
+                orderBy('id', 'desc')->paginate(5),
+            ]);
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function nuevoIngreso()
+    {
+        return view('vistas.inventario.nuevoIngreso', [
+            'productos' => Producto::all(),
+        ]);
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function guardarIngreso(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $ingreso = new IngresoProducto();
+            $ingreso->fecha = $request['fecha'];
+            $ingreso->total = $request['total'];
+            $ingreso->foto_factura = $request['foto_factura'];
+            if (Input::hasFile('foto_factura')) {
+                $file = Input::file('foto_factura');
+                $file->move(public_path() . '/img/ingresoProducto/',
+                    $file->getClientOriginalName());
+                $ingreso->foto_factura = $file->getClientOriginalName();
+            }else{
+                $ingreso->foto_factura = 'default.png';
+            }
+            $ingreso->nro_factura = $request['nro_factura'];
+            $ingreso->save();
+
+            $idProductos = $request->get('idProductoT');
+            $cant = $request->get('cantidadT');
+            $costos = $request->get('costoT');
+            $cont = 0;
+
+
+            while ($cont < count($idProductos)) {
+                $detalle = new DetalleIngresoProducto();
+                $detalle->cantidad = $cant[$cont];
+                $detalle->costo = $costos[$cont];
+                $detalle->producto_id = $idProductos[$cont];
+                $detalle->ingreso_producto_id = $ingreso->id;
+                $detalle->save();
+
+                $producto =
+                    Producto::findOrfail($detalle->producto_id);
+                $producto->cantidad =
+                    $producto->cantidad + $detalle->cantidad;
+                $producto->update();
+
+                $cont = $cont + 1;
+            }
+
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollback();
+
+        }
+
+        return redirect('inventario/listaIngresos');
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function verIngreso($id)
+    {
+        return view('vistas.inventario.verIngreso', [
+            'ingreso' => IngresoProducto::findOrFail($id),
+        ]);
+    }
+
+    /**
+     *************************************************************************
+     * Nombre........:
+     * Tipo..........: Funcion
+     * Entrada.......:
+     * Salida........:
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+     */
+    public function eliminarIngreso($id)
+    {
+
+        try {
+            DB::beginTransaction();
+            $ingreso = IngresoProducto::findOrFail($id);
+            foreach ($ingreso->detalles as $detalle) {
+                $producto = Producto::withTrashed()->findOrFail($detalle->producto_id);
+                $producto->cantidad = $producto->cantidad - $detalle->cantidad;
+                $producto->update();
+            }
+            $ingreso->delete();
+            DB::commit();
+            return redirect('inventario/listaIngresos');
+        }catch (QueryException $e) {
+            DB::rollback();
+            return redirect('inventario/listaIngresos')->with(['message' => 'No es posible eliminar el ingreso']);
+        }
+
+    }
+
 }
