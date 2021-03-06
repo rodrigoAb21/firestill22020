@@ -350,7 +350,6 @@ class InventarioController extends Controller
             $ingreso = new IngresoProducto();
             $ingreso->fecha = $request['fecha'];
             $ingreso->total = $request['total'];
-            $ingreso->foto_factura = $request['foto_factura'];
             if (Input::hasFile('foto_factura')) {
                 $file = Input::file('foto_factura');
                 $file->move(public_path() . '/img/ingresoProducto/',

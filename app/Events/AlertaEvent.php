@@ -15,7 +15,6 @@ class AlertaEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 
-
     /**
      * Create a new event instance.
      *

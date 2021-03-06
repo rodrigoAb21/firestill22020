@@ -30,8 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('marcas','MarcaClasificacionController');
     Route::resource('notificaciones','NotificacionController');
 
-    Route::resource('ventas','VentaController');
-
     // ------------------------------ INGRESO H -------------------------------------------
 
     Route::get('herramientas/listaIngresos','HerramientaController@listaIngresos');
@@ -113,6 +111,21 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('inventario', 'InventarioController');
 
+
+    // ------------------------------------- VENTAS ------------------------------------
+    Route::get('ventas/ventas','VentaController@ventas');
+    Route::get('ventas/nuevaVenta','VentaController@nuevaVenta');
+    Route::post('ventas/guardarVenta','VentaController@guardarVenta');
+    Route::get('ventas/verVenta/{id}','VentaController@verVenta');
+    Route::delete('ventas/eliminarVenta/{id}','VentaController@eliminarVenta');
+
+
+    // ------------------------------------- SERVICIOS ------------------------------------
+    Route::get('ventas/servicios','ServicioController@servicios');
+    Route::get('ventas/nuevoServicio','ServicioController@nuevoServicio');
+    Route::post('ventas/guardarServicio','ServicioController@guardarServicio');
+    Route::get('ventas/verServicio/{id}','ServicioController@verServicio');
+    Route::delete('ventas/eliminarServicio/{id}','ServicioController@eliminarServicio');
 
 
 });

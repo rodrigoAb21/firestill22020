@@ -16,10 +16,16 @@ class CreateNotaVentaTable extends Migration
         Schema::create('nota_venta', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->boolean('venta');
-            $table->boolean('servicio');
+            $table->boolean('tipo')->default(true);
             $table->float('total');
             $table->softDeletes();
+
+
+            $table->unsignedInteger('empleado_id');
+            $table->foreign('empleado_id')->references('id')->on('empleado');
+
+            $table->unsignedInteger('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('cliente');
         });
     }
 

@@ -5,32 +5,28 @@ namespace App\Modelos;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DetalleNotaVenta extends Model
+class Servicio extends Model
 {
     /**
      *************************************************************************
-     * Clase.........: DetalleNotaVenta
+     * Clase.........: Servicio
      * Tipo..........: Modelo (MVC)
-     * Descripción...: Clase que representa a la tabla "detalle_nota_venta" en
+     * Descripción...: Clase que representa a la tabla "servicio" en
      * la BD.
      * Fecha.........: 05-MAR-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
      */
 
-    protected $table = 'detalle_nota_venta';
+    protected $table = 'servicio';
     protected $primaryKey = 'id';
     public $timestamps = false;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'cantidad',
+        'nombre',
         'precio',
         'nota_venta_id',
-        'producto_id',
     ];
 
-    public function producto(){
-        return $this->belongsTo('App\Modelos\Producto', 'producto_id', 'id')->withTrashed();
-    }
 }

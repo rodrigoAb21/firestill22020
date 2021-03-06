@@ -292,8 +292,8 @@ class DatabaseSeeder extends Seeder
                 ' >400mm( a partir de 3kg/3lts)',
             'precio' => '80',
             'cantidad' => '0',
-            'categoria_id ' => '2',
-            'proveedor_id ' => '3',
+            'categoria_id' => 2,
+            'proveedor_id' => 3,
         ]);
 
         DB::table('producto')->insert([
@@ -305,20 +305,20 @@ class DatabaseSeeder extends Seeder
                 'reforzado con difusor de bocina tipo pico-pato.',
             'precio' => '90',
             'cantidad' => '0',
-            'categoria_id ' => '2',
-            'proveedor_id ' => '2',
+            'categoria_id' => 2,
+            'proveedor_id' => 3,
         ]);
 
         DB::table('producto')->insert([
-            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'nombre' => 'Mangueras para Extintores de PQS',
             'foto' => 'm2.png',
             'descripcion' => 'Manguera para descarga de extintores portátiles' .
                 ' de polvo químico seco, su diámetro interior uniforme ' .
                 'favorece la descarga del agente.',
             'precio' => '110',
             'cantidad' => '0',
-            'categoria_id ' => '2',
-            'proveedor_id ' => '2',
+            'categoria_id' => 2,
+            'proveedor_id' => 3,
         ]);
 
         DB::table('producto')->insert([
@@ -327,8 +327,8 @@ class DatabaseSeeder extends Seeder
             'descripcion' => 'Manometro para extintor.',
             'precio' => '60',
             'cantidad' => '0',
-            'categoria_id ' => '3',
-            'proveedor_id ' => '2',
+            'categoria_id' => 3,
+            'proveedor_id' => 2,
         ]);
 
         DB::table('producto')->insert([
@@ -337,8 +337,8 @@ class DatabaseSeeder extends Seeder
             'descripcion' => 'Manometro para extintor.',
             'precio' => '45',
             'cantidad' => '0',
-            'categoria_id ' => '3',
-            'proveedor_id ' => '2',
+            'categoria_id' => 3,
+            'proveedor_id' => 2,
         ]);
 
         DB::table('producto')->insert([
@@ -347,8 +347,8 @@ class DatabaseSeeder extends Seeder
             'descripcion' => 'Manometro para extintor.',
             'precio' => '50',
             'cantidad' => '0',
-            'categoria_id ' => '3',
-            'proveedor_id ' => '2',
+            'categoria_id' => 3,
+            'proveedor_id' => 2,
         ]);
     }
 }

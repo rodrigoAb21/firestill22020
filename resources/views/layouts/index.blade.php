@@ -260,11 +260,27 @@
                             </a>
                         </li>
 
+
+
                         <li class="{{ Request::is('ventas*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('ventas')}}" >
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                                 <i class="fas fa-dollar-sign"></i>
                                 <span class="hide-menu"> Ventas y Servicios</span>
                             </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li class="{{ Request::is('ventas/ventas*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('ventas/ventas')}}" >
+
+                                        <span>  Ventas</span>
+                                    </a>
+                                </li>
+                                <li class="{{ Request::is('ventas/servicios*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('ventas/servicios')}}" >
+
+                                        <span>  Servicios</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
 
