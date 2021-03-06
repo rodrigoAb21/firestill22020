@@ -27,7 +27,7 @@
                             @foreach($asignaciones as $asignacion)
                                 <tr class="text-center">
                                     <td>{{$asignacion->id}}</td>
-                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $asignacion->fecha)->format('d - m - Y')}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $asignacion->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$asignacion->empleado->nombre}}</td>
                                     <td>{{$asignacion->estado}}</td>
                                     <td>

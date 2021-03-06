@@ -40,29 +40,16 @@ class ServicioController extends Controller
             $venta->cliente_id = $request['cliente_id'];
             $venta->save();
 
-            $idProductos = $request->get('idProductoT');
-            $cant = $request->get('cantidadT');
-            $precios = $request->get('precioT');
-            $cont = 0;
-
             $nombres = $request->get('nombresT');
             $preciosS = $request->get('preciosST');
 
+            $idProductos = $request->get('idProductoT');
+            $cant = $request->get('cantidadT');
+            $precios = $request->get('precioT');
 
-            while ($cont < count($idProductos)) {
-                // --------- DETALLE----------
-                $detalle = new DetalleNotaVenta();
-                $detalle->cantidad = $cant[$cont];
-                $detalle->precio = $precios[$cont];
-                $detalle->producto_id = $idProductos[$cont];
-                $detalle->nota_venta_id = $venta->id;
-                $detalle->save();
+            $cont = 0;
 
-                $producto =
-                    Producto::findOrfail($detalle->producto_id);
-                $producto->cantidad =
-                    $producto->cantidad - $detalle->cantidad;
-                $producto->update();
+            while ($cont < count($nombres)) {
 
                 // --------- SERVICIOS ----------
                 $servicio = new Servicio();
@@ -70,6 +57,22 @@ class ServicioController extends Controller
                 $servicio->precio = $preciosS[$cont];
                 $servicio->nota_venta_id = $venta->id;
                 $servicio->save();
+
+                if ($idProductos != null){
+                    // --------- DETALLE----------
+                    $detalle = new DetalleNotaVenta();
+                    $detalle->cantidad = $cant[$cont];
+                    $detalle->precio = $precios[$cont];
+                    $detalle->producto_id = $idProductos[$cont];
+                    $detalle->nota_venta_id = $venta->id;
+                    $detalle->save();
+
+                    $producto =
+                        Producto::findOrfail($detalle->producto_id);
+                    $producto->cantidad =
+                        $producto->cantidad - $detalle->cantidad;
+                    $producto->update();
+                }
 
                 $cont = $cont + 1;
             }

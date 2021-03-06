@@ -29,7 +29,7 @@
                                     <td>{{$baja->id}}</td>
                                     <td>{{$baja->producto->nombre}}</td>
                                     <td>{{$baja->cantidad}}</td>
-                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $baja->fecha)->format('d - m - Y')}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $baja->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$baja->motivo}}</td>
                                     <td>
                                         <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$baja -> nombre}}', '{{url('inventario/anularBaja/'.$baja -> id)}}')">

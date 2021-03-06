@@ -37,7 +37,7 @@
                             @foreach($ingresos as $ingreso)
                                 <tr class="text-center">
                                     <td>{{$ingreso->id}}</td>
-                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d - m - Y')}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$ingreso->nro_factura}}</td>
                                     <td>{{$ingreso->total}}</td>
                                     <td>

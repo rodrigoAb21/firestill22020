@@ -28,7 +28,7 @@
                             @foreach($ventas as $venta)
                                 <tr class="text-center">
                                     <td>{{$venta->id}}</td>
-                                    <td>{{$venta->fecha}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $venta->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$venta->cliente->nombre_empresa}}</td>
                                     <td>{{$venta->empleado->nombre}} {{$venta->empleado->apellido}}</td>
                                     <td>{{$venta->total}}</td>

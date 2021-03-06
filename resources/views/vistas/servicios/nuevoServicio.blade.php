@@ -311,7 +311,7 @@
             }
 
             function evaluar(){
-                if (cont > 0 || contS > 0) {
+                if (contS > 0) {
                     $("#guardar").show();
                 }else{
                     $("#guardar").hide();

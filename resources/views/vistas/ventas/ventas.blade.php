@@ -19,6 +19,7 @@
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
                                 <th class="text-center">CLIENTE</th>
+                                <th class="text-center">EMPLEADO</th>
                                 <th class="text-center">TOTAL BS</th>
                                 <th class="text-center">OPC</th>
                             </tr>
@@ -27,8 +28,9 @@
                             @foreach($ventas as $venta)
                                 <tr class="text-center">
                                     <td>{{$venta->id}}</td>
-                                    <td>{{$venta->fecha}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $venta->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$venta->cliente->nombre_empresa}}</td>
+                                    <td>{{$venta->empleado->nombre}} {{$venta->empleado->apellido}}</td>
                                     <td>{{$venta->total}}</td>
                                     <td>
                                         <a href="{{url('ventas/verVenta/'.$venta->id)}}">
