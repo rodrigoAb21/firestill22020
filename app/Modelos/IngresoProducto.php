@@ -28,8 +28,12 @@ class IngresoProducto extends Model
         'nro_factura',
         'foto_factura',
         'total',
+        'proveedor_id',
     ];
 
+    public function proveedor(){
+        return $this->belongsTo('App\Modelos\Proveedor', 'proveedor_id', 'id')->withTrashed();
+    }
     public function detalles(){
         return $this->hasMany(DetalleIngresoProducto::class);
     }

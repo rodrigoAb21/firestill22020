@@ -28,6 +28,7 @@
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
                                 <th class="text-center">NRO FACTURA</th>
+                                <th class="text-center">PROVEEDOR</th>
                                 <th class="text-center">TOTAL BS</th>
                                 <th class="text-center">OPC</th>
                             </tr>
@@ -39,6 +40,7 @@
                                     <td>{{$ingreso->id}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$ingreso->nro_factura}}</td>
+                                    <td>{{$ingreso->proveedor->nombre}}</td>
                                     <td>{{$ingreso->total}}</td>
                                     <td>
                                         <a href="{{url('inventario/verIngreso/'.$ingreso->id)}}">

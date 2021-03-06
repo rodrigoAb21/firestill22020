@@ -245,15 +245,18 @@ class HerramientaController extends Controller
             }
             $ingreso->nro_factura = $request['nro_factura'];
             $ingreso->tienda = $request['tienda'];
+            $ingreso->total = $request['total'];
             $ingreso->save();
 
             $idHerramientas = $request->get('idHerramientaT');
             $cant = $request->get('cantidadT');
+            $costo = $request->get('costoT');
             $cont = 0;
 
             while ($cont < count($idHerramientas)) {
                 $detalle = new DetalleIngresoHerramienta();
                 $detalle->cantidad = $cant[$cont];
+                $detalle->costo = $costo[$cont];
                 $detalle->herramienta_id = $idHerramientas[$cont];
                 $detalle->ingreso_herramienta_id = $ingreso->id;
                 $detalle->save();
@@ -271,7 +274,7 @@ class HerramientaController extends Controller
 
             DB::commit();
 
-        } catch (Exception $e) {
+        } catch (QueryException $e) {
 
             DB::rollback();
 

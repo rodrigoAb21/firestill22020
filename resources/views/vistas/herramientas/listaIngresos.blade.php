@@ -26,6 +26,8 @@
                             <tr>
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
+                                <th class="text-center">TIENDA</th>
+                                <th class="text-center">TOTAL Bs</th>
                                 <th class="text-center">OPC</th>
                             </tr>
                             </thead>
@@ -35,6 +37,8 @@
                                 <tr class="text-center">
                                     <td>{{$ingreso->id}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d-m-Y')}}</td>
+                                    <td>{{$ingreso->tienda}}</td>
+                                    <td>{{$ingreso->total}}</td>
                                     <td>
                                         <a href="{{url('herramientas/verIngreso/'.$ingreso->id)}}">
                                             <button class="btn btn-secondary">

@@ -28,6 +28,7 @@ class IngresoHerramienta extends Model
         'tienda',
         'nro_factura',
         'foto_factura',
+        'total',
     ];
 
     public function detalles(){

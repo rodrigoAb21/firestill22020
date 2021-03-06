@@ -20,7 +20,7 @@
                                            name="nombre">
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Precio Bs</label>
                                     <input required
@@ -29,25 +29,14 @@
                                            name="precio">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Foto</label>
-                                    <input required
+                                    <input
                                            type="file"
                                            accept="image/*"
                                            name="foto"
                                            class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Proveedor</label>
-                                    <select name="proveedor_id" class="form-control">
-                                        @foreach($proveedores as $proveedor)
-                                            <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

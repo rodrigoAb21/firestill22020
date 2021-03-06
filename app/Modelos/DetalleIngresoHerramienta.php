@@ -26,6 +26,7 @@ class DetalleIngresoHerramienta extends Model
         'ingreso_herramienta',
         'herramienta_id',
         'cantidad',
+        'costo',
     ];
 
     public function herramienta(){

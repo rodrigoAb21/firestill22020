@@ -56,8 +56,10 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th class="text-center">HERRAMIENTA</th>
-                                <th class="text-center">CANTIDAD</th>
+                                <th class="text-center w-50">PRODUCTO</th>
+                                <th class="text-center">CANT</th>
+                                <th class="text-center">COSTO U. Bs</th>
+                                <th class="text-center">SUBTOTAL</th>
                             </tr>
                             </thead>
                             <tbody id="detalle">
@@ -65,9 +67,19 @@
                                 <tr class="text-center">
                                     <td>{{$detalle->herramienta->nombre}}</td>
                                     <td>{{$detalle->cantidad}}</td>
+                                    <td>{{$detalle->costo}}</td>
+                                    <td>{{$detalle->costo * $detalle->cantidad}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
+                            <tfoot>
+                            <tr class="text-center">
+                                <td></td>
+                                <td></td>
+                                <td><b>TOTAL</b></td>
+                                <td><span id="total">{{$ingreso->total}}</span> Bs</td>
+                            </tr>
+                            </tfoot>
                         </table>
 
                     </div>

@@ -35,8 +35,4 @@ class Producto extends Model
     public function categoria(){
         return $this->belongsTo('App\Modelos\Categoria', 'categoria_id', 'id')->withTrashed();
     }
-
-    public function proveedor(){
-        return $this->belongsTo('App\Modelos\Proveedor', 'proveedor_id', 'id')->withTrashed();
-    }
 }

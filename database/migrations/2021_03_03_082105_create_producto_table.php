@@ -25,8 +25,6 @@ class CreateProductoTable extends Migration
             $table->unsignedInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categoria');
 
-            $table->unsignedInteger('proveedor_id');
-            $table->foreign('proveedor_id')->references('id')->on('proveedor');
         });
     }
 

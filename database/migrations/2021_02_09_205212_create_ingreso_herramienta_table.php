@@ -19,6 +19,7 @@ class CreateIngresoHerramientaTable extends Migration
             $table->string('tienda');
             $table->string('nro_factura');
             $table->string('foto_factura');
+            $table->float('total');
             $table->softDeletes();
         });
     }

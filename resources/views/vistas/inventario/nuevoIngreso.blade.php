@@ -11,7 +11,7 @@
                     <form method="POST" action="{{url('inventario/guardarIngreso')}}" autocomplete="off" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Fecha</label>
                                     <input required
@@ -21,7 +21,7 @@
                                            name="fecha">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Factura</label>
                                     <input
@@ -31,13 +31,23 @@
                                             class="form-control">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Nro Factura</label>
                                     <input required
                                            name="nro_factura"
                                            type="text"
                                            class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Proveedor</label>
+                                    <select name="proveedor_id" class="form-control">
+                                        @foreach($proveedores as $proveedor)
+                                            <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

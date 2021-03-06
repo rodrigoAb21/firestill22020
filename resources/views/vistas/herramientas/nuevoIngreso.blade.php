@@ -61,12 +61,17 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <input class="form-control" placeholder="Cantidad" type="number" id="cantidad">
                             </div>
                         </div>
-
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Costo U." step="0.01" type="number" id="costo">
+                            </div>
+                        </div>
+                        <input name="total" hidden step="0.001" type="number" id="tt">
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-sm btn-block">
@@ -83,10 +88,21 @@
                                 <th class="text-right">OPC</th>
                                 <th class="text-center w-50">HERRAMIENTA</th>
                                 <th class="text-center">CANTIDAD</th>
+                                <th class="text-center">COSTO U. Bs</th>
+                                <th class="text-center">SUBTOTAL</th>
                             </tr>
                             </thead>
                             <tbody id="detalle">
                             </tbody>
+                            <tfoot>
+                            <tr class="text-center">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><b>TOTAL</b></td>
+                                <td><span id="total">0</span> Bs</td>
+                            </tr>
+                            </tfoot>
                         </table>
 
                     </div>
@@ -110,14 +126,22 @@
             );
 
             var cont = 0;
+            var cantidad = 0;
+            var costo = 0;
+            var total = 0;
+            var subtotal = [];
 
             function agregar() {
                 cantidad = $('#cantidad').val();
+                costo = $('#costo').val();
+                subtotal[cont] = (cantidad * costo).toFixed(2);
+                total = parseFloat(total) + parseFloat(subtotal[cont]);
+                total = parseFloat(total).toFixed(2);
                 if(cont>=0 && cantidad != null && cantidad > 0) {
                     idHerramienta = $('#selectorHerramienta').val();
                     nombreHerramienta = $('#selectorHerramienta option:selected').text();
                     var fila =
-                        '<tr id="fila' + cont + '">' +
+                        '<tr class="text-center" id="fila' + cont + '">' +
                         '<td>' +
                         '<button type="button" class="btn btn-danger btn-sm" onclick="quitar(' + cont + ');">' +
                         '<i class="fa fa-times" aria-hidden="true"></i>' +
@@ -131,16 +155,29 @@
                         '   <input hidden name="cantidadT[]" value="'+cantidad+'">'+
                         cantidad +
                         '</td>' +
+                        '<td>' +
+                        '   <input hidden name="costoT[]" value="'+costo+'">'+
+                        costo +
+                        '</td>' +
+                        '<td>' +
+                        subtotal[cont] +
+                        '</td>' +
                         '</tr>';
                     cont++;
                     $("#detalle").append(fila); // sirve para anhadir una fila a los detalles
+                    $("#total").html(total);
 
                 }
                 $('#cantidad').val("");
+                $('#costo').val("");
+                $('#tt').val(total);
                 evaluar();
             }
 
             function quitar(index){
+                total = total - subtotal[index];
+                $("#total").html(total);
+                $('#tt').val(total);
                 cont--;
                 $("#fila" + index).remove();
                 evaluar()

@@ -22,7 +22,7 @@
                                            name="nombre">
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Precio Bs</label>
                                     <input required
@@ -32,7 +32,7 @@
                                            name="precio">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Foto</label>
                                     <input
@@ -41,21 +41,6 @@
                                            name="foto"
                                            value="{{$producto->foto}}"
                                            class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Proveedor</label>
-                                    <select name="proveedor_id" class="form-control">
-                                        @foreach($proveedores as $proveedor)
-                                            @if($proveedor->id == $producto->proveedor_id)
-                                                <option selected value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
-                                            @else
-                                                <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

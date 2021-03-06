@@ -63,7 +63,6 @@ class InventarioController extends Controller
         return view('vistas.inventario.create',
             [
                 'categorias' => Categoria::all(),
-                'proveedores' => Proveedor::all(),
             ]);
     }
 
@@ -98,7 +97,6 @@ class InventarioController extends Controller
         $producto->cantidad = 0;
         $producto->precio = $request['precio'];
         $producto->categoria_id = $request['categoria_id'];
-        $producto->proveedor_id = $request['proveedor_id'];
         $producto->save();
 
         return redirect('inventario');
@@ -123,7 +121,6 @@ class InventarioController extends Controller
             [
                 'producto' => Producto::findOrFail($id),
                 'categorias' => Categoria::all(),
-                'proveedores' => Proveedor::all(),
             ]);
     }
 
@@ -330,6 +327,7 @@ class InventarioController extends Controller
     {
         return view('vistas.inventario.nuevoIngreso', [
             'productos' => Producto::all(),
+            'proveedores' => Proveedor::all(),
         ]);
     }
 
@@ -360,6 +358,7 @@ class InventarioController extends Controller
                 $ingreso->foto_factura = 'default.png';
             }
             $ingreso->nro_factura = $request['nro_factura'];
+            $ingreso->proveedor_id = $request['proveedor_id'];
             $ingreso->save();
 
             $idProductos = $request->get('idProductoT');

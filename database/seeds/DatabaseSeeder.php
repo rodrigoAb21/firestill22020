@@ -293,7 +293,6 @@ class DatabaseSeeder extends Seeder
             'precio' => '80',
             'cantidad' => '0',
             'categoria_id' => 2,
-            'proveedor_id' => 3,
         ]);
 
         DB::table('producto')->insert([
@@ -306,7 +305,6 @@ class DatabaseSeeder extends Seeder
             'precio' => '90',
             'cantidad' => '0',
             'categoria_id' => 2,
-            'proveedor_id' => 3,
         ]);
 
         DB::table('producto')->insert([
@@ -318,7 +316,6 @@ class DatabaseSeeder extends Seeder
             'precio' => '110',
             'cantidad' => '0',
             'categoria_id' => 2,
-            'proveedor_id' => 3,
         ]);
 
         DB::table('producto')->insert([
@@ -328,7 +325,6 @@ class DatabaseSeeder extends Seeder
             'precio' => '60',
             'cantidad' => '0',
             'categoria_id' => 3,
-            'proveedor_id' => 2,
         ]);
 
         DB::table('producto')->insert([
@@ -338,7 +334,6 @@ class DatabaseSeeder extends Seeder
             'precio' => '45',
             'cantidad' => '0',
             'categoria_id' => 3,
-            'proveedor_id' => 2,
         ]);
 
         DB::table('producto')->insert([
@@ -348,7 +343,6 @@ class DatabaseSeeder extends Seeder
             'precio' => '50',
             'cantidad' => '0',
             'categoria_id' => 3,
-            'proveedor_id' => 2,
         ]);
     }
 }
