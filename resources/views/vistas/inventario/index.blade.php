@@ -7,6 +7,9 @@
                     <h2 class="pb-2">
                         <i class="fa fa-boxes"></i> Inventario de Productos
                         <div class="float-right">
+                            <a class="btn btn-danger" href="{{url('inventario/reporte')}}">
+                                <i class="fa fa-file-pdf"></i>  PDF
+                            </a>
                             <a class="btn btn-success" href="{{url('inventario/create')}}">
                                 <i class="fa fa-plus"></i>  Nuevo
                             </a>
@@ -20,7 +23,7 @@
                                 <th class="text-center">IMG</th>
                                 <th class="text-center">NOMBRE</th>
                                 <th class="text-center">CATEGORIA</th>
-                                <th class="text-center">CANTIDAD</th>
+                                <th class="text-center">EXISTENCIAS</th>
                                 <th class="text-center">OPC</th>
                             </tr>
                             </thead>

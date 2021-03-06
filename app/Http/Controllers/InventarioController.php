@@ -11,6 +11,7 @@ use App\Modelos\Proveedor;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Input;
 
 class InventarioController extends Controller
@@ -445,4 +446,8 @@ class InventarioController extends Controller
 
     }
 
+    public function reporte(){
+        $pdf = PDF::loadView('vistas.inventario.reporte',[ 'productos' => Producto::all()->sortBy('categoria_id')])->setPaper('letter', 'portrait');
+        return $pdf->download('inventario_'.date('d-m-Y_H_i_s').'.pdf');
+    }
 }

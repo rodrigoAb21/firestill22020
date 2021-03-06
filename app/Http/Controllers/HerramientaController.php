@@ -9,6 +9,7 @@ use App\Modelos\DetalleIngresoHerramienta;
 use App\Modelos\Empleado;
 use App\Modelos\Herramienta;
 use App\Modelos\IngresoHerramienta;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -647,4 +648,8 @@ class HerramientaController extends Controller
         ]);
     }
 
+    public function reporte(){
+        $pdf = PDF::loadView('vistas.herramientas.reporte',[ 'herramientas' => Herramienta::all()->sortBy('nombre')])->setPaper('letter', 'portrait');
+        return $pdf->download('inventario_herramientas_'.date('d-m-Y_H_i_s').'.pdf');
+    }
 }

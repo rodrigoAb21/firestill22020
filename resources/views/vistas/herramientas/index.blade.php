@@ -7,6 +7,9 @@
                     <h2 class="pb-2">
                         <i class="fa fa-tools"></i> Herramientas
                         <div class="float-right">
+                            <a class="btn btn-danger" href="{{url('herramientas/reporte')}}">
+                                <i class="fa fa-file-pdf"></i>  PDF
+                            </a>
                             <a class="btn btn-success" href="{{url('herramientas/create')}}">
                                 <i class="fa fa-plus"></i>  Nueva
                             </a>

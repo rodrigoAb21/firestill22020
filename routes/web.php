@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::get('herramientas/verAsignacion/{id}','HerramientaController@verAsignacion');
     Route::delete('herramientas/eliminarAsignacion/{id}','HerramientaController@eliminarAsignacion');
 
+    Route::get('herramientas/reporte', 'HerramientaController@reporte');
+
     Route::resource('herramientas','HerramientaController');
 
     // ------------------------------ CONTRATO -------------------------------------------
@@ -109,6 +111,7 @@ Route::middleware('auth')->group(function () {
     Route::post('inventario/darBaja','InventarioController@darBaja');
     Route::delete('inventario/anularBaja/{id}','InventarioController@anularBaja');
 
+    Route::get('inventario/reporte', 'InventarioController@reporte');
     Route::resource('inventario', 'InventarioController');
 
 
