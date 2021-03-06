@@ -69,7 +69,7 @@ class VentaController extends Controller
 
         }
 
-        return redirect('inventario/listaIngresos');
+        return redirect('ventas/ventas');
 
     }
     public function verVenta($id)

@@ -5,10 +5,10 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        <i class="fas fa-dollar-sign"></i> Ventas
+                        <i class="fas fa-dollar-sign"></i> Servicios
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('ventas/nuevaVenta')}}">
-                                <i class="fa fa-plus"></i>  Nueva
+                            <a class="btn btn-success" href="{{url('ventas/nuevoServicio')}}">
+                                <i class="fa fa-plus"></i>  Nuevo
                             </a>
                         </div>
                     </h2>
@@ -19,6 +19,7 @@
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
                                 <th class="text-center">CLIENTE</th>
+                                <th class="text-center">EMPLEADO</th>
                                 <th class="text-center">TOTAL BS</th>
                                 <th class="text-center">OPC</th>
                             </tr>
@@ -29,14 +30,15 @@
                                     <td>{{$venta->id}}</td>
                                     <td>{{$venta->fecha}}</td>
                                     <td>{{$venta->cliente->nombre_empresa}}</td>
+                                    <td>{{$venta->empleado->nombre}} {{$venta->empleado->apellido}}</td>
                                     <td>{{$venta->total}}</td>
                                     <td>
-                                        <a href="{{url('ventas/verVenta/'.$venta->id)}}">
+                                        <a href="{{url('ventas/verServicio/'.$venta->id)}}">
                                             <button class="btn btn-secondary">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$venta -> id}}', '{{url('ventas/eliminarVenta/'.$venta -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$venta -> id}}', '{{url('ventas/eliminarServicio/'.$venta -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
