@@ -70,6 +70,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
+
         $categoria = new Categoria();
         $categoria->nombre = $request['nombre'];
         $categoria->save();
@@ -112,6 +116,10 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
+
         $categoria = Categoria::findOrFail($id);
         $categoria->nombre = $request['nombre'];
         $categoria->update();

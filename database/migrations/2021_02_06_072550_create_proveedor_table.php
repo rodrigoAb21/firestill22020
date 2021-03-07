@@ -29,7 +29,7 @@ class CreateProveedorTable extends Migration
             $table->string('nombre');
             $table->string('nit')->nullable();
             $table->string('email')->nullable();
-            $table->string('direccion')->nullable();
+            $table->string('direccion');
             $table->string('telefono');
             $table->text('informacion')->nullable();
             $table->string('titular')->nullable();

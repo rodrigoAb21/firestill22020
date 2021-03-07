@@ -69,6 +69,17 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+            'apellido' => 'required|max:255',
+            'carnet' => 'required|string|max:10',
+            'telefono' => 'nullable|digits_between:7,8',
+            'direccion' => 'nullable|max:255',
+            'email' => 'required|max:255|email|unique:empleado',
+            'password' => 'nullable|string|max:255',
+            'tipo' => 'required|max:255',
+        ]);
+
         $empleado = new Empleado();
         $empleado->nombre = $request['nombre'];
         $empleado->apellido = $request['apellido'];
@@ -138,6 +149,17 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+            'apellido' => 'required|max:255',
+            'carnet' => 'required|string|max:10',
+            'telefono' => 'nullable|digits_between:7,8',
+            'direccion' => 'nullable|max:255',
+            'email' => 'required|max:255|email',
+            'password' => 'nullable|string|max:255',
+            'tipo' => 'required|max:255',
+        ]);
+
         $empleado = Empleado::findOrFail($id);
         $empleado->nombre = $request['nombre'];
         $empleado->apellido = $request['apellido'];

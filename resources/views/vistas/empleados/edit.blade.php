@@ -1,6 +1,15 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+    *************************************************************************
+     * Nombre........: create
+     * Tipo..........: Vista
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+    -->
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +17,16 @@
                     <h3 class="pb-2">
                         Editar empleado
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{url('empleados/'.$empleado -> id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
@@ -25,7 +44,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Apellido</label>
-                                    <input
+                                    <input required
                                             type="text"
                                            class="form-control"
                                             value="{{$empleado->apellido}}"
@@ -46,7 +65,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Tipo</label>
-                                    <select name="tipo" class="form-control">
+                                    <select required name="tipo" class="form-control">
                                         @foreach($tipos as $tipo)
                                             @if($tipo == $empleado->tipo)
                                                 <option selected value="{{$tipo}}">{{$tipo}}</option>
@@ -64,6 +83,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
+                                           maxlength="10"
                                            value="{{$empleado->carnet}}"
                                            name="carnet">
                                 </div>
@@ -72,7 +92,7 @@
                                 <div class="form-group">
                                     <label>Telefono</label>
                                     <input
-                                           type="text"
+                                           type="number"
                                            class="form-control"
                                            value="{{$empleado->telefono}}"
                                            name="telefono">
@@ -82,7 +102,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
-                                    <input
+                                    <input required
                                            type="email"
                                            class="form-control"
                                            value="{{$empleado->email}}"
@@ -95,7 +115,6 @@
                                     <input
                                            type="password"
                                            class="form-control"
-                                           value="{{$empleado->email}}"
                                            name="password">
                                 </div>
                             </div>

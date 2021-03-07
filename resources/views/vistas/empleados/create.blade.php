@@ -1,6 +1,15 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+    *************************************************************************
+     * Nombre........: create
+     * Tipo..........: Vista
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+    -->
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +17,16 @@
                     <h3 class="pb-2">
                         Nuevo empleado
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{url('empleados')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
@@ -23,8 +42,8 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Apellido</label>
-                                    <input
-                                            type="text"
+                                    <input required
+                                           type="text"
                                            class="form-control"
                                            name="apellido">
                                 </div>
@@ -41,7 +60,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Tipo</label>
-                                    <select name="tipo" class="form-control">
+                                    <select required name="tipo" class="form-control">
                                         @foreach($tipos as $tipo)
                                             <option value="{{$tipo}}">{{$tipo}}</option>
                                         @endforeach
@@ -52,6 +71,7 @@
                                 <div class="form-group">
                                     <label>Carnet</label>
                                     <input required
+                                           maxlength="10"
                                            type="text"
                                            class="form-control"
                                            name="carnet">
@@ -60,8 +80,8 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Telefono</label>
-                                    <input
-                                           type="text"
+                                    <input max="79999999"
+                                           type="number"
                                            class="form-control"
                                            name="telefono">
                                 </div>
@@ -69,7 +89,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
-                                    <input
+                                    <input required
                                            type="email"
                                            class="form-control"
                                            name="email">

@@ -17,8 +17,8 @@ class CreateIngresoHerramientaTable extends Migration
             $table->increments('id');
             $table->date('fecha');
             $table->string('tienda');
-            $table->string('nro_factura');
-            $table->string('foto_factura');
+            $table->string('nro_factura')->nullable();
+            $table->string('foto_factura')->nullable();
             $table->float('total');
             $table->softDeletes();
         });

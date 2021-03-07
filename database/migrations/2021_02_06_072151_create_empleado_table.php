@@ -28,12 +28,12 @@ class CreateEmpleadoTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('carnet')->nullable();
+            $table->string('carnet');
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
-            $table->string('tipo')->nullable();
-            $table->string('email')->nullable()->unique();
-            $table->string('password')->nullable();
+            $table->string('tipo');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->softDeletes();
             $table->rememberToken();
         });

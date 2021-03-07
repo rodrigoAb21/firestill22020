@@ -30,8 +30,8 @@ class CreateFichaTecnicaTable extends Migration
             $table->string('eVastago');
             $table->string('eDifusor');
             $table->string('eDisco');
-            $table->float('carga');
-            $table->text('observacion');
+            $table->float('carga')->nullable();
+            $table->text('observacion')->nullable();
             $table->string('resultado');
             $table->softDeletes();
 
