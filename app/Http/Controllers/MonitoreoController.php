@@ -11,6 +11,7 @@ use App\Modelos\Sucursal;
 use App\Modelos\TipoClasificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use LaravelQRCode\Facades\QRCode;
 
 class MonitoreoController extends Controller
 {
@@ -179,7 +180,11 @@ class MonitoreoController extends Controller
         $equipo->sucursal_id = $request['sucursal_id'];
         $equipo->tipo_clasificacion_id = $request['tipo_clasificacion_id'];
         $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];
-        $equipo->save();
+        if ($equipo->save()){
+            $direccion = public_path('img/equipos/codigos/'.$equipo->id.'.png');
+            $datos = $equipo->id;
+            QRCode::text($datos)->setSize(10)->setOutfile($direccion)->png();
+        }
 
         return redirect('imonitoreo/editarSucursal/'.$request['sucursal_id']);
     }

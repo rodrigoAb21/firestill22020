@@ -150,12 +150,14 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
+                        @if(Auth::user()->tipo == 'Administrador')
                         <li class="{{ Request::is('empleados*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('empleados')}}" >
                                 <i class="fa fa-id-card"></i>
                                 <span class="hide-menu"> Empleados</span>
                             </a>
                         </li>
+                        @endif
                         <li class="{{ Request::is('proveedores*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('proveedores')}}" >
                                 <i class="fa fa-truck"></i>

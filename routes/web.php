@@ -21,9 +21,11 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
+    Route::middleware('administrador')->group(function () {
+        Route::resource('empleados','EmpleadoController');
+    });
 
     Route::resource('proveedores','ProveedorController');
-    Route::resource('empleados','EmpleadoController');
     Route::resource('clientes','ClienteController');
     Route::resource('categorias','CategoriaController');
     Route::resource('tipos','TipoClasificacionController');

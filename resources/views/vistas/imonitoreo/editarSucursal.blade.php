@@ -76,6 +76,11 @@
                                         <td>{{$equipo->tipo->nombre}}</td>
                                         <td>{{$equipo->marca->nombre}}</td>
                                         <td>
+                                            <a href="{{asset('img/equipos/codigos/'.$equipo->id.'.png')}}" download>
+                                                <button class="btn btn-secondary">
+                                                    <i class="fas fa-qrcode"></i>
+                                                </button>
+                                            </a>
                                             <a href="{{url('imonitoreo/editarEquipo/'.$equipo->id)}}">
                                                 <button class="btn btn-warning">
                                                     <i class="fa fa-pen"></i>
