@@ -79,6 +79,8 @@ Route::middleware('auth')->group(function () {
     Route::get('imonitoreo/editarSucursal/{id}','MonitoreoController@editarSucursal');
     Route::patch('imonitoreo/actualizarSucursal/{id}','MonitoreoController@actualizarSucursal');
     Route::delete('imonitoreo/eliminarSucursal/{id}','MonitoreoController@eliminarSucursal');
+    Route::get('imonitoreo/listarFichas/{id}','MonitoreoController@listarFichas');
+    Route::get('imonitoreo/verFicha/{id}','MonitoreoController@verFicha');
 
 
     // ------------------------------ EQUIPO -------------------------------------------

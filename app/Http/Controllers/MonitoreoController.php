@@ -6,6 +6,7 @@ use App\Modelos\Cliente;
 use App\Modelos\Contrato;
 use App\Modelos\Empleado;
 use App\Modelos\Equipo;
+use App\Modelos\FichaTecnica;
 use App\Modelos\MarcaClasificacion;
 use App\Modelos\Sucursal;
 use App\Modelos\TipoClasificacion;
@@ -233,10 +234,19 @@ class MonitoreoController extends Controller
 
 
     //-----------------------------------------------------------------------
-    //-----------------------------AGENDA------------------------------------
+    //-----------------------------FICHAS TECNICAS------------------------------------
     //-----------------------------------------------------------------------
 
-    public function agenda(){
-        return view('vistas.imonitoreo.agenda');
+    public function listarFichas($id){
+        return view('vistas.imonitoreo.listarFichas',
+        [
+            'equipo' => Equipo::findOrFail($id),
+            'fichas' => FichaTecnica::where('equipo_id', '=', $id)->orderByDesc('id')->get(),
+        ]);
+    }
+    public function verFicha($id){
+        return view('vistas.imonitoreo.verFicha', [
+            'ficha' => FichaTecnica::findOrFail($id),
+        ]);
     }
 }

@@ -77,7 +77,7 @@
                                         <td>{{$equipo->marca->nombre}}</td>
                                         <td>
                                             <a href="{{asset('img/equipos/codigos/'.$equipo->id.'.png')}}" download>
-                                                <button class="btn btn-secondary">
+                                                <button class="btn btn-primary">
                                                     <i class="fas fa-qrcode"></i>
                                                 </button>
                                             </a>
