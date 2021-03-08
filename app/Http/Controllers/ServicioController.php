@@ -18,7 +18,7 @@ class ServicioController extends Controller
     public function servicios()
     {
         return view('vistas.servicios.servicios', [
-            'ventas' => NotaVenta::where('tipo', '=', false)->paginate(5)
+            'ventas' => NotaVenta::where('tipo', '=', false)->orderByDesc('id')->paginate(5)
         ]);
     }
     public function nuevoServicio()
@@ -78,7 +78,13 @@ class ServicioController extends Controller
                 $servicio->nota_venta_id = $venta->id;
                 $servicio->save();
 
-                if ($idProductos != null){
+                $cont = $cont + 1;
+            }
+
+            if ($idProductos != null){
+                $cont = 0;
+
+                while ($cont < count($idProductos)){
                     // --------- DETALLE----------
                     $detalle = new DetalleNotaVenta();
                     $detalle->cantidad = $cant[$cont];
@@ -92,10 +98,11 @@ class ServicioController extends Controller
                     $producto->cantidad =
                         $producto->cantidad - $detalle->cantidad;
                     $producto->update();
-                }
 
-                $cont = $cont + 1;
+                    $cont = $cont + 1;
+                }
             }
+
 
             DB::commit();
 
