@@ -47,6 +47,15 @@ class MonitoreoController extends Controller
     }
 
     public function guardarContrato(Request $request){
+        $this->validate($request, [
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date',
+            'periodo' => 'required|numeric|min:1',
+            'cliente_id' => 'required|numeric|min:1',
+            'empleado_id' => 'required|numeric|min:1',
+            'documento' => 'nullable|file|mimes:doc,docx,pdf,txt',
+        ]);
+
         $contrato = new Contrato();
         $contrato->fecha_inicio = $request['fecha_inicio'];
         $contrato->fecha_fin = $request['fecha_fin'];
@@ -84,6 +93,15 @@ class MonitoreoController extends Controller
     }
 
     public function actualizarContrato(Request $request, $id){
+        $this->validate($request, [
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date',
+            'periodo' => 'required|numeric|min:1',
+            'cliente_id' => 'required|numeric|min:1',
+            'empleado_id' => 'required|numeric|min:1',
+            'documento' => 'nullable|file|mimes:doc,docx,pdf,txt',
+        ]);
+
         $contrato = Contrato::findOrFail($id);
         $contrato->fecha_inicio = $request['fecha_inicio'];
         $contrato->fecha_fin = $request['fecha_fin'];
@@ -120,6 +138,12 @@ class MonitoreoController extends Controller
 
 
     public function guardarSucursal(Request $request){
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'required|string|max:255',
+            'contrato_id' => 'required|numeric|min:1',
+        ]);
+
         $sucursal = new Sucursal();
         $sucursal->nombre = $request['nombre'];
         $sucursal->direccion = $request['direccion'];
@@ -142,6 +166,10 @@ class MonitoreoController extends Controller
     }
 
     public function actualizarSucursal(Request $request, $id){
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'required|string|max:255',
+        ]);
         $sucursal = Sucursal::findOrFail($id);
         $sucursal->nombre = $request['nombre'];
         $sucursal->direccion = $request['direccion'];
@@ -170,6 +198,19 @@ class MonitoreoController extends Controller
         ]);
     }
     public function guardarEquipo(Request $request){
+        $this->validate($request, [
+            'nro_serie' => 'required|numeric',
+            'descripcion' => 'required|string|max:255',
+            'unidad_medida' => 'required|string|max:255',
+            'ano_fabricacion' => 'required|numeric|digits:4',
+            'capacidad' => 'required|numeric|min:1',
+            'presion_min' => 'required|numeric|min:0',
+            'presion_max' => 'required|numeric|min:1',
+            'sucursal_id' => 'required|numeric|min:1',
+            'tipo_clasificacion_id' => 'required|numeric|min:1',
+            'marca_clasificacion_id' => 'required|numeric|min:1',
+        ]);
+
         $equipo = new Equipo();
         $equipo->nro_serie = $request['nro_serie'];
         $equipo->descripcion = $request['descripcion'];
@@ -206,6 +247,18 @@ class MonitoreoController extends Controller
         ]);
     }
     public function actualizarEquipo(Request $request, $id){
+        $this->validate($request, [
+            'nro_serie' => 'required|numeric',
+            'descripcion' => 'required|string|max:255',
+            'unidad_medida' => 'required|string|max:255',
+            'ano_fabricacion' => 'required|numeric|digits:4',
+            'capacidad' => 'required|numeric|min:1',
+            'presion_min' => 'required|numeric|min:0',
+            'presion_max' => 'required|numeric|min:1',
+            'tipo_clasificacion_id' => 'required|numeric|min:1',
+            'marca_clasificacion_id' => 'required|numeric|min:1',
+        ]);
+
         $equipo = Equipo::findOrFail($id);
         $equipo->nro_serie = $request['nro_serie'];
         $equipo->descripcion = $request['descripcion'];

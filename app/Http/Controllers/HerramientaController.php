@@ -81,6 +81,10 @@ class HerramientaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
+
         $herramienta = new Herramienta();
         $herramienta->nombre = $request['nombre'];
         $herramienta->cantidad_taller = 0;
@@ -146,6 +150,10 @@ class HerramientaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
+
         $herramienta = Herramienta::findOrFail($id);
         $herramienta->nombre = $request['nombre'];
         $herramienta->save();
@@ -230,11 +238,24 @@ class HerramientaController extends Controller
      */
     public function guardarIngreso(Request $request)
     {
+        $this->validate($request, [
+            'fecha' => 'required|date',
+            'tienda' => 'required|string|max:255',
+            'nro_factura' => 'nullable|numeric|min:0',
+            'foto_factura' => 'nullable|image|mimes:jpg,jpeg,bmp,png',
+            'total' => 'required|numeric|min:0',
+            'idHerramientaT' => 'required|array|min:1',
+            'idHerramientaT.*' => 'required|numeric|min:0',
+            'cantidadT' => 'required|array|min:1',
+            'cantidadT.*' => 'required|numeric|min:0',
+            'costoT' => 'required|array|min:1',
+            'costoT.*' => 'required|numeric|min:0',
+        ]);
+
         try {
             DB::beginTransaction();
             $ingreso = new IngresoHerramienta();
             $ingreso->fecha = $request['fecha'];
-            $ingreso->foto_factura = $request['foto_factura'];
             if (Input::hasFile('foto_factura')) {
                 $file = Input::file('foto_factura');
                 $file->move(public_path() . '/img/ingresoHerramienta/',
@@ -389,6 +410,14 @@ class HerramientaController extends Controller
      */
     public function darBaja(Request $request)
     {
+        $this->validate($request, [
+            'fecha' => 'required|date',
+            'motivo' => 'required|string|max:255',
+            'cantidad' => 'required|numeric|min:1',
+            'herramienta_id' => 'required|numeric|min:0',
+            'empleado_id' => 'required|numeric|min:0',
+        ]);
+
         $baja  = new BajaHerramienta();
         $baja->fecha = $request['fecha'];
         $baja->motivo = $request['motivo'];
@@ -486,6 +515,7 @@ class HerramientaController extends Controller
     public function guardarAsignacion(Request $request)
     {
         try {
+            DB::beginTransaction();
             $asignacion = new AsignacionHerramienta();
             $asignacion->fecha = $request['fecha'];
             $asignacion->estado = 'Activa';
@@ -587,7 +617,20 @@ class HerramientaController extends Controller
      */
     public function guardarReingreso(Request $request, $id)
     {
+
+        $this->validate($request, [
+            'idHerramientaT' => 'required|array|min:1',
+            'idHerramientaT.*' => 'required|numeric|min:0',
+            'cantidadAT' => 'required|array|min:1',
+            'cantidadAT.*' => 'required|numeric|min:0',
+            'cantidadRT' => 'required|array|min:1',
+            'cantidadRT.*' => 'required|numeric|min:0',
+            'motivoT' => 'nullable|array|min:1',
+            'motivoT.*' => 'nullable|string|max:255',
+        ]);
+
         try {
+            DB::beginTransaction();
             $asignacion = AsignacionHerramienta::findOrFail($id);
             $asignacion->estado = 'Finalizada';
             $asignacion->update();
@@ -622,9 +665,11 @@ class HerramientaController extends Controller
             }
             DB::commit();
 
-        } catch (Exception $e) {
+        } catch (QueryException $e) {
 
             DB::rollback();
+
+            return redirect('herramientas/listaAsignaciones')->with(['message' => 'No se pudo realizar el reingreso.']);
 
         }
 

@@ -71,6 +71,17 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre_empresa' => 'required|max:255',
+            'nit' => 'nullable|numeric',
+            'email' => 'nullable|email|max:255',
+            'telefono_empresa' => 'nullable|digits_between:7,8',
+            'direccion' => 'nullable|string|max:255',
+            'nombre_encargado' => 'nullable|string|max:255',
+            'cargo_encargado' => 'nullable|string|max:255',
+            'telefono_encargado' => 'nullable|digits_between:7,8',
+        ]);
+
         $cliente = new Cliente();
         $cliente->nombre_empresa = $request['nombre_empresa'];
         $cliente->nit = $request['nit'];
@@ -138,6 +149,17 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre_empresa' => 'required|max:255',
+            'nit' => 'nullable|numeric',
+            'email' => 'nullable|email|max:255',
+            'telefono_empresa' => 'nullable|digits_between:7,8',
+            'direccion' => 'nullable|string|max:255',
+            'nombre_encargado' => 'nullable|string|max:255',
+            'cargo_encargado' => 'nullable|string|max:255',
+            'telefono_encargado' => 'nullable|digits_between:7,8',
+        ]);
+
         $cliente = Cliente::findOrFail($id);
         $cliente->nombre_empresa = $request['nombre_empresa'];
         $cliente->nit = $request['nit'];

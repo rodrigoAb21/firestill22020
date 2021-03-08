@@ -1,6 +1,15 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+    *************************************************************************
+     * Nombre........: create
+     * Tipo..........: Vista
+     * Descripcion...:
+     * Fecha.........: 07-FEB-2021
+     * Autor.........: Rodrigo Abasto Berbetty
+     *************************************************************************
+    -->
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +17,15 @@
                     <h3 class="pb-2">
                         Nuevo cliente
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('clientes')}}" autocomplete="off">
                         {{csrf_field()}}
                     <h4>Datos Empresa</h4>
@@ -26,7 +44,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>NIT/CI</label>
-                                    <input required
+                                    <input 
                                            type="text"
                                            class="form-control"
                                            name="nit">
@@ -36,7 +54,8 @@
                                 <div class="form-group">
                                     <label>Telefono</label>
                                     <input
-                                           type="text"
+                                           type="number"
+                                           max="79999999"
                                            class="form-control"
                                            name="telefono_empresa">
                                 </div>
@@ -44,7 +63,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input required
+                                    <input 
                                            type="email"
                                            class="form-control"
                                            name="email">
@@ -54,8 +73,9 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Dirección</label>
-                                    <input required
+                                    <input 
                                            type="text"
+                                           maxlength="255"
                                            class="form-control"
                                            name="direccion">
                                 </div>
@@ -69,7 +89,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input required
+                                <input 
                                        type="text"
                                        class="form-control"
                                        name="nombre_encargado">
@@ -92,7 +112,7 @@
                             <div class="form-group">
                                 <label>Telefono</label>
                                 <input
-                                        type="text"
+                                        type="number"
                                         class="form-control"
                                         name="telefono_encargado">
                             </div>

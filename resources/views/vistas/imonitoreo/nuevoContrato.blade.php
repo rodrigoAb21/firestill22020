@@ -1,6 +1,14 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,13 +16,23 @@
                     <h3 class="pb-2">
                         Nuevo contrato
                     </h3>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('imonitoreo/guardarContrato')}}" autocomplete="off" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Cliente</label>
-                                    <select name="cliente_id" class="form-control">
+                                    <select required name="cliente_id" class="form-control">
                                         @foreach($clientes as $cliente)
                                             <option value="{{$cliente->id}}">{{$cliente->nombre_empresa}}</option>
                                         @endforeach
@@ -24,7 +42,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Representante Firestill</label>
-                                    <select name="empleado_id" class="form-control">
+                                    <select required name="empleado_id" class="form-control">
                                         @foreach($empleados as $empleado)
                                             <option value="{{$empleado->id}}">{{$empleado->nombre}} {{$empleado->apellido}}</option>
                                         @endforeach

@@ -1,6 +1,14 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +16,16 @@
                     <h3 class="pb-2">
                         Reingreso de herramientas
                     </h3>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('herramientas/guardarReingreso/'.$asignacion->id)}}" autocomplete="off">
                         {{csrf_field()}}
 
@@ -47,11 +65,11 @@
                                     <tr class="text-center">
                                         <td>
                                             {{$detalle->herramienta->nombre}}
-                                            <input name="idHerramientaT[]" type="hidden" value="{{$detalle->herramienta_id}}">
+                                            <input required name="idHerramientaT[]" type="hidden" value="{{$detalle->herramienta_id}}">
                                         </td>
                                         <td>
                                             {{$detalle->cantidad}}
-                                            <input name="cantidadAT[]" type="hidden" value="{{$detalle->cantidad}}">
+                                            <input required name="cantidadAT[]" type="hidden" value="{{$detalle->cantidad}}">
                                         </td>
                                         <td>
                                             <input class="form-control" name="cantidadRT[]" type="number" value="{{$detalle->cantidad}}" max="{{$detalle->cantidad}}" required>

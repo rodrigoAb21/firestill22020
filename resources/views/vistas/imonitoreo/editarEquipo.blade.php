@@ -1,6 +1,14 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +16,15 @@
                     <h3 class="pb-2">
                         Editar Equipo
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('imonitoreo/actualizarEquipo/'.$equipo->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
@@ -36,12 +53,12 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Tipo</label>
-                                    <select name="tipo_clasificacion_id" class="form-control">
+                                    <select required name="tipo_clasificacion_id" class="form-control">
                                         @foreach($tipos as $tipo)
                                             @if($tipo->id == $equipo->tipo_clasificacion_id)
-                                            <option selected value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                                                <option selected value="{{$tipo->id}}">{{$tipo->nombre}}</option>
                                             @else
-                                            <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                                                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -50,7 +67,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Marca</label>
-                                    <select name="marca_clasificacion_id" class="form-control">
+                                    <select required name="marca_clasificacion_id" class="form-control">
                                         @foreach($marcas as $marca)
                                             @if($marca->id == $equipo->marca_clasificacion_id)
                                                 <option selected value="{{$marca->id}}">{{$marca->nombre}}</option>
@@ -76,7 +93,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>U.Medida</label>
-                                    <select name="unidad_medida" class="form-control">
+                                    <select required name="unidad_medida" class="form-control">
                                         @foreach($unidades as $unidad)
                                             @if($unidad == $equipo->unidad_medida)
                                                 <option selected value="{{$unidad}}">{{$unidad}}</option>
@@ -109,11 +126,11 @@
                                            name="presion_max">
                                 </div>
                             </div>
-
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Descripción</label>
-                                    <textarea name="descripcion"
+                                    <textarea required
+                                              name="descripcion"
                                               cols="30"
                                               class="form-control"
                                               rows="3">{{$equipo->nro_serie}}</textarea>

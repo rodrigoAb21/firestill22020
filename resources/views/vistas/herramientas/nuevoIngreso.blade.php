@@ -1,6 +1,16 @@
 @extends('layouts.index')
-
 @section('contenido')
+
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +18,15 @@
                     <h3 class="pb-2">
                         Nuevo Ingreso
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('herramientas/guardarIngreso')}}" autocomplete="off" enctype="multipart/form-data">
                         {{csrf_field()}}
                     <div class="row">
@@ -34,7 +53,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Nro Factura</label>
-                                <input required
+                                <input
                                        name="nro_factura"
                                        type="text"
                                        class="form-control">
@@ -71,7 +90,7 @@
                                 <input class="form-control" placeholder="Costo U." step="0.01" type="number" id="costo">
                             </div>
                         </div>
-                        <input name="total" hidden step="0.001" type="number" id="tt">
+                        <input name="total" required hidden step="0.001" type="number" id="tt">
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-sm btn-block">
@@ -148,15 +167,15 @@
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input name="idHerramientaT[]" hidden value="'+idHerramienta+'">'+
+                        '   <input required name="idHerramientaT[]" hidden value="'+idHerramienta+'">'+
                         nombreHerramienta +
                         '</td>' +
                         '<td>' +
-                        '   <input hidden name="cantidadT[]" value="'+cantidad+'">'+
+                        '   <input required hidden name="cantidadT[]" value="'+cantidad+'">'+
                         cantidad +
                         '</td>' +
                         '<td>' +
-                        '   <input hidden name="costoT[]" value="'+costo+'">'+
+                        '   <input required hidden name="costoT[]" value="'+costo+'">'+
                         costo +
                         '</td>' +
                         '<td>' +

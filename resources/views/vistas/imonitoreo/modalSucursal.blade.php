@@ -16,13 +16,13 @@
 
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <input class="form-control" name="nombre" type="text">
+                                    <input required class="form-control" name="nombre" type="text">
                                 </div>
                                 <div class="form-group">
                                     <label>Ubicacion</label>
-                                    <input class="form-control" name="direccion" type="text">
+                                    <input required class="form-control" name="direccion" type="text">
                                 </div>
-                            <input type="hidden" value="{{$contrato->id}}" name="contrato_id">
+                            <input required type="hidden" value="{{$contrato->id}}" name="contrato_id">
                             <div class="float-right">
                                 <button type="submit" class="btn btn-info">Guardar</button>
                             </div>
