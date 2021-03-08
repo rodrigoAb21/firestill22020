@@ -9,6 +9,7 @@ use App\Modelos\NotaVenta;
 use App\Modelos\Producto;
 use App\Modelos\Servicio;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,7 @@ class ServicioController extends Controller
         return view('vistas.servicios.nuevoServicio',[
             'clientes' => Cliente::all(),
             'empleados' => Empleado::all(),
-            'productos' => Producto::all(),
+            'productos' => Producto::where('cantidad', '>', 0)->get(),
         ]);
     }
     public function guardarServicio(Request $request)
@@ -101,6 +102,7 @@ class ServicioController extends Controller
         } catch (QueryException $e) {
 
             DB::rollback();
+            return redirect('ventas/servicios')->with(['message' => 'No es posible realizar el servicio.']);
 
         }
 

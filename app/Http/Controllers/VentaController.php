@@ -24,7 +24,7 @@ class VentaController extends Controller
         return view('vistas.ventas.nuevaVenta',[
             'clientes' => Cliente::all(),
             'empleados' => Empleado::all(),
-            'productos' => Producto::all(),
+            'productos' => Producto::where('cantidad', '>', 0)->get(),
         ]);
     }
     public function guardarVenta(Request $request)
@@ -80,6 +80,7 @@ class VentaController extends Controller
 
             DB::rollback();
 
+            return redirect('ventas/ventas')->with(['message' => 'No es posible realizar la venta.']);
         }
 
         return redirect('ventas/ventas');

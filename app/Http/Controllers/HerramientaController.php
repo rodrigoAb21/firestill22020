@@ -546,9 +546,11 @@ class HerramientaController extends Controller
 
             DB::commit();
 
-        } catch (Exception $e) {
+        } catch (QueryException $e) {
 
             DB::rollback();
+
+            return redirect('herramientas/listaAsignaciones')->with(['message' => 'No es posible realizar la asignacion.']);
 
         }
 

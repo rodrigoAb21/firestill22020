@@ -188,11 +188,18 @@
                             </table>
 
                         </div>
-
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center">
+                                    <h2>TOTAL: <span id="tt3">0</span> Bs</h2>
+                                </div>
+                            </div>
+                        </div>
                         <a href="{{url('ventas/ventas')}}" class="btn btn-warning">Atras</a>
                         <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
 
                     </form>
+
                 </div>
             </div>
         </div>
@@ -266,6 +273,7 @@
                 $('#precio').val("");
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 evaluar();
             }
 
@@ -302,6 +310,7 @@
                 $('#precioS').val("");
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 evaluar();
             }
 
@@ -311,6 +320,7 @@
                 $("#total").html(totalV);
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 cont--;
                 $("#fila" + index).remove();
                 evaluar();
@@ -322,6 +332,7 @@
                 $("#totalS").html(totalS);
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 contS--;
                 $("#filaS" + index).remove();
                 evaluar();
