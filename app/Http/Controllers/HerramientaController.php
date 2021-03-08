@@ -243,13 +243,13 @@ class HerramientaController extends Controller
             'tienda' => 'required|string|max:255',
             'nro_factura' => 'nullable|numeric|min:0',
             'foto_factura' => 'nullable|image|mimes:jpg,jpeg,bmp,png',
-            'total' => 'required|numeric|min:0',
+            'total' => 'required|numeric|min:1',
             'idHerramientaT' => 'required|array|min:1',
-            'idHerramientaT.*' => 'required|numeric|min:0',
+            'idHerramientaT.*' => 'required|numeric|min:1',
             'cantidadT' => 'required|array|min:1',
-            'cantidadT.*' => 'required|numeric|min:0',
+            'cantidadT.*' => 'required|numeric|min:1',
             'costoT' => 'required|array|min:1',
-            'costoT.*' => 'required|numeric|min:0',
+            'costoT.*' => 'required|numeric|min:1',
         ]);
 
         try {
@@ -414,8 +414,8 @@ class HerramientaController extends Controller
             'fecha' => 'required|date',
             'motivo' => 'required|string|max:255',
             'cantidad' => 'required|numeric|min:1',
-            'herramienta_id' => 'required|numeric|min:0',
-            'empleado_id' => 'required|numeric|min:0',
+            'herramienta_id' => 'required|numeric|min:1',
+            'empleado_id' => 'required|numeric|min:1',
         ]);
 
         $baja  = new BajaHerramienta();

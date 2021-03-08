@@ -70,6 +70,10 @@ class TipoClasificacionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
+
         $tipo = new TipoClasificacion();
         $tipo->nombre = $request['nombre'];
         $tipo->save();
@@ -112,6 +116,10 @@ class TipoClasificacionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
+
         $tipo = TipoClasificacion::findOrFail($id);
         $tipo->nombre = $request['nombre'];
         $tipo->update();

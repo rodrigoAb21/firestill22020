@@ -1,6 +1,14 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +16,15 @@
                     <h3 class="pb-2">
                         Baja de la producto: {{$producto->nombre}}
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('inventario/darBaja')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">

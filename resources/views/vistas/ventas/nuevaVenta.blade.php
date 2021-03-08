@@ -1,6 +1,15 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +17,15 @@
                     <h3 class="pb-2">
                         NUEVA VENTA
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('ventas/guardarVenta')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
@@ -25,7 +43,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Cliente</label>
-                                    <select name="cliente_id" class="form-control">
+                                    <select required name="cliente_id" class="form-control">
                                         @foreach($clientes as $cliente)
                                             <option value="{{$cliente->id}}">{{$cliente->nombre_empresa}}</option>
                                         @endforeach
@@ -37,7 +55,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Empleado</label>
-                                    <select name="empleado_id" class="form-control">
+                                    <select required name="empleado_id" class="form-control">
                                         @foreach($empleados as $empleado)
                                             <option value="{{$empleado->id}}">{{$empleado->nombre}} {{$empleado->apellido}}</option>
                                         @endforeach
@@ -149,16 +167,16 @@
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input name="idProductoT[]" hidden value="'+idProducto+'">'+
+                        '   <input required name="idProductoT[]" hidden value="'+idProducto+'">'+
                         nombreProducto +
                         '</td>' +
 
                         '<td>' +
-                        '   <input hidden name="precioT[]" value="'+precio+'">'+
+                        '   <input required hidden name="precioT[]" value="'+precio+'">'+
                         precio +
                         '</td>' +
                         '<td>' +
-                        '   <input hidden name="cantidadT[]" value="'+cantidad+'">'+
+                        '   <input required hidden name="cantidadT[]" value="'+cantidad+'">'+
                         cantidad +
                         '</td>' +
                         '<td>' +

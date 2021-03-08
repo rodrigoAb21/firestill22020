@@ -73,6 +73,22 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'nit' => 'nullable|numeric|min:0',
+            'email' => 'nullable|email',
+            'direccion' => 'required|string|max:255',
+            'telefono' => 'required|digits_between:7,8',
+            'informacion' => 'nullable|string|max:255',
+            'titular' => 'nullable|string|max:255',
+            'banco' => 'nullable|string|max:255',
+            'sucursal' => 'nullable|string|max:255',
+            'nro_cuenta' => 'nullable|numeric|min:0',
+            'moneda' => 'nullable|string|max:255',
+            'tipo_identificacion' => 'nullable|string|max:255',
+            'nro_identificacion' => 'nullable|string|max:255',
+        ]);
+
         $proveedor = new Proveedor();
         $proveedor->nombre = $request['nombre'];
         $proveedor->nit = $request['nit'];
@@ -151,6 +167,22 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'nit' => 'nullable|numeric|min:0',
+            'email' => 'nullable|email',
+            'direccion' => 'required|string|max:255',
+            'telefono' => 'required|digits_between:7,8',
+            'informacion' => 'nullable|string|max:255',
+            'titular' => 'nullable|string|max:255',
+            'banco' => 'nullable|string|max:255',
+            'sucursal' => 'nullable|string|max:255',
+            'nro_cuenta' => 'nullable|numeric|min:0',
+            'moneda' => 'nullable|string|max:255',
+            'tipo_identificacion' => 'nullable|string|max:255',
+            'nro_identificacion' => 'nullable|string|max:255',
+        ]);
+
         $proveedor = Proveedor::findOrFail($id);
         $proveedor->nombre = $request['nombre'];
         $proveedor->nit = $request['nit'];

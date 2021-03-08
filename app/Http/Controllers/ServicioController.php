@@ -30,6 +30,25 @@ class ServicioController extends Controller
     }
     public function guardarServicio(Request $request)
     {
+        $this->validate($request, [
+            'fecha' => 'required|date',
+            'empleado_id' => 'nullable|numeric|min:0',
+            'cliente_id' => 'required|numeric|min:1',
+            'total' => 'required|numeric|min:0',
+
+            'idProductoT' => 'nullable|array|min:0',
+            'idProductoT.*' => 'nullable|numeric|min:1',
+            'cantidadT' => 'nullable|array|min:0',
+            'cantidadT.*' => 'nullable|numeric|min:1',
+            'precioT' => 'nullable|array|min:0',
+            'precioT.*' => 'nullable|numeric|min:0',
+
+            'nombresT' => 'required|array|min:1',
+            'nombresT.*' => 'required|string|max:255',
+            'preciosST' => 'required|array|min:1',
+            'preciosST.*' => 'required|numeric|min:0',
+        ]);
+
         try {
             DB::beginTransaction();
             $venta = new NotaVenta();

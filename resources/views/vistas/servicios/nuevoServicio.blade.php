@@ -1,6 +1,15 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +17,15 @@
                     <h3 class="pb-2">
                         Nuevo Servicio
                     </h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('ventas/guardarServicio')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
@@ -25,7 +43,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Cliente</label>
-                                    <select name="cliente_id" class="form-control">
+                                    <select required name="cliente_id" class="form-control">
                                         @foreach($clientes as $cliente)
                                             <option value="{{$cliente->id}}">{{$cliente->nombre_empresa}}</option>
                                         @endforeach
@@ -37,7 +55,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Empleado</label>
-                                    <select name="empleado_id" class="form-control">
+                                    <select required name="empleado_id" class="form-control">
                                         @foreach($empleados as $empleado)
                                             <option value="{{$empleado->id}}">{{$empleado->nombre}} {{$empleado->apellido}}</option>
                                         @endforeach
@@ -47,8 +65,8 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Total Bs</label>
-                                    <input class="form-control" readonly value="0" id="tt">
-                                    <input class="form-control" name="total" hidden id="tt2">
+                                    <input required class="form-control" readonly value="0" id="tt">
+                                    <input required class="form-control" name="total" hidden id="tt2">
                                 </div>
                             </div>
 
@@ -223,16 +241,16 @@
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input name="idProductoT[]" hidden value="'+idProducto+'">'+
+                        '   <input required name="idProductoT[]" hidden value="'+idProducto+'">'+
                         nombreProducto +
                         '</td>' +
 
                         '<td>' +
-                        '   <input hidden name="precioT[]" value="'+precio+'">'+
+                        '   <input required hidden name="precioT[]" value="'+precio+'">'+
                         precio +
                         '</td>' +
                         '<td>' +
-                        '   <input hidden name="cantidadT[]" value="'+cantidad+'">'+
+                        '   <input required hidden name="cantidadT[]" value="'+cantidad+'">'+
                         cantidad +
                         '</td>' +
                         '<td>' +
@@ -266,12 +284,12 @@
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input name="nombresT[]" hidden value="'+nombreS+'">'+
+                        '   <input required name="nombresT[]" hidden value="'+nombreS+'">'+
                         nombreS +
                         '</td>' +
 
                         '<td>' +
-                        '   <input hidden name="preciosST[]" value="'+precioS[contS]+'">'+
+                        '   <input required hidden name="preciosST[]" value="'+precioS[contS]+'">'+
                         precioS[contS] +
                         '</td>' +
                         '</tr>';

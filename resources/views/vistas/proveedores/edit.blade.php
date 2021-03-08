@@ -1,6 +1,14 @@
 @extends('layouts.index')
-
 @section('contenido')
+    <!--
+	*************************************************************************
+	 * Nombre........: create
+	 * Tipo..........: Vista
+	 * Descripcion...:
+	 * Fecha.........: 07-FEB-2021
+	 * Autor.........: Rodrigo Abasto Berbetty
+	 *************************************************************************
+	-->
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -8,6 +16,16 @@
                     <h3 class="pb-2">
                         Editar proveedor
                     </h3>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{url('proveedores/'.$proveedor -> id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
@@ -27,7 +45,7 @@
                                 <div class="form-group">
                                     <label>NIT</label>
                                     <input
-                                            type="text"
+                                            type="number"
                                             class="form-control"
                                             value="{{$proveedor->nit}}"
                                             name="nit">
@@ -36,7 +54,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input required
+                                    <input
                                            type="email"
                                            class="form-control"
                                            value="{{$proveedor->email}}"
@@ -46,7 +64,7 @@
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Direccion</label>
-                                    <input
+                                    <input required
                                             type="text"
                                             class="form-control"
                                             value="{{$proveedor->direccion}}"
@@ -57,8 +75,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Telefono</label>
-                                    <input
-                                            type="text"
+                                    <input required
+                                            type="number"
                                             class="form-control"
                                             value="{{$proveedor->telefono}}"
                                             name="telefono">
@@ -84,7 +102,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Titular</label>
-                                    <input required
+                                    <input
                                            type="text"
                                            class="form-control"
                                            value="{{$proveedor->titular}}"
@@ -122,7 +140,7 @@
                                 <div class="form-group">
                                     <label>Nro Cuenta</label>
                                     <input
-                                            type="text"
+                                            type="number"
                                             class="form-control"
                                             value="{{$proveedor->nro_cuenta}}"
                                             name="nro_cuenta">

@@ -70,6 +70,9 @@ class MarcaClasificacionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
         $marca = new MarcaClasificacion();
         $marca->nombre = $request['nombre'];
         $marca->save();
@@ -112,6 +115,10 @@ class MarcaClasificacionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+        ]);
+
         $marca = MarcaClasificacion::findOrFail($id);
         $marca->nombre = $request['nombre'];
         $marca->update();

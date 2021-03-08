@@ -82,6 +82,14 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,bmp,png',
+            'descripcion' => 'nullable|string|max:255',
+            'precio' => 'required|numeric|min:0',
+            'categoria_id' => 'required|numeric|min:1',
+        ]);
+
         $producto = new Producto();
         $producto->nombre = $request['nombre'];
         $producto->foto = $request['foto'];
@@ -138,6 +146,14 @@ class InventarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,bmp,png',
+            'descripcion' => 'nullable|string|max:255',
+            'precio' => 'required|numeric|min:0',
+            'categoria_id' => 'required|numeric|min:1',
+        ]);
+
         $producto = Producto::findOrFail($id);
         $producto->nombre = $request['nombre'];
         if (Input::hasFile('foto')) {
@@ -248,6 +264,13 @@ class InventarioController extends Controller
      */
     public function darBaja(Request $request)
     {
+        $this->validate($request, [
+            'fecha' => 'required|date',
+            'motivo' => 'required|string|max:255',
+            'cantidad' => 'required|numeric|min:1',
+            'producto_id' => 'required|numeric|min:1',
+        ]);
+
         $baja = new BajaProducto();
         $baja->fecha = $request['fecha'];
         $baja->motivo = $request['motivo'];
@@ -344,6 +367,20 @@ class InventarioController extends Controller
      */
     public function guardarIngreso(Request $request)
     {
+        $this->validate($request, [
+            'fecha' => 'required|date',
+            'proveedor_id' => 'required|numeric|min:1',
+            'nro_factura' => 'nullable|numeric|min:0',
+            'foto_factura' => 'nullable|image|mimes:jpg,jpeg,bmp,png',
+            'total' => 'required|numeric|min:0',
+            'idProductoT' => 'required|array|min:1',
+            'idProductoT.*' => 'required|numeric|min:1',
+            'cantidadT' => 'required|array|min:1',
+            'cantidadT.*' => 'required|numeric|min:1',
+            'costoT' => 'required|array|min:1',
+            'costoT.*' => 'required|numeric|min:0',
+        ]);
+
         try {
             DB::beginTransaction();
             $ingreso = new IngresoProducto();

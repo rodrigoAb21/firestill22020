@@ -29,6 +29,19 @@ class VentaController extends Controller
     }
     public function guardarVenta(Request $request)
     {
+        $this->validate($request, [
+            'fecha' => 'required|date',
+            'empleado_id' => 'nullable|numeric|min:0',
+            'cliente_id' => 'required|numeric|min:1',
+            'total' => 'required|numeric|min:0',
+            'idProductoT' => 'required|array|min:1',
+            'idProductoT.*' => 'required|numeric|min:1',
+            'cantidadT' => 'required|array|min:1',
+            'cantidadT.*' => 'required|numeric|min:1',
+            'precioT' => 'required|array|min:1',
+            'precioT.*' => 'required|numeric|min:1',
+        ]);
+
         try {
             DB::beginTransaction();
             $venta = new NotaVenta();
