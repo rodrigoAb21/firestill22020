@@ -59,7 +59,7 @@
                                 <div class="form-group">
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
                                         @foreach($herramientas as $herramienta)
-                                            <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
+                                            <option value="{{$herramienta->id}}_{{$herramienta->nombre}}_{{$herramienta->cantidad_taller}}">{{$herramienta->nombre}} - Disp: {{$herramienta->cantidad_taller}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -95,7 +95,7 @@
                         </div>
 
                         <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atras</a>
-                        <button type="submit" class="btn btn-info">Guardar</button>
+                        <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
                     </form>
                 </div>
             </div>
@@ -106,14 +106,35 @@
     @endpush
     @push('scripts')
         <script>
+            $(document).ready(
+                function () {
+                    evaluar();
+                    cargarDatos();
+                }
+            );
+
             var cont = 0;
+            var datosHerramienta;
+
+            function evaluar(){
+                if (cont > 0) {
+                    $("#guardar").show();
+                }else{
+                    $("#guardar").hide();
+                }
+            }
+
+            function cargarDatos(){
+                datosHerramienta = document.getElementById('selectorHerramienta').value.split('_');
+            }
+
+            $('#selectorHerramienta').change(cargarDatos);
 
             function agregar() {
                 cantidad = $('#cantidad').val();
-                console.log(cantidad);
-                if(cont>=0 && cantidad != null && cantidad > 0) {
-                    nombreInsumo = $('#selectorHerramienta option:selected').text();
-                    idHerramientaT = $('#selectorHerramienta').val();
+                if(cont >= 0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosHerramienta[2])) {
+                    nombreInsumo = datosHerramienta[1];
+                    idHerramientaT = datosHerramienta[0];
                     var fila =
                         '<tr id="fila' + cont + '">' +
                         '<td>' +
@@ -133,12 +154,15 @@
 
                 }
                 $('#cantidad').val("");
+                evaluar();
             }
 
             function quitar(index){
                 cont--;
                 $("#fila" + index).remove();
+                evaluar();
             }
+
 
 
         </script>
