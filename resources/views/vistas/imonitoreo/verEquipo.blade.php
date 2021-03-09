@@ -126,11 +126,7 @@
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2"></div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 text-center">
-                                        @if($equipo -> presion_actual<$equipo -> presion_min || $equipo -> presion_actual > $equipo -> presion_max)
-                                            <input readonly type="text" class="form-control text-center border-danger" value="{{$equipo -> presion_actual}} PSI">
-                                        @else
-                                            <input readonly type="text" class="form-control text-center border-success" value="{{$equipo -> presion_actual}} PSI">
-                                        @endif
+
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2"></div>
 
