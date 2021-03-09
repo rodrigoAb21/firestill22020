@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Modelos\Cliente;
+use App\Modelos\Equipo;
 use App\Modelos\FichaTecnica;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,25 +28,30 @@ class ApiMovilController extends Controller
             ->join('contrato','sucursal.contrato_id','contrato.id')
             ->where('contrato.cliente_id','=',$id)
             ->where('contrato.fecha_fin','>=',date('Y-m-d'))
+            ->select('sucursal.id', 'sucursal.nombre', 'sucursal.direccion')
             ->get();
 
         return response()->json($sucursales,200);
     }
 
-    public function listarEquipos($id){
+    public function listarEquiposM($id){
         $equipos = DB::table('equipo')->where('equipo.sucursal_id','=',$id)->get();
 
         return response()->json($equipos,200);
     }
 
-    public function detalleEquipo($id){
-        $detalleEquipo= DB::table('equipo')->where('equipo.id','=',$id)->get();
+    public function detalleEquipoM($id){
+        $detalleEquipo= DB::table('equipo')
+            ->join('tipo_clasificacion','tipo_clasificacion.id','equipo.tipo_clasificacion_id')
+            ->join('marca_clasificacion','marca_clasificacion.id','equipo.marca_clasificacion_id')
+            ->where('equipo.id','=',$id)
+            ->get();
 
         return response()->json($detalleEquipo,200);
     }
 
-    public function actualizarGPS(Request $request,$id){
-        $equipo= DB::table('equipo')->where('equipo.id','=',$id)->get();
+    public function actualizarGPSM(Request $request,$id){
+        $equipo= Equipo::findOrFail($id);
 
         $equipo->ubicacion= $request->ubicacion;
         $equipo->longitud_ideal= $request->longitud_ideal;
@@ -56,8 +62,9 @@ class ApiMovilController extends Controller
 
     }
 
-    public function guardarFichaTecnica(Request $request, $id){
+    public function guardarFichaTecnicaM(Request $request, $id){
         $fichaTecnica = new FichaTecnica();
+        $fichaTecnica->equipo_id=$id;
         $fichaTecnica->fecha= date('Y-m-d');
         $fichaTecnica->eCanioPesca= $request->eCanioPesca;
         $fichaTecnica->eZuncho= $request->eZuncho;
