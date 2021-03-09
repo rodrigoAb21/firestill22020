@@ -100,7 +100,17 @@
                                                       readonly
                                                       cols="30"
                                                       class="form-control"
-                                                      rows="3">{{$equipo->nro_serie}}</textarea>
+                                                      rows="3">{{$equipo->descripcion}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Ubicacion</label>
+                                            <textarea name="ubicacion"
+                                                      readonly
+                                                      cols="30"
+                                                      class="form-control"
+                                                      rows="3">{{$equipo->ubicacion}}</textarea>
                                         </div>
                                     </div>
                                 </div>

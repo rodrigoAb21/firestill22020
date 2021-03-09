@@ -25,6 +25,7 @@ class Equipo extends Model
     protected $fillable = [
         'nro_serie',
         'descripcion',
+        'ubicacion',
         'unidad_medida',
         'ano_fabricacion',
         'presion_min',
