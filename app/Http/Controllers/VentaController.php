@@ -16,7 +16,7 @@ class VentaController extends Controller
     public function ventas()
     {
         return view('vistas.ventas.ventas', [
-            'ventas' => NotaVenta::where('tipo', '=', true)->paginate(5)
+            'ventas' => NotaVenta::where('tipo', '=', true)->orderByDesc('id')->paginate(5)
         ]);
     }
     public function nuevaVenta()
@@ -24,7 +24,7 @@ class VentaController extends Controller
         return view('vistas.ventas.nuevaVenta',[
             'clientes' => Cliente::all(),
             'empleados' => Empleado::all(),
-            'productos' => Producto::all(),
+            'productos' => Producto::where('cantidad', '>', 0)->get(),
         ]);
     }
     public function guardarVenta(Request $request)
@@ -80,6 +80,7 @@ class VentaController extends Controller
 
             DB::rollback();
 
+            return redirect('ventas/ventas')->with(['message' => 'No es posible realizar la venta.']);
         }
 
         return redirect('ventas/ventas');

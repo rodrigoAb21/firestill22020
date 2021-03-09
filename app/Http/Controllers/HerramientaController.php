@@ -450,7 +450,7 @@ class HerramientaController extends Controller
     public function anularBaja($id)
     {
         $baja  = BajaHerramienta::findOrFail($id);
-            $herramienta = Herramienta::findOrFail($baja->herramienta_id);
+            $herramienta = Herramienta::withTrashed()->findOrFail($baja->herramienta_id);
             $herramienta->cantidad_taller =
                 $herramienta->cantidad_taller + $baja->cantidad;
             $herramienta->cantidad_total =
@@ -546,9 +546,11 @@ class HerramientaController extends Controller
 
             DB::commit();
 
-        } catch (Exception $e) {
+        } catch (QueryException $e) {
 
             DB::rollback();
+
+            return redirect('herramientas/listaAsignaciones')->with(['message' => 'No es posible realizar la asignacion.']);
 
         }
 

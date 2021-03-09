@@ -201,6 +201,7 @@ class MonitoreoController extends Controller
         $this->validate($request, [
             'nro_serie' => 'required|numeric',
             'descripcion' => 'required|string|max:255',
+            'ubicacion' => 'required|string|max:255',
             'unidad_medida' => 'required|string|max:255',
             'ano_fabricacion' => 'required|numeric|digits:4',
             'capacidad' => 'required|numeric|min:1',
@@ -214,6 +215,7 @@ class MonitoreoController extends Controller
         $equipo = new Equipo();
         $equipo->nro_serie = $request['nro_serie'];
         $equipo->descripcion = $request['descripcion'];
+        $equipo->ubicacion = $request['ubicacion'];
         $equipo->unidad_medida = $request['unidad_medida'];
         $equipo->ano_fabricacion = $request['ano_fabricacion'];
         $equipo->capacidad = $request['capacidad'];
@@ -250,6 +252,7 @@ class MonitoreoController extends Controller
         $this->validate($request, [
             'nro_serie' => 'required|numeric',
             'descripcion' => 'required|string|max:255',
+            'ubicacion' => 'required|string|max:255',
             'unidad_medida' => 'required|string|max:255',
             'ano_fabricacion' => 'required|numeric|digits:4',
             'capacidad' => 'required|numeric|min:1',
@@ -262,6 +265,7 @@ class MonitoreoController extends Controller
         $equipo = Equipo::findOrFail($id);
         $equipo->nro_serie = $request['nro_serie'];
         $equipo->descripcion = $request['descripcion'];
+        $equipo->ubicacion = $request['ubicacion'];
         $equipo->unidad_medida = $request['unidad_medida'];
         $equipo->ano_fabricacion = $request['ano_fabricacion'];
         $equipo->capacidad = $request['capacidad'];

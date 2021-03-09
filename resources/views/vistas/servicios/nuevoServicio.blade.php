@@ -137,7 +137,7 @@
                                 <div class="form-group">
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorProducto" >
                                         @foreach($productos as $producto)
-                                            <option value="{{$producto->id}}">{{$producto->nombre}}</option>
+                                            <option value="{{$producto->id}}_{{$producto->precio}}_{{$producto->cantidad}}_{{$producto->nombre}}">{{$producto->nombre}} - Total:{{$producto->cantidad}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -188,11 +188,18 @@
                             </table>
 
                         </div>
-
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center">
+                                    <h2>TOTAL: <span id="tt3">0</span> Bs</h2>
+                                </div>
+                            </div>
+                        </div>
                         <a href="{{url('ventas/ventas')}}" class="btn btn-warning">Atras</a>
                         <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
 
                     </form>
+
                 </div>
             </div>
         </div>
@@ -205,6 +212,7 @@
             $(document).ready(
                 function () {
                     evaluar();
+                    mostrarPrecio();
                 }
             );
 
@@ -220,19 +228,26 @@
             var totalS = 0;
             var totalV = 0;
 
+            function mostrarPrecio(){
+                datosProducto = document.getElementById('selectorProducto').value.split('_');
+                $('#precio').val(datosProducto[1]);
+            }
+
+            $('#selectorProducto').change(mostrarPrecio);
+
             function agregar() {
 
                 cantidad = $('#cantidad').val();
 
-                if(cont>=0 && cantidad != null && cantidad > 0) {
+                if(cont>=0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosProducto[2])) {
                     precio = parseFloat($('#precio').val()).toFixed(2);
                     subtotal[cont] = (cantidad * precio).toFixed(2);
 
                     totalV = parseFloat(totalV) + parseFloat(subtotal[cont]);
                     total = parseFloat(total) + parseFloat(subtotal[cont]);
                     total = parseFloat(total).toFixed(2);
-                    idProducto = $('#selectorProducto').val();
-                    nombreProducto = $('#selectorProducto option:selected').text();
+                    idProducto = datosProducto[0];
+                    nombreProducto = datosProducto[3];
                     var fila =
                         '<tr  class="text-center" id="fila' + cont + '">' +
                         '<td>' +
@@ -264,16 +279,18 @@
                 }
                 $('#cantidad').val("");
                 $('#precio').val("");
+                mostrarPrecio();
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 evaluar();
             }
 
             function agregarS() {
 
-                nombreS = $('#nombreServicio').val();
+                nombreS = $('#nombreServicio').val().trim();
                 precioS[contS] = parseFloat($('#precioS').val()).toFixed(2);
-                if(contS>=0 && precioS[contS] != null && precioS[contS] > 0) {
+                if(nombreS != null && nombreS != '' && contS>=0 && precioS[contS] != null && precioS[contS] > 0) {
                     totalS = parseFloat(totalS) + parseFloat(precioS[contS]);
                     total = parseFloat(total) + parseFloat(precioS[contS]);
                     var filaS =
@@ -284,12 +301,12 @@
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input required name="nombresT[]" hidden value="'+nombreS+'">'+
+                        '   <input name="nombresT[]" hidden value="'+nombreS+'">'+
                         nombreS +
                         '</td>' +
 
                         '<td>' +
-                        '   <input required hidden name="preciosST[]" value="'+precioS[contS]+'">'+
+                        '   <input hidden name="preciosST[]" value="'+precioS[contS]+'">'+
                         precioS[contS] +
                         '</td>' +
                         '</tr>';
@@ -302,6 +319,7 @@
                 $('#precioS').val("");
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 evaluar();
             }
 
@@ -311,6 +329,7 @@
                 $("#total").html(totalV);
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 cont--;
                 $("#fila" + index).remove();
                 evaluar();
@@ -322,6 +341,7 @@
                 $("#totalS").html(totalS);
                 $('#tt').val(total);
                 $('#tt2').val(total);
+                $("#tt3").html(total);
                 contS--;
                 $("#filaS" + index).remove();
                 evaluar();

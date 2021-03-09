@@ -63,7 +63,6 @@
                                 </div>
                             </div>
                             <input name="total" hidden step="0.01" type="number" id="tt">
-
                         </div>
                         <hr>
                         <h4>Productos</h4>
@@ -73,7 +72,7 @@
                                 <div class="form-group">
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorProducto" >
                                         @foreach($productos as $producto)
-                                            <option value="{{$producto->id}}">{{$producto->nombre}}</option>
+                                            <option value="{{$producto->id}}_{{$producto->precio}}_{{$producto->cantidad}}_{{$producto->nombre}}">{{$producto->nombre}} - Total:{{$producto->cantidad}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -141,6 +140,7 @@
             $(document).ready(
                 function () {
                     evaluar();
+                    mostrarPrecio();
                 }
             );
 
@@ -149,6 +149,16 @@
             var precio = 0;
             var total = 0;
             var subtotal = [];
+            var max;
+
+            var datosProducto;
+
+            function mostrarPrecio(){
+                datosProducto = document.getElementById('selectorProducto').value.split('_');
+                $('#precio').val(datosProducto[1]);
+            }
+
+            $('#selectorProducto').change(mostrarPrecio);
 
             function agregar() {
                 cantidad = $('#cantidad').val();
@@ -156,9 +166,9 @@
                 subtotal[cont] = (cantidad * precio).toFixed(2);
                 total = parseFloat(total) + parseFloat(subtotal[cont]);
                 total = parseFloat(total).toFixed(2);
-                if(cont>=0 && cantidad != null && cantidad > 0) {
-                    idProducto = $('#selectorProducto').val();
-                    nombreProducto = $('#selectorProducto option:selected').text();
+                if(cont>=0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosProducto[2])) {
+                    idProducto = datosProducto[0];
+                    nombreProducto = datosProducto[3];
                     var fila =
                         '<tr  class="text-center" id="fila' + cont + '">' +
                         '<td>' +
@@ -190,6 +200,7 @@
                 }
                 $('#cantidad').val("");
                 $('#precio').val("");
+                mostrarPrecio();
                 $('#tt').val(total);
                 evaluar();
             }
@@ -202,6 +213,8 @@
                 $("#fila" + index).remove();
                 evaluar()
             }
+
+
 
             function evaluar(){
                 if (cont > 0) {

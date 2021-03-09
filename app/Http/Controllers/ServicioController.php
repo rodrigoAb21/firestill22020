@@ -9,6 +9,7 @@ use App\Modelos\NotaVenta;
 use App\Modelos\Producto;
 use App\Modelos\Servicio;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,7 @@ class ServicioController extends Controller
     public function servicios()
     {
         return view('vistas.servicios.servicios', [
-            'ventas' => NotaVenta::where('tipo', '=', false)->paginate(5)
+            'ventas' => NotaVenta::where('tipo', '=', false)->orderByDesc('id')->paginate(5)
         ]);
     }
     public function nuevoServicio()
@@ -25,7 +26,7 @@ class ServicioController extends Controller
         return view('vistas.servicios.nuevoServicio',[
             'clientes' => Cliente::all(),
             'empleados' => Empleado::all(),
-            'productos' => Producto::all(),
+            'productos' => Producto::where('cantidad', '>', 0)->get(),
         ]);
     }
     public function guardarServicio(Request $request)
@@ -77,7 +78,13 @@ class ServicioController extends Controller
                 $servicio->nota_venta_id = $venta->id;
                 $servicio->save();
 
-                if ($idProductos != null){
+                $cont = $cont + 1;
+            }
+
+            if ($idProductos != null){
+                $cont = 0;
+
+                while ($cont < count($idProductos)){
                     // --------- DETALLE----------
                     $detalle = new DetalleNotaVenta();
                     $detalle->cantidad = $cant[$cont];
@@ -91,16 +98,18 @@ class ServicioController extends Controller
                     $producto->cantidad =
                         $producto->cantidad - $detalle->cantidad;
                     $producto->update();
-                }
 
-                $cont = $cont + 1;
+                    $cont = $cont + 1;
+                }
             }
+
 
             DB::commit();
 
         } catch (QueryException $e) {
 
             DB::rollback();
+            return redirect('ventas/servicios')->with(['message' => 'No es posible realizar el servicio.']);
 
         }
 

@@ -56,7 +56,7 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th class="text-center w-50">PRODUCTO</th>
+                                <th class="text-center w-50">HERRAMIENTA</th>
                                 <th class="text-center">CANT</th>
                                 <th class="text-center">COSTO U. Bs</th>
                                 <th class="text-center">SUBTOTAL</th>

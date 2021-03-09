@@ -17,6 +17,7 @@ class CreateEquipoTable extends Migration
             $table->increments('id');
             $table->string('nro_serie');
             $table->text('descripcion');
+            $table->text('ubicacion');
             $table->string('unidad_medida');
             $table->integer('ano_fabricacion');
             $table->float('capacidad');
