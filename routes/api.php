@@ -22,3 +22,5 @@ Route::middleware('auth:api')->group(function () {
     Route::get('getUsuario', 'Api\ApiController@getUsuario');
     Route::get('clientes', 'Api\ApiController@getClientes');
 });
+Route::get('prueba', 'Api\ApiMovilController@listarClientesM');
+Route::get('sucursalesp/{id}','Api\ApiMovilController@listarSucursalesM');

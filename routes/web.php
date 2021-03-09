@@ -19,7 +19,6 @@ Route::get('/', function () {
     return view('home');
 })->middleware('auth');
 
-
 Route::middleware('auth')->group(function () {
     Route::middleware('administrador')->group(function () {
         Route::resource('empleados','EmpleadoController');
