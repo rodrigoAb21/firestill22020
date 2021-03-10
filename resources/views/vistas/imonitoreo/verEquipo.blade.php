@@ -212,7 +212,7 @@
                 }), title: 'Ideal'
             }).addTo(map);
 
-
+/*
             var pusher = new Pusher('b7e5f831a0dbf97652df', {
                 cluster: 'us2'
             });
@@ -225,7 +225,7 @@
                 actual.lng = equipo["longitud_actual"];
                 marcador.setLatLng(actual);
             });
-
+*/
 
         </script>
     @endpush
