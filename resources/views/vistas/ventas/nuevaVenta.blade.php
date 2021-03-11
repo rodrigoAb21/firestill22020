@@ -162,9 +162,9 @@
 
             function agregar() {
                 cantidad = $('#cantidad').val();
+                precio = parseFloat($('#precio').val()).toFixed(2);
 
-                if(cont>=0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosProducto[2])) {
-                    precio = parseFloat($('#precio').val()).toFixed(2);
+                if(cont>=0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosProducto[2]) && precio != null && precio > 0) {
                     subtotal[cont] = (cantidad * precio).toFixed(2);
                     total = parseFloat(total) + parseFloat(subtotal[cont]);
                     total = parseFloat(total).toFixed(2);

@@ -152,8 +152,8 @@
 
             function agregar() {
                 cantidad = $('#cantidad').val();
-                if(cont>=0 && cantidad != null && cantidad > 0) {
-                    costo = $('#costo').val();
+                costo = $('#costo').val();
+                if(cont>=0 && cantidad != null && cantidad > 0 && costo != null && costo > 0) {
                     subtotal[cont] = (cantidad * costo).toFixed(2);
                     total = parseFloat(total) + parseFloat(subtotal[cont]);
                     total = parseFloat(total).toFixed(2);
