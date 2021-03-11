@@ -141,11 +141,11 @@
                                         <td>{{$sucursal->direccion}}</td>
                                         <td>
                                             <a href="{{url('imonitoreo/editarSucursal/'.$sucursal->id)}}">
-                                                <button class="btn btn-warning">
+                                                <button class="btn btn-warning" title="Editar">
                                                     <i class="fa fa-pen"></i>
                                                 </button>
                                             </a>
-                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$sucursal->id}}', '{{url('imonitoreo/eliminarSucursal/'.$sucursal->id)}}')">
+                                            <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$sucursal->id}}', '{{url('imonitoreo/eliminarSucursal/'.$sucursal->id)}}')">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </td>

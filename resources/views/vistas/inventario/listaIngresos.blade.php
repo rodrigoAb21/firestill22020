@@ -44,11 +44,11 @@
                                     <td>{{$ingreso->total}}</td>
                                     <td>
                                         <a href="{{url('inventario/verIngreso/'.$ingreso->id)}}">
-                                            <button class="btn btn-secondary">
+                                            <button class="btn btn-secondary" title="Ver">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$ingreso -> nombre}}', '{{url('inventario/eliminarIngreso/'.$ingreso -> id)}}')">
+                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$ingreso -> nombre}}', '{{url('inventario/eliminarIngreso/'.$ingreso -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

@@ -28,11 +28,11 @@
                                     <td>{{$tipo->nombre}}</td>
                                     <td>
                                         <a href="{{url('tipos/'.$tipo->id.'/edit')}}">
-                                            <button class="btn btn-warning">
+                                            <button class="btn btn-warning" title="Editar">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$tipo -> nombre}}', '{{url('tipos/'.$tipo -> id)}}')">
+                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$tipo -> nombre}}', '{{url('tipos/'.$tipo -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

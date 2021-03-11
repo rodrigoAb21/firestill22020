@@ -41,19 +41,18 @@
                                     <td >{{$cliente->nombre_empresa}}</td>
                                     <td >{{$cliente->nit}}</td>
                                     <td >{{$cliente->telefono_empresa}}</td>
-
                                     <td>
                                         <a href="{{url('clientes/'.$cliente->id)}}">
-                                            <button class="btn btn-secondary">
+                                            <button class="btn btn-secondary" title="Ver" >
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
                                         <a href="{{url('clientes/'.$cliente->id.'/edit')}}">
-                                            <button class="btn btn-warning">
+                                            <button class="btn btn-warning" title="Editar">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$cliente -> nombre}}', '{{url('clientes/'.$cliente -> id)}}')">
+                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$cliente -> nombre}}', '{{url('clientes/'.$cliente -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

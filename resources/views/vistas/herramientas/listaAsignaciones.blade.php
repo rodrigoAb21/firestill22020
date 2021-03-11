@@ -40,7 +40,7 @@
                                     <td>{{$asignacion->estado}}</td>
                                     <td>
                                         <a href="{{url('herramientas/verAsignacion/'.$asignacion->id)}}">
-                                            <button class="btn btn-secondary">
+                                            <button class="btn btn-secondary" title="Ver">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
@@ -51,7 +51,7 @@
                                                 </button>
                                             </a>
 
-                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$asignacion -> id}}', '{{url('herramientas/eliminarAsignacion/'.$asignacion -> id)}}')">
+                                            <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$asignacion -> id}}', '{{url('herramientas/eliminarAsignacion/'.$asignacion -> id)}}')">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         @endif

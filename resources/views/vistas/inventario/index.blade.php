@@ -37,20 +37,20 @@
                                     <td class="align-middle">{{$producto->cantidad}}</td>
                                     <td class="align-middle">
                                         <a href="{{url('inventario/'.$producto->id)}}">
-                                            <button class="btn btn-secondary">
+                                            <button class="btn btn-secondary" title="Ver">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
 
                                         <a href="{{url('inventario/'.$producto->id.'/edit')}}">
-                                            <button class="btn btn-warning">
+                                            <button class="btn btn-warning" title="Editar">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
 
                                         @if($producto->cantidad>0)
                                             <a href="{{url('inventario/darBaja/'.$producto->id)}}">
-                                                <button class="btn btn-outline-danger">
+                                                <button class="btn btn-outline-danger" title="Dar de baja">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </a>

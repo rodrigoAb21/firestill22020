@@ -156,22 +156,26 @@
                     ['PSI', 0],
                 ]);
 
-                presion = parseFloat('{{$equipo -> presion_actual}}')
+                presion = 0;
+
+                if (!Number.isNaN(parseFloat('{{$equipo -> presion_actual}}'))){
+                    presion = parseFloat('{{$equipo -> presion_actual}}');
+                }
 
                 var options = {
                     width: 150, height: 150,
-                    yellowFrom:0, yellowTo: 160,
-                    greenFrom:160, greenTo: 260,
-                    redFrom: 260, redTo: 400,
+                    yellowFrom:0, yellowTo: parseFloat('{{$equipo -> presion_min}}'),
+                    greenFrom:parseFloat('{{$equipo -> presion_min}}'), greenTo: parseFloat('{{$equipo -> presion_max}}'),
+                    redFrom: parseFloat('{{$equipo -> presion_max}}'), redTo: 400,
                     yellowColor: '#dc3912',
                     min:0, max:400, majorTicks: ['0','400'],
                     minorTicks: 0, animation: {duration: 2500},
                 };
                 var options2 = {
                     width: 150, height: 150,
-                    yellowFrom:0, yellowTo: 160,
-                    greenFrom:160, greenTo: 260,
-                    redFrom: 260, redTo: 400,
+                    yellowFrom:0, yellowTo: parseFloat('{{$equipo -> presion_min}}'),
+                    greenFrom:parseFloat('{{$equipo -> presion_min}}'), greenTo: parseFloat('{{$equipo -> presion_max}}'),
+                    redFrom: parseFloat('{{$equipo -> presion_max}}'), redTo: 400,
                     yellowColor: '#dc3912',
                     min:0, max:400, majorTicks: ['0','400'],
                     minorTicks: 0, animation: {duration: 1500},

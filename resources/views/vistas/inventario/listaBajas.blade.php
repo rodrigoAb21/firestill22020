@@ -32,7 +32,7 @@
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $baja->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$baja->motivo}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$baja -> nombre}}', '{{url('inventario/anularBaja/'.$baja -> id)}}')">
+                                        <button type="button" title="Eliminar" class="btn btn-danger" onclick="modalEliminar('{{$baja -> nombre}}', '{{url('inventario/anularBaja/'.$baja -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

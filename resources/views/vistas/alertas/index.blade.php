@@ -34,14 +34,14 @@
                                     <td>{{$alerta->descripcion}}</td>
                                     <td>
                                         @if($alerta->estado)
-                                            <a href="{{url('alertas/marcarVista/'.$alerta->id)}}" title="Vista">
-                                                <button class="btn btn-success">
+                                            <a href="{{url('alertas/marcarVista/'.$alerta->id)}}">
+                                                <button class="btn btn-success"  title="Vista">
                                                     <i class="fa fa-check"></i>
                                                 </button>
                                             </a>
                                         @endif
-                                        <a href="{{url('alertas/verEquipo/'.$alerta->id.'/'.$alerta->equipo_id)}}" title="Ver Equipo">
-                                            <button class="btn btn-warning">
+                                        <a href="{{url('alertas/verEquipo/'.$alerta->id.'/'.$alerta->equipo_id)}}" >
+                                            <button class="btn btn-warning" title="Ver Equipo">
                                                 <i class="fa fa-arrow-right"></i>
                                             </button>
                                         </a>

@@ -37,18 +37,18 @@
                                     <td>{{$herramienta->cantidad_total}}</td>
                                     <td>
                                         <a href="{{url('herramientas/'.$herramienta->id.'/edit')}}">
-                                            <button class="btn btn-warning">
+                                            <button class="btn btn-warning" title="Editar">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
                                         @if($herramienta->cantidad_taller>0)
                                             <a href="{{url('herramientas/darBaja/'.$herramienta->id)}}">
-                                                <button class="btn btn-outline-danger">
+                                                <button class="btn btn-outline-danger" title="Dar de Baja">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </a>
                                         @endif
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$herramienta -> nombre}}', '{{url('herramientas/'.$herramienta -> id)}}')">
+                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$herramienta -> nombre}}', '{{url('herramientas/'.$herramienta -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

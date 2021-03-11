@@ -29,7 +29,7 @@
                                         <td>{{$ficha->resultado}}</td>
                                         <td>
                                             <a href="{{url('imonitoreo/verFicha/'.$ficha->id)}}">
-                                                <button class="btn btn-secondary">
+                                                <button class="btn btn-secondary" title="Ver">
                                                     <i class="fa fa-eye"></i>
                                                 </button>
                                             </a>

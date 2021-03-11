@@ -45,16 +45,16 @@
 
                                     <td>
                                         <a href="{{url('empleados/'.$empleado->id)}}">
-                                            <button class="btn btn-secondary">
+                                            <button class="btn btn-secondary" title="Ver">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
                                         <a href="{{url('empleados/'.$empleado->id.'/edit')}}">
-                                            <button class="btn btn-warning">
+                                            <button class="btn btn-warning" title="Editar">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$empleado -> nombre}}', '{{url('empleados/'.$empleado -> id)}}')">
+                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$empleado -> nombre}}', '{{url('empleados/'.$empleado -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

@@ -42,11 +42,11 @@
                                     <td>{{$venta->total}}</td>
                                     <td>
                                         <a href="{{url('ventas/verServicio/'.$venta->id)}}">
-                                            <button class="btn btn-secondary">
+                                            <button class="btn btn-secondary" title="Ver">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$venta -> id}}', '{{url('ventas/eliminarServicio/'.$venta -> id)}}')">
+                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$venta -> id}}', '{{url('ventas/eliminarServicio/'.$venta -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
