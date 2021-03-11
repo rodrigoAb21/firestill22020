@@ -200,8 +200,8 @@ class MonitoreoController extends Controller
     public function guardarEquipo(Request $request){
         $this->validate($request, [
             'nro_serie' => 'required|numeric',
-            'descripcion' => 'required|string|max:255',
-            'ubicacion' => 'required|string|max:255',
+            'descripcion' => 'nullable|string|max:255',
+            'ubicacion' => 'nullable|string|max:255',
             'unidad_medida' => 'required|string|max:255',
             'ano_fabricacion' => 'required|numeric|digits:4',
             'capacidad' => 'required|numeric|min:1',
@@ -251,8 +251,8 @@ class MonitoreoController extends Controller
     public function actualizarEquipo(Request $request, $id){
         $this->validate($request, [
             'nro_serie' => 'required|numeric',
-            'descripcion' => 'required|string|max:255',
-            'ubicacion' => 'required|string|max:255',
+            'descripcion' => 'nullable|string|max:255',
+            'ubicacion' => 'nullable|string|max:255',
             'unidad_medida' => 'required|string|max:255',
             'ano_fabricacion' => 'required|numeric|digits:4',
             'capacidad' => 'required|numeric|min:1',

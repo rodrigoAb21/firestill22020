@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Editar empleado
+                        Editar trabajador
                     </h3>
                     @if ($errors->any())
                         <div class="alert alert-danger">

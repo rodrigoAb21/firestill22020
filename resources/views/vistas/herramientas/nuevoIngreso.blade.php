@@ -29,105 +29,106 @@
                     @endif
                     <form method="POST" action="{{url('herramientas/guardarIngreso')}}" autocomplete="off" enctype="multipart/form-data">
                         {{csrf_field()}}
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label>Fecha</label>
-                                <input required
-                                       type="date"
-                                       class="form-control"
-                                       value="{{\Carbon\Carbon::now('America/La_Paz')->toDateString()}}"
-                                       name="fecha">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input required
+                                           type="date"
+                                           class="form-control"
+                                           value="{{\Carbon\Carbon::now('America/La_Paz')->toDateString()}}"
+                                           name="fecha">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Factura</label>
+                                    <input
+                                            type="file"
+                                            accept="image/*"
+                                            name="foto_factura"
+                                            class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Nro Factura</label>
+                                    <input
+                                            name="nro_factura"
+                                            type="text"
+                                            class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tienda</label>
+                                    <input required
+                                           type="text"
+                                           name="tienda"
+                                           class="form-control">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label>Factura</label>
-                                <input
-                                       type="file"
-                                       accept="image/*"
-                                       name="foto_factura"
-                                       class="form-control">
+                        <hr>
+                        <h3>Herramientas</h3>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
+                                        @foreach($herramientas as $herramienta)
+                                            <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" title="Cantidad" placeholder="Cantidad" type="number" id="cantidad">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control" title="Costo U. Bs" placeholder="Costo U." step="0.01" type="number" id="costo">
+                                </div>
+                            </div>
+                            <input name="total" required hidden step="0.001" type="number" id="tt">
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-sm btn-block">
+                                        <span class="fa fa-plus fa-2x"></span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label>Nro Factura</label>
-                                <input
-                                       name="nro_factura"
-                                       type="text"
-                                       class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label>Tienda</label>
-                                <input required
-                                       type="text"
-                                       name="tienda"
-                                       class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
-                                   @foreach($herramientas as $herramienta)
-                                        <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Cantidad" type="number" id="cantidad">
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Costo U." step="0.01" type="number" id="costo">
-                            </div>
-                        </div>
-                        <input name="total" required hidden step="0.001" type="number" id="tt">
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-sm btn-block">
-                                    <span class="fa fa-plus fa-2x"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-hover table-bordered color-table info-table">
-                            <thead>
-                            <tr>
-                                <th class="text-right">OPC</th>
-                                <th class="text-center w-50">HERRAMIENTA</th>
-                                <th class="text-center">CANTIDAD</th>
-                                <th class="text-center">COSTO U. Bs</th>
-                                <th class="text-center">SUBTOTAL</th>
-                            </tr>
-                            </thead>
-                            <tbody id="detalle">
-                            </tbody>
-                            <tfoot>
-                            <tr class="text-center">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><b>TOTAL</b></td>
-                                <td><span id="total">0</span> Bs</td>
-                            </tr>
-                            </tfoot>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered color-table info-table">
+                                <thead>
+                                <tr>
+                                    <th class="text-right">OPC</th>
+                                    <th class="text-center w-50">HERRAMIENTA</th>
+                                    <th class="text-center">CANTIDAD</th>
+                                    <th class="text-center">COSTO U. Bs</th>
+                                    <th class="text-center">SUBTOTAL</th>
+                                </tr>
+                                </thead>
+                                <tbody id="detalle">
+                                </tbody>
+                                <tfoot>
+                                <tr class="text-center">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>TOTAL</b></td>
+                                    <td><span id="total">0</span> Bs</td>
+                                </tr>
+                                </tfoot>
+                            </table>
 
-                    </div>
+                        </div>
 
-                    <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atras</a>
-                    <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
+                        <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atras</a>
+                        <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
                     </form>
                 </div>
             </div>
@@ -152,11 +153,13 @@
 
             function agregar() {
                 cantidad = $('#cantidad').val();
-                costo = $('#costo').val();
-                subtotal[cont] = (cantidad * costo).toFixed(2);
-                total = parseFloat(total) + parseFloat(subtotal[cont]);
-                total = parseFloat(total).toFixed(2);
+
                 if(cont>=0 && cantidad != null && cantidad > 0) {
+                    costo = $('#costo').val();
+                    subtotal[cont] = (cantidad * costo).toFixed(2);
+                    total = parseFloat(total) + parseFloat(subtotal[cont]);
+                    total = parseFloat(total).toFixed(2);
+
                     idHerramienta = $('#selectorHerramienta').val();
                     nombreHerramienta = $('#selectorHerramienta option:selected').text();
                     var fila =

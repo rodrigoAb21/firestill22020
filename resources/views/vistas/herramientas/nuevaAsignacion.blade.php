@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <hr>
-
+                        <h3>Herramientas</h3>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Cantidad" type="number" id="cantidad">
+                                    <input class="form-control" placeholder="Cantidad" title="Cantidad" type="number" id="cantidad">
                                 </div>
                             </div>
 

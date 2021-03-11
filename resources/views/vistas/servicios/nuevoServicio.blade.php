@@ -121,14 +121,6 @@
 
                         </div>
 
-
-
-
-
-
-
-
-
                         <hr>
                         <h4>Productos</h4>
                         <br>
@@ -145,13 +137,13 @@
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Precio" min="0" type="number" step="0.01" id="precio">
+                                    <input class="form-control" title="Precio U. Bs" placeholder="Precio" min="0" type="number" step="0.01" id="precio">
                                 </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Cantidad" min="0" type="number" id="cantidad">
+                                    <input class="form-control" title="Cantidad" placeholder="Cantidad" min="0" type="number" id="cantidad">
                                 </div>
                             </div>
 

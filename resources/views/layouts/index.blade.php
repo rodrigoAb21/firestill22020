@@ -110,8 +110,9 @@
 
                         </a>
                     </li>
+                    @if (!\Auth::guest())
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->nombre }} {{Auth::user()->apellido }}</a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{\Auth::user()->nombre }} {{\Auth::user()->apellido }}</a>
                         <div class="dropdown-menu dropdown-menu-right scale-up">
                             <ul class="dropdown-user">
                                 <li>
@@ -128,7 +129,7 @@
                             </ul>
                         </div>
                     </li>
-
+                    @endif
                 </ul>
             </div>
         </nav>
@@ -146,7 +147,7 @@
 
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-
+                    @if (!\Auth::guest())
                     @if(Auth::user()->tipo == 'Administrador')
                         <li class="{{ Request::is('empleados*') ? 'nav-item active' : 'nav-item' }}">
                             <a href="{{url('empleados')}}" >
@@ -155,6 +156,8 @@
                             </a>
                         </li>
                     @endif
+                    @endif
+
                     <li class="{{ Request::is('proveedores*') ? 'nav-item active' : 'nav-item' }}">
                         <a href="{{url('proveedores')}}" >
                             <i class="fa fa-truck"></i>

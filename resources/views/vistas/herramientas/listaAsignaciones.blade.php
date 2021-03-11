@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Asignaciones de asignaciones
+                        Asignaciones de herramientas
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('herramientas/nuevaAsignacion')}}">
                                 <i class="fa fa-plus"></i>  Nueva
@@ -36,7 +36,7 @@
                                 <tr class="text-center">
                                     <td>{{$asignacion->id}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $asignacion->fecha)->format('d-m-Y')}}</td>
-                                    <td>{{$asignacion->empleado->nombre}}</td>
+                                    <td>{{$asignacion->empleado->nombre}} {{$asignacion->empleado->apellido}}</td>
                                     <td>{{$asignacion->estado}}</td>
                                     <td>
                                         <a href="{{url('herramientas/verAsignacion/'.$asignacion->id)}}">

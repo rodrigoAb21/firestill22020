@@ -26,6 +26,7 @@
                             </ul>
                         </div>
                     @endif
+
                     <form method="POST" action="{{url('proveedores')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
@@ -70,7 +71,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Telefono</label>
-                                    <input required
+                                    <input  required
                                             type="number"
                                             class="form-control"
                                             name="telefono">

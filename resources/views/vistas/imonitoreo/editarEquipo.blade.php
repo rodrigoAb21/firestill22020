@@ -129,7 +129,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Descripción</label>
-                                    <textarea required
+                                    <textarea
                                               name="descripcion"
                                               cols="30"
                                               class="form-control"
@@ -139,7 +139,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Ubicacion</label>
-                                    <textarea required
+                                    <textarea
                                               name="ubicacion"
                                               cols="30"
                                               class="form-control"

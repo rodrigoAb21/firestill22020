@@ -69,6 +69,7 @@
                             </div>
                         </div>
                         <hr>
+                        <h3>Productos</h3>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -81,12 +82,12 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Cantidad" type="number" id="cantidad">
+                                    <input class="form-control" placeholder="Cantidad" title="Cantidad" type="number" id="cantidad">
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Costo U." step="0.01" type="number" id="costo">
+                                    <input class="form-control" placeholder="Costo U." title="Costo U. BS" step="0.01" type="number" id="costo">
                                 </div>
                             </div>
                             <input name="total" hidden step="0.001" type="number" id="tt">
@@ -104,7 +105,7 @@
                                 <thead>
                                 <tr>
                                     <th class="text-right">OPC</th>
-                                    <th class="text-center w-50">HERRAMIENTA</th>
+                                    <th class="text-center w-50">PRODUCTO</th>
                                     <th class="text-center">CANT</th>
                                     <th class="text-center">COSTO U. Bs</th>
                                     <th class="text-center">SUBTOTAL</th>
@@ -151,11 +152,12 @@
 
             function agregar() {
                 cantidad = $('#cantidad').val();
-                costo = $('#costo').val();
-                subtotal[cont] = (cantidad * costo).toFixed(2);
-                total = parseFloat(total) + parseFloat(subtotal[cont]);
-                total = parseFloat(total).toFixed(2);
                 if(cont>=0 && cantidad != null && cantidad > 0) {
+                    costo = $('#costo').val();
+                    subtotal[cont] = (cantidad * costo).toFixed(2);
+                    total = parseFloat(total) + parseFloat(subtotal[cont]);
+                    total = parseFloat(total).toFixed(2);
+
                     idProducto = $('#selectorProducto').val();
                     nombreProducto = $('#selectorProducto option:selected').text();
                     var fila =

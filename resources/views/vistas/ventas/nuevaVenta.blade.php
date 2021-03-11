@@ -80,13 +80,13 @@
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Precio" min="0" type="number" step="0.01" id="precio">
+                                    <input class="form-control" title="Precio U. Bs" placeholder="Precio" min="0" type="number" step="0.01" id="precio">
                                 </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Cantidad" min="0" type="number" id="cantidad">
+                                    <input class="form-control" title="Cantidad" placeholder="Cantidad" min="0" type="number" id="cantidad">
                                 </div>
                             </div>
 
@@ -162,11 +162,13 @@
 
             function agregar() {
                 cantidad = $('#cantidad').val();
-                precio = parseFloat($('#precio').val()).toFixed(2);
-                subtotal[cont] = (cantidad * precio).toFixed(2);
-                total = parseFloat(total) + parseFloat(subtotal[cont]);
-                total = parseFloat(total).toFixed(2);
+
                 if(cont>=0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosProducto[2])) {
+                    precio = parseFloat($('#precio').val()).toFixed(2);
+                    subtotal[cont] = (cantidad * precio).toFixed(2);
+                    total = parseFloat(total) + parseFloat(subtotal[cont]);
+                    total = parseFloat(total).toFixed(2);
+
                     idProducto = datosProducto[0];
                     nombreProducto = datosProducto[3];
                     var fila =

@@ -111,7 +111,7 @@
                                 <div class="form-group">
                                     <label>Descripción</label>
                                     <textarea
-                                            required
+
                                             name="descripcion"
                                             cols="30"
                                             class="form-control"
@@ -123,7 +123,7 @@
                                 <div class="form-group">
                                     <label>Ubicacion</label>
                                     <textarea
-                                            required
+
                                             name="ubicacion"
                                             cols="30"
                                             class="form-control"
