@@ -22,7 +22,7 @@
     </style>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
-/*
+
         var pusher = new Pusher('b7e5f831a0dbf97652df', {
             cluster: 'us2'
         });
@@ -34,7 +34,7 @@
                 x.style.display = "block";
             }
         });
-*/
+
     </script>
     @stack('arriba')
 </head>
