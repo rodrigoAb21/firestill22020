@@ -206,11 +206,65 @@
 
                         </ul>
                     </li>
+                        <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                                <i class="fa fa-boxes"></i>
+                                <span class="hide-menu"> Inventario</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('inventario/')}}" >
+
+                                        <span>  Lista</span>
+                                    </a>
+                                </li>
+                                <li class="{{ Request::is('inventario/listaIngresos*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('inventario/listaIngresos')}}" >
+
+                                        <span>  Ingresos</span>
+                                    </a>
+                                </li>
+                                <li class="{{ Request::is('inventario/listaBajas*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('inventario/listaBajas')}}" >
+
+                                        <span>  Bajas</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="{{ Request::is('ventas*') ? 'nav-item active' : 'nav-item' }}">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span class="hide-menu"> Ventas y Servicios</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li class="{{ Request::is('ventas/ventas*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('ventas/ventas')}}" >
+
+                                        <span>  Ventas</span>
+                                    </a>
+                                </li>
+                                <li class="{{ Request::is('ventas/servicios*') ? 'nav-item active' : 'nav-item' }}">
+                                    <a href="{{url('ventas/servicios')}}" >
+
+                                        <span>  Servicios</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="{{ Request::is('imonitoreo*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('imonitoreo/listaContratos')}}" >
+                                <i class="fas fa-fire-extinguisher"></i>
+                                <span class="hide-menu"> Insp. & Monitoreo </span>
+                            </a>
+                        </li>
 
                     <li class="{{ Request::is('categorias*') ? 'nav-item active' : 'nav-item' }}">
                         <a href="{{url('categorias')}}" >
                             <i class="fa fa-cube"></i>
-                            <span class="hide-menu"> Categorias</span>
+                            <span class="hide-menu"> Categorias de Prod</span>
                         </a>
                     </li>
 
@@ -227,63 +281,11 @@
                             <span class="hide-menu"> Marca Clasificacion</span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('imonitoreo*') ? 'nav-item active' : 'nav-item' }}">
-                        <a href="{{url('imonitoreo/listaContratos')}}" >
-                            <i class="fas fa-fire-extinguisher"></i>
-                            <span class="hide-menu"> Insp. & Monitoreo </span>
-                        </a>
-                    </li>
-                    <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                            <i class="fa fa-boxes"></i>
-                            <span class="hide-menu"> Inventario</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
-                                <a href="{{url('inventario/')}}" >
-
-                                    <span>  Lista</span>
-                                </a>
-                            </li>
-                            <li class="{{ Request::is('inventario/listaIngresos*') ? 'nav-item active' : 'nav-item' }}">
-                                <a href="{{url('inventario/listaIngresos')}}" >
-
-                                    <span>  Ingresos</span>
-                                </a>
-                            </li>
-                            <li class="{{ Request::is('inventario/listaBajas*') ? 'nav-item active' : 'nav-item' }}">
-                                <a href="{{url('inventario/listaBajas')}}" >
-
-                                    <span>  Bajas</span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
 
 
 
 
-                    <li class="{{ Request::is('ventas*') ? 'nav-item active' : 'nav-item' }}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span class="hide-menu"> Ventas y Servicios</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li class="{{ Request::is('ventas/ventas*') ? 'nav-item active' : 'nav-item' }}">
-                                <a href="{{url('ventas/ventas')}}" >
 
-                                    <span>  Ventas</span>
-                                </a>
-                            </li>
-                            <li class="{{ Request::is('ventas/servicios*') ? 'nav-item active' : 'nav-item' }}">
-                                <a href="{{url('ventas/servicios')}}" >
-
-                                    <span>  Servicios</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
 
 
                 </ul>
