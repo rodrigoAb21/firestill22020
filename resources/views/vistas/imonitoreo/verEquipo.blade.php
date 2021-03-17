@@ -215,7 +215,7 @@
                     'marker-color': '#49ba35'
                 }), title: 'Ideal'
             }).addTo(map);
-
+/*
 
             var pusher = new Pusher('b7e5f831a0dbf97652df', {
                 cluster: 'us2'
@@ -230,7 +230,7 @@
                 marcador.setLatLng(actual);
             });
 
-
+*/
         </script>
     @endpush
 @endsection

@@ -26,7 +26,7 @@
         var pusher = new Pusher('b7e5f831a0dbf97652df', {
             cluster: 'us2'
         });
-
+/*
         var channel = pusher.subscribe('alertaCanal');
         channel.bind('alertaEvent', function(data) {
             var x = document.getElementById("alerta");
@@ -34,7 +34,7 @@
                 x.style.display = "block";
             }
         });
-
+*/
     </script>
     @stack('arriba')
 </head>
