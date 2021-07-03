@@ -66,7 +66,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Capacidad</label>
                                     <input required
@@ -76,7 +76,7 @@
                                            name="capacidad">
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>U.Medida</label>
                                     <select required name="unidad_medida" class="form-control">
@@ -84,26 +84,6 @@
                                             <option value="{{$unidad}}">{{$unidad}}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Presion Min (PSI)</label>
-                                    <input required
-                                           type="number"
-                                           step="0.01"
-                                           class="form-control"
-                                           name="presion_min">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Presion Max (PSI)</label>
-                                    <input required
-                                           type="number"
-                                           step="0.01"
-                                           class="form-control"
-                                           name="presion_max">
                                 </div>
                             </div>
 

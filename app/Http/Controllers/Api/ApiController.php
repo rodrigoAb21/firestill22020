@@ -30,10 +30,10 @@ class ApiController extends Controller
             $equipo = Equipo::findOrFail($id);
             $equipo->latitud_actual = $request['latitud'];
             $equipo->longitud_actual = $request['longitud'];
-            $equipo->presion_actual = $request['presion'];
+            $equipo->presion_actual = 80;
             $equipo->update();
             event(new ArduinoEvent($equipo));
-
+/*
             if($equipo->presion_actual > $equipo->presion_max){
                 $this->generarAlerta($id, "¡Presión muy alta! Extintor: ");
             }elseif($equipo->presion_actual < $equipo->presion_min){
@@ -43,6 +43,7 @@ class ApiController extends Controller
                 $equipo->latitud_actual, $equipo->longitud_actual)){
                 $this->generarAlerta($id,"¡Extintor fuera de rango! Extintor: ");
             }
+*/
             return response()->json(['mensaje' => 'POST---->OK'], 200);
         }else{
             return response()->json(['mensaje' => 'NUUULO'], 401);

@@ -205,8 +205,6 @@ class MonitoreoController extends Controller
             'unidad_medida' => 'required|string|max:255',
             'ano_fabricacion' => 'required|numeric|digits:4',
             'capacidad' => 'required|numeric|min:1',
-            'presion_min' => 'required|numeric|min:0',
-            'presion_max' => 'required|numeric|min:1',
             'sucursal_id' => 'required|numeric|min:1',
             'tipo_clasificacion_id' => 'required|numeric|min:1',
             'marca_clasificacion_id' => 'required|numeric|min:1',
@@ -219,8 +217,8 @@ class MonitoreoController extends Controller
         $equipo->unidad_medida = $request['unidad_medida'];
         $equipo->ano_fabricacion = $request['ano_fabricacion'];
         $equipo->capacidad = $request['capacidad'];
-        $equipo->presion_min = $request['presion_min'];
-        $equipo->presion_max = $request['presion_max'];
+        $equipo->presion_min = 60;
+        $equipo->presion_max = 100;
         $equipo->sucursal_id = $request['sucursal_id'];
         $equipo->tipo_clasificacion_id = $request['tipo_clasificacion_id'];
         $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];
@@ -256,8 +254,6 @@ class MonitoreoController extends Controller
             'unidad_medida' => 'required|string|max:255',
             'ano_fabricacion' => 'required|numeric|digits:4',
             'capacidad' => 'required|numeric|min:1',
-            'presion_min' => 'required|numeric|min:0',
-            'presion_max' => 'required|numeric|min:1',
             'tipo_clasificacion_id' => 'required|numeric|min:1',
             'marca_clasificacion_id' => 'required|numeric|min:1',
         ]);
@@ -269,8 +265,6 @@ class MonitoreoController extends Controller
         $equipo->unidad_medida = $request['unidad_medida'];
         $equipo->ano_fabricacion = $request['ano_fabricacion'];
         $equipo->capacidad = $request['capacidad'];
-        $equipo->presion_min = $request['presion_min'];
-        $equipo->presion_max = $request['presion_max'];
         $equipo->tipo_clasificacion_id = $request['tipo_clasificacion_id'];
         $equipo->marca_clasificacion_id = $request['marca_clasificacion_id'];
         $equipo->save();

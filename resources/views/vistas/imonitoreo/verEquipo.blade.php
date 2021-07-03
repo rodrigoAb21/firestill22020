@@ -50,7 +50,7 @@
                                                    name="ano_fabricacion">
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Capacidad</label>
                                             <input readonly
@@ -61,7 +61,7 @@
                                                    name="capacidad">
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>U.Medida</label>
                                             <input readonly
@@ -70,28 +70,7 @@
                                                    name="capacidad">
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>Presion Min (PSI)</label>
-                                            <input readonly
-                                                   type="number"
-                                                   step="0.01"
-                                                   class="form-control"
-                                                   value="{{$equipo->presion_min}}"
-                                                   name="presion_min">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>Presion Max (PSI)</label>
-                                            <input readonly
-                                                   type="number"
-                                                   step="0.01"
-                                                   class="form-control"
-                                                   value="{{$equipo->presion_max}}"
-                                                   name="presion_max">
-                                        </div>
-                                    </div>
+
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
