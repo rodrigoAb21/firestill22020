@@ -20,6 +20,8 @@
             white-space: nowrap;
         }
     </style>
+    <!-- You can change the theme colors from here
+
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
 
@@ -36,6 +38,8 @@
         });
 */
     </script>
+
+    -->
     @stack('arriba')
 </head>
 
@@ -93,17 +97,29 @@
                     <!-- ============================================================== -->
                     <!-- Profile -->
                     <!-- ============================================================== -->
+                <!-- ALERTAS
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('alertas')}}">
                             <i class="fas fa-exclamation-triangle"></i>
 
                             <div class="notify" id="alerta"
                                  @if(\App\Modelos\Alerta::cantidad()>0)
-                                 style="display: block"
-                                 @else
-                                 style="display: none"
-                                    @endif
-                            >
+                    style="display: block"
+                                @else
+                    style="display: none"
+                                @endif
+                        >
+                            <span class="heartbit"></span>
+                            <span class="point"></span>
+                        </div>
+
+                    </a>
+                </li>
+                -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-bell"></i>
+                            <div class="notify" id="alerta" style="display: block">
                                 <span class="heartbit"></span>
                                 <span class="point"></span>
                             </div>
@@ -111,24 +127,24 @@
                         </a>
                     </li>
                     @if (!\Auth::guest())
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{\Auth::user()->nombre }} {{\Auth::user()->apellido }}</a>
-                        <div class="dropdown-menu dropdown-menu-right scale-up">
-                            <ul class="dropdown-user">
-                                <li>
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{\Auth::user()->nombre }} {{\Auth::user()->apellido }}</a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-power-off"></i>
-                                        Cerrar Sesion
-                                    </a>
+                                            <i class="fa fa-power-off"></i>
+                                            Cerrar Sesion
+                                        </a>
 
-                                    <form id="logout-form" action="{{route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                                        <form id="logout-form" action="{{route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     @endif
                 </ul>
             </div>
@@ -148,14 +164,14 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     @if (!\Auth::guest())
-                    @if(Auth::user()->tipo == 'Administrador')
-                        <li class="{{ Request::is('empleados*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('empleados')}}" >
-                                <i class="fa fa-id-card"></i>
-                                <span class="hide-menu"> Empleados</span>
-                            </a>
-                        </li>
-                    @endif
+                        @if(Auth::user()->tipo == 'Administrador')
+                            <li class="{{ Request::is('empleados*') ? 'nav-item active' : 'nav-item' }}">
+                                <a href="{{url('empleados')}}" >
+                                    <i class="fa fa-id-card"></i>
+                                    <span class="hide-menu"> Empleados</span>
+                                </a>
+                            </li>
+                        @endif
                     @endif
 
                     <li class="{{ Request::is('proveedores*') ? 'nav-item active' : 'nav-item' }}">
@@ -206,60 +222,60 @@
 
                         </ul>
                     </li>
-                        <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                                <i class="fa fa-boxes"></i>
-                                <span class="hide-menu"> Inventario</span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('inventario/')}}" >
+                    <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                            <i class="fa fa-boxes"></i>
+                            <span class="hide-menu"> Inventario</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="{{ Request::is('inventario*') ? 'nav-item active' : 'nav-item' }}">
+                                <a href="{{url('inventario/')}}" >
 
-                                        <span>  Lista</span>
-                                    </a>
-                                </li>
-                                <li class="{{ Request::is('inventario/listaIngresos*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('inventario/listaIngresos')}}" >
+                                    <span>  Lista</span>
+                                </a>
+                            </li>
+                            <li class="{{ Request::is('inventario/listaIngresos*') ? 'nav-item active' : 'nav-item' }}">
+                                <a href="{{url('inventario/listaIngresos')}}" >
 
-                                        <span>  Ingresos</span>
-                                    </a>
-                                </li>
-                                <li class="{{ Request::is('inventario/listaBajas*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('inventario/listaBajas')}}" >
+                                    <span>  Ingresos</span>
+                                </a>
+                            </li>
+                            <li class="{{ Request::is('inventario/listaBajas*') ? 'nav-item active' : 'nav-item' }}">
+                                <a href="{{url('inventario/listaBajas')}}" >
 
-                                        <span>  Bajas</span>
-                                    </a>
-                                </li>
+                                    <span>  Bajas</span>
+                                </a>
+                            </li>
 
-                            </ul>
-                        </li>
+                        </ul>
+                    </li>
 
-                        <li class="{{ Request::is('ventas*') ? 'nav-item active' : 'nav-item' }}">
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span class="hide-menu"> Ventas y Servicios</span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li class="{{ Request::is('ventas/ventas*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('ventas/ventas')}}" >
+                    <li class="{{ Request::is('ventas*') ? 'nav-item active' : 'nav-item' }}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="hide-menu"> Ventas y Servicios</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li class="{{ Request::is('ventas/ventas*') ? 'nav-item active' : 'nav-item' }}">
+                                <a href="{{url('ventas/ventas')}}" >
 
-                                        <span>  Ventas</span>
-                                    </a>
-                                </li>
-                                <li class="{{ Request::is('ventas/servicios*') ? 'nav-item active' : 'nav-item' }}">
-                                    <a href="{{url('ventas/servicios')}}" >
+                                    <span>  Ventas</span>
+                                </a>
+                            </li>
+                            <li class="{{ Request::is('ventas/servicios*') ? 'nav-item active' : 'nav-item' }}">
+                                <a href="{{url('ventas/servicios')}}" >
 
-                                        <span>  Servicios</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="{{ Request::is('imonitoreo*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('imonitoreo/listaContratos')}}" >
-                                <i class="fas fa-fire-extinguisher"></i>
-                                <span class="hide-menu"> Insp. & Monitoreo </span>
-                            </a>
-                        </li>
+                                    <span>  Servicios</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="{{ Request::is('imonitoreo*') ? 'nav-item active' : 'nav-item' }}">
+                        <a href="{{url('imonitoreo/listaContratos')}}" >
+                            <i class="fas fa-fire-extinguisher"></i>
+                            <span class="hide-menu"> Insp. & Monitoreo </span>
+                        </a>
+                    </li>
 
                     <li class="{{ Request::is('categorias*') ? 'nav-item active' : 'nav-item' }}">
                         <a href="{{url('categorias')}}" >

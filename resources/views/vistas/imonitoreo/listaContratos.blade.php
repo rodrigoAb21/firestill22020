@@ -7,9 +7,6 @@
                     <h2 class="pb-2">
                         Contratos
                         <div class="float-right">
-                            <a class="btn btn-outline-info" href="{{asset('img/default.png')}}" download="">
-                                <i class="fab fa-android"></i>  APK
-                            </a>
                             <a class="btn btn-success" href="{{url('imonitoreo/nuevoContrato')}}">
                                 <i class="fa fa-plus"></i>  Nuevo
                             </a>

@@ -9,7 +9,7 @@
                         Ver Equipo
                     </h3>
                         <div class="row">
-                            <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
@@ -115,6 +115,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--
                             <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -132,16 +133,15 @@
 
                                 </div>
                             </div>
+                        -->
                         </div>
                         <a href="{{url('imonitoreo/verSucursal/'.$equipo->sucursal_id)}}" class="btn btn-warning">Atras</a>
                 </div>
             </div>
         </div>
     </div>
-    @push('arriba')
-
-    @endpush
     @push('scripts')
+        <!--
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
         <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
@@ -232,5 +232,7 @@
 
 */
         </script>
+
+        -->
     @endpush
 @endsection
