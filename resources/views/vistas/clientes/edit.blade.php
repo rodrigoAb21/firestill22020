@@ -75,6 +75,7 @@
                                 </div>
                             </div>
 
+
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Dirección</label>
@@ -103,9 +104,18 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input
+                                        type="email_encargado"
+                                        class="form-control"
+                                        value="{{$cliente -> email_encargado}}"
+                                        name="email">
+                            </div>
+                        </div>
 
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Cargo</label>
                                 <input
@@ -116,7 +126,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Telefono</label>
                                 <input

@@ -26,6 +26,7 @@ class Cliente extends Model
         'nombre_empresa',
         'nit',
         'email',
+        'email_encargado',
         'telefono_empresa',
         'direccion',
         'nombre_encargado',

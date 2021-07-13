@@ -75,6 +75,7 @@ class ClienteController extends Controller
             'nombre_empresa' => 'required|max:255',
             'nit' => 'nullable|numeric',
             'email' => 'nullable|email|max:255',
+            'email_encargado' => 'nullable|email|max:255',
             'telefono_empresa' => 'nullable|digits_between:7,8',
             'direccion' => 'nullable|string|max:255',
             'nombre_encargado' => 'nullable|string|max:255',
@@ -86,6 +87,7 @@ class ClienteController extends Controller
         $cliente->nombre_empresa = $request['nombre_empresa'];
         $cliente->nit = $request['nit'];
         $cliente->email = $request['email'];
+        $cliente->email_encargado = $request['email_encargado'];
         $cliente->telefono_empresa = $request['telefono_empresa'];
         $cliente->direccion = $request['direccion'];
         $cliente->nombre_encargado = $request['nombre_encargado'];
@@ -153,6 +155,7 @@ class ClienteController extends Controller
             'nombre_empresa' => 'required|max:255',
             'nit' => 'nullable|numeric',
             'email' => 'nullable|email|max:255',
+            'email_encargado' => 'nullable|email|max:255',
             'telefono_empresa' => 'nullable|digits_between:7,8',
             'direccion' => 'nullable|string|max:255',
             'nombre_encargado' => 'nullable|string|max:255',
@@ -164,6 +167,7 @@ class ClienteController extends Controller
         $cliente->nombre_empresa = $request['nombre_empresa'];
         $cliente->nit = $request['nit'];
         $cliente->email = $request['email'];
+        $cliente->email_encargado = $request['email_encargado'];
         $cliente->telefono_empresa = $request['telefono_empresa'];
         $cliente->direccion = $request['direccion'];
         $cliente->nombre_encargado = $request['nombre_encargado'];

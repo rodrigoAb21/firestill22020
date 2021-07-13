@@ -97,8 +97,17 @@
                         </div>
 
 
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input
+                                        type="email_encargado"
+                                        class="form-control"
+                                        name="email">
+                            </div>
+                        </div>
 
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Cargo</label>
                                 <input
@@ -108,7 +117,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Telefono</label>
                                 <input
