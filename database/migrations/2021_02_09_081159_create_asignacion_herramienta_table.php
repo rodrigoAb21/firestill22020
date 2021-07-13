@@ -31,8 +31,8 @@ class CreateAsignacionHerramientaTable extends Migration
             $table->string('estado');
             $table->softDeletes();
 
-            $table->unsignedInteger('empleado_id');
-            $table->foreign('empleado_id')->references('id')->on('empleado');
+            $table->unsignedInteger('trabajador_id');
+            $table->foreign('trabajador_id')->references('id')->on('trabajador');
         });
     }
 

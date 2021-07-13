@@ -27,7 +27,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{url('empleados')}}" autocomplete="off">
+                    <form method="POST" action="{{url('trabajadores')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('empleados')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('trabajadores')}}" class="btn btn-warning">Atras</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
 

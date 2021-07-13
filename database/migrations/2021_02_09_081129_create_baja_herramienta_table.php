@@ -35,9 +35,9 @@ class CreateBajaHerramientaTable extends Migration
             $table->foreign('herramienta_id')->references('id')
                 ->on('herramienta')->onDelete('cascade');
 
-            $table->unsignedInteger('empleado_id');
-            $table->foreign('empleado_id')->references('id')
-                ->on('empleado')->onDelete('cascade');
+            $table->unsignedInteger('trabajador_id');
+            $table->foreign('trabajador_id')->references('id')
+                ->on('trabajador')->onDelete('cascade');
         });
     }
 

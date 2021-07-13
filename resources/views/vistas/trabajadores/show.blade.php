@@ -17,112 +17,72 @@
                     <h3 class="pb-2">
                         Editar trabajador
                     </h3>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{url('empleados/'.$empleado -> id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <input required
+                                    <input readonly
                                            type="text"
                                            class="form-control"
-                                           value="{{$empleado->nombre}}"
+                                           value="{{$trabajador->nombre}}"
                                            name="nombre">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Apellido</label>
-                                    <input required
+                                    <input readonly
                                             type="text"
                                            class="form-control"
-                                            value="{{$empleado->apellido}}"
+                                            value="{{$trabajador->apellido}}"
                                            name="apellido">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Direccion</label>
-                                    <input
+                                    <input readonly
                                             type="text"
                                             class="form-control"
-                                            value="{{$empleado->direccion}}"
+                                            value="{{$trabajador->direccion}}"
                                             name="direccion">
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Tipo</label>
-                                    <select required name="tipo" class="form-control">
-                                        @foreach($tipos as $tipo)
-                                            @if($tipo == $empleado->tipo)
-                                                <option selected value="{{$tipo}}">{{$tipo}}</option>
-                                            @else
-                                                <option value="{{$tipo}}">{{$tipo}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Carnet</label>
-                                    <input required
+                                    <input  readonly
                                            type="text"
                                            class="form-control"
-                                           maxlength="10"
-                                           value="{{$empleado->carnet}}"
+                                           value="{{$trabajador->carnet}}"
                                            name="carnet">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Telefono</label>
-                                    <input
-                                           type="number"
+                                    <input readonly
+                                           type="text"
                                            class="form-control"
-                                           value="{{$empleado->telefono}}"
+                                           value="{{$trabajador->telefono}}"
                                            name="telefono">
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>E-mail</label>
-                                    <input required
-                                           type="email"
+                                    <input readonly
+                                           type="text"
                                            class="form-control"
-                                           value="{{$empleado->email}}"
+                                           value="{{$trabajador->email}}"
                                            name="email">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Contraseña</label>
-                                    <input
-                                           type="password"
-                                           class="form-control"
-                                           name="password">
-                                </div>
-                            </div>
                         </div>
-                        <a href="{{url('empleados')}}" class="btn btn-warning">Atras</a>
-                        <button type="submit" class="btn btn-info">Guardar</button>
-                    </form>
-
+                        <a href="{{url('trabajadores')}}" class="btn btn-warning">Atras</a>
                 </div>
             </div>
         </div>

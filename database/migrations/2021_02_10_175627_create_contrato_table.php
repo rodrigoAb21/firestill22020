@@ -27,8 +27,8 @@ class CreateContratoTable extends Migration
             $table->unsignedInteger('cliente_id');
             $table->foreign('cliente_id')->references('id')->on('cliente');
 
-            $table->unsignedInteger('empleado_id');
-            $table->foreign('empleado_id')->references('id')->on('empleado');
+            $table->unsignedInteger('trabajador_id');
+            $table->foreign('trabajador_id')->references('id')->on('trabajador');
         });
     }
 

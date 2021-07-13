@@ -15,9 +15,9 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        <i class="fa fa-id-card"></i> Empleados
+                        <i class="fa fa-id-card"></i> Trabajadores
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('empleados/create')}}">
+                            <a class="btn btn-success" href="{{url('trabajadores/create')}}">
                                 <i class="fa fa-plus"></i>  Nuevo
                             </a>
                         </div>
@@ -35,7 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($empleados as $empleado)
+                            @foreach($trabajadores as $empleado)
                                 <tr class="text-center">
                                     <td >{{$empleado->id}}</td>
                                     <td >{{$empleado->nombre}}</td>
@@ -44,17 +44,17 @@
                                     <td >{{$empleado->telefono}}</td>
 
                                     <td>
-                                        <a href="{{url('empleados/'.$empleado->id)}}">
+                                        <a href="{{url('trabajadores/'.$empleado->id)}}">
                                             <button class="btn btn-secondary" title="Ver">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
-                                        <a href="{{url('empleados/'.$empleado->id.'/edit')}}">
+                                        <a href="{{url('trabajadores/'.$empleado->id.'/edit')}}">
                                             <button class="btn btn-warning" title="Editar">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$empleado -> nombre}}', '{{url('empleados/'.$empleado -> id)}}')">
+                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$empleado -> nombre}}', '{{url('trabajadores/'.$empleado -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
@@ -62,7 +62,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$empleados->links('pagination.default')}}
+                        {{$trabajadores->links('pagination.default')}}
                     </div>
                 </div>
             </div>

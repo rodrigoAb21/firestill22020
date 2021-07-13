@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmpleadoTable extends Migration
+class CreateTrabajadorTable extends Migration
 {
     /**
      *************************************************************************
      * Clase.........: CreateEmpleadoTable
      * Tipo..........: Migracion
-     * Descripción...: Clase creara la tabla "empleado" en la BD.
+     * Descripción...: Clase creara la tabla "trabajador" en la BD.
      * Fecha.........: 06-FEB-2021
      * Autor.........: Rodrigo Abasto Berbetty
      *************************************************************************
@@ -24,7 +24,7 @@ class CreateEmpleadoTable extends Migration
      */
     public function up()
     {
-        Schema::create('empleado', function (Blueprint $table) {
+        Schema::create('trabajador', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
@@ -38,7 +38,7 @@ class CreateEmpleadoTable extends Migration
             $table->rememberToken();
         });
 
-        DB::table('empleado')->insert([
+        DB::table('trabajador')->insert([
             'nombre' => 'Rodrigo',
             'apellido' => 'Abasto',
             'carnet' => 'carnet',
@@ -57,6 +57,6 @@ class CreateEmpleadoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empleado');
+        Schema::dropIfExists('trabajador');
     }
 }

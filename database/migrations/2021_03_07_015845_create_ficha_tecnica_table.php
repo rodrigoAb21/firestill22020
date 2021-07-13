@@ -35,8 +35,8 @@ class CreateFichaTecnicaTable extends Migration
             $table->string('resultado');
             $table->softDeletes();
 
-            $table->unsignedInteger('empleado_id');
-            $table->foreign('empleado_id')->references('id')->on('empleado');
+            $table->unsignedInteger('trabajador_id');
+            $table->foreign('trabajador_id')->references('id')->on('trabajador');
 
             $table->unsignedInteger('equipo_id');
             $table->foreign('equipo_id')->references('id')->on('equipo');

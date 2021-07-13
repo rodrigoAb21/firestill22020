@@ -165,10 +165,10 @@
                 <ul id="sidebarnav">
                     @if (!\Auth::guest())
                         @if(Auth::user()->tipo == 'Administrador')
-                            <li class="{{ Request::is('empleados*') ? 'nav-item active' : 'nav-item' }}">
-                                <a href="{{url('empleados')}}" >
+                            <li class="{{ Request::is('trabajadores*') ? 'nav-item active' : 'nav-item' }}">
+                                <a href="{{url('trabajadores')}}" >
                                     <i class="fa fa-id-card"></i>
-                                    <span class="hide-menu"> Empleados</span>
+                                    <span class="hide-menu"> Trabajadores</span>
                                 </a>
                             </li>
                         @endif

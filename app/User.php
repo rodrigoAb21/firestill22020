@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'empleado';
+    protected $table = 'trabajador';
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     public $timestamps = false;

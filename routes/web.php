@@ -26,7 +26,7 @@ Route::get('/home', function () {
 
 Route::middleware('auth')->group(function () {
     Route::middleware('administrador')->group(function () {
-        Route::resource('empleados', 'EmpleadoController');
+        Route::resource('trabajadores', 'TrabajadorController');
     });
 
     Route::resource('proveedores', 'ProveedorController');

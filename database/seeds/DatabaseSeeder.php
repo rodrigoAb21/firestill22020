@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
          *                       EMPLEADOS
          ************************************************************/
 
-        DB::table('empleado')->insert([
+        DB::table('trabajador')->insert([
             'nombre' => 'Juan',
             'apellido' => 'Perez',
             'carnet' => '7894562',
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('rodrigo'),
         ]);
 
-        DB::table('empleado')->insert([
+        DB::table('trabajador')->insert([
             'nombre' => 'Jose',
             'apellido' => 'Menacho',
             'carnet' => '7456458',
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('rodrigo'),
         ]);
 
-        DB::table('empleado')->insert([
+        DB::table('trabajador')->insert([
             'nombre' => 'Francisco',
             'apellido' => 'Becerra',
             'carnet' => '8485265',
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('rodrigo'),
         ]);
 
-        DB::table('empleado')->insert([
+        DB::table('trabajador')->insert([
             'nombre' => 'Manuel',
             'apellido' => 'Mercado',
             'carnet' => '8586954',
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('rodrigo'),
         ]);
 
-        DB::table('empleado')->insert([
+        DB::table('trabajador')->insert([
             'nombre' => 'Marta',
             'apellido' => 'Lopez',
             'carnet' => '8798456',
