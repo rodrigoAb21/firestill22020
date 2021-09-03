@@ -25,7 +25,7 @@
                                     <tr class="text-center">
                                         <td>{{$ficha->id}}</td>
                                         <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ficha->fecha)->format('d-m-Y')}}</td>
-                                        <td>{{$ficha->empleado->nombre}} {{$ficha->empleado->apellido}}</td>
+                                        <td>{{$ficha->trabajador->nombre}} {{$ficha->trabajador->apellido}}</td>
                                         <td>{{$ficha->resultado}}</td>
                                         <td>
                                             <a href="{{url('imonitoreo/verFicha/'.$ficha->id)}}">
