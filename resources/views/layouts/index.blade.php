@@ -7,7 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('plantilla/assets/images/favicon.png')}}"/>
+    <link rel="icon" type="image/png" href="{{asset('img/firestill-logo2.png')}}"/>
     <title>Firestill & Armour Group</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('plantilla/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
@@ -64,16 +64,15 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand ligh" href="{{url('/')}}">
+                <a class="navbar-brand light" href="{{url('/')}}">
                     <!-- Logo icon -->
-                    <b class="light-logo">
-                        <i class="fa fa-fire"></i>
-                    </b>
+
+                        <img src="{{asset('img/firestill-logo.png')}}" height="50px">
+
                     <!--End Logo icon -->
                     <!-- Logo text -->
-                    <span>
-                            <b class="light-logo"> FIRESTILL</b>
-                        </span> </a>
+                    <span><b class="light-logo"> FIRESTILL</b></span>
+                </a>
             </div>
             <!-- ============================================================== -->
             <!-- End Logo -->
