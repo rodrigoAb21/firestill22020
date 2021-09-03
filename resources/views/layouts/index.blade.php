@@ -14,7 +14,7 @@
     <!-- Custom CSS -->
     <link href="{{asset('plantilla/material/css/style.css')}}" rel="stylesheet"/>
     <!-- You can change the theme colors from here -->
-    <link href="{{asset('plantilla/material/css/colors/blue-dark.css')}}" id="theme" rel="stylesheet">
+    <link href="{{asset('plantilla/material/css/colors/red-dark.css')}}" id="theme" rel="stylesheet">
     <style rel="stylesheet">
         td{
             white-space: nowrap;

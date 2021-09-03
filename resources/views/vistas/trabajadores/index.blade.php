@@ -24,9 +24,9 @@
                     </h2>
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered color-table info-table">
-                            <thead>
+                            <thead >
                             <tr>
-                                <th class="text-center">COD</th>
+                                <th  class="text-center">COD</th>
                                 <th class="text-center">NOMBRE</th>
                                 <th class="text-center">APELLIDOS</th>
                                 <th class="text-center">TIPO</th>
