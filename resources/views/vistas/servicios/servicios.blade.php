@@ -38,7 +38,7 @@
                                     <td>{{$venta->id}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $venta->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$venta->cliente->nombre_empresa}}</td>
-                                    <td>{{$venta->empleado->nombre}} {{$venta->empleado->apellido}}</td>
+                                    <td>{{$venta->trabajador->nombre}} {{$venta->trabajador->apellido}}</td>
                                     <td>{{$venta->total}}</td>
                                     <td>
                                         <a href="{{url('ventas/verServicio/'.$venta->id)}}">
