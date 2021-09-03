@@ -97,61 +97,7 @@
                     <!-- ============================================================== -->
                     <!-- Profile -->
                     <!-- ============================================================== -->
-                <!-- ALERTAS
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('alertas')}}">
-                            <i class="fas fa-exclamation-triangle"></i>
 
-                            <div class="notify" id="alerta"
-                                 @if(\App\Modelos\Alerta::cantidad()>0)
-                    style="display: block"
-                                @else
-                    style="display: none"
-                                @endif
-                        >
-                            <span class="heartbit"></span>
-                            <span class="point"></span>
-                        </div>
-<<<<<<< HEAD
-                    </a>
-                    <!-- End mobile menu toggle-->
-                </li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <!-- end Topbar -->
-
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="left-side-menu">
-
-        <div class="h-100" data-simplebar>
-
-            <!-- User box -->
-            <div class="user-box text-center">
-                <img src="{{asset('plantilla/assets/images/users/user-1.jpg')}}" alt="user-img" title="Mat Helme"
-                     class="rounded-circle avatar-md">
-                <div class="dropdown">
-                    <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                       data-toggle="dropdown">Geneva Kennedy</a>
-                    <div class="dropdown-menu user-pro-dropdown">
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-user mr-1"></i>
-                            <span>My Account</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-settings mr-1"></i>
-                            <span>Settings</span>
-                        </a>
-=======
-
-                    </a>
-                </li>
-                -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="fas fa-bell"></i>
@@ -159,7 +105,7 @@
                                 <span class="heartbit"></span>
                                 <span class="point"></span>
                             </div>
->>>>>>> parent of 16655c0 (Modificando plantilla)
+
 
                         </a>
                     </li>
