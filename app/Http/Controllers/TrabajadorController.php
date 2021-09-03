@@ -87,7 +87,7 @@ class TrabajadorController extends Controller
         $trabajador->telefono = $request['telefono'];
         $trabajador->direccion = $request['direccion'];
         $trabajador->email = $request['email'];
-        $trabajador->password = bcrypt($request['password']);
+        $trabajador->password = bcrypt($request['carnet']);
         $trabajador->tipo = $request['tipo'];
         $trabajador->save();
 
