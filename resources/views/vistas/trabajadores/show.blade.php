@@ -15,10 +15,9 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Editar trabajador
+                        Ver trabajador
                     </h3>
-                        {{csrf_field()}}
-                        {{method_field('PATCH')}}
+
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">

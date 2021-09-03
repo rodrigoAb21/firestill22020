@@ -101,9 +101,9 @@
                             <div class="form-group">
                                 <label>Email</label>
                                 <input
-                                        type="email_encargado"
+                                        type="text"
                                         class="form-control"
-                                        name="email">
+                                        name="email_encargado">
                             </div>
                         </div>
 

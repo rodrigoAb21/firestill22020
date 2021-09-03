@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Herramientas dadas de Baja
+                        Productos dados de Baja
                         <div class="float-right">
 
                         </div>
