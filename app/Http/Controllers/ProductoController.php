@@ -7,7 +7,6 @@ use App\Modelos\Contador;
 use App\Modelos\Producto;
 
 use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 

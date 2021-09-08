@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Modelos\BajaProducto;
 use App\Modelos\Categoria;
 use App\Modelos\Contador;
-use App\Modelos\DetalleIngresoProducto;
-use App\Modelos\IngresoProducto;
 use App\Modelos\Producto;
-use App\Modelos\Proveedor;
-
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Input;
 
 class InventarioController extends Controller

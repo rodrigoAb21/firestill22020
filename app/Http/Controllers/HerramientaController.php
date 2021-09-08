@@ -699,7 +699,10 @@ class HerramientaController extends Controller
     }
 
     public function reporte(){
+        //return view('vistas.herramientas.reporte',[ 'herramientas' => Herramienta::all()->sortBy('nombre')]);
+
         $pdf = PDF::loadView('vistas.herramientas.reporte',[ 'herramientas' => Herramienta::all()->sortBy('nombre')])->setPaper('letter', 'portrait');
         return $pdf->download('inventario_herramientas_'.date('d-m-Y_H_i_s').'.pdf');
+
     }
 }

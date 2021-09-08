@@ -118,11 +118,12 @@ Route::middleware('auth')->group(function () {
     Route::post('inventario/darBaja', 'BajaProductoController@darBaja');
     Route::delete('inventario/anularBaja/{id}', 'BajaProductoController@anularBaja');
 
-    // --------------------------------- PRODUCTO -------------------------------------------
-    Route::resource('inventario', 'ProductoController');
 
     // --------------------------------- REPORTES -------------------------------------------
     Route::get('inventario/reporte', 'ProductoController@reporte');
+
+    // --------------------------------- PRODUCTO -------------------------------------------
+    Route::resource('inventario', 'ProductoController');
 
     // ------------------------------------- VENTAS ------------------------------------
     Route::get('ventas/ventas', 'VentaController@ventas');
