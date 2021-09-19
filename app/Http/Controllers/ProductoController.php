@@ -128,4 +128,8 @@ class ProductoController extends Controller
         //portrait-landscape
         return $pdf->download('inventario_'.date('d-m-Y_H_i_s').'.pdf');
     }
+
+    public function  algo(){
+        
+    }
 }
