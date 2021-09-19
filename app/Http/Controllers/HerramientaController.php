@@ -45,7 +45,7 @@ class HerramientaController extends Controller
     {
         return view('vistas.herramientas.index',
             [
-                'herramientas' => Herramienta::paginate(5),
+                'herramientas' => Herramienta::orderBy('id', 'desc')->paginate(10),
             ]);
     }
 

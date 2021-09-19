@@ -74,6 +74,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label style="color: white">herramienta</label>
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
                                         @foreach($herramientas as $herramienta)
                                             <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
@@ -83,17 +84,20 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Cantidad</label>
                                     <input class="form-control" title="Cantidad" placeholder="Cantidad" type="number" id="cantidad">
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Costo Unitario</label>
                                     <input class="form-control" title="Costo U. Bs" placeholder="Costo U." step="0.01" type="number" id="costo">
                                 </div>
                             </div>
                             <input name="total" required hidden step="0.001" type="number" id="tt">
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label style="color: white">Agregar</label>
                                     <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-sm btn-block">
                                         <span class="fa fa-plus fa-2x"></span>
                                     </button>

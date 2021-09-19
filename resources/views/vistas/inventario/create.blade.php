@@ -56,12 +56,22 @@
                                            class="form-control">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Categoria</label>
                                     <select required name="categoria_id" class="form-control">
                                         @foreach($categorias as $categoria)
                                             <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Origen</label>
+                                    <select required name="origen" class="form-control">
+                                        @foreach($paises as $origen)
+                                            <option value="{{$origen}}">{{$origen}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -72,7 +82,6 @@
                                     <textarea name="descripcion" rows="3" class="form-control"></textarea>
                                 </div>
                             </div>
-                            
                         </div>
                         <a href="{{url('inventario')}}" class="btn btn-warning">Atras</a>
                         <button type="submit" class="btn btn-info">Guardar</button>

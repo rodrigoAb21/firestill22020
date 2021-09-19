@@ -33,7 +33,7 @@ class CategoriaController extends Controller
     public function index(){
         return view('vistas.categorias.index',
             [
-                'categorias' => Categoria::paginate(5),
+                'categorias' => Categoria::orderBy('id', 'desc')->paginate(10),
             ]);
     }
 

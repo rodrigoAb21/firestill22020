@@ -33,7 +33,7 @@ class ProveedorController extends Controller
     public function index(){
         return view('vistas.proveedores.index',
             [
-                'proveedores' => Proveedor::paginate(5),
+                'proveedores' => Proveedor::orderBy('id', 'desc')->paginate(10),
             ]);
     }
 

@@ -33,7 +33,7 @@ class MarcaClasificacionController extends Controller
     public function index(){
         return view('vistas.marcas.index',
             [
-                'marcas' => MarcaClasificacion::paginate(5),
+                'marcas' => MarcaClasificacion::orderBy('id', 'desc')->paginate(10),
             ]);
     }
 

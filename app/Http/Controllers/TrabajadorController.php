@@ -32,7 +32,7 @@ class TrabajadorController extends Controller
     public function index(){
         return view('vistas.trabajadores.index',
             [
-                'trabajadores' => Trabajador::paginate(10),
+                'trabajadores' => Trabajador::orderBy('id', 'desc')->paginate(10),
             ]);
     }
 
