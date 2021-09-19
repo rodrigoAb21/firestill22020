@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Trabajador;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class TrabajadorController extends Controller
@@ -51,7 +52,7 @@ class TrabajadorController extends Controller
      */
     public function create(){
         return view('vistas.trabajadores.create', [
-            'tipos' => Trabajador::$TIPOS_DE_USUARIO,
+            'tipos' => Utils::$TIPOS_DE_USUARIO,
         ]);
     }
 
@@ -111,7 +112,7 @@ class TrabajadorController extends Controller
         return view('vistas.trabajadores.edit',
             [
                 'trabajador' => Trabajador::findOrFail($id),
-                'tipos' => Trabajador::$TIPOS_DE_USUARIO,
+                'tipos' => Utils::$TIPOS_DE_USUARIO,
             ]);
     }
 
