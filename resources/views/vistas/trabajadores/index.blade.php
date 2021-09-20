@@ -22,6 +22,16 @@
                             </a>
                         </div>
                     </h2>
+                    <form id="search-trabajador">
+                        <div class="input-group">
+                            <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead >
@@ -78,6 +88,25 @@
                 $('#modalEliminarEnunciado').html("Realmente desea eliminar al empleado: " + nombre + "?");
                 $('#modalEliminar').modal('show');
             }
+        </script>
+
+        <script>
+            $(document).ready(function (){
+                console.log("funcionaa");
+                $('#search-trabajador').keyup(function (e){
+                    console.log('ok');
+                    let search = $('#search-trabajador').val();
+                    $.ajax({
+                        url:'',
+                        type:'POST',
+                        data:{search},
+                        success:function (response){
+                            let trabajadores=JSON.parse(response);
+                            console.log(trabajadores);
+                        }
+                    })
+                })
+            });
         </script>
 
     @endpush()
