@@ -64,8 +64,10 @@
                 <th style="width: 5%">COD</th>
                 <th>NOMBRE</th>
                 <th>CATEGORIA</th>
+                <th>ORIGEN</th>
                 <th>EXISTENCIAS</th>
                 <th>PRECIO U. Bs</th>
+                <th>DESCRIPCION</th>
             </tr>
             </thead>
             <tbody>
@@ -74,8 +76,10 @@
                     <td style="width: 5%; text-align: center">{{$producto->id}}</td>
                     <td style="text-align: center">{{$producto->nombre}}</td>
                     <td style="text-align: center">{{$producto->categoria->nombre}}</td>
+                    <td style="text-align: center">{{$producto->origen}}</td>
                     <td style="text-align: center">{{$producto->cantidad}}</td>
                     <td style="text-align: center">{{$producto->precio}}</td>
+                    <td style="text-align: center">{{$producto->descripcion}}</td>
                 </tr>
             @endforeach
             </tbody>
