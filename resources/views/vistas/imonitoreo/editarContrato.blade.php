@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Cliente</label>
+                                    <label>Cliente*</label>
                                     <select required name="cliente_id" class="form-control">
                                         @foreach($clientes as $cliente)
                                             @if($cliente->id == $contrato->cliente_id)
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Representante Firestill</label>
+                                    <label>Representante Firestill*</label>
                                     <select required name="trabajador_id" class="form-control">
                                         @foreach($trabajadores as $trabajador)
                                             @if($trabajador->id == $contrato->trabajador_id)
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Fecha inicio</label>
+                                    <label>Fecha inicio*</label>
                                     <input required
                                            type="date"
                                            value="{{$contrato->fecha_inicio}}"
@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Fecha fin</label>
+                                    <label>Fecha fin*</label>
                                     <input required
                                            type="date"
                                            value="{{$contrato->fecha_fin}}"
@@ -80,7 +80,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Periodo (Mes)</label>
+                                    <label>Periodo (Mes)*</label>
                                     <input required
                                            type="number"
                                            value="{{$contrato->periodo}}"
@@ -141,12 +141,12 @@
                                         <td>{{$sucursal->direccion}}</td>
                                         <td>
                                             <a href="{{url('imonitoreo/editarSucursal/'.$sucursal->id)}}">
-                                                <button class="btn btn-warning" title="Editar">
-                                                    <i class="fa fa-pen"></i>
+                                                <button class="btn btn-warning">
+                                                    Editar
                                                 </button>
                                             </a>
-                                            <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$sucursal->id}}', '{{url('imonitoreo/eliminarSucursal/'.$sucursal->id)}}')">
-                                                <i class="fa fa-times"></i>
+                                            <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$sucursal->id}}', '{{url('imonitoreo/eliminarSucursal/'.$sucursal->id)}}')">
+                                                Eliminar
                                             </button>
                                         </td>
                                     </tr>

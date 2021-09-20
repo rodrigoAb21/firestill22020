@@ -5,13 +5,14 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Asignaciones de herramientas
+                        Ingresos de Productos
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('herramientas/nuevaAsignacion')}}">
-                                <i class="fa fa-plus"></i>  Nueva
+                            <a class="btn btn-success" href="{{url('inventario/nuevoIngreso')}}">
+                                <i class="fa fa-plus"></i>  Nuevo
                             </a>
                         </div>
                     </h2>
+
                     @if(session()->has('message'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('message') }}
@@ -26,42 +27,36 @@
                             <tr>
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
-                                <th class="text-center">RESPONSABLE</th>
-                                <th class="text-center">ESTADO</th>
+                                <th class="text-center">NRO FACTURA</th>
+                                <th class="text-center">PROVEEDOR</th>
+                                <th class="text-center">TOTAL BS</th>
                                 <th class="text-center">OPC</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($asignaciones as $asignacion)
+
+                            @foreach($ingresos as $ingreso)
                                 <tr class="text-center">
-                                    <td>{{$asignacion->id}}</td>
-                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $asignacion->fecha)->format('d-m-Y')}}</td>
-                                    <td>{{$asignacion->empleado->nombre}} {{$asignacion->empleado->apellido}}</td>
-                                    <td>{{$asignacion->estado}}</td>
+                                    <td>{{$ingreso->id}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d-m-Y')}}</td>
+                                    <td>{{$ingreso->nro_factura}}</td>
+                                    <td>{{$ingreso->proveedor->nombre}}</td>
+                                    <td>{{$ingreso->total}}</td>
                                     <td>
-                                        <a href="{{url('herramientas/verAsignacion/'.$asignacion->id)}}">
-                                            <button class="btn btn-secondary" title="Ver">
-                                                <i class="fa fa-eye"></i>
+                                        <a href="{{url('inventario/verIngreso/'.$ingreso->id)}}">
+                                            <button class="btn btn-secondary">
+                                                Ver
                                             </button>
                                         </a>
-                                        @if($asignacion->estado == 'Activa')
-                                            <a href="{{url('herramientas/reingreso/'.$asignacion->id)}}" title="Reingreso">
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-sign-in-alt"></i>
-                                                </button>
-                                            </a>
-
-                                            <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$asignacion -> id}}', '{{url('herramientas/eliminarAsignacion/'.$asignacion -> id)}}')">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        @endif
-
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$ingreso -> nombre}}', '{{url('inventario/eliminarIngreso/'.$ingreso -> id)}}')">
+                                            Eliminar
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        {{$asignaciones->links('pagination.default')}}
+                        {{$ingresos->links('pagination.default')}}
                     </div>
                 </div>
             </div>

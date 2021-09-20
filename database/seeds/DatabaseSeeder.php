@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                       EMPLEADOS
          ************************************************************/
-
+/*
         DB::table('trabajador')->insert([
             'nombre' => 'Juan',
             'apellido' => 'Perez',
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                       CLIENTES
          ************************************************************/
-
+/*
         DB::table('cliente')->insert([
             'nombre_empresa' => 'Petrobras',
             'nit' =>  '10023145654',
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                       PROVEEDORES
          ************************************************************/
-
+/*
         DB::table('proveedor')->insert([
             'nombre' => 'FERROTODO',
             'nit' =>  '1028373024',
@@ -170,7 +170,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                      CATEGORIAS
          ************************************************************/
-
+/*
         DB::table('categoria')->insert([
             'nombre' => 'Cilindros',
         ]);
@@ -193,7 +193,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                TIPO CLASIFICACION
          ************************************************************/
-
+/*
         DB::table('tipo_clasificacion')->insert([
             'nombre' => 'CO2',
         ]);
@@ -226,7 +226,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                    MARCAS CLASIFICACION
          ************************************************************/
-
+/*
         DB::table('marca_clasificacion')->insert([
             'nombre' => 'Imex',
         ]);
@@ -283,6 +283,541 @@ class DatabaseSeeder extends Seeder
          *                        PRODUCTO
          ************************************************************/
 
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'foto' => 'manguera-extintor.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+                'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+                ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+                ' >400mm( a partir de 3kg/3lts)',
+            'precio' => '80',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'foto' => 'manguera-extintor.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+                'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+                ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+                ' >400mm( a partir de 3kg/3lts)',
+            'precio' => '80',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'foto' => 'manguera-extintor.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+                'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+                ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+                ' >400mm( a partir de 3kg/3lts)',
+            'precio' => '80',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'foto' => 'manguera-extintor.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+                'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+                ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+                ' >400mm( a partir de 3kg/3lts)',
+            'precio' => '80',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'foto' => 'manguera-extintor.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+                'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+                ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+                ' >400mm( a partir de 3kg/3lts)',
+            'precio' => '80',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'foto' => 'manguera-extintor.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+                'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+                ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+                ' >400mm( a partir de 3kg/3lts)',
+            'precio' => '80',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);DB::table('producto')->insert([
+        'nombre' => 'Mangueras extintor Polvo/Espuma',
+        'foto' => 'manguera-extintor.jpg',
+        'origen' => 'China',
+        'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+            'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+            ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+            ' >400mm( a partir de 3kg/3lts)',
+        'precio' => '80',
+        'cantidad' => '0',
+        'categoria_id' => 2,
+    ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor Polvo/Espuma',
+            'foto' => 'manguera-extintor.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Conexión a la manguera: rosca macho métrica ' .
+                'M-14 x 1,25 Presión de rotura: ≥60 bars (3 veces la presión' .
+                ' de servicio P(Tmáx:17bar)) Longitud de la manguera:' .
+                ' >400mm( a partir de 3kg/3lts)',
+            'precio' => '80',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras extintor CO2',
+            'foto' => '1545101362.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Para el modelo de 2kg se puede utilizar' .
+                ' boquilla difusora o manguera corta de PVC. Para el modelo' .
+                ' de 5kg de CO2 la manguera seria fabricada en caucho ' .
+                'reforzado con difusor de bocina tipo pico-pato.',
+            'precio' => '90',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Mangueras para Extintores de PQS',
+            'foto' => 'm2.png',
+            'origen' => 'China',
+            'descripcion' => 'Manguera para descarga de extintores portátiles' .
+                ' de polvo químico seco, su diámetro interior uniforme ' .
+                'favorece la descarga del agente.',
+            'precio' => '110',
+            'cantidad' => '0',
+            'categoria_id' => 2,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Americano 400PSI',
+            'foto' => 'manometrop.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '60',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro Argentino 2MPa',
+            'foto' => 'manometro_espanol.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '45',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
+
+        DB::table('producto')->insert([
+            'nombre' => 'Manometro 27Bar',
+            'foto' => 'ManometroBar.jpg',
+            'origen' => 'China',
+            'descripcion' => 'Manometro para extintor.',
+            'precio' => '50',
+            'cantidad' => '0',
+            'categoria_id' => 3,
+        ]);
         DB::table('producto')->insert([
             'nombre' => 'Mangueras extintor Polvo/Espuma',
             'foto' => 'manguera-extintor.jpg',

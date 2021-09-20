@@ -18,7 +18,7 @@ class IngresoProductoController extends Controller
 {
     public function listaIngresos()
     {
-        return view('vistas.inventario.listaIngresos',
+        return view('vistas.inventario.ingresos.listaIngresos',
             [
                 'ingresos' => IngresoProducto::
                 orderBy('id', 'desc')->paginate(10),
@@ -28,7 +28,7 @@ class IngresoProductoController extends Controller
     public function nuevoIngreso()
     {
 
-        return view('vistas.inventario.nuevoIngreso', [
+        return view('vistas.inventario.ingresos.nuevoIngreso', [
             'productos' => Producto::all(),
             'proveedores' => Proveedor::all(),
         ]);
@@ -104,7 +104,7 @@ class IngresoProductoController extends Controller
     public function verIngreso($id)
     {
 
-        return view('vistas.inventario.verIngreso', [
+        return view('vistas.inventario.ingresos.verIngreso', [
             'ingreso' => IngresoProducto::findOrFail($id),
       
         ]);

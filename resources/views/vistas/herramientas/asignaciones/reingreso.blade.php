@@ -44,7 +44,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Responsable</label>
-                                    <input class="form-control" type="text" readonly value="{{$asignacion->empleado->nombre}} {{$asignacion->empleado->apellido}}">
+                                    <input class="form-control" type="text" readonly value="{{$asignacion->trabajador->nombre}} {{$asignacion->trabajador->apellido}}">
                                 </div>
                             </div>
                         </div>

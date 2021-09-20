@@ -15,11 +15,11 @@
                             {{csrf_field()}}
 
                                 <div class="form-group">
-                                    <label>Nombre</label>
+                                    <label>Nombre*</label>
                                     <input required class="form-control" name="nombre" type="text">
                                 </div>
                                 <div class="form-group">
-                                    <label>Ubicacion</label>
+                                    <label>Ubicacion*</label>
                                     <input required class="form-control" name="direccion" type="text">
                                 </div>
                             <input required type="hidden" value="{{$contrato->id}}" name="contrato_id">

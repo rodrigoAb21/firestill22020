@@ -39,29 +39,25 @@
 
                                             <a href="{{url('imonitoreo/editarContrato/'.$contrato->id)}}">
                                                 <button class="btn btn-warning"  title="Editar">
-                                                    <i class="fa fa-pen"></i>
+                                                    Editar
                                                 </button>
                                             </a>
                                             <button type="button" class="btn btn-outline-danger"
-                                                    title="Finalizar Edicion"
                                                     onclick="modalFinalizar('{{$contrato -> id}}', '{{url('imonitoreo/finalizarEdicion/'.$contrato -> id)}}')">
-                                                <i class="fas fa-file-contract"></i>
+                                                Finalizar Edicion
                                             </button>
                                         @else
                                             <a href="{{url('imonitoreo/verContrato/'.$contrato->id)}}">
-                                                <button class="btn btn-secondary"
-                                                        title="Ver">
-                                                    <i class="fa fa-eye"></i>
+                                                <button class="btn btn-secondary">
+                                                    Ver
                                                 </button>
                                             </a>
-
                                         @endif
 
                                         <button type="button"
-                                                title="Eliminar"
                                                 class="btn btn-danger"
                                                 onclick="modalEliminar('{{$contrato -> id}}', '{{url('imonitoreo/eliminarContrato/'.$contrato -> id)}}')">
-                                            <i class="fa fa-times"></i>
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Modelos\Proveedor;
+use App\Utils\Utils;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
@@ -52,8 +53,8 @@ class ProveedorController extends Controller
      */
     public function create(){
         return view('vistas.proveedores.create', [
-            'monedas' => Proveedor::$MONEDAS,
-            'sucursales' => Proveedor::$SUCURSALES,
+            'monedas' => Utils::$MONEDAS,
+            'sucursales' => Utils::$DEPARTAMENTOS,
         ]);
     }
 
@@ -124,8 +125,8 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         return view('vistas.proveedores.edit', [
-            'monedas' => Proveedor::$MONEDAS,
-            'sucursales' => Proveedor::$SUCURSALES,
+            'monedas' => Utils::$MONEDAS,
+            'sucursales' => Utils::$DEPARTAMENTOS,
             'proveedor' => Proveedor::findOrFail($id),
         ]);
     }

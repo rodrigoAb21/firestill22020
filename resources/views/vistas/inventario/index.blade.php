@@ -37,26 +37,27 @@
                                     <td class="align-middle">{{$producto->cantidad}}</td>
                                     <td class="align-middle">
                                         <a href="{{url('inventario/'.$producto->id)}}">
-                                            <button class="btn btn-secondary" title="Ver">
-                                                <i class="fa fa-eye"></i>
+                                            <button class="btn btn-secondary">
+                                                Ver
                                             </button>
                                         </a>
 
                                         <a href="{{url('inventario/'.$producto->id.'/edit')}}">
-                                            <button class="btn btn-warning" title="Editar">
-                                                <i class="fa fa-pen"></i>
+                                            <button class="btn btn-warning">
+                                                Editar
                                             </button>
                                         </a>
 
                                         @if($producto->cantidad>0)
                                             <a href="{{url('inventario/darBaja/'.$producto->id)}}">
-                                                <button class="btn btn-outline-danger" title="Dar de baja">
-                                                    <i class="fa fa-minus"></i>
+                                                <button class="btn btn-outline-danger">
+                                                    Baja
                                                 </button>
                                             </a>
                                         @endif
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$producto -> nombre}}', '{{url('inventario/'.$producto -> id)}}')">
-                                            <i class="fa fa-times"></i>
+                                        <button type="button" class="btn btn-danger"
+                                                onclick="modalEliminar('{{$producto -> nombre}}', '{{url('inventario/'.$producto -> id)}}')">
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>

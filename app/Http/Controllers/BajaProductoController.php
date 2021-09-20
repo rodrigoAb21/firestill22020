@@ -14,14 +14,14 @@ class BajaProductoController extends Controller
     public function listaBajas()
     {
 
-        return view('vistas.inventario.listaBajas',[
+        return view('vistas.inventario.bajas.listaBajas',[
             'bajas' => BajaProducto::orderBy('id', 'desc')->paginate(10),
         ]);
     }
 
     public function nuevaBaja($id)
     {
-        return view('vistas.inventario.nuevaBaja', [
+        return view('vistas.inventario.bajas.nuevaBaja', [
             'producto' => Producto::findOrFail($id),
         ]);
     }

@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Fecha</label>
+                                    <label>Fecha*</label>
                                     <input required
                                            type="date"
                                            class="form-control"
@@ -43,10 +43,10 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Responsable</label>
-                                    <select name="empleado_id" class="form-control">
-                                        @foreach($empleados as $empleado)
-                                            <option value="{{$empleado->id}}">{{$empleado->nombre}} {{$empleado->apellido}}</option>
+                                    <label>Responsable*</label>
+                                    <select name="trabajador_id" class="form-control">
+                                        @foreach($trabajadores as $trabajador)
+                                            <option value="{{$trabajador->id}}">{{$trabajador->nombre}} {{$trabajador->apellido}}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -34,17 +34,17 @@
 
                                     <td>
                                         <a href="{{url('proveedores/'.$proveedor->id)}}">
-                                            <button class="btn btn-secondary" title="Ver">
-                                                <i class="fa fa-eye"></i>
+                                            <button class="btn btn-secondary">
+                                                Ver
                                             </button>
                                         </a>
                                         <a href="{{url('proveedores/'.$proveedor->id.'/edit')}}">
-                                            <button class="btn btn-warning" title="Editar">
-                                                <i class="fa fa-pen"></i>
+                                            <button class="btn btn-warning">
+                                                Editar
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$proveedor -> nombre}}', '{{url('proveedores/'.$proveedor -> id)}}')">
-                                            <i class="fa fa-times"></i>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$proveedor -> nombre}}', '{{url('proveedores/'.$proveedor -> id)}}')">
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>

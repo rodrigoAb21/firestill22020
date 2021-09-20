@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Nombre</label>
+                                    <label>Nombre*</label>
                                     <input required
                                            type="text"
                                            class="form-control"
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Direccion</label>
+                                    <label>Direccion*</label>
                                     <input required
                                             type="text"
                                             class="form-control"
@@ -70,7 +70,7 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Telefono</label>
+                                    <label>Telefono*</label>
                                     <input  required
                                             type="number"
                                             class="form-control"

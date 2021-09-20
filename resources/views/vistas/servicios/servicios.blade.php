@@ -27,7 +27,7 @@
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
                                 <th class="text-center">CLIENTE</th>
-                                <th class="text-center">EMPLEADO</th>
+                                <th class="text-center">TRABAJADOR</th>
                                 <th class="text-center">TOTAL BS</th>
                                 <th class="text-center">OPC</th>
                             </tr>
@@ -42,12 +42,12 @@
                                     <td>{{$venta->total}}</td>
                                     <td>
                                         <a href="{{url('ventas/verServicio/'.$venta->id)}}">
-                                            <button class="btn btn-secondary" title="Ver">
-                                                <i class="fa fa-eye"></i>
+                                            <button class="btn btn-secondary">
+                                                Ver
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$venta -> id}}', '{{url('ventas/eliminarServicio/'.$venta -> id)}}')">
-                                            <i class="fa fa-times"></i>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$venta -> id}}', '{{url('ventas/eliminarServicio/'.$venta -> id)}}')">
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>

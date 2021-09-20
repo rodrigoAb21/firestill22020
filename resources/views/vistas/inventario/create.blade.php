@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Nombre</label>
+                                    <label>Nombre*</label>
                                     <input required
                                            type="text"
                                            class="form-control"
@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Precio Bs</label>
+                                    <label>Precio Bs*</label>
                                     <input required
                                            type="number"
                                            class="form-control"
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Categoria</label>
+                                    <label>Categoria*</label>
                                     <select required name="categoria_id" class="form-control">
                                         @foreach($categorias as $categoria)
                                             <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Origen</label>
+                                    <label>Origen*</label>
                                     <select required name="origen" class="form-control">
                                         @foreach($paises as $origen)
                                             <option value="{{$origen}}">{{$origen}}</option>
