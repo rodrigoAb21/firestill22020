@@ -15,7 +15,7 @@ class Utils
         'Dolar',
     ];
 
-    public  static $DEPARTAMENTOS = [
+    public static $DEPARTAMENTOS = [
         'La Paz',
         'Oruro',
         'Potosí',
