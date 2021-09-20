@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title> Lista de Productos </title>
     <style>
         body{
@@ -49,9 +49,9 @@
 </head>
 <body>
 <div class="container">
-    <img src="{{public_path('img/ifsc.png')}}" style="width: 100%"/>
+    <img src="{{public_path('img/ifsc2.png')}}" style="width: 100%"/>
     <div class="centered">
-        <h2>Inventario de Productos {{date('d/M/Y')}}</h2>
+        <h2>Inventario de Productos - {{date('d/M/Y')}}</h2>
     </div>
     <div style="clear: both;" />
 </div>
@@ -82,5 +82,28 @@
         </table>
     </div>
 </div>
+<script type="text/php">
+    if (isset($pdf)) {
+        $pdf->page_script('
+            $text = sprintf(_("Página %d de %d"),  $PAGE_NUM, $PAGE_COUNT);
+            // Uncomment the following line if you use a Laravel-based i18n
+            //$text = __("Página :pageNum de :pageCount", ["pageNum" => $PAGE_NUM, "pageCount" => $PAGE_COUNT]);
+            $font = null;
+            $size = 9;
+            $color = array(0,0,0);
+            $word_space = 0.0;  //  default
+            $char_space = 0.0;  //  default
+            $angle = 0.0;   //  default
+
+            // Compute text width to center correctly
+            $textWidth = $fontMetrics->getTextWidth($text, $font, $size);
+
+            $x = ($pdf->get_width() - $textWidth) / 2;
+            $y = $pdf->get_height() - 35;
+
+            $pdf->text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
+        '); // End of page_script
+    }
+</script>
 </body>
 </html>
