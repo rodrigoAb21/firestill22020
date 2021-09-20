@@ -98,7 +98,7 @@
                                         <td>
                                             <a href="{{url('imonitoreo/verSucursal/'.$sucursal->id)}}">
                                                 <button class="btn btn-secondary">
-                                                    <i class="fa fa-eye"></i>
+                                                    Ver
                                                 </button>
                                             </a>
                                         </td>

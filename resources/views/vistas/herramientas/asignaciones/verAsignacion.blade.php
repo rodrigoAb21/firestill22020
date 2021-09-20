@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label>Responsable</label>
                                 <input readonly
-                                       value="{{$asignacion->empleado->nombre}} {{$asignacion->empleado->apellido}}"
+                                       value="{{$asignacion->trabajador->nombre}} {{$asignacion->trabajador->apellido}}"
                                        type="text"
                                        class="form-control">
                             </div>

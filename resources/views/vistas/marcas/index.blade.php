@@ -28,12 +28,12 @@
                                     <td>{{$marca->nombre}}</td>
                                     <td>
                                         <a href="{{url('marcas/'.$marca->id.'/edit')}}">
-                                            <button class="btn btn-warning" title="Editar">
-                                                <i class="fa fa-pen"></i>
+                                            <button class="btn btn-warning">
+                                                Editar
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$marca -> nombre}}', '{{url('marcas/'.$marca -> id)}}')">
-                                            <i class="fa fa-times"></i>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$marca -> nombre}}', '{{url('marcas/'.$marca -> id)}}')">
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>

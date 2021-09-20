@@ -5,10 +5,10 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Ingresos de herramientas
+                        Asignaciones de herramientas
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('herramientas/nuevoIngreso')}}">
-                                <i class="fa fa-plus"></i>  Nuevo
+                            <a class="btn btn-success" href="{{url('herramientas/nuevaAsignacion')}}">
+                                <i class="fa fa-plus"></i>  Nueva
                             </a>
                         </div>
                     </h2>
@@ -26,34 +26,42 @@
                             <tr>
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
-                                <th class="text-center">TIENDA</th>
-                                <th class="text-center">TOTAL Bs</th>
+                                <th class="text-center">RESPONSABLE</th>
+                                <th class="text-center">ESTADO</th>
                                 <th class="text-center">OPC</th>
                             </tr>
                             </thead>
                             <tbody>
-
-                            @foreach($ingresos as $ingreso)
+                            @foreach($asignaciones as $asignacion)
                                 <tr class="text-center">
-                                    <td>{{$ingreso->id}}</td>
-                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d-m-Y')}}</td>
-                                    <td>{{$ingreso->tienda}}</td>
-                                    <td>{{$ingreso->total}}</td>
+                                    <td>{{$asignacion->id}}</td>
+                                    <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $asignacion->fecha)->format('d-m-Y')}}</td>
+                                    <td>{{$asignacion->trabajador->nombre}} {{$asignacion->trabajador->apellido}}</td>
+                                    <td>{{$asignacion->estado}}</td>
                                     <td>
-                                        <a href="{{url('herramientas/verIngreso/'.$ingreso->id)}}">
-                                            <button class="btn btn-secondary" title="Ver">
-                                                <i class="fa fa-eye"></i>
+                                        <a href="{{url('herramientas/verAsignacion/'.$asignacion->id)}}">
+                                            <button class="btn btn-secondary">
+                                                Ver
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$ingreso -> nombre}}', '{{url('herramientas/eliminarIngreso/'.$ingreso -> id)}}')">
-                                            <i class="fa fa-times"></i>
-                                        </button>
+                                        @if($asignacion->estado == 'Activa')
+                                            <a href="{{url('herramientas/reingreso/'.$asignacion->id)}}">
+                                                <button class="btn btn-success">
+                                                    Reingreso
+                                                </button>
+                                            </a>
+
+                                            <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$asignacion -> id}}', '{{url('herramientas/eliminarAsignacion/'.$asignacion -> id)}}')">
+                                                Eliminar
+                                            </button>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        {{$ingresos->links('pagination.default')}}
+                        {{$asignaciones->links('pagination.default')}}
                     </div>
                 </div>
             </div>

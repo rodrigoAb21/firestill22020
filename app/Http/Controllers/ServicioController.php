@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Modelos\Cliente;
 use App\Modelos\DetalleNotaVenta;
-use App\Modelos\Empleado;
+use App\Modelos\Trabajador;
 use App\Modelos\NotaVenta;
 use App\Modelos\Producto;
 use App\Modelos\Servicio;
@@ -25,7 +25,7 @@ class ServicioController extends Controller
     {
         return view('vistas.servicios.nuevoServicio',[
             'clientes' => Cliente::all(),
-            'empleados' => Empleado::all(),
+            'trabajadores' => Trabajador::all(),
             'productos' => Producto::where('cantidad', '>', 0)->get(),
         ]);
     }

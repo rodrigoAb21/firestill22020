@@ -1,6 +1,5 @@
 @extends('layouts.index')
 @section('contenido')
-
     <!--
 	*************************************************************************
 	 * Nombre........: create
@@ -10,7 +9,6 @@
 	 * Autor.........: Rodrigo Abasto Berbetty
 	 *************************************************************************
 	-->
-
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -27,12 +25,12 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{url('herramientas/guardarIngreso')}}" autocomplete="off" enctype="multipart/form-data">
+                    <form method="POST" action="{{url('inventario/guardarIngreso')}}" autocomplete="off" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Fecha</label>
+                                    <label>Fecha*</label>
                                     <input required
                                            type="date"
                                            class="form-control"
@@ -54,30 +52,31 @@
                                 <div class="form-group">
                                     <label>Nro Factura</label>
                                     <input
-                                            name="nro_factura"
-                                            type="text"
-                                            class="form-control">
+                                           name="nro_factura"
+                                           type="text"
+                                           class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Tienda</label>
-                                    <input required
-                                           type="text"
-                                           name="tienda"
-                                           class="form-control">
+                                    <label>Proveedor*</label>
+                                    <select required  name="proveedor_id" class="form-control">
+                                        @foreach($proveedores as $proveedor)
+                                            <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <hr>
-                        <h3>Herramientas</h3>
+                        <h3>Productos</h3>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label style="color: white">herramienta</label>
-                                    <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
-                                        @foreach($herramientas as $herramienta)
-                                            <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
+                                    <label style="color: white">Producto</label>
+                                    <select class="form-control selectpicker" data-live-search="true" id="selectorProducto">
+                                        @foreach($productos as $producto)
+                                            <option value="{{$producto->id}}">{{$producto->nombre}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -85,21 +84,21 @@
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Cantidad</label>
-                                    <input class="form-control" title="Cantidad" placeholder="Cantidad" type="number" id="cantidad">
+                                    <input class="form-control" placeholder="Cantidad" title="Cantidad" type="number" id="cantidad">
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Costo Unitario</label>
-                                    <input class="form-control" title="Costo U. Bs" placeholder="Costo U." step="0.01" type="number" id="costo">
+                                    <label>Costo</label>
+                                    <input class="form-control" placeholder="Costo U." title="Costo U. BS" step="0.01" type="number" id="costo">
                                 </div>
                             </div>
-                            <input name="total" required hidden step="0.001" type="number" id="tt">
+                            <input name="total" hidden step="0.001" type="number" id="tt">
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label style="color: white">Agregar</label>
-                                    <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-sm btn-block">
-                                        <span class="fa fa-plus fa-2x"></span>
+                                    <button id="btn_agregar" type="button" onclick="agregar()" class="btn btn-success btn-block">
+                                        Agregar
                                     </button>
                                 </div>
                             </div>
@@ -110,8 +109,8 @@
                                 <thead>
                                 <tr>
                                     <th class="text-right">OPC</th>
-                                    <th class="text-center w-50">HERRAMIENTA</th>
-                                    <th class="text-center">CANTIDAD</th>
+                                    <th class="text-center w-50">PRODUCTO</th>
+                                    <th class="text-center">CANT</th>
                                     <th class="text-center">COSTO U. Bs</th>
                                     <th class="text-center">SUBTOTAL</th>
                                 </tr>
@@ -131,7 +130,7 @@
 
                         </div>
 
-                        <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('inventario/listaIngresos')}}" class="btn btn-warning">Atras</a>
                         <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
                     </form>
                 </div>
@@ -159,23 +158,22 @@
                 cantidad = $('#cantidad').val();
                 costo = $('#costo').val();
                 if(cont>=0 && cantidad != null && cantidad > 0 && costo != null && costo > 0) {
-
                     subtotal[cont] = (cantidad * costo).toFixed(2);
                     total = parseFloat(total) + parseFloat(subtotal[cont]);
                     total = parseFloat(total).toFixed(2);
 
-                    idHerramienta = $('#selectorHerramienta').val();
-                    nombreHerramienta = $('#selectorHerramienta option:selected').text();
+                    idProducto = $('#selectorProducto').val();
+                    nombreProducto = $('#selectorProducto option:selected').text();
                     var fila =
-                        '<tr class="text-center" id="fila' + cont + '">' +
+                        '<tr  class="text-center" id="fila' + cont + '">' +
                         '<td>' +
                         '<button type="button" class="btn btn-danger btn-sm" onclick="quitar(' + cont + ');">' +
                         '<i class="fa fa-times" aria-hidden="true"></i>' +
                         '</button>' +
                         '</td>' +
                         '<td>' +
-                        '   <input required name="idHerramientaT[]" hidden value="'+idHerramienta+'">'+
-                        nombreHerramienta +
+                        '   <input required name="idProductoT[]" hidden value="'+idProducto+'">'+
+                        nombreProducto +
                         '</td>' +
                         '<td>' +
                         '   <input required hidden name="cantidadT[]" value="'+cantidad+'">'+

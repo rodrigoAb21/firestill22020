@@ -5,14 +5,13 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Ingresos de Productos
+                        Ingresos de herramientas
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('inventario/nuevoIngreso')}}">
+                            <a class="btn btn-success" href="{{url('herramientas/nuevoIngreso')}}">
                                 <i class="fa fa-plus"></i>  Nuevo
                             </a>
                         </div>
                     </h2>
-
                     @if(session()->has('message'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('message') }}
@@ -27,9 +26,8 @@
                             <tr>
                                 <th class="text-center">COD</th>
                                 <th class="text-center">FECHA</th>
-                                <th class="text-center">NRO FACTURA</th>
-                                <th class="text-center">PROVEEDOR</th>
-                                <th class="text-center">TOTAL BS</th>
+                                <th class="text-center">TIENDA</th>
+                                <th class="text-center">TOTAL Bs</th>
                                 <th class="text-center">OPC</th>
                             </tr>
                             </thead>
@@ -39,17 +37,16 @@
                                 <tr class="text-center">
                                     <td>{{$ingreso->id}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $ingreso->fecha)->format('d-m-Y')}}</td>
-                                    <td>{{$ingreso->nro_factura}}</td>
-                                    <td>{{$ingreso->proveedor->nombre}}</td>
+                                    <td>{{$ingreso->tienda}}</td>
                                     <td>{{$ingreso->total}}</td>
                                     <td>
-                                        <a href="{{url('inventario/verIngreso/'.$ingreso->id)}}">
-                                            <button class="btn btn-secondary" title="Ver">
-                                                <i class="fa fa-eye"></i>
+                                        <a href="{{url('herramientas/verIngreso/'.$ingreso->id)}}">
+                                            <button class="btn btn-secondary">
+                                                Ver
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" title="Eliminar" onclick="modalEliminar('{{$ingreso -> nombre}}', '{{url('inventario/eliminarIngreso/'.$ingreso -> id)}}')">
-                                            <i class="fa fa-times"></i>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$ingreso -> nombre}}', '{{url('herramientas/eliminarIngreso/'.$ingreso -> id)}}')">
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>

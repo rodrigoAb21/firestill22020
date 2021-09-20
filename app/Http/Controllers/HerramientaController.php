@@ -6,7 +6,7 @@ use App\Modelos\AsignacionHerramienta;
 use App\Modelos\BajaHerramienta;
 use App\Modelos\DetalleAsignacion;
 use App\Modelos\DetalleIngresoHerramienta;
-use App\Modelos\Empleado;
+use App\Modelos\Trabajador;
 use App\Modelos\Herramienta;
 use App\Modelos\IngresoHerramienta;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -200,7 +200,7 @@ class HerramientaController extends Controller
      */
     public function listaIngresos()
     {
-        return view('vistas.herramientas.listaIngresos',
+        return view('vistas.herramientas.ingresos.listaIngresos',
             [
                 'ingresos' => IngresoHerramienta::
                 orderBy('id', 'desc')->paginate(5),
@@ -220,7 +220,7 @@ class HerramientaController extends Controller
      */
     public function nuevoIngreso()
     {
-        return view('vistas.herramientas.nuevoIngreso', [
+        return view('vistas.herramientas.ingresos.nuevoIngreso', [
             'herramientas' => Herramienta::all(),
         ]);
     }
@@ -317,7 +317,7 @@ class HerramientaController extends Controller
      */
     public function verIngreso($id)
     {
-        return view('vistas.herramientas.verIngreso', [
+        return view('vistas.herramientas.ingresos.verIngreso', [
             'ingreso' => IngresoHerramienta::findOrFail($id),
         ]);
     }
@@ -375,7 +375,7 @@ class HerramientaController extends Controller
      */
     public function listaBajas()
     {
-        return view('vistas.herramientas.listaBajas',
+        return view('vistas.herramientas.bajas.listaBajas',
             ['bajas' => BajaHerramienta::paginate(5)]);
     }
     /**
@@ -391,9 +391,9 @@ class HerramientaController extends Controller
      */
     public function nuevaBaja($id)
     {
-        return view('vistas.herramientas.nuevaBaja', [
+        return view('vistas.herramientas.bajas.nuevaBaja', [
             'herramienta' => Herramienta::findOrFail($id),
-            'empleados' => Empleado::all(),
+            'trabajadores' => Trabajador::all(),
         ]);
     }
 
@@ -415,7 +415,7 @@ class HerramientaController extends Controller
             'motivo' => 'required|string|max:255',
             'cantidad' => 'required|numeric|min:1',
             'herramienta_id' => 'required|numeric|min:1',
-            'empleado_id' => 'required|numeric|min:1',
+            'trabajador_id' => 'required|numeric|min:1',
         ]);
 
         $baja  = new BajaHerramienta();
@@ -423,7 +423,7 @@ class HerramientaController extends Controller
         $baja->motivo = $request['motivo'];
         $baja->cantidad = $request['cantidad'];
         $baja->herramienta_id = $request['herramienta_id'];
-        $baja->empleado_id = $request['empleado_id'];
+        $baja->trabajador_id = $request['trabajador_id'];
         $baja->save();
 
         $herramienta = Herramienta::findOrFail($request['herramienta_id']);
@@ -477,7 +477,7 @@ class HerramientaController extends Controller
      */
     public function listaAsignaciones()
     {
-        return view('vistas.herramientas.listaAsignaciones', [
+        return view('vistas.herramientas.asignaciones.listaAsignaciones', [
             'asignaciones' => AsignacionHerramienta::orderBy('id', 'desc')->paginate(5),
         ]);
     }
@@ -495,9 +495,9 @@ class HerramientaController extends Controller
      */
     public function nuevaAsignacion()
     {
-        return view('vistas.herramientas.nuevaAsignacion',
+        return view('vistas.herramientas.asignaciones.nuevaAsignacion',
         [
-            'empleados' => Empleado::all(),
+            'trabajadores' => Trabajador::all(),
             'herramientas' => Herramienta::all(),
         ]);
     }
@@ -514,12 +514,21 @@ class HerramientaController extends Controller
      */
     public function guardarAsignacion(Request $request)
     {
+        $this->validate($request, [
+            'fecha' => 'required|date',
+            'idHerramientaT' => 'required|array|min:1',
+            'idHerramientaT.*' => 'required|numeric|min:1',
+            'cantidadT' => 'required|array|min:1',
+            'cantidadT.*' => 'required|numeric|min:1',
+            'trabajador_id' => 'required|numeric|min:1',
+        ]);
+
         try {
             DB::beginTransaction();
             $asignacion = new AsignacionHerramienta();
             $asignacion->fecha = $request['fecha'];
             $asignacion->estado = 'Activa';
-            $asignacion->empleado_id = $request['empleado_id'];
+            $asignacion->trabajador_id = $request['trabajador_id'];
             $asignacion->save();
 
             $idHerramientas = $request->get('idHerramientaT');
@@ -600,7 +609,7 @@ class HerramientaController extends Controller
      */
     public function reingreso($id)
     {
-        return view('vistas.herramientas.reingreso',
+        return view('vistas.herramientas.asignaciones.reingreso',
         [
             'asignacion' => AsignacionHerramienta::findOrFail($id),
         ]);
@@ -655,7 +664,7 @@ class HerramientaController extends Controller
                     $baja->motivo = $motivo[$cont];
                     $baja->cantidad = $cantidad;
                     $baja->herramienta_id = $idHerramientas[$cont];
-                    $baja->empleado_id = $asignacion->empleado_id;
+                    $baja->trabajador_id = $asignacion->trabajador_id;
                     $baja->save();
 
                     $herramienta->cantidad_total = $herramienta->cantidad_total - $baja->cantidad;
@@ -693,7 +702,7 @@ class HerramientaController extends Controller
      */
     public function verAsignacion($id)
     {
-        return view('vistas.herramientas.verAsignacion', [
+        return view('vistas.herramientas.asignaciones.verAsignacion', [
             'asignacion' => AsignacionHerramienta::findOrFail($id)
         ]);
     }

@@ -67,18 +67,18 @@
                                         <td>{{$equipo->marca->nombre}}</td>
                                         <td>
                                             <a href="{{url('imonitoreo/listarFichas/'.$equipo->id)}}">
-                                                <button class="btn btn-warning" title="Ver fichas">
-                                                    <i class="fas fa-file-archive"></i>
+                                                <button class="btn btn-warning">
+                                                    Fichas
                                                 </button>
                                             </a>
                                             <a href="{{asset('img/equipos/codigos/'.$equipo->id.'.png')}}" download>
-                                                <button class="btn btn-primary" title="Descargar QR">
-                                                    <i class="fas fa-qrcode"></i>
+                                                <button class="btn btn-primary">
+                                                    QR
                                                 </button>
                                             </a>
                                             <a href="{{url('imonitoreo/verEquipo/'.$equipo->id)}}">
-                                                <button class="btn btn-secondary" title="Ver Equipo">
-                                                    <i class="fa fa-eye"></i>
+                                                <button class="btn btn-secondary">
+                                                    Ver
                                                 </button>
                                             </a>
                                         </td>

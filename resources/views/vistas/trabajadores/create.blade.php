@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Nombre</label>
+                                    <label>Nombre*</label>
                                     <input required
                                            type="text"
                                            class="form-control"
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Apellido</label>
+                                    <label>Apellido*</label>
                                     <input required
                                            type="text"
                                            class="form-control"
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Tipo</label>
+                                    <label>Tipo*</label>
                                     <select required name="tipo" class="form-control">
                                         @foreach($tipos as $tipo)
                                             <option value="{{$tipo}}">{{$tipo}}</option>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Carnet</label>
+                                    <label>Carnet*</label>
                                     <input required
                                            maxlength="10"
                                            type="text"
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>E-mail</label>
+                                    <label>E-mail*</label>
                                     <input required
                                            type="email"
                                            class="form-control"

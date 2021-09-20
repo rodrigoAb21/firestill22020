@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Fecha</label>
+                                    <label>Fecha*</label>
                                     <input required
                                            type="date"
                                            class="form-control"
@@ -42,7 +42,7 @@
 
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Cliente</label>
+                                    <label>Cliente*</label>
                                     <select required name="cliente_id" class="form-control">
                                         @foreach($clientes as $cliente)
                                             <option value="{{$cliente->id}}">{{$cliente->nombre_empresa}}</option>
@@ -54,10 +54,10 @@
 
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Empleado</label>
-                                    <select required name="empleado_id" class="form-control">
-                                        @foreach($empleados as $empleado)
-                                            <option value="{{$empleado->id}}">{{$empleado->nombre}} {{$empleado->apellido}}</option>
+                                    <label>Trabajador*</label>
+                                    <select required name="trabajador_id" class="form-control">
+                                        @foreach($trabajadores as $trabajador)
+                                            <option value="{{$trabajador->id}}">{{$trabajador->nombre}} {{$trabajador->apellido}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -92,8 +92,8 @@
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <button id="btn_agregar" type="button" onclick="agregar()"  class="btn btn-success btn-sm btn-block">
-                                        <span class="fa fa-plus fa-2x"></span>
+                                    <button id="btn_agregar" type="button" onclick="agregar()"  class="btn btn-success btn-block">
+                                        Agregar
                                     </button>
                                 </div>
                             </div>

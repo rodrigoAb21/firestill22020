@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Nombre</label>
+                                    <label>Nombre*</label>
                                     <input required
                                            type="text"
                                            value="{{$sucursal->nombre}}"
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Direccion</label>
+                                    <label>Direccion*</label>
                                     <input required
                                            type="text"
                                            value="{{$sucursal->direccion}}"
@@ -95,16 +95,16 @@
                                         <td>
                                             <a href="{{asset('img/equipos/codigos/'.$equipo->id.'.png')}}" download>
                                                 <button class="btn btn-primary">
-                                                    <i class="fas fa-qrcode"></i>
+                                                    QR
                                                 </button>
                                             </a>
                                             <a href="{{url('imonitoreo/editarEquipo/'.$equipo->id)}}">
                                                 <button class="btn btn-warning">
-                                                    <i class="fa fa-pen"></i>
+                                                    Editar
                                                 </button>
                                             </a>
                                             <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$equipo -> id}}', '{{url('imonitoreo/eliminarEquipo/'.$equipo -> id)}}')">
-                                                <i class="fa fa-times"></i>
+                                                Eliminar
                                             </button>
                                         </td>
                                     </tr>

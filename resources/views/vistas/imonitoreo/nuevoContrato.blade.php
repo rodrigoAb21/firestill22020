@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Cliente</label>
+                                    <label>Cliente*</label>
                                     <select required name="cliente_id" class="form-control">
                                         @foreach($clientes as $cliente)
                                             <option value="{{$cliente->id}}">{{$cliente->nombre_empresa}}</option>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Representante Firestill</label>
+                                    <label>Representante Firestill*</label>
                                     <select required name="trabajador_id" class="form-control">
                                         @foreach($trabajadores as $trabajador)
                                             <option value="{{$trabajador->id}}">{{$trabajador->nombre}} {{$trabajador->apellido}}</option>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Fecha inicio</label>
+                                    <label>Fecha inicio*</label>
                                     <input required
                                            type="date"
                                            value="{{\Carbon\Carbon::now('America/La_Paz')->toDateString()}}"
@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Fecha fin</label>
+                                    <label>Fecha fin*</label>
                                     <input required
                                            type="date"
                                            value="{{\Carbon\Carbon::now('America/La_Paz')->addDay()->toDateString()}}"
@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Periodo (Mes)</label>
+                                    <label>Periodo (Mes)*</label>
                                     <input required
                                            type="number"
                                            class="form-control"

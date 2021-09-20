@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Nro Serie</label>
+                                    <label>Nro Serie*</label>
                                     <input required
                                            type="number"
                                            class="form-control"
@@ -42,7 +42,7 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Año de fabricación</label>
+                                    <label>Año de fabricación*</label>
                                     <input required
                                            type="number"
                                            class="form-control"
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Tipo</label>
+                                    <label>Tipo*</label>
                                     <select required name="tipo_clasificacion_id" class="form-control">
                                         @foreach($tipos as $tipo)
                                             @if($tipo->id == $equipo->tipo_clasificacion_id)
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Marca</label>
+                                    <label>Marca*</label>
                                     <select required name="marca_clasificacion_id" class="form-control">
                                         @foreach($marcas as $marca)
                                             @if($marca->id == $equipo->marca_clasificacion_id)
@@ -81,7 +81,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Capacidad</label>
+                                    <label>Capacidad*</label>
                                     <input required
                                            type="number"
                                            step="0.01"
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>U.Medida</label>
+                                    <label>U.Medida*</label>
                                     <select required name="unidad_medida" class="form-control">
                                         @foreach($unidades as $unidad)
                                             @if($unidad == $equipo->unidad_medida)

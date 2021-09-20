@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Productos dados de Baja
+                        Herramientas dadas de Baja
                         <div class="float-right">
 
                         </div>
@@ -16,7 +16,8 @@
                             <thead>
                             <tr>
                                 <th class="text-center">COD</th>
-                                <th class="text-center">PRODUCTO</th>
+                                <th class="text-center">HERRAMIENTA</th>
+                                <th class="text-center">RESPONSABLE</th>
                                 <th class="text-center">CANT</th>
                                 <th class="text-center">FECHA</th>
                                 <th class="text-center">MOTIVO</th>
@@ -27,13 +28,14 @@
                             @foreach($bajas as $baja)
                                 <tr class="text-center">
                                     <td>{{$baja->id}}</td>
-                                    <td>{{$baja->producto->nombre}}</td>
+                                    <td>{{$baja->herramienta->nombre}}</td>
+                                    <td>{{$baja->trabajador->nombre}}</td>
                                     <td>{{$baja->cantidad}}</td>
                                     <td>{{Carbon\Carbon::createFromFormat('Y-m-d', $baja->fecha)->format('d-m-Y')}}</td>
                                     <td>{{$baja->motivo}}</td>
                                     <td>
-                                        <button type="button" title="Eliminar" class="btn btn-danger" onclick="modalEliminar('{{$baja -> nombre}}', '{{url('inventario/anularBaja/'.$baja -> id)}}')">
-                                            <i class="fa fa-times"></i>
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$baja -> nombre}}', '{{url('herramientas/anularBaja/'.$baja -> id)}}')">
+                                            Eliminar
                                         </button>
                                     </td>
                                 </tr>
