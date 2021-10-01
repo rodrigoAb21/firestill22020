@@ -10,23 +10,31 @@ Route::post('login', [
     'as' => '',
     'uses' => 'Auth\LoginController@login'
 ]);
-
+Route::post('trabajadores/search','TrabajadorController@search');
 Route::post('logout', [
     'as' => 'logout',
     'uses' => 'Auth\LoginController@logout'
 ])->middleware('auth');
 
+
+Route::get('/', 'TaskController@index');
+
+Route::get('/tasks', 'TaskController@getTasks')->name('datatable.tasks');
+
+/*
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
-
+*/
 Route::get('/home', function () {
     return redirect('/');
 })->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('administrador')->group(function () {
+
         Route::resource('trabajadores', 'TrabajadorController');
+        Route::post('trabajadores/search', 'TrabajadorController@search');
     });
 
     Route::resource('proveedores', 'ProveedorController');

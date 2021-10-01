@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Modelos\Trabajador;
 use App\Utils\Utils;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TrabajadorController extends Controller
 {
@@ -33,7 +34,7 @@ class TrabajadorController extends Controller
     public function index(){
         return view('vistas.trabajadores.index',
             [
-                'trabajadores' => Trabajador::orderBy('id', 'desc')->paginate(10),
+                'trabajadores' => Trabajador::orderBy('id', 'desc')->paginate(1),
             ]);
     }
 
@@ -195,5 +196,40 @@ class TrabajadorController extends Controller
         $trabajador->delete();
 
         return redirect('trabajadores');
+    }
+
+    public function search(Request $request){
+        $data = $request->all();
+        $palabra=$data['name'];
+        $nro=$data['nro'];
+        $resultadoX = Trabajador:: where('id', (int)$palabra)
+            ->orWhere('nombre', 'like', '%' . $palabra . '%')
+            ->orWhere('apellido', 'like', '%' . $palabra . '%')
+            ->orWhere('carnet', $palabra)
+            ->orWhere('telefono', $palabra)
+            //->orWhere('edad', $palabra)
+            ->orWhere('direccion', 'like', '%' . $palabra . '%')
+            ->orWhere('tipo', 'like', '%' . $palabra . '%')
+            ->orWhere('email', 'like', '%' . $palabra . '%')
+            ->orderBy('id', 'desc')->paginate(10);
+
+        $resultados = DB::table('trabajador')->
+        where('id', (int)$palabra)
+            ->orWhere('nombre', 'like', '%' . $palabra . '%')
+            ->orWhere('apellido', 'like', '%' . $palabra . '%')
+            ->orWhere('carnet', $palabra)
+            ->orWhere('telefono', $palabra)
+            //->orWhere('edad', $palabra)
+            ->orWhere('direccion', 'like', '%' . $palabra . '%')
+            ->orWhere('tipo', 'like', '%' . $palabra . '%')
+            ->orWhere('email', 'like', '%' . $palabra . '%')
+            ->get();
+        $resultadoModelo=[];
+        foreach ($resultados as $resultado){
+            $resultadoModelo[]= Trabajador::find($resultado->id);
+            $this->vacio=false;
+        }
+        $this->datos['trabajador'][]=$resultadoModelo;
+        return response()->json(['success'=>$resultadoX]);
     }
 }

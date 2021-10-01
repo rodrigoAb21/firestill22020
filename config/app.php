@@ -170,6 +170,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         LaravelQRCode\Providers\QRCodeServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -178,6 +179,8 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+
 
     ],
 
@@ -229,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];
