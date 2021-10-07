@@ -17,15 +17,10 @@ Route::post('logout', [
 ])->middleware('auth');
 
 
-Route::get('/', 'TaskController@index');
-
-Route::get('/tasks', 'TaskController@getTasks')->name('datatable.tasks');
-
-/*
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
-*/
+
 Route::get('/home', function () {
     return redirect('/');
 })->middleware('auth');

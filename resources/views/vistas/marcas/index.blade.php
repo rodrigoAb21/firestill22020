@@ -13,7 +13,8 @@
                         </div>
                     </h2>
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered color-table info-table">
+                        <table id="marcas123" data-order='[[ 0, "desc" ]]'
+                               class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
                                 <th class="text-center">COD</th>
@@ -40,7 +41,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$marcas->links('pagination.default')}}
                     </div>
                 </div>
             </div>
@@ -56,6 +56,16 @@
                 $('#modalEliminarEnunciado').html("Realmente desea eliminar la marca: " + nombre + "?");
                 $('#modalEliminar').modal('show');
             }
+        </script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var table = $('#marcas123').DataTable();
+
+            });
         </script>
     @endpush()
 @endsection

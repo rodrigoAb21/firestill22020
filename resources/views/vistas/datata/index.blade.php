@@ -39,29 +39,28 @@
             <th>State</th>
         </tr>
         </thead>
+        <tbody>
+        @foreach($clientes as $cliente)
+            <tr class="text-center">
+                <td>{{$cliente->id}}</td>
+                <td>{{$cliente->nombre_empresa}}</td>
+                <td>
+                    {{$cliente->direccion}}
+                </td>
+                <td>{{$cliente->email}}</td>
+            </tr>
+        @endforeach
+        </tbody>
     </table>
 </div>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
-        oTable = $('#task').DataTable({
+        var table = $('#task').DataTable();
 
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                "url": "/tasks",
-                "type": "GET"
-            },
-            "columns": [
-                {"data": 'id'},
-                {"data": 'name'},
-                {"data": 'category'},
-                {"data": 'state'}
-            ]
-        });
     });
 </script>
 </body>

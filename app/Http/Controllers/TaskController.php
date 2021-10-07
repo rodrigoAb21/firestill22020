@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modelos\Cliente;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -12,7 +13,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('vistas.datata.index');
+        return view('vistas.datata.index',[
+        'clientes' => Cliente::orderBy('id', 'desc')->paginate(10),
+            ]);
+
     }
 
     /**
@@ -22,7 +26,6 @@ class TaskController extends Controller
     {
        // echo "okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk";
         $tasks = Task::select(['id','name','category','state']);
-        dd($tasks);
         return Datatables::of($tasks)
 
             ->make(true);
