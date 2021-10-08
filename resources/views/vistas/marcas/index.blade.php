@@ -49,7 +49,7 @@
     @include('vistas.modal')
     @push('arriba')
 
-        <link href="{{asset('assets/datatables/dataTables.bootstrap4.min.css')}}" id="theme" rel="stylesheet">
+        <link href="{{asset('assets/datatables/dataTables.bootstrap4.css')}}" id="theme" rel="stylesheet">
         @endpush
     @push('scripts')
         <script>
