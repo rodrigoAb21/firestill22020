@@ -13,7 +13,7 @@
                         </div>
                     </h2>
                     <div class="table-responsive">
-                        <table id="marcas123" data-order='[[ 0, "desc" ]]'
+                        <table id="marcas123"
                                class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
@@ -47,6 +47,10 @@
         </div>
     </div>
     @include('vistas.modal')
+    @push('arriba')
+
+        <link href="{{asset('assets/datatables/datatables.min.css')}}" id="theme" rel="stylesheet">
+        @endpush
     @push('scripts')
         <script>
             function modalEliminar(nombre, url) {
@@ -57,13 +61,42 @@
                 $('#modalEliminar').modal('show');
             }
         </script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
+
+        <script type="text/javascript" charset="utf8" src="{{asset('assets/datatables/datatables.min.js')}}"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                var table = $('#marcas123').DataTable();
+                var table = $('#marcas123').DataTable(
+                    {
+                        language: {
+                            "decimal": "",
+                            "emptyTable": "No hay información",
+                            "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
+                            "infoEmpty": "",
+                            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                            "infoPostFix": "",
+                            "thousands": ",",
+                            "lengthMenu": "Mostrar _MENU_ filas",
+                            "loadingRecords": "Cargando...",
+                            "processing": "Procesando...",
+                            "search": "Buscar:",
+                            "zeroRecords": "No se encontraron resultados.",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Ultimo",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            }
+                        },
+                        "columns": [
+                            {"name": "COD", "orderable": true},
+                            {"name": "NOMBRE", "orderable": true},
+                            {"name": "OPC", "orderable": false},
+                        ],
+                        "order": [[0, 'desc']],
+                    }
+                );
 
             });
         </script>
