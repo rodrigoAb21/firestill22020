@@ -49,7 +49,7 @@
     @include('vistas.modal')
     @push('arriba')
 
-        <link href="{{asset('assets/datatables/datatables.min.css')}}" id="theme" rel="stylesheet">
+        <link href="{{asset('assets/datatables/dataTables.bootstrap4.min.css')}}" id="theme" rel="stylesheet">
         @endpush
     @push('scripts')
         <script>
@@ -90,8 +90,8 @@
                             }
                         },
                         "columns": [
-                            {"name": "COD", "orderable": true},
-                            {"name": "NOMBRE", "orderable": true},
+                            {"name": "COD"},
+                            {"name": "NOMBRE"},
                             {"name": "OPC", "orderable": false},
                         ],
                         "order": [[0, 'desc']],
