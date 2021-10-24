@@ -34,7 +34,7 @@ class TrabajadorController extends Controller
     public function index(){
         return view('vistas.trabajadores.index',
             [
-                'trabajadores' => Trabajador::orderBy('id', 'desc')->paginate(1),
+                'trabajadores' => Trabajador::all(),
             ]);
     }
 

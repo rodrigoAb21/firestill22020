@@ -45,7 +45,7 @@ class HerramientaController extends Controller
     {
         return view('vistas.herramientas.index',
             [
-                'herramientas' => Herramienta::orderBy('id', 'desc')->paginate(10),
+                'herramientas' => Herramienta::all(),
             ]);
     }
 
@@ -202,8 +202,7 @@ class HerramientaController extends Controller
     {
         return view('vistas.herramientas.ingresos.listaIngresos',
             [
-                'ingresos' => IngresoHerramienta::
-                orderBy('id', 'desc')->paginate(5),
+                'ingresos' => IngresoHerramienta::all(),
             ]);
     }
 
@@ -376,7 +375,7 @@ class HerramientaController extends Controller
     public function listaBajas()
     {
         return view('vistas.herramientas.bajas.listaBajas',
-            ['bajas' => BajaHerramienta::paginate(5)]);
+            ['bajas' => BajaHerramienta::all()]);
     }
     /**
      *************************************************************************

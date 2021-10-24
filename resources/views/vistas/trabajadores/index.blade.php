@@ -26,21 +26,10 @@
                             </a>
                         </div>
                     </h2>
-                    <form id="search-trabajador">
-                        {{csrf_field()}}
-                        <div class="input-group">
-                            <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here" id="tr">
-                            <div class="input-group-append">
-                                <button  class="btn btn-lg btn-default">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
-                    <div id="tabla-trabajador">
+
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered color-table info-table">
+                        <table id="tablaTrabajador" class="table table-hover table-bordered color-table info-table">
                             <thead >
                             <tr>
                                 <th  class="text-center">COD</th>
@@ -80,8 +69,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$trabajadores->links('pagination.default')}}
-                    </div>
                     </div>
 
                 </div>
@@ -89,6 +76,7 @@
         </div>
     </div>
     @include('vistas.modal')
+
     @push('scripts')
         <script>
             function modalEliminar(nombre, url) {
@@ -100,159 +88,43 @@
             }
         </script>
 
-        <script>
-
-                $("document").ready(function(){
-                $('#tr').keyup(function (e){
-                    e.preventDefault();
-                    let name = $("#tr").val();
-                    let _token   = $('meta[name="csrf-token"]').attr('content');
-                    console.log(name);
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        url: "trabajadores/search",
-                        type:"POST",
-                        data:{
-                            name:name,
-                            _token: _token,
-                            nro: 1
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var table = $('#tablaTrabajador').DataTable(
+                    {
+                        language: {
+                            "decimal": "",
+                            "emptyTable": "No hay información",
+                            "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
+                            "infoEmpty": "",
+                            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                            "infoPostFix": "",
+                            "thousands": ",",
+                            "lengthMenu": "Mostrar _MENU_ filas",
+                            "loadingRecords": "Cargando...",
+                            "processing": "Procesando...",
+                            "search": "Buscar:",
+                            "zeroRecords": "No se encontraron resultados.",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Ultimo",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            }
                         },
-                        success:function(response) {
-                           console.log(response);
-                            if (response) {
-                                $('.success').text(response.success);
-                                let trabajadores=response.success.data;
-                                let textoG="";
-                                for (let cont in trabajadores) {
-                                    let trabajador = trabajadores[cont];
-                                    textoG+='<tr class="text-center">'+
-                                            '<td >'+trabajador.id+'</td>'+
-                                            '<td >'+trabajador.nombre+'</td>'+
-                                            '<td >'+trabajador.apellido+'</td>'+
-                                            '<td >'+trabajador.tipo+'</td>'+
-                                            '<td >'+trabajador.telefono+'</td>'+
-                                            '<td>'+
-
-                                            '</td>'+
-                                        '</tr>';
-                                }
-                                let nuevaTabla='<div class="table-responsive">' +
-                                               '<table class="table table-hover table-bordered color-table info-table">'+
-                                               '<thead>'+
-                                               '<tr>'+
-                                               '<th  class="text-center">COD</th>'+
-                                               '<th class="text-center">NOMBRE</th>'+
-                                               '<th class="text-center">APELLIDOS</th>'+
-                                               '<th class="text-center">TIPO</th>'+
-                                               '<th class="text-center">TELEFONO</th>'+
-                                               '<th class="text-center">OPC</th>'+
-                                               '</tr>'+
-                                               '</thead>'+
-                                               '<tbody>'+
-                                               textoG+
-                                               '</tbody>'+
-                                               '<nav class="mr-0 ml-auto">'+
-                                               '<ul class="pagination justify-content-end">'+
-                                               //'<li class="page-item disabled"><span class="page-link">ANT</span></li>'+
-                                               '<li class="page-item active"><a class="page-link"  onclick=verPagina(1)>1</a></li>'+
-                                               /*
-                                               '<li class="page-item"><a class="page-link" href="trabajadores/search">2</a></li>'+
-                                               '<li class="page-item"><a class="page-link" href="trabajadores/search">3</a></li>'+
-                                               '<li class="page-item disabled"><span>...</span></li>'+
-                                               '<li class="page-item"><a class="page-link" href="trabajadores/search">11</a></li>'+
-                                               '<li class="page-item"><a class="page-link" href="trabajadores/search">12</a></li>'+
-                                               '<li class="page-item"><a class="page-link" href="trabajadores/search" rel="next">SIG</a></li>'+
-                                                */
-                                               '</ul>'+
-                                               '</nav>'+
-                                               '</table>'+
-                                               '</div>';
-                                $('#tabla-trabajador').empty().append(nuevaTabla);
-                            }
-                        }
-                    });
-                })
-
-
-                });
-        </script>
-        <script>
-            function verPagina(nro) {
-            console.log("sdsad :"+nro);
-                let _token   = $('meta[name="csrf-token"]').attr('content');
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                        "columns": [
+                            {"name": "COD"},
+                            {"name": "NOMBRE"},
+                            {"name": "APELLIDO"},
+                            {"name": "TIPO"},
+                            {"name": "TELEFONO"},
+                            {"name": "OPC", "orderable": false},
+                        ],
+                        "order": [[0, 'desc']],
                     }
-                });
-                $.ajax({
-                    url: "trabajadores/search",
-                    type:"POST",
-                    data:{
-                        name:name,
-                        _token: _token,
-                        nro: nro
-                    },
-                    success:function(response) {
-                        console.log(response);
-                        if (response) {
-                            $('.success').text(response.success);
-                            let trabajadores=response.success.data;
-                            let textoG="";
-                            for (let cont in trabajadores) {
-                                let trabajador = trabajadores[cont];
-                                textoG+='<tr class="text-center">'+
-                                    '<td >'+trabajador.id+'</td>'+
-                                    '<td >'+trabajador.nombre+'</td>'+
-                                    '<td >'+trabajador.apellido+'</td>'+
-                                    '<td >'+trabajador.tipo+'</td>'+
-                                    '<td >'+trabajador.telefono+'</td>'+
-                                    '<td>'+
+                );
 
-                                    '</td>'+
-                                    '</tr>';
-                            }
-                            let nuevaTabla='<div class="table-responsive">' +
-                                '<table class="table table-hover table-bordered color-table info-table">'+
-                                '<thead>'+
-                                '<tr>'+
-                                '<th  class="text-center">COD</th>'+
-                                '<th class="text-center">NOMBRE</th>'+
-                                '<th class="text-center">APELLIDOS</th>'+
-                                '<th class="text-center">TIPO</th>'+
-                                '<th class="text-center">TELEFONO</th>'+
-                                '<th class="text-center">OPC</th>'+
-                                '</tr>'+
-                                '</thead>'+
-                                '<tbody>'+
-                                textoG+
-                                '</tbody>'+
-                                '<nav class="mr-0 ml-auto">'+
-                                '<ul class="pagination justify-content-end">'+
-                                //'<li class="page-item disabled"><span class="page-link">ANT</span></li>'+
-                                '<li class="page-item active"><a class="page-link"  onclick=verPagina(1)>1</a></li>'+
-                                /*
-                                '<li class="page-item"><a class="page-link" href="trabajadores/search">2</a></li>'+
-                                '<li class="page-item"><a class="page-link" href="trabajadores/search">3</a></li>'+
-                                '<li class="page-item disabled"><span>...</span></li>'+
-                                '<li class="page-item"><a class="page-link" href="trabajadores/search">11</a></li>'+
-                                '<li class="page-item"><a class="page-link" href="trabajadores/search">12</a></li>'+
-                                '<li class="page-item"><a class="page-link" href="trabajadores/search" rel="next">SIG</a></li>'+
-                                 */
-                                '</ul>'+
-                                '</nav>'+
-                                '</table>'+
-                                '</div>';
-                            $('#tabla-trabajador').empty().append(nuevaTabla);
-                        }
-                    }
-                });
-            }
+            });
         </script>
-
     @endpush()
 @endsection

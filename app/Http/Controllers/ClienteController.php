@@ -33,7 +33,7 @@ class ClienteController extends Controller
     public function index(){
         return view('vistas.clientes.index',
             [
-                'clientes' => Cliente::orderBy('id', 'desc')->paginate(10),
+                'clientes' => Cliente::get(),
             ]);
     }
 

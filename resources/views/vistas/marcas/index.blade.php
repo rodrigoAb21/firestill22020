@@ -13,7 +13,7 @@
                         </div>
                     </h2>
                     <div class="table-responsive">
-                        <table id="marcas123"
+                        <table id="tablaMarca"
                                class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
@@ -47,10 +47,7 @@
         </div>
     </div>
     @include('vistas.modal')
-    @push('arriba')
 
-        <link href="{{asset('assets/datatables/dataTables.bootstrap4.css')}}" id="theme" rel="stylesheet">
-        @endpush
     @push('scripts')
         <script>
             function modalEliminar(nombre, url) {
@@ -62,12 +59,9 @@
             }
         </script>
 
-
-
-        <script type="text/javascript" charset="utf8" src="{{asset('assets/datatables/datatables.min.js')}}"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                var table = $('#marcas123').DataTable(
+                var table = $('#tablaMarca').DataTable(
                     {
                         language: {
                             "decimal": "",

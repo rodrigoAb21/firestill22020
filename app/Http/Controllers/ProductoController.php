@@ -19,7 +19,7 @@ class ProductoController extends Controller
 
         return view('vistas.inventario.index',
             [
-                'productos' => Producto::orderBy('id', 'desc')->paginate(10),
+                'productos' => Producto::all()
             ]);
     }
 

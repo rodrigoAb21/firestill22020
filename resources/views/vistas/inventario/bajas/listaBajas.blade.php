@@ -12,7 +12,7 @@
                     </h2>
 
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered color-table info-table">
+                        <table id="tablaBajaProducto" class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
                                 <th class="text-center">COD</th>
@@ -40,7 +40,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$bajas->links('pagination.default')}}
                     </div>
                 </div>
             </div>
@@ -58,6 +57,45 @@
                 $('#modalEliminar').modal('show');
             }
 
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var table = $('#tablaBajaProducto').DataTable(
+                    {
+                        language: {
+                            "decimal": "",
+                            "emptyTable": "No hay información",
+                            "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
+                            "infoEmpty": "",
+                            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                            "infoPostFix": "",
+                            "thousands": ",",
+                            "lengthMenu": "Mostrar _MENU_ filas",
+                            "loadingRecords": "Cargando...",
+                            "processing": "Procesando...",
+                            "search": "Buscar:",
+                            "zeroRecords": "No se encontraron resultados.",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Ultimo",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            }
+                        },
+                        "columns": [
+                            {"name": "COD"},
+                            {"name": "PRODUCTO"},
+                            {"name": "CANT"},
+                            {"name": "FECHA"},
+                            {"name": "MOTIVO"},
+                            {"name": "OPC", "orderable": false},
+                        ],
+                        "order": [[0, 'desc']],
+
+                    }
+                );
+
+            });
         </script>
     @endpush()
 @endsection

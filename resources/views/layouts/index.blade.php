@@ -40,6 +40,9 @@
     </script>
 
     -->
+
+        <link href="{{asset('assets/datatables/dataTables.bootstrap4.css')}}" id="theme" rel="stylesheet">
+
     @stack('arriba')
 </head>
 
@@ -349,6 +352,8 @@
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="{{asset('plantilla/assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+
+<script type="text/javascript" charset="utf8" src="{{asset('assets/datatables/datatables.min.js')}}"></script>
 @stack('scripts')
 </body>
 
