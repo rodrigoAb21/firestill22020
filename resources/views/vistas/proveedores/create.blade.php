@@ -117,6 +117,7 @@
                                 <div class="form-group">
                                     <label>Sucursal</label>
                                     <select class="form-control" name="sucursal" id="">
+                                            <option value="">Seleccionar</option>
                                         @foreach($sucursales as $sucursal)
                                             <option value="{{$sucursal}}">{{$sucursal}}</option>
                                         @endforeach
@@ -139,6 +140,7 @@
                                 <div class="form-group">
                                     <label>Moneda</label>
                                     <select class="form-control" name="moneda">
+                                            <option value="">Seleccionar</option>
                                       @foreach($monedas as $moneda)
                                             <option value="{{$moneda}}">{{$moneda}}</option>
                                       @endforeach
