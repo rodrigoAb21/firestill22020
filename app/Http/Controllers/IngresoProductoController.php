@@ -20,8 +20,7 @@ class IngresoProductoController extends Controller
     {
         return view('vistas.inventario.ingresos.listaIngresos',
             [
-                'ingresos' => IngresoProducto::
-                orderBy('id', 'desc')->paginate(10),
+                'ingresos' => IngresoProducto::all()
             ]);
     }
 

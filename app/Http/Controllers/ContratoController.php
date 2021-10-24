@@ -13,7 +13,7 @@ class ContratoController extends Controller
     public function listaContratos(){
         $this->actualizarEstados();
         return view('vistas.imonitoreo.listaContratos', [
-            'contratos' => Contrato::orderBy('id', 'desc')->paginate(10),
+            'contratos' => Contrato::all()
         ]);
     }
 

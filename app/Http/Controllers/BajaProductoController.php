@@ -15,7 +15,7 @@ class BajaProductoController extends Controller
     {
 
         return view('vistas.inventario.bajas.listaBajas',[
-            'bajas' => BajaProducto::orderBy('id', 'desc')->paginate(10),
+            'bajas' => BajaProducto::all()
         ]);
     }
 

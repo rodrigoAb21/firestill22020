@@ -16,7 +16,7 @@ class VentaController extends Controller
     public function ventas()
     {
         return view('vistas.ventas.ventas', [
-            'ventas' => NotaVenta::where('tipo', '=', true)->orderBy('id', 'desc')->paginate(10)
+            'ventas' => NotaVenta::where('tipo', '=', true)->get()
         ]);
     }
     public function nuevaVenta()

@@ -41,7 +41,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$tipos->links('pagination.default')}}
                     </div>
                 </div>
             </div>
