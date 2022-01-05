@@ -1,0 +1,5 @@
+1. Boton Editar en el VER
+2. LOGOTIPO EN EL LOGIN y un NOMBRE SISTEMA
+3. Probar y revisar el ingreso y salida de herramientas*
+4. Botones del lateral izq acomodar el hover (desaparecen los iconos)
+5. El hover en botones CRUD se ve el coloreado rojo

@@ -16,6 +16,11 @@
                 <div class="card-body">
                     <h3 class="pb-2">
                         Ver trabajador
+                        <div class="float-right">
+                            <a class="btn btn-warning" href="{{url('trabajadores/'.$trabajador->id.'/edit')}}">
+                                <i class="fa fa-plus"></i>  Editar
+                            </a>
+                        </div>
                     </h3>
 
                         <div class="row">

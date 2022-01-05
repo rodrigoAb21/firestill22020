@@ -7,6 +7,11 @@
                 <div class="card-body">
                     <h3 class="pb-2">
                         Editar proveedor
+                        <div class="float-right">
+                            <a class="btn btn-warning" href="{{url('proveedores/'.$proveedor->id.'/edit')}}">
+                                <i class="fa fa-plus"></i>  Editar
+                            </a>
+                        </div>
                     </h3>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

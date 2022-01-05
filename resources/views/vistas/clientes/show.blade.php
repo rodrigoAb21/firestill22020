@@ -16,6 +16,11 @@
                 <div class="card-body">
                     <h3 class="pb-2">
                         Nuevo cliente
+                        <div class="float-right">
+                            <a class="btn btn-warning" href="{{url('clientes/'.$cliente->id.'/edit')}}">
+                                <i class="fa fa-plus"></i>  Editar
+                            </a>
+                        </div>
                     </h3>
                         <h4>Datos Empresa</h4>
                         <div class="row">

@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                       EMPLEADOS
          ************************************************************/
-/*
+
         DB::table('trabajador')->insert([
             'nombre' => 'Juan',
             'apellido' => 'Perez',
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                       CLIENTES
          ************************************************************/
-/*
+
         DB::table('cliente')->insert([
             'nombre_empresa' => 'Petrobras',
             'nit' =>  '10023145654',
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                       PROVEEDORES
          ************************************************************/
-/*
+
         DB::table('proveedor')->insert([
             'nombre' => 'FERROTODO',
             'nit' =>  '1028373024',
@@ -170,7 +170,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                      CATEGORIAS
          ************************************************************/
-/*
+
         DB::table('categoria')->insert([
             'nombre' => 'Cilindros',
         ]);
@@ -193,7 +193,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                TIPO CLASIFICACION
          ************************************************************/
-/*
+
         DB::table('tipo_clasificacion')->insert([
             'nombre' => 'CO2',
         ]);
@@ -226,7 +226,7 @@ class DatabaseSeeder extends Seeder
         /*************************************************************
          *                    MARCAS CLASIFICACION
          ************************************************************/
-/*
+
         DB::table('marca_clasificacion')->insert([
             'nombre' => 'Imex',
         ]);
