@@ -17,7 +17,7 @@
     <link href="{{asset('plantilla/material/css/style.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="{{asset('plantilla/material/css/colors/megna.css')}}" id="theme" rel="stylesheet">
-<![endif]-->
+
 </head>
 
 <body>
@@ -35,9 +35,12 @@
         <div class="login-register">
             <div class="login-box card">
             <div class="card-body">
+                <div class="text-center">
+                    <img src="{{asset('img/firestill-logo2.png')}}" height="100px" alt="logo">
+                </div>
                 <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}" autocomplete="off">
                     {{ csrf_field() }}
-                    <h3 class="box-title m-b-20">Iniciar Sesion</h3>
+                    <h3 class="box-title m-b-20 text-center">Iniciar Sesión</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input class="form-control" name="email" type="email" required placeholder="Email">
@@ -45,7 +48,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" name="password" type="password" required placeholder="Password">
+                            <input class="form-control" name="password" type="password" required placeholder="Contraseña">
                         </div>
                     </div>
                     <div class="form-group text-center m-t-20">
