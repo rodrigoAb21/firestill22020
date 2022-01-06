@@ -5545,7 +5545,7 @@ When click on sidebar toggler and also for tablet
     width: 50px; }
   .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a {
     width: 260px;
-    background: #26c6da;
+    background: #b80000;
     color: #ffffff;
     border-color: #009efb; }
     .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a i {
