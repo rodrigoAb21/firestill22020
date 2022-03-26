@@ -49,7 +49,7 @@
 </head>
 <body>
 <div class="container">
-    <img src="{{public_path('img/ifsc2.png')}}" style="width: 100%"/>
+    <img src="{{asset('img/ifsc2.png')}}" style="width: 100%"/>
     <div class="centered">
         <h2>Inventario de Productos - {{date('d/M/Y')}}</h2>
     </div>
