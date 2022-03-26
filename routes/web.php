@@ -2,6 +2,10 @@
 
 use App\Events\ArduinoEvent;
 
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
+
 Route::get('login', [
     'as' => 'login',
     'uses' => 'Auth\LoginController@showLoginForm'
