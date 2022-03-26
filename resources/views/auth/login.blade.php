@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('plantilla/assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/firestill-logo2.png')}}">
     <title>Login</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('plantilla/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -36,7 +36,7 @@
             <div class="login-box card">
             <div class="card-body">
                 <div class="text-center">
-                    <img src="{{asset('img/firestill-logo2.png')}}" height="100px" alt="logo">
+                    <img src="{{asset('img/firestill-logo.png')}}" height="100px" alt="logo">
                 </div>
                 <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}" autocomplete="off">
                     {{ csrf_field() }}
