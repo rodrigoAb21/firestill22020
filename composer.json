@@ -15,7 +15,8 @@
         "lcobucci/jwt": "3.3.*",
         "pusher/pusher-php-server": "~2.6",
         "werneckbh/laravel-qr-code": "^0.1.3",
-        "yajra/laravel-datatables-oracle": "7.*"
+        "yajra/laravel-datatables-oracle": "7.*",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
