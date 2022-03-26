@@ -18,7 +18,7 @@
                         Nuevo cliente
                         <div class="float-right">
                             <a class="btn btn-warning" href="{{url('clientes/'.$cliente->id.'/edit')}}">
-                                <i class="fa fa-plus"></i>  Editar
+                                Editar
                             </a>
                         </div>
                     </h3>

@@ -9,7 +9,7 @@
                         Editar proveedor
                         <div class="float-right">
                             <a class="btn btn-warning" href="{{url('proveedores/'.$proveedor->id.'/edit')}}">
-                                <i class="fa fa-plus"></i>  Editar
+                                Editar
                             </a>
                         </div>
                     </h3>

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Editar producto
+                        Ver producto
                     </h3>
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">

@@ -18,7 +18,7 @@
                         Ver trabajador
                         <div class="float-right">
                             <a class="btn btn-warning" href="{{url('trabajadores/'.$trabajador->id.'/edit')}}">
-                                <i class="fa fa-plus"></i>  Editar
+                                Editar
                             </a>
                         </div>
                     </h3>
