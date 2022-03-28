@@ -64,8 +64,8 @@
                                     <label>Fecha fin*</label>
                                     <input required
                                            type="date"
-                                           value="{{\Carbon\Carbon::now('America/La_Paz')->addDay()->toDateString()}}"
-                                           min="{{\Carbon\Carbon::now('America/La_Paz')->addDay()->toDateString()}}"
+                                           value="{{\Carbon\Carbon::now('America/La_Paz')->addYear()->toDateString()}}"
+                                           min="{{\Carbon\Carbon::now('America/La_Paz')->addYear()->toDateString()}}"
                                            class="form-control"
                                            name="fecha_fin">
                                 </div>

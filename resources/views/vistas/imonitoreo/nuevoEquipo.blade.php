@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('imonitoreo/listaContratos')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('imonitoreo/editarSucursal/'.$sucursal_id)}}" class="btn btn-warning">Atras</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
 
