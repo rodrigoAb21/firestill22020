@@ -70,6 +70,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Producto</label>
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorProducto" >
                                         @foreach($productos as $producto)
                                             <option value="{{$producto->id}}_{{$producto->precio}}_{{$producto->cantidad}}_{{$producto->nombre}}">{{$producto->nombre}} - Total:{{$producto->cantidad}}</option>
@@ -80,18 +81,21 @@
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Precio U. Bs</label>
                                     <input class="form-control" title="Precio U. Bs" placeholder="Precio" min="0" type="number" step="0.01" id="precio">
                                 </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Cantidad</label>
                                     <input class="form-control" title="Cantidad" placeholder="Cantidad" min="0" type="number" id="cantidad">
                                 </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                <div class="form-group">
+                                <div class="form-group pt-2">
+                                    <br>
                                     <button id="btn_agregar" type="button" onclick="agregar()"  class="btn btn-success btn-block">
                                         Agregar
                                     </button>
@@ -161,7 +165,7 @@
             $('#selectorProducto').change(mostrarPrecio);
 
             function agregar() {
-                cantidad = $('#cantidad').val();
+                cantidad = parseInt($('#cantidad').val());
                 precio = parseFloat($('#precio').val()).toFixed(2);
 
                 if(cont>=0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosProducto[2]) && precio != null && precio > 0) {

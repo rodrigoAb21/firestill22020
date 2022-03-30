@@ -100,6 +100,7 @@
                     <!-- ============================================================== -->
                     <!-- Profile -->
                     <!-- ============================================================== -->
+                <!--
 
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -112,6 +113,8 @@
 
                         </a>
                     </li>
+
+                -->
                     @if (!\Auth::guest())
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{\Auth::user()->nombre }} {{\Auth::user()->apellido }}</a>
@@ -119,7 +122,7 @@
                                 <ul class="dropdown-user">
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
+                            document.getElementById('logout-form').submit();" class="cerrar">
                                             <i class="fa fa-power-off"></i>
                                             Cerrar Sesion
                                         </a>

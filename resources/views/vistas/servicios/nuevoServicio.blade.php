@@ -54,7 +54,7 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Empleado*</label>
+                                    <label>Trabajador*</label>
                                     <select required name="trabajador_id" class="form-control">
                                         @foreach($trabajadores as $trabajador)
                                             <option value="{{$trabajador->id}}">{{$trabajador->nombre}} {{$trabajador->apellido}}</option>
@@ -81,18 +81,21 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Detalle servicio"type="text" id="nombreServicio">
+                                    <label>Detalle del servicio</label>
+                                    <input class="form-control" placeholder="Detalle del servicio"type="text" id="nombreServicio">
                                 </div>
                             </div>
 
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Precio (Bs)</label>
                                     <input class="form-control" placeholder="Precio" min="0" type="number" step="0.01" id="precioS">
                                 </div>
                             </div>
 
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
+                                <div class="form-group pt-2">
+                                    <br>
                                     <button id="btn_agregarS" type="button" onclick="agregarS()"  class="btn btn-success btn-block">
                                         Agregar
                                     </button>
@@ -127,6 +130,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Producto</label>
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorProducto" >
                                         @foreach($productos as $producto)
                                             <option value="{{$producto->id}}_{{$producto->precio}}_{{$producto->cantidad}}_{{$producto->nombre}}">{{$producto->nombre}} - Total:{{$producto->cantidad}}</option>
@@ -137,18 +141,21 @@
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label>Precio U. (Bs)</label>
                                     <input class="form-control" title="Precio U. Bs" placeholder="Precio" min="0" type="number" step="0.01" id="precio">
                                 </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input class="form-control" title="Cantidad" placeholder="Cantidad" min="0" type="number" id="cantidad">
+                                    <label>Cantidad</label>
+                                    <input class="form-control" title="Cantidad" placeholder="Cantidad" min="1" step="1" type="number" id="cantidad">
                                 </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                <div class="form-group">
+                                <div class="form-group pt-2">
+                                    <br>
                                     <button id="btn_agregar" type="button" onclick="agregar()"  class="btn btn-success btn-block">
                                         Agregar
                                     </button>
@@ -229,7 +236,7 @@
 
             function agregar() {
 
-                cantidad = $('#cantidad').val();
+                cantidad = parseInt($('#cantidad').val());
                 precio = parseFloat($('#precio').val()).toFixed(2);
 
                 if(cont>=0 && cantidad != null && cantidad > 0 && cantidad <= parseFloat(datosProducto[2])) {

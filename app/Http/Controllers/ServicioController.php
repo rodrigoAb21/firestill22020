@@ -56,7 +56,7 @@ class ServicioController extends Controller
             $venta->fecha = $request['fecha'];
             $venta->total = $request['total'];
             $venta->tipo = false;
-            $venta->empleado_id = $request['empleado_id'];
+            $venta->trabajador_id = $request['trabajador_id'];
             $venta->cliente_id = $request['cliente_id'];
             $venta->save();
 
