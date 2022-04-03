@@ -65,7 +65,7 @@
                             </div>
 
                         </div>
-                        <a href="{{url('imonitoreo/listaContratos/')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('imonitoreo/listaContratos/')}}" class="btn btn-warning">Atrás</a>
 
                 </div>
             </div>

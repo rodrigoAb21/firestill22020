@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Direccion</label>
+                                    <label>Dirección</label>
                                     <input readonly
                                             type="text"
                                             class="form-control"
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Telefono</label>
+                                    <label>Teléfono</label>
                                     <input readonly
                                            type="text"
                                            class="form-control"
@@ -77,7 +77,7 @@
 
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>E-mail</label>
+                                    <label>Email</label>
                                     <input readonly
                                            type="text"
                                            class="form-control"
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('trabajadores')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('trabajadores')}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

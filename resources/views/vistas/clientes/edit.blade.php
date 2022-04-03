@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nuevo cliente
+                        Editar cliente
                     </h3>
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Telefono</label>
+                                    <label>Teléfono</label>
                                     <input
                                             type="number"
                                             max="79999999"
@@ -128,7 +128,7 @@
 
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>Telefono</label>
+                                <label>Teléfono</label>
                                 <input
                                         type="number"
                                         class="form-control"
@@ -137,7 +137,7 @@
                             </div>
                         </div>
                     </div>
-                        <a href="{{url('clientes')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('clientes')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

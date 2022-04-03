@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -124,7 +123,7 @@
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();" class="cerrar">
                                             <i class="fa fa-power-off"></i>
-                                            Cerrar Sesion
+                                            Cerrar Sesión
                                         </a>
 
                                         <form id="logout-form" action="{{route('logout') }}" method="POST" style="display: none;">
@@ -269,21 +268,21 @@
                     <li class="{{ Request::is('categorias*') ? 'nav-item active' : 'nav-item' }}">
                         <a href="{{url('categorias')}}" >
                             <i class="fa fa-cube"></i>
-                            <span class="hide-menu"> Categorias de Prod</span>
+                            <span class="hide-menu"> Categorías de Prod</span>
                         </a>
                     </li>
 
                     <li class="{{ Request::is('tipos*') ? 'nav-item active' : 'nav-item' }}">
                         <a href="{{url('tipos')}}" >
                             <i class="fas fa-sitemap"></i>
-                            <span class="hide-menu"> Tipo Clasificacion</span>
+                            <span class="hide-menu"> Tipo Clasificación</span>
                         </a>
                     </li>
 
                     <li class="{{ Request::is('marcas*') ? 'nav-item active' : 'nav-item' }}">
                         <a href="{{url('marcas')}}" >
                             <i class="far fa-copyright"></i>
-                            <span class="hide-menu"> Marca Clasificacion</span>
+                            <span class="hide-menu"> Marca Clasificación</span>
                         </a>
                     </li>
 

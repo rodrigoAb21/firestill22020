@@ -84,7 +84,7 @@
 
                     </div>
 
-                    <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atras</a>
+                    <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atrás</a>
 
                 </div>
             </div>

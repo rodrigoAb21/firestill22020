@@ -84,7 +84,7 @@
 
                     </div>
 
-                    <a href="{{url('ventas/ventas')}}" class="btn btn-warning">Atras</a>
+                    <a href="{{url('ventas/ventas')}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

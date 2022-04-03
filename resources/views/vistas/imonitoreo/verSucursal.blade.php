@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Direccion</label>
+                                    <label>Dirección</label>
                                     <input readonly
                                            type="text"
                                            value="{{$sucursal->direccion}}"
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('imonitoreo/verContrato/'.$sucursal->contrato_id)}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('imonitoreo/verContrato/'.$sucursal->contrato_id)}}" class="btn btn-warning">Atrás</a>
 
 
                 </div>

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        FICHAS DE INSPECCION COD EQUIPO: {{$equipo->id}}
+                        Fichas de inspección de Equipo de COD: {{$equipo->id}}
                     </h3>
                     <div class="row">
                         <div class="table-responsive">
@@ -41,7 +41,7 @@
 
                         </div>
                     </div>
-                    <a href="{{url('imonitoreo/verSucursal/'.$equipo->sucursal_id)}}" class="btn btn-warning">Atras</a>
+                    <a href="{{url('imonitoreo/verSucursal/'.$equipo->sucursal_id)}}" class="btn btn-warning">Atrás</a>
                 </div>
         </div>
     </div>

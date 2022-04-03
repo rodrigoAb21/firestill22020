@@ -84,7 +84,7 @@
 
                         </div>
 
-                        <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atrás</a>
                         <button class="btn btn-info" type="submit">Guardar</button>
                     </form>
                 </div>

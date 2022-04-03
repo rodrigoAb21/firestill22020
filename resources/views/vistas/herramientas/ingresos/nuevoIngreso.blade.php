@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label style="color: white">herramienta</label>
+                                    <label style="color: white">Herramienta</label>
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorHerramienta">
                                         @foreach($herramientas as $herramienta)
                                             <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>
@@ -131,7 +131,7 @@
 
                         </div>
 
-                        <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('herramientas/listaIngresos')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

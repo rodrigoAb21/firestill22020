@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Categoria*</label>
+                                    <label>Categoría*</label>
                                     <select required name="categoria_id" class="form-control">
                                         @foreach($categorias as $categoria)
                                             <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
@@ -78,12 +78,12 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Descripcion</label>
+                                    <label>Descripción</label>
                                     <textarea name="descripcion" rows="3" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('inventario')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('inventario')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

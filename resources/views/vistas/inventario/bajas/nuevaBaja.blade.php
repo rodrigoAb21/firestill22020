@@ -61,7 +61,7 @@
 
 
                         </div>
-                        <a href="{{url('inventario')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('inventario')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

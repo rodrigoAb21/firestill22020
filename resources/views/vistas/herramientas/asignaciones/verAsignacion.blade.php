@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Ver Asignacion - COD: {{$asignacion->id}}
+                        Ver Asignación - COD: {{$asignacion->id}}
                     </h3>
                     <div class="row">
 
@@ -52,7 +52,7 @@
 
                     </div>
 
-                    <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atras</a>
+                    <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atrás</a>
 
                 </div>
             </div>

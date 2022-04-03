@@ -90,7 +90,7 @@
                             </div>
 
                         </div>
-                        <a href="{{url('imonitoreo/listaContratos')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('imonitoreo/listaContratos')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
 

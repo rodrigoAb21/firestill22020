@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nuevo tipo
+                        Nuevo tipo de clasificación
                     </h3>
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -40,7 +40,7 @@
                             </div>
                             
                         </div>
-                        <a href="{{url('tipos')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('tipos')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

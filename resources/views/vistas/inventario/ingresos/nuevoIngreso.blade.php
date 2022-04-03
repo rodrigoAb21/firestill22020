@@ -73,7 +73,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label style="color: white">Producto</label>
+                                    <label>Producto</label>
                                     <select class="form-control selectpicker" data-live-search="true" id="selectorProducto">
                                         @foreach($productos as $producto)
                                             <option value="{{$producto->id}}">{{$producto->nombre}}</option>
@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Costo</label>
+                                    <label>Costo U. (Bs)</label>
                                     <input class="form-control" placeholder="Costo U." title="Costo U. BS" step="0.01" type="number" id="costo">
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
 
                         </div>
 
-                        <a href="{{url('inventario/listaIngresos')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('inventario/listaIngresos')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

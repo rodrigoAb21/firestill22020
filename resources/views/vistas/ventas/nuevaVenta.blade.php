@@ -81,7 +81,7 @@
 
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Precio U. Bs</label>
+                                    <label>Precio U. (Bs)</label>
                                     <input class="form-control" title="Precio U. Bs" placeholder="Precio" min="0" type="number" step="0.01" id="precio">
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
 
                         </div>
 
-                        <a href="{{url('ventas/ventas')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('ventas/ventas')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
 
                     </form>

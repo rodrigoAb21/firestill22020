@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        Ingresos de Productos
+                        Ingresos de productos
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('inventario/nuevoIngreso')}}">
                                 <i class="fa fa-plus"></i>  Nuevo

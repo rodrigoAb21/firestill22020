@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        <i class="fas fa-sitemap"></i> Tipos
+                        <i class="fas fa-sitemap"></i> Tipos de clasificación
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('tipos/create')}}">
                                 <i class="fa fa-plus"></i>  Nuevo

@@ -35,7 +35,7 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Categoria</label>
+                                            <label>Categoría</label>
                                             <input type="text" class="form-control" readonly value="{{$producto->categoria->nombre}}">
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Descripcion</label>
+                                            <label>Descripción</label>
                                             <textarea readonly name="descripcion" rows="3" class="form-control">{{$producto->descripcion}}</textarea>
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
 
 
                         </div>
-                        <a href="{{url('inventario')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('inventario')}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

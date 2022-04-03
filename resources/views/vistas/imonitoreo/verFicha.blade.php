@@ -104,7 +104,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label><n>Valvula</n></label>
+                                <label><n>Válvula</n></label>
                                 <input readonly
                                        type="text"
                                        class="form-control"
@@ -144,7 +144,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label><n>Manometro</n></label>
+                                <label><n>Manómetro</n></label>
                                 <input readonly
                                        type="text"
                                        class="form-control"
@@ -155,7 +155,7 @@
 
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label><n>Vastago</n></label>
+                                <label><n>Vástago</n></label>
                                 <input readonly
                                        type="text"
                                        class="form-control"
@@ -211,14 +211,14 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label><n>Observacion</n></label>
+                                <label><n>Observación</n></label>
                                 <textarea class="form-control" rows="3" readonly>{{$ficha->observacion}}</textarea>
                             </div>
                         </div>
 
 
                     </div>
-                    <a href="{{url('imonitoreo/listarFichas/'.$ficha->equipo_id)}}" class="btn btn-warning">Atras</a>
+                    <a href="{{url('imonitoreo/listarFichas/'.$ficha->equipo_id)}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

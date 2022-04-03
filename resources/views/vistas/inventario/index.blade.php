@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        <i class="fa fa-boxes"></i> Inventario de Productos
+                        <i class="fa fa-boxes"></i> Inventario de productos
                         <div class="float-right">
                             <a class="btn btn-danger" href="{{url('inventario/reporte')}}">
                                 <i class="fa fa-file-pdf"></i>  PDF

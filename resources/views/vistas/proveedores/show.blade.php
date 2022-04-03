@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Editar proveedor
+                        Ver proveedor
                         <div class="float-right">
                             <a class="btn btn-warning" href="{{url('proveedores/'.$proveedor->id.'/edit')}}">
                                 Editar
@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Direccion</label>
+                                    <label>Dirección</label>
                                     <input readonly
                                             type="text"
                                             class="form-control"
@@ -58,7 +58,7 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Telefono</label>
+                                    <label>Teléfono</label>
                                     <input readonly
                                             type="text"
                                             class="form-control"
@@ -69,7 +69,7 @@
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Informacion</label>
+                                    <label>Información</label>
                                     <input readonly
                                             type="text"
                                             class="form-control"
@@ -152,7 +152,7 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Nro Indentificacion</label>
+                                    <label>Nro Indentificación</label>
                                     <input readonly
                                             type="text"
                                             class="form-control"
@@ -164,7 +164,7 @@
 
 
                         </div>
-                        <a href="{{url('proveedores')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('proveedores')}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

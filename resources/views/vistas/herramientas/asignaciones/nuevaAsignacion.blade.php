@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nueva asignacion
+                        Nueva asignación
                     </h3>
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -94,7 +94,7 @@
 
                         </div>
 
-                        <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('herramientas/listaAsignaciones')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" id="guardar" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

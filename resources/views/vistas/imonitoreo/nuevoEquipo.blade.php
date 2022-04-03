@@ -101,7 +101,7 @@
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Ubicacion</label>
+                                    <label>Ubicación</label>
                                     <textarea
 
                                             name="ubicacion"
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('imonitoreo/editarSucursal/'.$sucursal_id)}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('imonitoreo/editarSucursal/'.$sucursal_id)}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
 

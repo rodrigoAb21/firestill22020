@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        <i class="fa fa-cube"></i> Categorias
+                        <i class="fa fa-cube"></i> Categorías
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('categorias/create')}}">
                                 <i class="fa fa-plus"></i>  Nueva

@@ -127,7 +127,7 @@
                         </div>
                     @endif
 
-                    <a href="{{url('ventas/servicios')}}" class="btn btn-warning">Atras</a>
+                    <a href="{{url('ventas/servicios')}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

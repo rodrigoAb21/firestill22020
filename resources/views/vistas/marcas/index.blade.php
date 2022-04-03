@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="pb-2">
-                        <i class="far fa-copyright"></i> Marcas
+                        <i class="far fa-copyright"></i> Marcas de clasificación
                         <div class="float-right">
                             <a class="btn btn-success" href="{{url('marcas/create')}}">
                                 <i class="fa fa-plus"></i>  Nueva

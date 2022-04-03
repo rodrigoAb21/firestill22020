@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Ubicacion</label>
+                                            <label>Ubicación</label>
                                             <textarea name="ubicacion"
                                                       readonly
                                                       cols="30"
@@ -114,7 +114,7 @@
                             </div>
                         -->
                         </div>
-                        <a href="{{url('imonitoreo/verSucursal/'.$equipo->sucursal_id)}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('imonitoreo/verSucursal/'.$equipo->sucursal_id)}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

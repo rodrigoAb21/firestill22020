@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Direccion*</label>
+                                    <label>Dirección*</label>
                                     <input required
                                             type="text"
                                             class="form-control"
@@ -74,7 +74,7 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Telefono*</label>
+                                    <label>Teléfono*</label>
                                     <input required
                                             type="number"
                                             class="form-control"
@@ -85,7 +85,7 @@
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Informacion</label>
+                                    <label>Información</label>
                                     <input
                                             type="text"
                                             class="form-control"
@@ -176,7 +176,7 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Nro Indentificacion</label>
+                                    <label>Nro Indentificación</label>
                                     <input
                                             type="text"
                                             class="form-control"
@@ -188,7 +188,7 @@
 
 
                         </div>
-                        <a href="{{url('proveedores')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('proveedores')}}" class="btn btn-warning">Atrás</a>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

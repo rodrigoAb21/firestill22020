@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nuevo cliente
+                        Ver cliente
                         <div class="float-right">
                             <a class="btn btn-warning" href="{{url('clientes/'.$cliente->id.'/edit')}}">
                                 Editar
@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Telefono</label>
+                                    <label>Teléfono</label>
                                     <input readonly
                                             type="text"
                                             value="{{$cliente -> telefono_empresa}}"
@@ -117,7 +117,7 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Telefono</label>
+                                    <label>Teléfono</label>
                                     <input readonly
                                             type="text"
                                             class="form-control"
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('clientes')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('clientes')}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>

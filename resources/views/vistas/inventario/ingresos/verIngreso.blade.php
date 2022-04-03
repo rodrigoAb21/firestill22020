@@ -89,7 +89,7 @@
 
                         </div>
 
-                        <a href="{{url('inventario/listaIngresos')}}" class="btn btn-warning">Atras</a>
+                        <a href="{{url('inventario/listaIngresos')}}" class="btn btn-warning">Atrás</a>
                 </div>
             </div>
         </div>
