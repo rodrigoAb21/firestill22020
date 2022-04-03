@@ -12,6 +12,7 @@
                             </a>
                         </div>
                     </h2>
+
                     @if(session()->has('message'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('message') }}
@@ -20,6 +21,7 @@
                             </button>
                         </div>
                     @endif
+
                     <div class="table-responsive">
                         <table id="tablaIngresoHerramienta" class="table table-hover table-bordered color-table info-table">
                             <thead>

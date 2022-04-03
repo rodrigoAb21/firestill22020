@@ -6,9 +6,6 @@
                 <div class="card-body">
                     <h2 class="pb-2">
                         Productos dados de Baja
-                        <div class="float-right">
-
-                        </div>
                     </h2>
 
                     <div class="table-responsive">

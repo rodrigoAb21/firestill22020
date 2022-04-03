@@ -16,15 +16,22 @@
                     <h3 class="pb-2">
                         Editar Equipo
                     </h3>
+
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
+
                         </div>
                     @endif
+
                     <form method="POST" action="{{url('imonitoreo/actualizarEquipo/'.$equipo->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}

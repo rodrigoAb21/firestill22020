@@ -21,6 +21,7 @@
                             </button>
                         </div>
                     @endif
+
                     <div class="table-responsive">
                         <table id="tablaIngresoProducto" class="table table-hover table-bordered color-table info-table">
                             <thead>
