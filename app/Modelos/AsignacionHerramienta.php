@@ -26,6 +26,7 @@ class AsignacionHerramienta extends Model
     protected $fillable = [
         'fecha',
         'trabajador_id',
+        'estado'
     ];
 
     public function trabajador(){
@@ -33,5 +34,8 @@ class AsignacionHerramienta extends Model
     }
     public function detalles(){
         return $this->hasMany(DetalleAsignacion::class);
+    }
+    public function reingreso(){
+        return $this->hasOne('App\Modelos\Reingreso');
     }
 }

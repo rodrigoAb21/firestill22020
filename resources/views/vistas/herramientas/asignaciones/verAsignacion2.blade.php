@@ -10,7 +10,7 @@
                     </h3>
                     <div class="row">
 
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label>Fecha de asignacion</label>
                                 <input readonly
@@ -30,6 +30,16 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>Fecha de asignacion</label>
+                                <input readonly
+                                       type="date"
+                                       class="form-control"
+                                       value="{{$asignacion->reingreso->fecha}}"
+                                       name="fecha">
+                            </div>
+                        </div>
 
                     </div>
                     <hr>
@@ -39,6 +49,8 @@
                             <tr>
                                 <th class="text-center">HERRAMIENTA</th>
                                 <th class="text-center">CANT. ASIGNADA</th>
+                                <th class="text-center">CANT. REINGRESADA</th>
+                                <th class="text-center">MOTIVO</th>
                             </tr>
                             </thead>
                             <tbody id="detalle">
@@ -46,6 +58,8 @@
                                 <tr class="text-center">
                                     <td>{{$detalle->herramienta->nombre}}</td>
                                     <td>{{$detalle->cantidad}}</td>
+                                    <td>{{$detalle->cantidad_reingreso}}</td>
+                                    <td>{{$detalle->motivo}}</td>
                                 </tr>
                             @endforeach
 

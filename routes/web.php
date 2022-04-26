@@ -59,13 +59,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('herramientas/anularBaja/{id}', 'HerramientaController@anularBaja');
 
     // ------------------------------ ASIGNACIONES -------------------------------------------
-    Route::get('herramientas/listaAsignaciones', 'HerramientaController@listaAsignaciones');
-    Route::get('herramientas/nuevaAsignacion', 'HerramientaController@nuevaAsignacion');
-    Route::post('herramientas/guardarAsignacion', 'HerramientaController@guardarAsignacion');
-    Route::get('herramientas/reingreso/{id}', 'HerramientaController@reingreso');
-    Route::post('herramientas/guardarReingreso/{id}', 'HerramientaController@guardarReingreso');
-    Route::get('herramientas/verAsignacion/{id}', 'HerramientaController@verAsignacion');
-    Route::delete('herramientas/eliminarAsignacion/{id}', 'HerramientaController@eliminarAsignacion');
+    Route::get('herramientas/listaAsignaciones', 'AsignacionController@listaAsignaciones');
+    Route::get('herramientas/nuevaAsignacion', 'AsignacionController@nuevaAsignacion');
+    Route::post('herramientas/guardarAsignacion', 'AsignacionController@guardarAsignacion');
+    Route::get('herramientas/reingreso/{id}', 'AsignacionController@reingreso');
+    Route::post('herramientas/guardarReingreso/{id}', 'AsignacionController@guardarReingreso');
+    Route::get('herramientas/verAsignacion/{id}', 'AsignacionController@verAsignacion');
+    Route::delete('herramientas/eliminarAsignacion/{id}', 'AsignacionController@eliminarAsignacion');
 
     Route::get('herramientas/reporte', 'HerramientaController@reporte');
 
